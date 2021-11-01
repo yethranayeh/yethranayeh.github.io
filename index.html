@@ -15,10 +15,10 @@
 			crossorigin="anonymous"
 		/>
 
-		<title>Hello, world!</title>
+		<title>Alper Aktaş | Portfolio</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 			<div class="container-fluid">
 				<a href="#" class="navbar-brand">
 					<img
@@ -26,6 +26,7 @@
 						alt="Alper Aktaş"
 						class="img-thumbnail"
 						style="width: 64px; height: auto"
+						loading="lazy"
 					/>
 				</a>
 				<button
@@ -42,10 +43,10 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
+							<a class="nav-link active" aria-current="page" href="#about">About Me</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Watch This With Me</a>
+							<a class="nav-link" href="#wtwm">Watch This With Me</a>
 						</li>
 
 						<!-- Front-end Dropdown -->
@@ -61,7 +62,7 @@
 								Front-end
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#frontend">Action</a></li>
 								<li><a class="dropdown-item" href="#">Another action</a></li>
 								<li><hr class="dropdown-divider" /></li>
 								<li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -81,7 +82,7 @@
 								Back-end
 							</a>
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#backend">Action</a></li>
 								<li><a class="dropdown-item" href="#">Another action</a></li>
 								<li><hr class="dropdown-divider" /></li>
 								<li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -91,6 +92,8 @@
 							<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 						</li>
 					</ul>
+
+					<!-- Search section -->
 					<form class="d-flex">
 						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
 						<button class="btn btn-outline-success" type="submit">Search</button>
