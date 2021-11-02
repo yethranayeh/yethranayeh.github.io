@@ -1,0 +1,23 @@
+.bg-primary {
+  background-color: #2a9d8f!important;
+}
+
+.bg-secondary {
+  background-color: #264653!important;
+}
+
+.text-secondary {
+  color: #e76f51!important;
+}
+
+.btn-primary {
+  background-color: #f4a261;
+  border-color: #f4a261;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: #e76f51;
+  border-color: #e76f51;
+  color: white;
+}
+
