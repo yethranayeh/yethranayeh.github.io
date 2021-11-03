@@ -30,14 +30,20 @@
 		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css" />
 		<link rel="stylesheet" href="assets/css/Highlight-Phone.css" />
 		<link rel="stylesheet" href="assets/css/Projects-Clean.css" />
 		<link rel="stylesheet" href="assets/css/style.css" />
 	</head>
 
 	<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
-		<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
+		<nav
+			class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase"
+			id="mainNav"
+			style="box-shadow: 0px 0px 5px; padding: 5px 0px"
+		>
 			<div class="container">
 				<a class="navbar-brand" href="#page-top">A.A.</a
 				><button
@@ -78,15 +84,15 @@
 					width="156"
 				/>
 				<h1>Alper Aktaş</h1>
-				<hr class="star-dark" />
+				<hr class="border border-2 border-white rounded w-50 my-4" />
 				<h2 class="font-weight-light mb-0">Frontend Developer - Shopify Theme Builder - Python Programmer</h2>
 			</div>
 		</header>
 		<!-- Start: About Section -->
-		<section class="text-white bg-primary mb-0" id="about" style="background: linear-gradient(#f4a261 35%, #e76f51)">
+		<section class="text-white bg-primary mb-0" id="about" style="background: linear-gradient(#f4a261 27%, #e76f51)">
 			<div class="container">
 				<h2 class="text-uppercase text-center text-white">About</h2>
-				<hr class="star-light mb-5" />
+				<hr class="border border-2 border-white rounded w-25 my-4" />
 				<div class="row">
 					<div class="col-lg-4 ms-auto">
 						<p class="lead">
@@ -103,7 +109,7 @@
 				</div>
 				<div class="text-center mt-4">
 					<a class="btn btn-outline-light btn-xl" role="button" href="#"
-						><i class="fa fa-download me-2"></i><span>Download Now!</span></a
+						><i class="fa fa-download me-2"></i><span>Download CV</span></a
 					>
 				</div>
 			</div>
@@ -113,7 +119,7 @@
 		<section
 			id="wtwm"
 			class="highlight-phone"
-			style="height: 500px; padding: 150px 0; background: linear-gradient(180deg, #e76f51, #f4a261 65%)"
+			style="height: 500px; padding: 150px 0; background: linear-gradient(180deg, #e76f51 42%, #f4a261 100%)"
 		>
 			<div class="container">
 				<div class="row">
@@ -123,19 +129,26 @@
 							<!-- Start: WTWM Logo --><img
 								src="assets/img/default-monochrome-white.svg"
 								style="width: 400px"
+								alt="Watch This With Me"
 							/><!-- End: WTWM Logo -->
-							<p style="color: var(--bs-white)">
-								Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut
-								laoreet vitae. Aliqua sed justo ligula.
+							<p class="mt-4" style="color: var(--bs-white)">
+								This project is a <span class="fst-italic">work-in-progess</span> web application aimed at couples or
+								friends who struggle to find something to watch together. It gamifies the process to make it fun!
 							</p>
-							<a class="btn btn-primary" role="button" href="#">Action Button</a>
+							<a class="btn btn-primary" role="button" href="javascript: void(0)">View Page</a>
 						</div>
 						<!-- End: Intro -->
 					</div>
 					<div class="col-sm-4">
 						<!-- Start: Smartphone -->
 						<div class="d-none d-md-block phone-mockup">
-							<img class="device" src="assets/img/phone.svg" />
+							<img
+								data-bs-toggle="tooltip"
+								data-bss-tooltip=""
+								class="device"
+								src="assets/img/phone.svg"
+								title="The project is currently planned to be released only as a web application."
+							/>
 							<div class="screen"></div>
 						</div>
 						<!-- End: Smartphone -->
@@ -195,6 +208,13 @@
 			</div>
 		</section>
 		<!-- End: Projects Section -->
+		<!-- Start: Presearch Referral -->
+		<div>
+			<a href="https://www.presearch.org/signup?rid=2991614" target="_blank">
+				<img class="w-100" src="https://presearch.org/images/rf/ban-4.jpg" title="Presearch" alt="presearch" />
+			</a>
+		</div>
+		<!-- End: Presearch Referral -->
 		<!-- Start: Contact Section -->
 		<section id="contact">
 			<div class="container">
@@ -220,14 +240,6 @@
 								</div>
 							</div>
 							<div class="control-group">
-								<div class="mb-0 form-floating controls pb-2">
-									<input class="form-control" type="tel" id="phone" required="" placeholder="Phone Number" /><label
-										class="form-label"
-										>Phone Number</label
-									><small class="form-text text-danger help-block"></small>
-								</div>
-							</div>
-							<div class="control-group">
 								<div class="mb-5 form-floating controls pb-2">
 									<textarea
 										class="form-control"
@@ -247,19 +259,23 @@
 			</div>
 		</section>
 		<!-- End: Contact Section -->
-		<footer class="text-center footer">
+		<footer class="text-center footer bg-secondary" style="box-shadow: 0px 0px 4px rgb(33, 37, 41)">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4 mb-5 mb-lg-0">
 						<h4 class="text-uppercase mb-4">Location</h4>
-						<p>2215 John Daniel Drive<br />Clark, MO 65243</p>
+						<p>Izmir / Istanbul, Turkey</p>
 					</div>
 					<div class="col-md-4 mb-5 mb-lg-0">
 						<h4 class="text-uppercase">Around the Web</h4>
 						<ul class="list-inline">
 							<li class="list-inline-item">
-								<a class="btn btn-outline-light text-center btn-social rounded-circle" role="button" href="#"
-									><i class="fa fa-facebook fa-fw"></i
+								<a
+									class="btn btn-outline-light text-center btn-social rounded-circle"
+									role="button"
+									href="https://www.linkedin.com/in/aktasalper/"
+									target="_blank"
+									><i class="fab fa-linkedin"></i
 								></a>
 							</li>
 							<li class="list-inline-item">
@@ -286,7 +302,7 @@
 				</div>
 			</div>
 		</footer>
-		<div class="text-center text-white copyright py-4">
+		<div class="text-center text-white bg-primary py-4">
 			<div class="container"><small>Copyright ©&nbsp;Brand 2021</small></div>
 		</div>
 		<div class="d-lg-none scroll-to-top position-fixed rounded">
@@ -491,6 +507,7 @@
 			</div>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="assets/js/bs-init.js"></script>
 		<script src="assets/js/freelancer.js"></script>
 	</body>
 </html>
