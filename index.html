@@ -60,7 +60,9 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
 					<ul class="navbar-nav ms-auto">
-						<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
+						<li class="nav-item mx-0 mx-lg-1">
+							<a class="nav-link active py-3 px-0 px-lg-3 rounded" href="#about">About</a>
+						</li>
 						<li class="nav-item mx-0 mx-lg-1">
 							<a class="nav-link py-3 px-0 px-lg-3 rounded" href="#wtwm">Watch This With Me</a>
 						</li>
@@ -84,10 +86,9 @@
 					src="assets/img/profile_logo_HGLAW_e295625c00cee92c3d22c6951ee6eebe.jpg"
 					loading="lazy"
 					width="156"
-				/>
-				<h1>Alper Aktaş</h1>
+				/><span class="fs-1 fw-bold">Alper Aktaş</span>
 				<hr class="border border-2 border-white rounded w-50 my-4" />
-				<h2 class="font-weight-light mb-0">Frontend Developer - Shopify Theme Builder - Python Programmer</h2>
+				<span class="fw-light mb-0 fs-5">Frontend Developer - Shopify Theme Builder - Python Programmer</span>
 			</div>
 		</header>
 		<!-- Start: About Section -->
@@ -98,21 +99,14 @@
 				<div class="row">
 					<div class="col-lg-4 ms-auto">
 						<p class="lead">
-							I am a 22 year old English Language and Literature student aspiring to take part in software development.
-						</p>
-						<p class="lead">
-							I am particularly interested in Python programming language, with intermediate knowledge of web-scraping,
-							back-end development and database management applications.
+							I am a 22 year old English Language and Literature student interested in software development. I have
+							worked on front-end projects as well as Shopify Theme development.
 						</p>
 					</div>
 					<div class="col-lg-4 me-auto">
 						<p class="lead">
-							I am eager to be a part of a software development team, where I can offer new ideas and assist in solving
-							problems.
-						</p>
-						<p class="lead">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit accusamus sed corporis dolorem unde?
-							Dignissimos impedit aliquid dolorum necessitatibus incidunt.
+							I have experience in Python, with intermediate knowledge of web-scraping, Django and database management
+							applications (PostgreSQL, SQLite, MongoDB).
 						</p>
 					</div>
 				</div>
@@ -142,7 +136,7 @@
 							/><!-- End: WTWM Logo -->
 							<p class="mt-4" style="color: var(--bs-white)">
 								This project is a <span class="fst-italic">work-in-progess</span> web application aimed at couples or
-								friends who struggle to find something to watch together. It gamifies the process to make it fun !
+								friends who struggle to find something to watch together. It gamifies the process to make it fun!
 							</p>
 							<a class="btn btn-primary" role="button" href="javascript: void(0)">View Page</a>
 						</div>
@@ -179,12 +173,13 @@
 				<div class="row projects">
 					<div class="col-sm-6 col-lg-4 item">
 						<img
-							class="img-fluid shadow-sm"
+							class="img-fluid shadow-sm img-thumbnail"
 							data-bss-disabled-mobile="true"
 							data-bss-hover-animate="pulse"
 							src="assets/img/dmr.jpg"
 							loading="lazy"
 							alt="DMR"
+							style="max-height: 170px"
 						/>
 						<h3 class="name">Daily Mood Rater</h3>
 						<p class="description">
@@ -194,10 +189,13 @@
 					</div>
 					<div class="col-sm-6 col-lg-4 item">
 						<img
-							class="img-fluid"
+							class="img-fluid img-thumbnail"
 							data-bss-disabled-mobile="true"
 							data-bss-hover-animate="pulse"
 							src="assets/img/etsy.jpg"
+							style="max-height: 170px"
+							alt="etsy"
+							loading="lazy"
 						/>
 						<h3 class="name">EtsyScraper</h3>
 						<p class="description">
@@ -221,7 +219,7 @@
 		<section id="contact">
 			<div class="container">
 				<h2 class="text-uppercase text-center text-secondary mb-0">Contact Me</h2>
-				<hr class="star-dark mb-5" />
+				<hr class="border border-2 border-warning rounded w-50 my-4" />
 				<div class="row">
 					<div class="col-lg-8 mx-auto">
 						<form id="contactForm" name="sentMessage" novalidate="novalidate">
@@ -513,7 +511,7 @@
 				</div>
 			</div>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="assets/js/bs-init.js"></script>
 		<script src="assets/js/freelancer.js"></script>
 	</body>
