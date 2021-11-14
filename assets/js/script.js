@@ -4,7 +4,9 @@ const projectsDropdownToggle = document.getElementById("projects-dropdown-toggle
 const projectsDropdownMenu = document.getElementById("projects-dropdown-menu")
 
 
-window.addEventListener('resize', function(event){
+window.addEventListener('resize', function(event){check_window_size()});
+
+function check_window_size(){
     if (screen.width <992) {
         
         if (!projectsDropdown.classList.contains("show")) {
@@ -21,4 +23,5 @@ window.addEventListener('resize', function(event){
             projectsDropdownToggle.setAttribute("aria-expanded", "false")
         }
     }
-});
+}
+check_window_size();
