@@ -1,0 +1,42 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Test</h1>
+		<p id="description">...</p>
+		<p id="response">...</p>
+		<script>
+			const api_url = "https://aa-api-proxy.herokuapp.com/nasa";
+
+			async function test_api() {
+				const response = await fetch(api_url);
+
+				const data = await response.json();
+				console.log(data);
+
+				let { explanation } = data;
+
+				// Provide url to global imgSrc so other scripts can access it
+				imgSrc = url;
+
+				document.getElementById("response").innerText = data;
+				document.getElementById("description").innerText =
+					explanation == null ? "Could not retrieve image description..." : explanation;
+
+				// If media type is image:
+
+				// If media type is video
+				// let { thumbnail_url } = data
+			}
+
+			test_api();
+		</script>
+	</body>
+</html>
