@@ -1,0 +1,193 @@
+/** @format */
+
+/* General */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: lightblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.container {
+	position: relative;
+	width: 100%;
+	max-width: 1000px;
+	min-height: 1000px;
+	background-color: #fff;
+	margin: 50px;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	box-shadow: 0 35px 55px rgba(0, 0, 0, 0.1);
+}
+
+/* Spicy Links */
+.spicy-link {
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+	white-space: nowrap;
+}
+
+.spicy-link::before,
+.spicy-link::after {
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background: currentColor;
+	top: 100%;
+	left: 0;
+	pointer-events: none;
+}
+
+.spicy-link::before {
+	content: "";
+	transform-origin: 100% 50%;
+	transform: scale3d(0, 1, 1);
+	transition: transform 0.3s;
+}
+
+.spicy-link:hover::before {
+	transform-origin: 0% 50%;
+	transform: scale3d(1, 1, 1);
+}
+
+/* Percentage */
+.percent {
+	position: relative;
+	width: 100%;
+	height: 6px;
+	background-color: #081921;
+	display: block;
+	margin-top: 5px;
+}
+
+.percent div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: #03a9f4;
+}
+
+/* Left Side */
+.container .left-side {
+	position: relative;
+	background-color: #003147;
+	padding: 40px;
+}
+
+.profile-text {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-text h2 {
+	color: #fff;
+	font-size: 1.5em;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 600;
+	line-height: 1.4em;
+}
+
+.profile-text h2 span {
+	font-size: 0.8em;
+	font-weight: 300;
+}
+
+.profile-image-box {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.profile-image-box img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Contact */
+.contact-info {
+	padding-top: 40px;
+}
+
+.contact-title {
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 1px;
+	margin-bottom: 20px;
+}
+
+.contact-info ul {
+	position: relative;
+}
+
+.contact-info ul li {
+	position: relative;
+	list-style: none;
+	margin: 10px 0;
+	/* cursor: pointer; */
+}
+
+.contact-info ul li span {
+	color: #fff;
+	font-weight: 300;
+}
+
+.contact-icon {
+	display: inline-block;
+	width: 30px;
+	font-size: 18px;
+	color: #03a9f4 !important;
+}
+
+/* Education */
+.contact-info.education li {
+	margin-bottom: 15px;
+}
+
+.contact-info.education h4:nth-child(2) {
+	color: #fff;
+	font-weight: 500;
+}
+
+.contact-info.education h4 {
+	color: #fff;
+	font-weight: 300;
+}
+
+.contact-info.education h5 {
+	color: #03a9f4;
+	font-weight: 500;
+}
+
+/* Right side */
+.container .right-side {
+	position: relative;
+	background-color: #fff;
+	padding: 40px;
+}
