@@ -1,0 +1,538 @@
+/** @format */
+
+/* General */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: lightblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+p {
+	color: #333;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+span {
+	font-family: "Jost", "Arial", sans-serif;
+}
+
+/* Start: Shikoba Button by Mary Lou from Codrops */
+.button {
+	/* float: left; */
+	min-width: 150px;
+	max-width: 250px;
+	/* display: block; */
+	margin: 1em;
+	padding: 1em 2em;
+	border: none;
+	background: none;
+	color: inherit;
+	vertical-align: middle;
+	position: relative;
+	z-index: 1;
+	/* -webkit-backface-visibility: hidden; */
+	-moz-osx-font-smoothing: grayscale;
+	color: #eceff1;
+	border-color: #eceff1;
+}
+
+.button:focus {
+	outline: none;
+}
+.button > span {
+	vertical-align: middle;
+}
+
+.button--text-thick {
+	font-weight: 600;
+}
+
+.button--border-medium {
+	border: 2px solid;
+}
+
+.button--text-upper {
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.button--size-s {
+	font-size: 14px;
+}
+
+.button.button--shikoba {
+	padding: 1em 30px 1em 50px;
+	overflow: hidden;
+	background: #fff;
+	color: #37474f;
+	border-color: #37474f;
+	-webkit-transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+	transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.button--shikoba > span {
+	display: inline-block;
+	-webkit-transform: translate3d(-10px, 0, 0);
+	transform: translate3d(-10px, 0, 0);
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+	transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.button--shikoba .button__icon {
+	position: absolute;
+	left: 20px;
+	font-size: 18px;
+	-webkit-transform: translate3d(-40px, 2.5em, 0);
+	transform: translate3d(-40px, 2.5em, 0);
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+	transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+.button--shikoba:hover .button__icon,
+.button--shikoba:hover > span {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+.button--shikoba:hover {
+	background: #03a9f4;
+	border-color: #03a9f4;
+	color: #fff;
+}
+/* End: Shikoba Button by Mary Lou from Codrops */
+
+.container {
+	position: relative;
+	width: 100%;
+	max-width: 1000px;
+	min-height: 1000px;
+	background-color: #fff;
+	margin: 90px;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	box-shadow: 0px 0px 45px rgba(0, 0, 0, 0.2);
+}
+
+/* Spicy Links */
+.spicy-link {
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+	white-space: nowrap;
+}
+
+h5 .spicy-link {
+	color: #333;
+}
+
+.spicy-link::before,
+.spicy-link::after {
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background: currentColor;
+	top: 100%;
+	left: 0;
+	pointer-events: none;
+}
+
+.spicy-link::before {
+	content: "";
+	transform-origin: 100% 50%;
+	transform: scale3d(0, 1, 1);
+	transition: transform 0.3s;
+}
+
+.spicy-link:hover::before {
+	transform-origin: 0% 50%;
+	transform: scale3d(1, 1, 1);
+}
+
+/* Percentage */
+.percent {
+	position: relative;
+	width: 100%;
+	height: 6px;
+	background-color: #081921;
+	display: block;
+	margin-top: 5px;
+}
+
+.percent div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: #03a9f4;
+}
+
+/* Left Side */
+.container .left-side {
+	position: relative;
+	background-color: #003147;
+	padding: 40px;
+}
+
+.profile-text {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 20px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-text h2 {
+	color: #fff;
+	font-size: 1.5em;
+	margin-top: 20px;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 600;
+	line-height: 1.4em;
+}
+
+.profile-text h2 span {
+	font-size: 0.8em;
+	font-weight: 300;
+}
+
+.profile-image-box {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.profile-image-box img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* Contact */
+.contact-info {
+	padding-top: 40px;
+}
+
+.contact-title {
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 1px;
+	margin-bottom: 20px;
+}
+
+.contact-info ul {
+	position: relative;
+}
+
+.contact-info ul li {
+	position: relative;
+	list-style: none;
+	margin: 10px 0;
+}
+
+.contact-info ul li span {
+	color: #fff;
+	font-weight: 300;
+}
+
+.contact-icon {
+	display: inline-block;
+	width: 30px;
+	font-size: 18px;
+	color: #03a9f4 !important;
+}
+
+/* Education */
+.contact-info.education li {
+	margin-bottom: 15px;
+}
+
+.contact-info.education h4 {
+	color: #fff;
+	font-weight: 700;
+}
+
+.contact-info.education h4:nth-child(2) {
+	color: #fff;
+	font-weight: 300;
+}
+
+.contact-info.education h5 {
+	color: #03a9f4;
+	font-weight: 500;
+}
+
+/* Right side */
+.container .right-side {
+	position: relative;
+	background-color: #fff;
+	padding: 40px;
+}
+
+.about {
+	margin-bottom: 50px;
+}
+
+.about:last-child {
+	margin-bottom: 0;
+}
+
+.about-title {
+	color: #003147;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+}
+
+.about .box {
+	display: flex;
+	flex-direction: row;
+	margin: 20px 0;
+}
+
+.about .box .company-year {
+	min-width: 150px;
+}
+
+.about .box .company-year h5 {
+	text-transform: uppercase;
+	color: #848c90;
+	font-weight: 600;
+	padding-right: 1px;
+}
+
+.about .box .text h4 {
+	text-transform: uppercase;
+	color: #2a7da2;
+	font-size: 16px;
+}
+
+.skills .box {
+	position: relative;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 150px 1fr;
+	justify-content: center;
+	align-items: center;
+}
+
+.skills .box h3 {
+	text-transform: uppercase;
+	color: #2a7da2;
+	font-weight: 600;
+}
+
+.skills .box h4 {
+	/* text-transform: uppercase; */
+	color: #848c99;
+	font-weight: 500;
+}
+
+.percent-light {
+	background-color: #cfcfcf !important;
+}
+
+h4 i {
+	color: #003147;
+	margin-right: 5px;
+}
+
+.contact-info.education.text-dark {
+	padding-top: 0;
+}
+
+.contact-info.education.text-dark h4 {
+	color: #333;
+}
+
+.contact-info.education.text-dark h4:nth-child(2) {
+	font-weight: 500;
+}
+.contact-info.education.text-dark .contact-title {
+	color: #003147;
+}
+
+/* .skills .box h4 .percent {
+	position: relative;
+	width: 100%;
+	height: 10px;
+	background-color: #f0f0f0;
+} */
+
+/* .skills .box .percent div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: #03a9f4;
+} */
+
+/* Responsive Adjustments */
+
+@media screen and (max-width: 1000px) {
+	.container {
+		margin: 90px 10px;
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	/* body section.about.print-none {
+		display: none !important;
+	} */
+}
+
+@media screen and (max-width: 1000px) {
+	.about .box {
+		flex-direction: column;
+	}
+
+	.about .box .company-year {
+		margin-bottom: 5px;
+	}
+
+	.skills .box {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media print {
+	.print-none {
+		display: none !important;
+	}
+
+	/* Disable alertify box on print screen */
+	.alertify {
+		display: none;
+	}
+
+	h1,
+	h2 {
+		font-size: 1em !important;
+	}
+
+	h3 {
+		font-size: 0.9em !important;
+	}
+
+	p,
+	h4,
+	h5,
+	span {
+		font-size: 0.8em !important;
+	}
+
+	.container {
+		width: 100vw;
+		/* max-width: 210mm; */
+		height: 100vh;
+		/* max-height: 297mm; */
+		margin: 0;
+		padding: 0;
+		box-shadow: none;
+	}
+
+	.container .left-side {
+		padding: 15px;
+	}
+
+	.profile-text {
+		padding-bottom: 15px;
+	}
+
+	.profile-text h2 {
+		font-size: 1.3em;
+		margin-top: 15px;
+		line-height: 1.2em;
+	}
+
+	.profile-text h2 span {
+		font-size: 0.3em;
+	}
+
+	.profile-image-box {
+		width: 180px;
+		height: 180px;
+	}
+
+	.profile-image-box img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* Contact */
+	.contact-info {
+		padding-top: 20px;
+	}
+
+	.contact-title {
+		letter-spacing: 1px;
+		margin-bottom: 15px;
+	}
+
+	.contact-info ul li {
+		margin: 8px 0;
+	}
+
+	.contact-icon {
+		width: 20px;
+		font-size: 12px;
+	}
+
+	/* Education */
+	.contact-info.education li {
+		margin-bottom: 10px;
+	}
+
+	/* Right side */
+	.container .right-side {
+		position: relative;
+		background-color: #fff;
+		padding: 15px 20px;
+	}
+
+	.about {
+		margin-bottom: 30px;
+	}
+
+	.about-title {
+		letter-spacing: 1px;
+		margin-bottom: 8px;
+	}
+
+	.about .box {
+		margin: 5px 0;
+	}
+
+	.about .box .text h4 {
+		font-size: 10px;
+	}
+}

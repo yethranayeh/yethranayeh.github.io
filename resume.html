@@ -1,0 +1,372 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Alper Aktaş | Resume</title>
+
+		<!-- Stylesheet -->
+		<link rel="stylesheet" href="assets/css/resume.css" />
+
+		<!-- Fontawesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+			integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;300;500;600;700&display=swap" rel="stylesheet" />
+
+		<!-- Alertify -->
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+	</head>
+	<body>
+		<!-- Download & Print Buttons -->
+		<section
+			class="about print-none"
+			style="
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 4px 20px;
+				position: absolute;
+				top: 0;
+				left: auto;
+			"
+		>
+			<button
+				class="button button--shikoba button--text-thick button--border-medium button--text-upper button--size-s"
+				onclick="javascript:location.href = 'assets/files/resume.pdf'"
+			>
+				<i class="button__icon fa fa-download" aria-hidden="true"></i>
+
+				<span>Download</span>
+			</button>
+			<button
+				class="button button--shikoba button--text-thick button--border-medium button--text-upper button--size-s"
+				onclick="print_page()"
+			>
+				<i class="button__icon fa fa-print" aria-hidden="true"></i>
+				<span>PRINT</span>
+			</button>
+		</section>
+
+		<div class="container">
+			<!-- Start: Left Side -->
+			<aside class="left-side">
+				<!-- Start: Image & Name -->
+				<section class="profile-text">
+					<div class="profile-image-box">
+						<img src="assets/img/profile_logo_HGLAW_e295625c00cee92c3d22c6951ee6eebe.jpg" alt="Image" />
+					</div>
+					<h2>Alper Aktaş<br /><span>Freelancer // Student</span></h2>
+				</section>
+				<!-- End: Image & Name -->
+				<!-- Start: Contact Info -->
+				<section class="contact-info">
+					<h3 class="contact-title">Contact Info</h3>
+					<ul>
+						<li>
+							<span class="contact-icon"><i class="fa fa-phone" aria-hidden="true"></i></span
+							><span class="contact-text"
+								><a class="spicy-link" href="tel:+90 534 621 81 05">+90 534 621 81 05</a></span
+							>
+						</li>
+						<li>
+							<span class="contact-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span
+							><span class="contact-text"
+								><a class="spicy-link" href="mailto:aktasalper99@gmail.com">aktasalper99@gmail.com</a></span
+							>
+						</li>
+						<li>
+							<span class="contact-icon"><i class="fa fa-linkedin" aria-hidden="true"></i></span
+							><span class="contact-text"
+								><a class="spicy-link" href="https://www.linkedin.com/in/aktasalper/">/aktasalper/</a></span
+							>
+						</li>
+						<li>
+							<span class="contact-icon"><i class="fa fa-globe" aria-hidden="true"></i></span
+							><span class="contact-text"
+								><a class="spicy-link" href="https://yethranayeh.github.io/">yethranayeh.github.io</a></span
+							>
+						</li>
+						<li>
+							<span class="contact-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span
+							><span class="contact-text">Istanbul, Avcılar / Turkey</span>
+						</li>
+					</ul>
+				</section>
+				<!-- End: Contact Info -->
+				<!-- Start: Education -->
+				<section class="contact-info education">
+					<h3 class="contact-title">Education</h3>
+					<ul>
+						<li>
+							<h4>Ege University</h4>
+							<h4>English Language and Literature</h4>
+							<h5>2017 - Present</h5>
+						</li>
+						<li>
+							<h4>Küçükçekmece High School</h4>
+							<h4>Foreign Language Class</h4>
+							<h5>2015 - 2017</h5>
+						</li>
+						<li>
+							<h4>Çakmaklı Cumhuriyet High School</h4>
+							<h5>2013 - 2015</h5>
+						</li>
+					</ul>
+				</section>
+				<!-- End: Education -->
+				<!-- Start: Languages -->
+				<section class="contact-info languages">
+					<h3 class="contact-title">Languages</h3>
+					<ul>
+						<li>
+							<span class="contact-text">Turkish</span>
+							<span class="percent">
+								<div style="width: 100%"></div>
+							</span>
+						</li>
+						<li>
+							<span class="contact-text">English</span>
+							<span class="percent">
+								<div style="width: 100%"></div>
+							</span>
+						</li>
+					</ul>
+				</section>
+				<!-- End: Languages -->
+				<!-- Start: References -->
+				<section class="contact-info education">
+					<h3 class="contact-title">References</h3>
+					<ul>
+						<li>
+							<h4>Çağrı Babuçcuoğlu</h4>
+							<h4>Software Lead, Frontend Team Lead</h4>
+							<h5>1Pixel Digital Agency</h5>
+							<ul>
+								<li>
+									<span class="contact-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span
+									><span class="contact-text"
+										><a class="spicy-link" href="mailto:cagribabuccuoglu@gmail.com">cagribabuccuoglu@gmail.com</a></span
+									>
+								</li>
+								<li>
+									<span class="contact-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span
+									><span class="contact-text"
+										><a class="spicy-link" href="mailto:cagri@1pixel.im">cagri@1pixel.im</a></span
+									>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<!-- End: References -->
+			</aside>
+			<!-- End: Left Side -->
+			<!-- Start: Main content -->
+			<main class="right-side">
+				<section class="about">
+					<h2 class="about-title">About Me</h2>
+					<p>
+						I am a 22 year old English Language and Literature student interested in software development.
+						<br /><br />
+						I am particularly focused in Python, with intermediate knowledge of web-scraping, back-end development and
+						database management applications. I also have experience working on Front-end projects professionally and in
+						my free time.
+					</p>
+				</section>
+				<section class="about">
+					<h2 class="about-title">Experiences</h2>
+					<div class="box">
+						<div class="company-year">
+							<h5>Oct 2021 - Nov 2021</h5>
+							<h5>1Pixel Digital Agency</h5>
+						</div>
+						<div class="text">
+							<h4>Frontend Developer Intern</h4>
+							<p>
+								Coding functional and responsive sections of pages that correspond to their respective graphical
+								designs, which were provided as issues in Jira Agile development environment.
+							</p>
+							<br />
+							<p>
+								Integrating created page sections into Shopify themes to provide customizable and ease to use controls
+								to merchants. In addition to integrating these sections to themes, fetching dynamic store data into page
+								elements using Shopify Liquid templating language.
+							</p>
+						</div>
+					</div>
+					<div class="box">
+						<div class="company-year">
+							<h5>May 2020 - Aug 2021</h5>
+							<h5>Freelancer.com</h5>
+						</div>
+						<div class="text">
+							<h4>Freelance Video Editor</h4>
+							<p>Editing & creating advertisement, music and presentation videos for clients</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Start: Skills -->
+				<section class="about skills">
+					<h2 class="about-title">Skills & Familiarity</h2>
+					<div class="box">
+						<!-- Start: Python -->
+						<h3>Python</h3>
+						<div class="percent percent-light">
+							<div style="width: 85%"></div>
+						</div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>Django</h4>
+						<div class="percent percent-light">
+							<div style="width: 30%"></div>
+						</div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>Matplotlib</h4>
+						<div class="percent percent-light">
+							<div style="width: 50%"></div>
+						</div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>Selenium</h4>
+						<div class="percent percent-light">
+							<div style="width: 45%"></div>
+						</div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>PyQt5</h4>
+						<div class="percent percent-light">
+							<div style="width: 55%"></div>
+						</div>
+						<!-- End: Python -->
+
+						<!-- Start: Frontend -->
+						<h3 style="margin-top: 10px">Frontend</h3>
+						<div class="percent percent-light" style="opacity: 0"></div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>HTML</h4>
+						<div class="percent percent-light">
+							<div style="width: 80%"></div>
+						</div>
+
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>CSS</h4>
+						<div class="percent percent-light">
+							<div style="width: 40%"></div>
+						</div>
+						<h4><i class="fa fa-angle-double-right" aria-hidden="true"></i>Bootstrap</h4>
+						<div class="percent percent-light">
+							<div style="width: 70%"></div>
+						</div>
+
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>JavaScript</h4>
+						<div class="percent percent-light">
+							<div style="width: 20%"></div>
+						</div>
+						<h4><i class="fa fa-angle-double-right" aria-hidden="true"></i>Alpine.js</h4>
+						<div class="percent percent-light">
+							<div style="width: 55%"></div>
+						</div>
+						<!-- End: Frontend -->
+						<div></div>
+						<div class="percent percent-light" style="opacity: 0"></div>
+						<!-- Start: Shopify -->
+						<!-- <h3>Shopify</h3>
+						<div class="percent percent-light">
+							<div style="width: 15%"></div>
+						</div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>Liquid</h4>
+						<div class="percent percent-light">
+							<div style="width: 5%"></div>
+						</div> -->
+						<!-- End: Shopify -->
+
+						<!-- Start: DBMS -->
+						<!-- <h3 style="margin-top: 10px">DBMS</h3>
+						<div class="percent percent-light" style="opacity: 0">
+							<div style="width: 20%"></div>
+						</div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>PostgreSQL</h4>
+						<div class="percent percent-light">
+							<div style="width: 35%"></div>
+						</div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>SQLite</h4>
+						<div class="percent percent-light">
+							<div style="width: 65%"></div>
+						</div>
+						<h4><i class="fa fa-angle-right" aria-hidden="true"></i>MongoDB</h4>
+						<div class="percent percent-light">
+							<div style="width: 15%"></div>
+						</div> -->
+						<!-- End: DBMS -->
+					</div>
+				</section>
+				<!-- End: Skills -->
+				<!-- Start: Certificates -->
+				<section class="contact-info education text-dark">
+					<h3 class="contact-title">Certificates</h3>
+					<ul>
+						<li>
+							<h4>Python Programming: From Beginner to Advanced</h4>
+							<h4>Bilgi Teknolojileri ve İletişim Kurumu</h4>
+							<h5>
+								2021<a
+									class="spicy-link print-none"
+									href="https://www.btkakademi.gov.tr/portal/certificate/validate?certificateId=elLv0Dge"
+								>
+									- See credential</a
+								>
+							</h5>
+						</li>
+						<li>
+							<h4>Python (Basic Skill Assessment)</h4>
+							<h4>HackerRank</h4>
+							<h5>
+								2021<a class="spicy-link print-none" href="https://www.hackerrank.com/certificates/555d743ed5d1">
+									- See credential</a
+								>
+							</h5>
+						</li>
+						<li>
+							<h4>SQL (Basic)</h4>
+							<h4>HackerRank</h4>
+							<h5>
+								2021<a class="spicy-link print-none" href="https://www.hackerrank.com/certificates/dedf4e76f405">
+									- See credential</a
+								>
+							</h5>
+						</li>
+					</ul>
+				</section>
+				<!-- End: Certificates -->
+			</main>
+			<!-- End: Main content -->
+		</div>
+		<script>
+			function print_page() {
+				alertify
+					.alert(
+						"Attention!",
+						"The print options that work best with this page are -- Layout: Portrait, Paper Size: A4, Margins: None, Background Graphics: ✓ Enabled, Headers & Footers: ☓ Disabled ",
+						function () {
+							// alertify.success("Ok");
+							window.print();
+						}
+					)
+					.setting({
+						label: "PRINT!",
+						movable: false,
+						transition: "zoom",
+						closableByDimmer: false,
+						defaultFocusOff: true
+					});
+			}
+		</script>
+	</body>
+</html>
