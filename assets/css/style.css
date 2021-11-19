@@ -225,7 +225,7 @@ body {
 
 .cl-effect-14 a::after {
   right: 0;
-  bottom: 0;
+  bottom: -2px;
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   transform: rotate(90deg);
