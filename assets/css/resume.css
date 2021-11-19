@@ -263,6 +263,7 @@ h5 .spicy-link {
 
 .contact-icon {
 	display: inline-block;
+	text-align: center;
 	width: 30px;
 	font-size: 18px;
 	color: #03a9f4 !important;
