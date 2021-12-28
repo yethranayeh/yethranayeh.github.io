@@ -186,17 +186,19 @@ body {
   display: inline-block;
   margin: 15px 25px;
   outline: none;
-  /*color: #fff;*/
+  color: var(--bs-gray-700);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
   /*font-weight: 400 !important;*/
-  text-shadow: 0 0 1px rgba(255,255,255,0.3);
+  /*text-shadow: 0 0 1px rgba(255,255,255,0.3);*/
   font-size: 1.1em !important;
+  transition: color 250ms ease-out;
 }
 
 .cl-effect-14 a:hover, .cl-effect-14 a:focus {
   outline: none;
+  color: var(--bs-gray-900);
 }
 
 .cl-effect-14 a::before, .cl-effect-14 a::after {
@@ -243,6 +245,7 @@ body {
   -webkit-transform: rotate(0deg) translateX(-50%);
   -moz-transform: rotate(0deg) translateX(-50%);
   transform: rotate(0deg) translateX(-50%);
+  width: 80px;
 }
 
 .cl-effect-14 a:hover::after, .cl-effect-14 a:focus::after {
@@ -250,6 +253,7 @@ body {
   -webkit-transform: rotate(0deg) translateX(50%);
   -moz-transform: rotate(0deg) translateX(50%);
   transform: rotate(0deg) translateX(50%);
+  width: 160px;
 }
 
 /* End: Project Title Links */
@@ -282,6 +286,15 @@ body {
   top: 100%;
   left: 0;
   pointer-events: none;
+}
+
+/* Disable Selection */
+
+.disable-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 :root {
