@@ -338,9 +338,9 @@ h5 .spicy-link {
 	position: relative;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 150px 1fr;
-	justify-content: center;
-	align-items: center;
+	grid-template-columns: 1fr 1fr;
+	/* justify-content: center; */
+	/* align-items: center; */
 }
 
 .skills .box h3 {
