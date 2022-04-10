@@ -25,3 +25,6 @@ function check_window_size(){
     }
 }
 check_window_size();
+
+// Dynamic Age update
+document.querySelector("#my_age").textContent = new Date().getFullYear() - 1999

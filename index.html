@@ -45,7 +45,7 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link active py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded d-none" href="#wtwm">Watch This With Me</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#projects">Projects</a></li>
-                    <li class="nav-item dropdown mx-0 mx-lg-1" id="projects-dropdown"><a class="dropdown-toggle nav-link py-3 px-0 px-lg-3" aria-expanded="false" data-bs-toggle="dropdown" id="projects-dropdown-toggle" href="javascript: void()"></a>
+                    <li class="nav-item dropdown mx-0 mx-lg-1" id="projects-dropdown"><a class="dropdown-toggle nav-link py-3 px-0 px-lg-3 d-none" aria-expanded="false" data-bs-toggle="dropdown" id="projects-dropdown-toggle" href="javascript: void()"></a>
                         <div class="dropdown-menu" id="projects-dropdown-menu"><a class="dropdown-item" href="/daily-space-palette/">Daily Space Palette</a><!-- Start: /tic-tac-toe/ --><a class="dropdown-item" href="/tic-tac-toe/">Tic-Tac-Toe</a><!-- End: /tic-tac-toe/ --><a class="dropdown-item" href="https://github.com/yethranayeh/Daily-Mood-Rater" target="_blank">Daily Mood Rater</a><a class="dropdown-item" href="https://github.com/yethranayeh/EtsyScraper" target="_blank">EtsyScraper</a></div>
                     </li>
                 </ul>
@@ -54,7 +54,7 @@
     </nav>
     <header class="text-center text-white bg-primary masthead" style="background: linear-gradient(#2a9d8f 53%, #f4a261);">
         <div class="container"><img class="img-thumbnail img-fluid d-block mx-auto mb-5" src="assets/img/profile_logo_HGLAW_e295625c00cee92c3d22c6951ee6eebe.jpg" loading="lazy" width="156" style="box-shadow: 0px 0px 0px;" alt="Portfolio Picture"><span class="fs-1 fw-bold disable-select" style="text-shadow: 0px 0px 3px">Alper Aktaş</span>
-            <hr class="border border-2 border-white rounded w-50 my-4" style="box-shadow: 0px 0px 10px;"><span class="fw-light mb-0 fs-5 disable-select">Frontend Developer - Python Programmer</span>
+            <hr class="border border-2 border-white rounded w-50 my-4" style="box-shadow: 0px 0px 10px;"><span class="fw-light mb-0 fs-5 disable-select">Front-end Developer - Python Developer</span>
         </div>
     </header><!-- Start: About Section -->
     <section class="text-white bg-primary mb-0" id="about" style="background: linear-gradient(#f4a261 27%, #e76f51);">
@@ -62,11 +62,9 @@
             <h2 class="text-uppercase text-center text-white disable-select" style="text-shadow: 0px 0px 3px;">About</h2>
             <hr class="border border-2 border-white rounded w-25 my-4" style="box-shadow: 0px 0px 10px;">
             <div class="row disable-select">
-                <div class="col-lg-4 ms-auto">
-                    <p class="lead">I am a 22 year old English Language and Literature student interested in software development. Coding is a<br> great way to turn ideas into functional, useful and tangible realities, which is why I try to improve myself<br> as much as possible in my free time.<br></p>
-                </div>
+                <div class="col-lg-5 ms-auto"><p class="lead">I am a <span id="my_age">-</span> year old English Language and Literature student interested in software development.<br />My favorite technologies to use are JavaScript and Python.</p></div>
                 <div class="col-lg-4 me-auto">
-                    <p class="lead">I am particularly knowledgeable about Python, with intermediate self-taught experience in web-scraping,<br> back-end development and database management applications (PostgreSQL, SQLite, MongoDB). I also have<br> experience working on Front-end projects professionally and as a hobby.<br></p>
+                    <p class="lead">Though I started my journey into software development with Python, I am currently focused on front-end development projects using technologies like ReactJS and TypeScript.</p>
                 </div>
             </div>
             <div class="text-center mt-4"><a class="btn btn-outline-light btn-xl" role="button" href="resume.html"><i class="fas fa-file me-2"></i><span>View Resume</span></a></div>
@@ -101,48 +99,55 @@
             </div><!-- End: Intro -->
             <!-- Start: Projects -->
             <div class="row projects justify-content-center">
+                <!-- Start: Library App -->
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/library_app.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-info mt-3 mx-1">TypeScript</span><!-- End: Badge -->
+                    <!-- Start: Badge --><span class="badge bg-primary mt-3 mx-1">React</span><!-- End: Badge -->
+                    <!-- Start: Badge --><span class="badge bg-danger mt-3 mx-1">Firebase</span><!-- End: Badge --><div class="cl-effect-14">
+    <a href="/library-app/" target="_blank" class="d-block name text-decoration-none fs-3">Library App</a>
+</div>
+                    <p class="description"><br>ReactJS based simple library app that serves individual, user-based book data from Firebase to users, like a personal library. The app requires Google sign-in before the users can add books and update or delete the existing books.<br></p>
+                </div><!-- End: Library App -->
+                <!-- Start: Shopping Page -->
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/shopping_page.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3 mx-1">JavaScript</span><!-- End: Badge -->
+                    <!-- Start: Badge --><span class="badge bg-primary mt-3 mx-1">React</span><!-- End: Badge -->
+                    <!-- Start: Badge --><span class="badge bg-dark mt-3                                      mx-1">API</span><!-- End: Badge --><div class="cl-effect-14">
+    <a href="/shopping-page/" target="_blank" class="d-block name text-decoration-none fs-3">Shopping Page</a>
+</div>
+                    <p class="description">A simple shopping page application that fetches product data. It allows users to add items&nbsp;and view them in their cart. It also allows users to <br>change the amount of each item in their cart.<br></p>
+                </div><!-- End: Shopping Page -->
                 <!-- Start: ideaList -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail" src="assets/img/ideaList.png" loading="lazy" alt="DMR" style="max-height: 160px;"><div class="cl-effect-14">
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/ideaList.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3">JavaScript</span><!-- End: Badge --><div class="cl-effect-14">
     <a href="/ideaList/" target="_blank" class="d-block name text-decoration-none fs-3">ideaList</a>
 </div>
                     <p class="description">ideaList is a to-do list web application that is designed with a <em>mobile first</em> approach </p>
                 </div><!-- End: ideaList -->
-                <!-- Start: Tic-Tac-Toe -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail" src="assets/img/Screenshot_69.png" loading="lazy" alt="DMR" style="max-height: 160px;"><div class="cl-effect-14">
-    <a href="/tic-tac-toe/" target="_blank" class="d-block name text-decoration-none fs-3">Tic-Tac-Toe</a>
-</div>
-                    <p class="description">This is a simple web implementation of the traditional Tic-Tac-Toe game with Player vs Computer and Player vs Player modes. It also has dark/light mode options.</p>
-                </div><!-- End: Tic-Tac-Toe -->
                 <!-- Start: Daily Space Palette -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail" src="assets/img/daily-space-palette.png" loading="lazy" alt="DMR" style="max-height: 160px;"><div class="cl-effect-14">
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/daily-space-palette.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3 mx-1">JavaScript</span><!-- End: Badge -->
+                    <!-- Start: Badge --><span class="badge bg-dark mt-3 mx-1">API</span><!-- End: Badge --><div class="cl-effect-14">
     <a href="/daily-space-palette" target="_blank" class="d-block name fs-3">Daily Space Palette</a>
 </div>
                     <p class="description">Daily Space Palette is a web project that fetches the Astronomy Picture of the Day using NASA's API, then generates a color palette from that picture.&nbsp;</p>
                 </div><!-- End: Daily Space Palette -->
+                <!-- Start: Tic-Tac-Toe -->
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/Screenshot_69.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3                     mx-1">JavaScript</span><!-- End: Badge --><div class="cl-effect-14">
+    <a href="/tic-tac-toe/" target="_blank" class="d-block name text-decoration-none fs-3">Tic-Tac-Toe</a>
+</div>
+                    <p class="description">This is a simple web implementation of the traditional Tic-Tac-Toe game with Player vs Computer and Player vs Player modes. It also has dark/light mode options.</p>
+                </div><!-- End: Tic-Tac-Toe -->
                 <!-- Start: Calculator -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail" src="assets/img/Screenshot%202021-12-15%20at%2023-46-26%20Calculator.png" loading="lazy" alt="Calculator Image" style="max-height: 160px;"><div class="cl-effect-14">
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/Screenshot%202021-12-15%20at%2023-46-26%20Calculator.png" loading="lazy" alt="Calculator Image" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3 mx-1">JavaScript</span><!-- End: Badge --><div class="cl-effect-14">
     <a href="/calculator/" target="_blank" class="d-block name text-decoration-none fs-3">Calculator</a>
 </div>
                     <p class="description">A simple web-based calculator application that has keyboard support.</p>
                 </div><!-- End: Calculator -->
-                <!-- Start: Restaurant Page -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail" src="assets/img/meltingpot.png" loading="lazy" alt="Calculator Image" style="max-height: 160px;"><div class="cl-effect-14">
-    <a href="/restaurant-page/" target="_blank" class="d-block name text-decoration-none fs-3">Restaurant Page</a>
-</div>
-                    <p class="description">This is a single page website. It consists of a Home page, a Menu page and a Contact page. All page content is created dynamically using JavaScript. Except for the links and scripts, nothing is hard-coded to the HTML.</p>
-                </div><!-- End: Restaurant Page -->
                 <!-- Start: Daily Mood Rater -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail" src="assets/img/dmr.jpg" loading="lazy" alt="DMR" style="max-height: 160px;"><div class="cl-effect-14">
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail" src="assets/img/dmr.jpg" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-secondary mt-3 mx-1">Python</span><!-- End: Badge -->
+                    <!-- Start: Badge --><span class="badge bg-light text-dark mt-3 mx-1">PyQt5</span><!-- End: Badge -->
+                    <!-- Start: Badge --><span class="badge bg-light text-info mt-3 mx-1">matplotlib</span><!-- End: Badge --><div class="cl-effect-14">
     <a href="https://github.com/yethranayeh/Daily-Mood-Rater" target="_blank" class="d-block name text-decoration-none fs-3">Daily Mood Rater</a>
 </div>
                     <p class="description">Daily Mood Rater is a desktop app where you can rate your mood daily from 1 to 10 and keep track of your mood history by month with visual bar graphs.</p>
                 </div><!-- End: Daily Mood Rater -->
-                <!-- Start: EtsyScraper -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail" src="assets/img/etsy.jpg" style="max-height: 160px;" alt="etsy" loading="lazy"><div class="cl-effect-14">
-    <a href="https://github.com/yethranayeh/EtsyScraper" target="_blank" class="d-block name text-decoration-none fs-3">EtsyScraper</a>
-</div>
-                    <p class="description">A&nbsp;Django web application that can scrape Product Name, Price, Image Link from Etsy product links. The scraped data is then saved into a PostgreSQL database.</p>
-                </div><!-- End: EtsyScraper -->
             </div><!-- End: Projects -->
         </div><!-- Start: Article Clean -->
         <section class="article-clean text-center d-none">
