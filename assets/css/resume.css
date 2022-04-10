@@ -34,6 +34,26 @@ span {
 	font-family: "Jost", "Arial", sans-serif;
 }
 
+/* Google Translate Button */
+.btn_translate {
+	border: medium none;
+	border-radius: 50%;
+	box-shadow: rgba(60, 64, 67, 0.15) 0px 4px 8px 3px, rgba(60, 64, 67, 0.3) 0px 1px 3px;
+	background-color: white;
+	height: 56px;
+	left: auto;
+	right: 16px;
+	position: fixed;
+	top: 56px;
+	transition: top 0.5s ease 0s;
+	width: 56px;
+	z-index: 999;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 /* Start: Shikoba Button by Mary Lou from Codrops */
 .button {
 	/* float: left; */
