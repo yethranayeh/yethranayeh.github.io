@@ -379,20 +379,13 @@ h4 i {
 	color: #003147;
 }
 
-/* .skills .box h4 .percent {
-	position: relative;
-	width: 100%;
-	height: 10px;
-	background-color: #f0f0f0;
-} */
+/* Certificates */
+.certificates-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 8px;
 
-/* .skills .box .percent div {
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 100%;
-	background-color: #03a9f4;
-} */
+}
 
 /* Responsive Adjustments */
 
