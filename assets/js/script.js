@@ -28,7 +28,7 @@ function check_window_size() {
 }
 check_window_size();
 
-// Dynamic Age update
+// Dynamic year update
 const year = new Date().getFullYear();
 document.querySelector("#my_age").textContent = year - 1999;
 
