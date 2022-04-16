@@ -39,12 +39,13 @@
 
 <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav" style="box-shadow: 0px 0px 5px;padding: 5px 0px;">
-        <div class="container"><a class="navbar-brand" href="#page-top">A.A.</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="container"><a class="navbar-brand" href="#page-top"><i class="fas fa-id-card"></i></a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link active py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded d-none" href="#wtwm">Watch This With Me</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#projects">Projects</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li><!-- Start: watch this with me -->
+                    <li class="nav-item mx-0 mx-lg-1 d-none"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#wtwm">Watch This With Me</a></li><!-- End: watch this with me -->
                     <li class="nav-item dropdown mx-0 mx-lg-1" id="projects-dropdown"><a class="dropdown-toggle nav-link py-3 px-0 px-lg-3 d-none" aria-expanded="false" data-bs-toggle="dropdown" id="projects-dropdown-toggle" href="javascript: void()"></a>
                         <div class="dropdown-menu" id="projects-dropdown-menu"><a class="dropdown-item" href="/daily-space-palette/">Daily Space Palette</a><!-- Start: /tic-tac-toe/ --><a class="dropdown-item" href="/tic-tac-toe/">Tic-Tac-Toe</a><!-- End: /tic-tac-toe/ --><a class="dropdown-item" href="https://github.com/yethranayeh/Daily-Mood-Rater" target="_blank">Daily Mood Rater</a><a class="dropdown-item" href="https://github.com/yethranayeh/EtsyScraper" target="_blank">EtsyScraper</a></div>
                     </li>
@@ -119,7 +120,7 @@
                 <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/ideaList.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3">JavaScript</span><!-- End: Badge --><div class="cl-effect-14">
     <a href="/ideaList/" target="_blank" class="d-block name text-decoration-none fs-3">ideaList</a>
 </div>
-                    <p class="description">ideaList is a to-do list web application that is designed with a <em>mobile first</em> approach </p>
+                    <p class="description">ideaList is a to-do list web application that is designed with a mobile first approach </p>
                 </div><!-- End: ideaList -->
                 <!-- Start: Daily Space Palette -->
                 <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/daily-space-palette.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3 mx-1">JavaScript</span><!-- End: Badge -->
@@ -128,6 +129,13 @@
 </div>
                     <p class="description">Daily Space Palette is a web project that fetches the Astronomy Picture of the Day using NASA's API, then generates a color palette from that picture.&nbsp;</p>
                 </div><!-- End: Daily Space Palette -->
+                <!-- Start: Weather App -->
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/Screen%20Shot%202022-04-16%20at%2017.11.28.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3                     mx-1">JavaScript</span><!-- End: Badge -->
+                    <!-- Start: Badge --><span class="badge bg-dark mt-3 mx-1">API</span><!-- End: Badge --><div class="cl-effect-14">
+    <a href="/weather-app/" target="_blank" class="d-block name text-decoration-none fs-3">Weather App</a>
+</div>
+                    <p class="description">This is a web-based weather application that fetches current weather data of the user-specified location from OpenWeatherMap.<br>The app provides 33 language options to return language-based results.<br></p>
+                </div><!-- End: Weather App -->
                 <!-- Start: Tic-Tac-Toe -->
                 <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/Screenshot_69.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><span class="badge bg-warning text-dark mt-3                     mx-1">JavaScript</span><!-- End: Badge --><div class="cl-effect-14">
     <a href="/tic-tac-toe/" target="_blank" class="d-block name text-decoration-none fs-3">Tic-Tac-Toe</a>
@@ -180,7 +188,7 @@
       <img class="shadow rounded img-fluid my-0 my-sm-2 my-md-4" src="https://presearch.org/images/rf/ban-4.jpg" title="Presearch" alt="presearch" />
     </a>
 </div><!-- End: Presearch Referral -->
-    <footer class="text-center footer bg-secondary" style="box-shadow: 0px 0px 4px rgb(33,37,41);">
+    <footer class="text-center footer bg-secondary" id="contact" style="box-shadow: 0px 0px 4px rgb(33,37,41);">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-5 mb-lg-0">
@@ -213,7 +221,7 @@
         </a>
     </li>
     <li>
-        <a title="Hackerrank" href="https://www.hackerrank.com/yethranayeh" target="_blank">
+        <a title="HackerRank" href="https://www.hackerrank.com/yethranayeh" target="_blank">
             <span></span>
             <span></span>
             <span></span>
@@ -225,13 +233,15 @@
                 </div>
                 <div class="col-md-4">
                     <h4 class="text-uppercase mb-4">Contact Info</h4>
-                    <p class="lead mb-0"><span >You can e-mail me at: <a class="spicy-link text-break" href="mailto:aktasalper99@gmail.com">aktasalper99@gmail.com</a></span></p>
+                    <p class="lead mb-0"><span >You can e-mail me at: <a class="spicy-link text-break" href="mailto:contact@aktasalper.com">contact@aktasalper.com</a></span></p>
                 </div>
             </div>
         </div>
     </footer>
     <div class="text-center text-white bg-primary py-4">
-        <div class="container"><small><strong>Copyright ©&nbsp;Alper Aktaş 2021</strong></small></div>
+        <div class="container">
+            <!-- Start: Copyright --><small><strong>Copyright © Alper Aktaş <span id="copyright-year"></span></strong></small><!-- End: Copyright -->
+        </div>
     </div>
     <div class="d-lg-none scroll-to-top position-fixed rounded"><a class="text-center d-block rounded text-white" href="#page-top"><i class="fa fa-chevron-up"></i></a></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
