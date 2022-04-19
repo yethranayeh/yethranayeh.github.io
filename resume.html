@@ -8,9 +8,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta
 			name="description"
-			content="Online resume page for Alper Aktaş. Resume of the GitHub user yethranayeh. The resume is available on the web and downloadable as a PDF."
+			content="Online resume page for front-end developer Alper Aktaş. The software related projects, especially on front-end development can be discovered on GitHub with username yethranayeh. This is an online resume that is available on the web and also downloadable as a PDF."
 		/>
-		<title>Alper Aktaş | Resume</title>
+		<meta name="robots" content="index, follow" />
+		<title>Alper Aktaş Resume/CV</title>
 
 		<!-- Stylesheet -->
 		<link rel="stylesheet" href="assets/css/resume.css" />
@@ -102,14 +103,12 @@
 					<ul>
 						<li>
 							<span class="contact-icon"><i class="fa fa-phone" aria-hidden="true"></i></span
-							><span class="contact-text"
-								><a class="spicy-link" href="tel:+90 534 621 81 05">+90 534 621 81 05</a></span
-							>
+							><span class="contact-text"><a class="spicy-link" href="tel:+905346218105">+90 534 621 81 05</a></span>
 						</li>
 						<li>
 							<span class="contact-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span
 							><span class="contact-text"
-								><a class="spicy-link" href="mailto:aktasalper99@gmail.com">aktasalper99@gmail.com</a></span
+								><a class="spicy-link" href="mailto:contact@aktasalper.com">contact@aktasalper.com</a></span
 							>
 						</li>
 						<li>
@@ -123,7 +122,7 @@
 						<li>
 							<span class="contact-icon"><i class="fa fa-globe" aria-hidden="true"></i></span
 							><span class="contact-text"
-								><a class="spicy-link" href="https://yethranayeh.github.io/">yethranayeh.github.io</a></span
+								><a class="spicy-link" href="https://www.aktasalper.com/" target="_blank">aktasalper.com</a></span
 							>
 						</li>
 						<li>
@@ -350,16 +349,35 @@
 			<!-- End: Main content -->
 		</div>
 		<script>
+			const printHeader = document.createElement("h3");
+			printHeader.textContent = "Attention!";
+
+			const printMessage = document.createElement("div");
+			const printMessageHead = document.createElement("p");
+			printMessageHead.textContent = "The print options that work best with this page are:";
+			const printMessageBody = document.createElement("ul");
+			const listElements = [
+				"Layout: Portrait",
+				"Paper size: A4",
+				"Margins: None",
+				"Background Graphics: ✓ Enabled",
+				"Headers & Footers: ☓ Disabled"
+			];
+			listElements.forEach((element) => {
+				const listElement = document.createElement("li");
+				listElement.textContent = element;
+				printMessageBody.appendChild(listElement);
+			});
+
+			printMessage.appendChild(printMessageHead);
+			printMessage.appendChild(printMessageBody);
+
 			function print_page() {
 				alertify
-					.alert(
-						"Attention!",
-						"The print options that work best with this page are -- Layout: Portrait, Paper Size: A4, Margins: None, Background Graphics: ✓ Enabled, Headers & Footers: ☓ Disabled ",
-						function () {
-							// alertify.success("Ok");
-							window.print();
-						}
-					)
+					.alert(printHeader, printMessage, function () {
+						// alertify.success("Ok");
+						window.print();
+					})
 					.setting({
 						label: "PRINT!",
 						movable: false,
