@@ -18,12 +18,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Article-Clean.css">
     <link rel="stylesheet" href="assets/css/Highlight-Phone.css">
     <link rel="stylesheet" href="assets/css/Projects-Clean.css">
+    <link rel="stylesheet" href="assets/css/Section-Title.css">
     <link rel="stylesheet" href="assets/css/Social-Icons.css">
     <link rel="stylesheet" href="assets/css/style.css">
 <script data-ad-client="ca-pub-8355823863632514" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><!-- Global site tag (gtag.js) - Google Analytics -->
@@ -67,14 +69,17 @@
             <div class="text-center mt-4"><a class="btn btn-outline-light btn-xl" role="button" href="resume.html"><i class="fas fa-file me-2"></i><span>View Resume</span></a></div>
         </div>
     </section><!-- End: About Section -->
-    <!-- Start: Watch This With Me Section -->
-    <section id="wtwm" class="highlight-phone d-none" style="height: 500px;padding: 150px 0;background: linear-gradient(180deg, #e76f51 42%, #f4a261 100%);">
+    <!-- Start: MENTORUM -->
+    <section id="mentorum" class="highlight-phone" style="height: 500px;padding: 150px 0;background: linear-gradient(180deg, #e76f51 42%, #f4a261 100%);">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <!-- Start: Intro -->
-                    <div class="intro">
-                        <!-- Start: WTWM Logo --><img src="assets/img/default-monochrome-white.svg" style="width: 400px;" alt="Watch This With Me"><!-- End: WTWM Logo --><p class="mt-4" style="color: var(--bs-white);">This project is a <span class="fst-italic">work-in-progess</span> web application aimed at couples or friends who struggle to find something to watch together. It gamifies the process to make it fun!</p><a class="btn btn-primary" role="button" href="javascript: void(0)">View Page</a>
+                    <div class="intro d-flex flex-column justify-content-start align-items-start">
+                        <!-- Start: Section Title -->
+                        <div class="title-div">
+                            <h1><strong>Mentörüm</strong></h1>
+                        </div><!-- End: Section Title --><p class="mt-4" style="color: var(--bs-white);">This project is a <span class="fst-italic">work-in-progess</span> web application aimed at young people who struggle with upcoming life decisions like university choices or job applications by connecting them with mentors.</p><a class="btn btn-primary" role="button" href="https://www.mentorum.org" target="_blank">View Page</a>
                     </div><!-- End: Intro -->
                 </div>
                 <div class="col-sm-4">
@@ -85,7 +90,7 @@
                 </div>
             </div>
         </div>
-    </section><!-- End: Watch This With Me Section -->
+    </section><!-- End: MENTORUM -->
     <!-- Start: Projects Section -->
     <section id="projects" class="projects-clean">
         <div class="container">
@@ -105,6 +110,14 @@
 <!-- End: Badge Container --><a href="/weather-app/" target="_blank" class="text-dark name spicy-link d-inline-block fs-3">Weather App</a>
                     <p class="description">This is a web-based weather application that fetches current weather data of the user-specified location from OpenWeatherMap.<br>The app provides 33 language options to return language-based results.<br></p>
                 </div><!-- End: Weather App -->
+                <!-- Start: Daily Space Palette -->
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/daily-space-palette.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge Container --><div class="d-flex justify-content-center gap-2 mt-3 mx-1">
+    <span class="badge bg-info">TypeScript</span>
+    <span class="badge bg-primary">React</span>
+    <span class="badge bg-dark">API</span>
+</div><!-- End: Badge Container --><a href="/daily-space-palette" target="_blank" class="text-dark name spicy-link d-inline-block fs-3">Daily Space Palette</a>
+                    <p class="description">Daily Space Palette is a web project that fetches the Astronomy Picture of the Day using NASA's API, then generates a color palette from that picture.&nbsp;</p>
+                </div><!-- End: Daily Space Palette -->
                 <!-- Start: Library App -->
                 <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/library_app.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge Container --><div class="d-flex justify-content-center gap-2 mt-3 mx-1">
     <span class="badge bg-info">TypeScript</span>
@@ -113,13 +126,6 @@
 </div><!-- End: Badge Container --><a href="/library-app/" target="_blank" class="text-dark name spicy-link d-inline-block fs-3">Library App</a>
                     <p class="description"><br>ReactJS based simple library app that serves individual, user-based book data from Firebase to users, like a personal library. The app requires Google sign-in before the users can add books and update or delete the existing books.<br></p>
                 </div><!-- End: Library App -->
-                <!-- Start: Daily Space Palette -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/daily-space-palette.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge Container --><div class="d-flex justify-content-center gap-2 mt-3 mx-1">
-    <span class="badge bg-warning text-dark">JavaScript</span>
-    <span class="badge bg-dark">API</span>
-</div><!-- End: Badge Container --><a href="/daily-space-palette" target="_blank" class="text-dark name spicy-link d-inline-block fs-3">Daily Space Palette</a>
-                    <p class="description">Daily Space Palette is a web project that fetches the Astronomy Picture of the Day using NASA's API, then generates a color palette from that picture.&nbsp;</p>
-                </div><!-- End: Daily Space Palette -->
                 <!-- Start: ideaList -->
                 <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/ideaList.png" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge --><div class="d-flex justify-content-center gap-2 mt-3 mx-1">
     <span class="badge bg-warning text-dark">JavaScript</span>
@@ -147,7 +153,7 @@
                     <p class="description">A simple web-based calculator application that has keyboard support.</p>
                 </div><!-- End: Calculator -->
                 <!-- Start: Daily Mood Rater -->
-                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block" src="assets/img/dmr.jpg" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge Container --><div class="d-flex justify-content-center gap-2 mt-3 mx-1">
+                <div class="col-sm-6 col-lg-4 item"><img class="img-fluid shadow img-thumbnail d-block mx-auto" src="assets/img/dmr.jpg" loading="lazy" alt="DMR" style="max-height: 160px;"><!-- Start: Badge Container --><div class="d-flex justify-content-center gap-2 mt-3 mx-1">
     <span class="badge bg-secondary">Python</span>
     <span class="badge bg-light text-dark">PyQt5</span>
     <span class="badge bg-light text-info">matplotlib</span>

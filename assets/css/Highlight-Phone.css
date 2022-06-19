@@ -97,8 +97,8 @@
   border-radius: 20px;
   background-color: #aaa;
   overflow: hidden;
-  background: url(../../assets/img/default.png);
-  background-size: 127% 100%;
+  background: url(../../assets/img/mentorum.png);
+  background-size: 98% 100%;
   background-position: center;
   z-index: -1;
 }
@@ -112,6 +112,6 @@
   top: -6%;
   right: -60%;
   transform: rotate(-19deg);
-  opacity: 0.2;
+  opacity: 0.20;
 }
 
