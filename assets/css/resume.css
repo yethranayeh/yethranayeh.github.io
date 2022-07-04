@@ -48,10 +48,16 @@ span {
 	transition: top 0.5s ease 0s;
 	width: 56px;
 	z-index: 999;
+	color: #03a9f4;
 
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.btn_translate svg {
+	width: 60%;
+	height: auto;
 }
 
 /* Start: Shikoba Button by Mary Lou from Codrops */
