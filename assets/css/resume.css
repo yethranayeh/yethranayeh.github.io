@@ -341,10 +341,12 @@ h5 .spicy-link {
 	display: flex;
 	flex-direction: row;
 	margin: 20px 0;
+	gap: 10px;
 }
 
 .about .box .company-year {
 	min-width: 150px;
+	max-width: 150px;
 }
 
 .about .box .company-year h5 {
