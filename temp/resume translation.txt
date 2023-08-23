@@ -1,0 +1,3 @@
+Jira üzerinden "agile" bir süreç izleyerek, grafik tasarımı sunulan sayfaların parça parça kodlanıp fonksiyonel ve responsive hale getirilmesi.
+
+Ek olarak, kodlanan bu sayfa kesitlerinin Shopify'da kullanılmak üzere mağaza temasına aktarılması, akabinde Liquid templating dili kullanılarak mağazanın verilerinin dinamik olarak bu kesitlere aktarılabilmesini sağlamak.

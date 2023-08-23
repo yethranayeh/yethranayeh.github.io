@@ -1,0 +1,16 @@
+/** @format */
+
+@import "../styles/variables.module.scss";
+
+.container {
+	background-color: $background;
+	min-height: 100vh;
+	margin: 0;
+
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+.main {
+	padding-top: 60px;
+}

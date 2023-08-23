@@ -1,0 +1,32 @@
+/** @format */
+
+.scrambleText {
+	font-size: 28px;
+	font-family: "Roboto", sans-serif;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	color: #2196f3;
+	display: flex;
+
+	& > * {
+		white-space: pre;
+		overflow: hidden;
+	}
+
+	&.remove {
+		animation: animateRemove 1s both;
+	}
+}
+
+@keyframes animateRemove {
+	to {
+		color: #f44336;
+		opacity: 0;
+	}
+}
+
+.add {
+	color: #8bc34a;
+}
