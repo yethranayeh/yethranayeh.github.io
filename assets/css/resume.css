@@ -70,7 +70,6 @@ span {
 	padding: 1em 2em;
 	border: none;
 	background: none;
-	color: inherit;
 	vertical-align: middle;
 	position: relative;
 	z-index: 1;
@@ -215,37 +214,60 @@ h5 .spicy-link {
 .container .left-side {
 	position: relative;
 	background-color: #003147;
-	padding: 40px;
+	padding: 40px 25px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
 }
 
 .profile-text {
 	position: relative;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	gap: 14px;
 	align-items: center;
+	justify-content: space-between;
 	padding-bottom: 20px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.profile-text h2 {
-	color: #fff;
-	font-size: 1.5em;
-	margin-top: 20px;
-	text-transform: uppercase;
-	text-align: center;
-	font-weight: 600;
-	line-height: 1.4em;
+.profile-name-title {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 6px;
 }
 
+.profile-text h2 {
+	color: #fff;
+	font-size: 1.2em;
+	/* margin-top: 20px; */
+	text-transform: uppercase;
+	font-weight: 600;
+	line-height: 1;
+}
+
+/* TODO: Deprecate and replace with class below it */
 .profile-text h2 span {
 	font-size: 0.8em;
 	font-weight: 300;
 }
 
+.profile-text span {
+	color: #fff;
+	/* margin-top: 20px; */
+	text-transform: uppercase;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1;
+	width: 9ch;
+	word-wrap: break-word;
+}
+
 .profile-image-box {
 	position: relative;
-	width: 200px;
-	height: 200px;
+	width: 90px;
+	height: 90px;
 	border-radius: 50%;
 	overflow: hidden;
 }
@@ -260,26 +282,24 @@ h5 .spicy-link {
 }
 
 /* Contact */
-.contact-info {
-	padding-top: 40px;
-}
-
 .contact-title {
 	color: #fff;
 	text-transform: uppercase;
 	font-weight: 600;
-	letter-spacing: 1px;
-	margin-bottom: 20px;
+	letter-spacing: 2px;
+	margin-bottom: 12px;
 }
 
 .contact-info ul {
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
 }
 
 .contact-info ul li {
 	position: relative;
 	list-style: none;
-	margin: 10px 0;
 }
 
 .contact-info ul li span {
@@ -296,8 +316,10 @@ h5 .spicy-link {
 }
 
 /* Education */
-.contact-info.education li {
-	margin-bottom: 15px;
+.contact-info.education ul {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
 }
 
 .contact-info.education h4 {
@@ -305,9 +327,22 @@ h5 .spicy-link {
 	font-weight: 700;
 }
 
+/* TODO: Deprecate and use the class below */
 .contact-info.education h4:nth-child(2) {
 	color: #fff;
 	font-weight: 300;
+}
+
+.contact-info.education .topic {
+	color: #fff;
+	font-weight: 300;
+}
+
+.contact-info.education .teacher {
+	color: #fff;
+	font-weight: 300;
+	font-size: 0.9em;
+	font-style: italic;
 }
 
 .contact-info.education h5 {
@@ -360,6 +395,11 @@ h5 .spicy-link {
 	text-transform: uppercase;
 	color: #2a7da2;
 	font-size: 16px;
+}
+
+.about .box .text h5 {
+	text-transform: uppercase;
+	font-size: 13px;
 }
 
 .skills {
@@ -416,7 +456,6 @@ h4 i {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 8px;
-
 }
 
 /* Responsive Adjustments */
@@ -484,16 +523,11 @@ h4 i {
 
 	.container .left-side {
 		padding: 15px;
+		gap: 20px;
 	}
 
 	.profile-text {
 		padding-bottom: 15px;
-	}
-
-	.profile-text h2 {
-		font-size: 1.3em;
-		margin-top: 15px;
-		line-height: 1.2em;
 	}
 
 	.profile-text h2 span {
@@ -501,8 +535,8 @@ h4 i {
 	}
 
 	.profile-image-box {
-		width: 180px;
-		height: 180px;
+		width: 80px;
+		height: 80px;
 	}
 
 	.profile-image-box img {
@@ -515,17 +549,12 @@ h4 i {
 	}
 
 	/* Contact */
-	.contact-info {
-		padding-top: 20px;
-	}
-
 	.contact-title {
-		letter-spacing: 1px;
-		margin-bottom: 15px;
+		margin-bottom: 4px;
 	}
 
-	.contact-info ul li {
-		margin: 8px 0;
+	.contact-info ul {
+		gap: 4px;
 	}
 
 	.contact-icon {
@@ -534,8 +563,8 @@ h4 i {
 	}
 
 	/* Education */
-	.contact-info.education li {
-		margin-bottom: 10px;
+	.contact-info.education ul {
+		gap: 6px;
 	}
 
 	/* Right side */
@@ -555,7 +584,7 @@ h4 i {
 	}
 
 	.about .box {
-		margin: 5px 0;
+		margin: 10px 0;
 	}
 
 	.about .box .text h4 {
