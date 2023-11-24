@@ -1,3 +1,5 @@
+@import "./variables.module.scss";
+
 @font-face {
 	font-family: "pixeloid_sans";
 	src: url("../assets/fonts/PixeloidSans.ttf");
@@ -9,6 +11,9 @@ body {
 	color: currentColor;
 	font-weight: 400;
 	font-family: "pixeloid_sans", sans-serif !important;
+
+	background-color: $background;
+	min-height: 100vh;
 }
 
 a {
