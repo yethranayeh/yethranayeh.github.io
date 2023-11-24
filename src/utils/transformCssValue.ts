@@ -1,6 +1,4 @@
-/** @format */
-
-export default function transformCssValue(val?: string | number): string | undefined {
+export function transformCssValue(val?: string | number): string | undefined {
 	if (typeof val === "number") {
 		return `${val}px`;
 	}

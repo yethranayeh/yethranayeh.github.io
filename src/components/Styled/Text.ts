@@ -1,7 +1,6 @@
-/** @format */
-
-import transformCssValue from "@/utils/transformCssValue";
 import styled from "styled-components";
+
+import { transformCssValue } from "@/utils/transformCssValue";
 
 const Text = styled.p<TextProps>`
 	display: inline-block;
@@ -12,8 +11,8 @@ const Text = styled.p<TextProps>`
 		background-color: #c6c6c6;
 		color: #0a0a0a;
 	}
-	padding: ${(props) => transformCssValue(props.p) || "0"};
-	margin: ${(props) => transformCssValue(props.m) || "0"};
+	padding: ${(props) => transformCssValue(props.p) ?? "0"};
+	margin: ${(props) => transformCssValue(props.m) ?? "0"};
 `;
 
 export default Text;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import transformCssValue from "@/utils/transformCssValue";
+import { transformCssValue } from "@/utils/transformCssValue";
 
 const Flex = styled.div<FlexProps>`
 	display: flex;
