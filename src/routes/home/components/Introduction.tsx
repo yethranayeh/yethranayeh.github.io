@@ -13,7 +13,7 @@ import styles from "./Introduction.module.scss";
 const myAge = new Date().getFullYear() - 1999;
 
 export const IntroductionPage = memo(() => (
-	<Flex wrap='wrap' gap={24} justify='space-around' align='center' sx={{ marginTop: 24 }}>
+	<Flex wrap='wrap' gap={24} justify='space-around' align='center' className={styles.container}>
 		<Flex align='center' gap={14}>
 			<BlinkingEyesAvatar />
 
