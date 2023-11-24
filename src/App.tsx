@@ -10,12 +10,10 @@ import router from "./routes";
 import GlobalStyles from "./config/GlobalStyles";
 
 const App = () => (
-	<>
-		<ThemeProvider theme={original}>
-			<GlobalStyles />
-			<RouterProvider router={router} />
-		</ThemeProvider>
-	</>
+	<ThemeProvider theme={original}>
+		<GlobalStyles />
+		<RouterProvider router={router} />
+	</ThemeProvider>
 );
 
 export default App;
