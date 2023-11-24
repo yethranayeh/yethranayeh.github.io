@@ -27,10 +27,10 @@ export default function Navbar() {
 								<MenuListItem>
 									<Tooltip
 										text={
-											<MenuList>
+											(<MenuList>
 												<MenuListItem onClick={() => console.log("Turkish")}>Turkish</MenuListItem>
 												<MenuListItem onClick={() => console.log("English")}>English</MenuListItem>
-											</MenuList>
+											</MenuList>) as any
 										}
 										position='right'
 										enterDelay={100}
