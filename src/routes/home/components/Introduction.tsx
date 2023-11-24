@@ -1,28 +1,30 @@
-/** @format */
-
 import { Flex, Text } from "@/components/Styled";
 import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame, Anchor } from "react95";
 import { memo } from "react";
 
-import BlinkingEyes from "./BlinkingEyes";
+import { BlinkingEyesAvatar } from "./BlinkingEyesAvatar";
+import { SocialLink } from "@/components/SocialLink";
+
 import Github from "@/assets/icons/github.svg";
 import LinkedIn from "@/assets/icons/linkedin.svg";
+
+import styles from "./Introduction.module.scss";
 
 const myAge = new Date().getFullYear() - 1999;
 
 export const IntroductionPage = memo(() => (
-	<Flex gap={24} justify='space-around' align='center' style={{ marginTop: 24 }}>
+	<Flex wrap='wrap' gap={24} justify='space-around' align='center' sx={{ marginTop: 24 }}>
 		<Flex align='center' gap={14}>
-			<BlinkingEyes />
+			<BlinkingEyesAvatar />
 
 			<Flex direction='column'>
 				<Text bold variant='title'>
 					Alper Aktaş
 				</Text>
-				<Text>Front-end Developer</Text>
+				<Text>Web Developer</Text>
 			</Flex>
 		</Flex>
-		<Window style={{ maxWidth: 450 }}>
+		<Window className={styles.window}>
 			<WindowHeader className='window-title'>
 				<span>Merhaba.txt</span>
 			</WindowHeader>
@@ -38,7 +40,7 @@ export const IntroductionPage = memo(() => (
 				</Button>
 			</Toolbar>
 			<WindowContent>
-				<Text>Adım Alper, {myAge} Yaşındayım. Ege Üniversitesi, İngiliz Dili ve Edebiyatı mezunuyum.</Text>
+				<Text>Adım Alper, {myAge} yaşındayım. Ege Üniversitesi, İngiliz Dili ve Edebiyatı mezunuyum.</Text>
 				<Text>
 					Yazılım geliştirmeye duyduğum ilgi doğrultusunda, online kurslara kaydolarak ve testler çözerek kendimi
 					Front-end alanında geliştirerek edindiğim bilgi ve tecrübelerle profesyonel hayatıma ilk adımımı attım.
@@ -52,22 +54,12 @@ export const IntroductionPage = memo(() => (
 					ediyorum.
 				</Text>
 			</WindowContent>
-			<Frame
-				variant='well'
-				className='footer'
-				style={{
-					width: "100%",
-					padding: "7px 12px 0"
-				}}>
+			<Frame variant='well' className={styles.frame}>
 				<Flex gap={12} justify='space-between'>
 					<Anchor href='mailto:contact@aktasalper.com'>contact@aktasalper.com</Anchor>
 					<Flex gap={12}>
-						<a href='https://github.com/yethranayeh' target='_blank' title='Github'>
-							<img src={Github} alt='GitHub' width={24} />
-						</a>
-						<a href='https://www.linkedin.com/in/aktasalper/' target='_blank' title='LinkedIn'>
-							<img src={LinkedIn} alt='LinkedIn' width={24} />
-						</a>
+						<SocialLink iconSrc={Github} name='Github' link='https://github.com/yethranayeh' />
+						<SocialLink iconSrc={LinkedIn} name='LinkedIn' link='https://www.linkedin.com/in/aktasalper/' />
 					</Flex>
 				</Flex>
 			</Frame>

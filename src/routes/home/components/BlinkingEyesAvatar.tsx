@@ -6,7 +6,7 @@ import useCounter from "@/hooks/useCounter";
 import { useEffect } from "react";
 import { Avatar } from "react95";
 
-export default function BlinkingEyes() {
+export function BlinkingEyesAvatar() {
 	const { count, increment } = useCounter(0);
 
 	useEffect(() => {
