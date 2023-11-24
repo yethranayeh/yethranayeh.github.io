@@ -1,5 +1,5 @@
 /** @format */
 
 export default function Footer() {
-	return <footer>Footer</footer>;
+	return <footer></footer>;
 }
