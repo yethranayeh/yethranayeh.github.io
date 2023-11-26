@@ -1,12 +1,18 @@
 /** @format */
 
-import React from "react";
 import { AppBar, Toolbar, TextInput, Button, MenuList, MenuListItem, Separator, Tooltip } from "react95";
+
+import { useState } from "react";
+import { changeLanguage } from "i18next";
+
+import { Text } from "../Styled";
+
 import ReactLogo from "@/assets/icons/react.svg";
 import styles from "./Navbar.module.scss";
 
 export default function Navbar() {
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
+
 	return (
 		<nav>
 			<AppBar className={styles.container}>
@@ -14,7 +20,7 @@ export default function Navbar() {
 					<div style={{ position: "relative", display: "inline-block" }}>
 						<Button onClick={() => setOpen(!open)} active={open}>
 							<img src={ReactLogo} alt='home' style={{ height: "20px", marginRight: 4 }} />
-							Start
+							<Text>Start</Text>
 						</Button>
 						{open && (
 							<MenuList
@@ -27,10 +33,12 @@ export default function Navbar() {
 								<MenuListItem>
 									<Tooltip
 										text={
-											(<MenuList>
-												<MenuListItem onClick={() => console.log("Turkish")}>Turkish</MenuListItem>
-												<MenuListItem onClick={() => console.log("English")}>English</MenuListItem>
-											</MenuList>) as any
+											(
+												<MenuList>
+													<MenuListItem onClick={() => changeLanguage("tr")}>Turkish</MenuListItem>
+													<MenuListItem onClick={() => changeLanguage("en")}>English</MenuListItem>
+												</MenuList>
+											) as any
 										}
 										position='right'
 										enterDelay={100}
