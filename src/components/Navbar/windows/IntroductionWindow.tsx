@@ -12,13 +12,13 @@ import styles from "./IntroductionWindow.module.scss";
 import Draggable from "react-draggable";
 
 export function IntroductionWindow() {
-	const { t } = useTranslation("content");
+	const { t } = useTranslation(["content", "menu"]);
 
 	return (
-		<Draggable bounds='main' handle='.window-title'>
+		<Draggable bounds='main' handle='.sc-cabOPr'>
 			<Window className={styles.window}>
-				<WindowHeader className='window-title'>
-					<span>Merhaba.txt</span>
+				<WindowHeader>
+					<span className='window-title'>{t("menu:window.hello")}</span>
 				</WindowHeader>
 				<Toolbar>
 					<Button disabled variant='menu' size='sm'>
@@ -26,9 +26,6 @@ export function IntroductionWindow() {
 					</Button>
 					<Button disabled variant='menu' size='sm'>
 						Düzenle
-					</Button>
-					<Button variant='menu' size='sm'>
-						Özgeçmiş
 					</Button>
 				</Toolbar>
 				<WindowContent className={styles.windowContent}>
