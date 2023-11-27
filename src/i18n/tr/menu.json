@@ -1,4 +1,7 @@
 {
-	"nav": {},
+	"nav": {
+		"logout": "Çıkış",
+		"start": "Başlat"
+	},
 	"window": {}
 }

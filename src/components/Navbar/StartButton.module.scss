@@ -1,0 +1,12 @@
+@import "../../styles/variables.module.scss";
+
+.container {
+	position: relative;
+	display: inline-block;
+}
+
+.list {
+	position: absolute;
+	left: 0;
+	top: 100%;
+}
