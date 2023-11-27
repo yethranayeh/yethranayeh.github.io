@@ -30,6 +30,7 @@ export const resources: I18nResources = {
 
 export const i18n_options: InitOptions = {
 	lng: Language.TURKISH,
+	fallbackLng: Object.values(Language),
 	debug: import.meta.env.DEV,
 	resources,
 	ns: namespaces,
