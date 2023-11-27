@@ -1,16 +1,9 @@
 @import "../../../styles/variables.module.scss";
 @import "../../../styles/mixins.scss";
 
-.container {
-	margin-top: $spacing-6;
-	padding: 0 $spacing-3;
-
-	@include media-min-sm {
-		padding: 0;
-	}
-}
-
 .window {
+	position: absolute;
+	top: 60px;
 	max-width: 450px;
 }
 

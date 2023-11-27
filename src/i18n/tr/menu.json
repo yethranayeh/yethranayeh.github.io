@@ -3,5 +3,7 @@
 		"logout": "Çıkış",
 		"start": "Başlat"
 	},
-	"window": {}
+	"window": {
+		"hello": "Merhaba.txt"
+	}
 }

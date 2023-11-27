@@ -3,5 +3,7 @@
 		"logout": "Logout",
 		"start": "Start"
 	},
-	"window": {}
+	"window": {
+		"hello": "Hello.txt"
+	}
 }

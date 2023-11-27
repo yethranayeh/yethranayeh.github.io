@@ -1,29 +1,21 @@
-import { Flex, Text } from "@/components/Styled";
 import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame, Anchor } from "react95";
-import { memo } from "react";
 
-import { BlinkingEyesAvatar } from "./BlinkingEyesAvatar";
+import { useTranslation } from "react-i18next";
+
+import { Flex, Text } from "@/components/Styled";
 import { SocialLink } from "@/components/SocialLink";
 
 import Github from "@/assets/icons/github.svg";
 import LinkedIn from "@/assets/icons/linkedin.svg";
 
-import styles from "./Introduction.module.scss";
-import { useTranslation } from "react-i18next";
-export const IntroductionPage = memo(() => {
-	const { t } = useTranslation("content");
-	return (
-		<Flex wrap='wrap' gap={24} justify='space-around' align='center' className={styles.container}>
-			<Flex align='center' gap={14}>
-				<BlinkingEyesAvatar />
+import styles from "./IntroductionWindow.module.scss";
+import Draggable from "react-draggable";
 
-				<Flex direction='column'>
-					<Text bold variant='title'>
-						Alper Aktaş
-					</Text>
-					<Text>Web Developer</Text>
-				</Flex>
-			</Flex>
+export function IntroductionWindow() {
+	const { t } = useTranslation("content");
+
+	return (
+		<Draggable bounds='main' handle='.window-title'>
 			<Window className={styles.window}>
 				<WindowHeader className='window-title'>
 					<span>Merhaba.txt</span>
@@ -55,6 +47,6 @@ export const IntroductionPage = memo(() => {
 					</Flex>
 				</Frame>
 			</Window>
-		</Flex>
+		</Draggable>
 	);
-});
+}
