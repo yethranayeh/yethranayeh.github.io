@@ -4,6 +4,10 @@ img.icon {
 	height: 24px;
 	margin: 0;
 
+	&.disabled {
+		opacity: 0.4;
+	}
+
 	&.mr {
 		margin: 0 $spacing-2 0 0;
 	}
