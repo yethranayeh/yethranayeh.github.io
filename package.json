@@ -10,6 +10,7 @@
 		"deploy": "git subtree push --prefix dist origin gh-pages"
 	},
 	"dependencies": {
+		"clsx": "^2.0.0",
 		"i18next": "^23.7.6",
 		"pixelarticons": "^1.7.0",
 		"react": "^18.2.0",

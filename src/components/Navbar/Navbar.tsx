@@ -12,8 +12,8 @@ export default function Navbar() {
 		<nav>
 			<AppBar className={styles.container}>
 				<Toolbar style={{ justifyContent: "space-between" }}>
-					<Flex gap={8}>
-						<Flex gap={8}>
+					<Flex gap={4}>
+						<Flex gap={4}>
 							<StartButton />
 							<Handle size={35} />
 						</Flex>
@@ -21,7 +21,7 @@ export default function Navbar() {
 						<WindowTabs />
 					</Flex>
 
-					<Flex gap={8}>
+					<Flex gap={4} sx={{ marginLeft: 4 }}>
 						<Handle size={35} />
 						<LanguageSelect />
 					</Flex>

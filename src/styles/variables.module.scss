@@ -13,3 +13,10 @@ $breakpoint-sm: 768;
 $breakpoint-md: 1024;
 $breakpoint-lg: 1266;
 $breakpoint-xl: 1536;
+
+:export {
+	mediaSm: $breakpoint-sm;
+	mediaMd: $breakpoint-md;
+	mediaLg: $breakpoint-lg;
+	mediaXl: $breakpoint-xl;
+}

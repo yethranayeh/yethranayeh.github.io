@@ -1,3 +1,5 @@
+import { SVGIcon } from "./SVGIcon";
+
 interface SocialLinkProps {
 	iconSrc: string;
 	name: string;
@@ -6,6 +8,6 @@ interface SocialLinkProps {
 
 export const SocialLink = ({ iconSrc, name, link }: SocialLinkProps) => (
 	<a href={link} target='_blank' title={name}>
-		<img src={iconSrc} alt={name} width={24} />
+		<SVGIcon src={iconSrc} alt={name} />
 	</a>
 );

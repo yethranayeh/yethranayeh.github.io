@@ -10,28 +10,31 @@ import ClockIcon from "pixelarticons/svg/clock.svg";
 import ReactLogo from "@/assets/icons/react.svg";
 
 import styles from "./StartButton.module.scss";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { SVGIcon } from "../SVGIcon";
 
 export function StartButton() {
 	const { t } = useTranslation("menu");
+	const biggerThanSm = useMediaQuery("sm");
 
 	const [open, setOpen] = useState(false);
 
 	return (
 		<div className={styles.container}>
 			<Button onClick={() => setOpen(!open)} active={open}>
-				<img src={ReactLogo} className='icon small' alt='react logo as start button icon' />
-				<Text>{t("nav.start")}</Text>
+				<SVGIcon small src={ReactLogo} marginRight={biggerThanSm} alt='react logo as start button icon' />
+				{biggerThanSm && <Text>{t("nav.start")}</Text>}
 			</Button>
 			{open && (
 				<MenuList className={styles.list} onClick={() => setOpen(false)}>
 					<MenuListItem disabled aria-disabled onClick={() => undefined}>
-						<img src={ClockIcon} className='icon' alt='clock icon' /> In Progress
+						<SVGIcon marginRight src={ClockIcon} alt='clock icon' />
 					</MenuListItem>
 
 					<Separator />
 
 					<MenuListItem onClick={() => window.close()}>
-						<img src={LogoutIcon} className='icon' alt='arrow pointing out of door, a logout icon' /> {t("nav.logout")}
+						<SVGIcon marginRight src={LogoutIcon} alt='arrow pointing out of door, a logout icon' />
 					</MenuListItem>
 				</MenuList>
 			)}

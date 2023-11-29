@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "react95";
 
 import NotesIcon from "pixelarticons/svg/notes.svg";
+import { SVGIcon } from "../SVGIcon";
 
 const Windows = {
 	IntroductionWindow: lazy(() =>
@@ -12,27 +13,21 @@ const Windows = {
 
 type WindowOption = keyof typeof Windows;
 
-const tabs = Object.keys(Windows) as unknown as Array<WindowOption>;
-
 export function WindowTabs() {
 	const [activeTab, setActiveTab] = useState<WindowOption | null>(null);
 
 	const { t } = useTranslation("menu");
 	return (
 		<>
+			{/* Window Buttons */}
 			<Button
 				active={activeTab === "IntroductionWindow"}
-				onClick={() => {
-					if (activeTab === "IntroductionWindow") {
-						setActiveTab(null);
-					} else {
-						setActiveTab("IntroductionWindow");
-					}
-				}}>
-				<img src={NotesIcon} className='icon' alt='an icon of a page with lines, indicating writing' />
+				onClick={() => setActiveTab(activeTab === "IntroductionWindow" ? null : "IntroductionWindow")}>
+				<SVGIcon marginRight src={NotesIcon} alt='an icon of a page, indicating writing' />
 				{t("window.hello")}
 			</Button>
 
+			{/* Window Screens */}
 			<Suspense fallback={null}>{activeTab === "IntroductionWindow" && <Windows.IntroductionWindow />}</Suspense>
 		</>
 	);
