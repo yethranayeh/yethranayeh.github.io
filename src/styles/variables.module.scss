@@ -9,10 +9,10 @@ $spacing-4: 16px;
 $spacing-5: 20px;
 $spacing-6: 24px;
 
-$breakpoint-sm: 768;
-$breakpoint-md: 1024;
-$breakpoint-lg: 1266;
-$breakpoint-xl: 1536;
+$breakpoint-sm: 576;
+$breakpoint-md: 768;
+$breakpoint-lg: 992;
+$breakpoint-xl: 1200;
 
 :export {
 	mediaSm: $breakpoint-sm;
