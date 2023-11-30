@@ -2,7 +2,7 @@
 @import "../../styles/mixins.scss";
 
 .container {
-	gap: $spacing;
+	gap: $spacing !important;
 
 	overflow-x: scroll;
 	scroll-snap-type: x mandatory;
@@ -12,6 +12,6 @@
 	}
 
 	@include media-min-sm {
-		gap: $spacing-2;
+		gap: $spacing-2 !important;
 	}
 }

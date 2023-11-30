@@ -12,10 +12,10 @@ import styles from "./WindowTabs.module.scss";
 
 const Windows = {
 	IntroductionWindow: lazy(() =>
-		import("@/components/Navbar/windows/IntroductionWindow").then((module) => ({ default: module.IntroductionWindow }))
+		import("@/components/windows/IntroductionWindow").then((module) => ({ default: module.IntroductionWindow }))
 	),
 	ProjectsWindow: lazy(() =>
-		import("@/components/Navbar/windows/ProjectsWindow").then((module) => ({ default: module.ProjectsWindow }))
+		import("@/components/windows/ProjectsWindow").then((module) => ({ default: module.ProjectsWindow }))
 	)
 } as const;
 
