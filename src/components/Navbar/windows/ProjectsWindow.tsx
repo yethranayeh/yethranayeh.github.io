@@ -16,14 +16,16 @@ export function ProjectsWindow() {
 
 	return (
 		<Draggable bounds='main' handle='.sc-cabOPr'>
-			<Window className={styles.window}>
+			<Window as='section' className={styles.window}>
 				<WindowHeader>
 					<span className='window-title'>{t("menu:window.projects")}</span>
 				</WindowHeader>
 				<Tabs>
 					<Tab>...</Tab>
 				</Tabs>
-				<WindowContent className={styles.windowContent}>...</WindowContent>
+				<WindowContent as='article' className={styles.windowContent}>
+					...
+				</WindowContent>
 				<Frame variant='well' className={styles.frame}>
 					<Flex gap={12} justify='space-between'>
 						<Anchor href='mailto:contact@aktasalper.com'>contact@aktasalper.com</Anchor>

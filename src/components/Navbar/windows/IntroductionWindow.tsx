@@ -16,7 +16,7 @@ export function IntroductionWindow() {
 
 	return (
 		<Draggable bounds='main' handle='.sc-cabOPr'>
-			<Window className={styles.window}>
+			<Window as='section' className={styles.window}>
 				<WindowHeader>
 					<span className='window-title'>{t("menu:window.hello")}</span>
 				</WindowHeader>
@@ -28,7 +28,7 @@ export function IntroductionWindow() {
 						Düzenle
 					</Button>
 				</Toolbar>
-				<WindowContent className={styles.windowContent}>
+				<WindowContent as='article' className={styles.windowContent}>
 					<Text>{t("introduction.about-me")}</Text>
 					<Text>{t("introduction.about-experience")}</Text>
 					<Text>{t("introduction.about-preferences")}</Text>
