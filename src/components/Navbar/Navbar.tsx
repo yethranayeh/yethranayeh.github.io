@@ -10,17 +10,14 @@ import styles from "./Navbar.module.scss";
 export default function Navbar() {
 	return (
 		<AppBar as='nav' className={styles.container}>
-			<Toolbar style={{ justifyContent: "space-between" }}>
-				<Flex gap={4}>
-					<Flex gap={4}>
-						<StartButton />
-						<Handle size={35} />
-					</Flex>
-
-					<WindowTabs />
+			<Toolbar>
+				<Flex gap={4} sx={{ marginRight: 4 }}>
+					<StartButton />
+					<Handle size={35} />
 				</Flex>
+				<WindowTabs />
 
-				<Flex gap={4} sx={{ marginLeft: 4 }}>
+				<Flex gap={4} sx={{ marginLeft: "auto" }}>
 					<Handle size={35} />
 					<LanguageSelect />
 				</Flex>

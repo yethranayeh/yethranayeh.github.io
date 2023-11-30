@@ -1,4 +1,4 @@
-import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame, Anchor } from "react95";
+import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame, Anchor, Tabs, Tab } from "react95";
 
 import { useTranslation } from "react-i18next";
 
@@ -11,29 +11,19 @@ import LinkedIn from "@/assets/icons/linkedin.svg";
 import styles from "./Window.module.scss";
 import Draggable from "react-draggable";
 
-export function IntroductionWindow() {
+export function ProjectsWindow() {
 	const { t } = useTranslation(["content", "menu"]);
 
 	return (
 		<Draggable bounds='main' handle='.sc-cabOPr'>
 			<Window className={styles.window}>
 				<WindowHeader>
-					<span className='window-title'>{t("menu:window.hello")}</span>
+					<span className='window-title'>{t("menu:window.projects")}</span>
 				</WindowHeader>
-				<Toolbar>
-					<Button disabled variant='menu' size='sm'>
-						Dosya
-					</Button>
-					<Button disabled variant='menu' size='sm'>
-						Düzenle
-					</Button>
-				</Toolbar>
-				<WindowContent className={styles.windowContent}>
-					<Text>{t("introduction.about-me")}</Text>
-					<Text>{t("introduction.about-experience")}</Text>
-					<Text>{t("introduction.about-preferences")}</Text>
-					<Text>{t("introduction.about-current-job")}</Text>
-				</WindowContent>
+				<Tabs>
+					<Tab>...</Tab>
+				</Tabs>
+				<WindowContent className={styles.windowContent}>...</WindowContent>
 				<Frame variant='well' className={styles.frame}>
 					<Flex gap={12} justify='space-between'>
 						<Anchor href='mailto:contact@aktasalper.com'>contact@aktasalper.com</Anchor>

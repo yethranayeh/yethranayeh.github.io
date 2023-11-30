@@ -1,4 +1,5 @@
 @import "../styles/variables.module.scss";
+@import "../styles/mixins.scss";
 
 img.icon {
 	height: 24px;
@@ -9,11 +10,19 @@ img.icon {
 	}
 
 	&.mr {
-		margin: 0 $spacing-2 0 0;
+		margin: 0 $spacing 0 0;
+
+		@include media-min-sm {
+			margin: 0 $spacing-2 0 0;
+		}
 	}
 
 	&.ml {
-		margin: 0 0 0 $spacing-3;
+		margin: 0 0 0 $spacing;
+
+		@include media-min-sm {
+			margin: 0 0 0 $spacing-2;
+		}
 	}
 
 	&.small {
