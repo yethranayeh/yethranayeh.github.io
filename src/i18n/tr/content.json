@@ -1,4 +1,5 @@
 {
+	"daily-space-palette": "Daily Space Palette, NASA'nın API içeriğini kullanarak Günün Astronomi Fotoğrafı'nı gösteriyor. Ek olarak, gelen bu fotoğraftaki renkleri analiz ederek çeşitli renk paletleri oluşturuyor.",
 	"introduction": {
 		"about-current-job": "Şu anda, Etstur'da Yazılım Geliştirme Uzman Yardımcısı olarak çalışıyorum. Şirketin React bazlı B2B web uygulamarının geliştirilmesinde rol alıyorum.",
 		"about-experience": "Yazılım geliştirmeye oldukça ilgi duyduğum için, hedeflediğim kariyere öğrencilik dönemimde online içerikler tüketerek ile ve HackerRank vb. sitelerde testler çözerek yatırım yaptım.",

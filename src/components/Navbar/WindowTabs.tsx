@@ -15,7 +15,7 @@ const Windows = {
 		import("@/components/windows/IntroductionWindow").then((module) => ({ default: module.IntroductionWindow }))
 	),
 	ProjectsWindow: lazy(() =>
-		import("@/components/windows/ProjectsWindow").then((module) => ({ default: module.ProjectsWindow }))
+		import("@/components/windows/ProjectsWindow/ProjectsWindow").then((module) => ({ default: module.ProjectsWindow }))
 	)
 } as const;
 

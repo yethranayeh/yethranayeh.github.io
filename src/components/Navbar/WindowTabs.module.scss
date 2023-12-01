@@ -4,7 +4,8 @@
 .container {
 	gap: $spacing !important;
 
-	overflow-x: scroll;
+	overflow-x: auto;
+	overflow-y: hidden; // Butonlara basıldığında height değişikliğinden dolayı overflow tetikleniyor.
 	scroll-snap-type: x mandatory;
 
 	& > button {
@@ -12,6 +13,7 @@
 	}
 
 	@include media-min-sm {
+		overflow-x: hidden;
 		gap: $spacing-2 !important;
 	}
 }

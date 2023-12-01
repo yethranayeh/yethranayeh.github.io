@@ -16,9 +16,11 @@
 }
 
 .main {
+	min-height: calc(100vh - 60px);
 	padding-top: 50px;
 
 	@include media-min-sm {
+		min-height: calc(100vh - 70px);
 		padding-top: 60px;
 	}
 }
