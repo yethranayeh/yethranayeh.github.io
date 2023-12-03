@@ -1,0 +1,1 @@
+import{j as t,S as i}from"./index.8a12c020.js";const r=({iconSrc:a,name:s,link:c})=>t("a",{href:c,target:"_blank",title:s,children:t(i,{src:a,alt:s})}),e="/assets/github.bf9f0acf.svg";export{e as G,r as S};
