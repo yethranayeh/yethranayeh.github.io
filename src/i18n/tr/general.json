@@ -1,1 +1,6 @@
-{ "btn": { "go-to-page": "Web sayfasına git" } }
+{
+	"btn": {
+		"go-to-page": "Web sayfasına git"
+	},
+	"loading": "Yükleniyor"
+}

@@ -1,1 +1,6 @@
-{ "btn": { "go-to-page": "Go to webpage" } }
+{
+	"btn": {
+		"go-to-page": "Go to webpage"
+	},
+	"loading": "Loading"
+}

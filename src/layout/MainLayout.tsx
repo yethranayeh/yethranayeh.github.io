@@ -1,12 +1,13 @@
-/** @format */
-
 import { Outlet } from "react-router-dom";
-import Navbar from "@/components/Navbar";
-import styles from "./MainLayout.module.scss";
-import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
-import { LoadingScreen } from "@/components/LoadingScreen";
+
 import { getRandomIntRange } from "@/utils/getRandomIntRange";
+
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { LoadingScreen } from "@/components/LoadingScreen";
+
+import styles from "./MainLayout.module.scss";
 
 const loadingTime = getRandomIntRange(2500, 4000);
 
@@ -14,7 +15,10 @@ export default function MainLayout() {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		const timeout = setTimeout(() => setLoading(false), loadingTime);
+		const timeout = setTimeout(() => {
+			setLoading(false);
+			document.body.setAttribute("data-loading", "false");
+		}, loadingTime);
 
 		return () => clearTimeout(timeout);
 	}, []);

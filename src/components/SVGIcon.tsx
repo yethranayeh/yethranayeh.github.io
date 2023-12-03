@@ -5,6 +5,7 @@ import styles from "./SVGIcon.module.scss";
 interface SVGIconProps {
 	src: string;
 	alt: string;
+	className?: string;
 
 	disabled?: boolean;
 	marginRight?: boolean;
@@ -12,12 +13,13 @@ interface SVGIconProps {
 	small?: boolean;
 }
 
-export const SVGIcon = ({ src, alt, disabled, marginLeft, marginRight, small }: SVGIconProps) => (
+export const SVGIcon = ({ src, alt, className, disabled, marginLeft, marginRight, small }: SVGIconProps) => (
 	<img
 		aria-roledescription='icon'
 		src={src}
 		className={clsx(
 			styles.icon,
+			className,
 			disabled && styles.disabled,
 			marginLeft && styles.ml,
 			marginRight && styles.mr,
