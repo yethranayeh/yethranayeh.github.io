@@ -11,8 +11,10 @@
 
 .container.fadeIn {
 	animation-name: fade-in;
-	animation-duration: 600ms;
-	animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+	animation-duration: 400ms;
+	animation-timing-function: ease-in;
+	animation-fill-mode: backwards;
+	animation-delay: 100ms;
 }
 
 .main {
