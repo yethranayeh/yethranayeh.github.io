@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 
 import { getRandomIntRange } from "@/utils/getRandomIntRange";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
 import { LoadingScreen } from "@/components/LoadingScreen";
 
 import styles from "./MainLayout.module.scss";
@@ -37,7 +36,6 @@ export default function MainLayout() {
 			<main className={styles.main}>
 				<Outlet />
 			</main>
-			<Footer />
 		</div>
 	);
 }
