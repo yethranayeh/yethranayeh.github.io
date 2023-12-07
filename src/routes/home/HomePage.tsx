@@ -3,6 +3,7 @@ import { Flex, Text } from "@/components/Styled";
 import { memo } from "react";
 
 import { BlinkingEyesAvatar } from "./components/BlinkingEyesAvatar";
+import { Clippy } from "@/components/Clippy";
 
 import styles from "./HomePage.module.scss";
 
@@ -19,6 +20,8 @@ const HomePage = memo(() => {
 					<Text>Web Developer</Text>
 				</Flex>
 			</Flex>
+
+			<Clippy />
 		</Flex>
 	);
 });
