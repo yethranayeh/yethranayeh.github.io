@@ -5,5 +5,8 @@
 		"about-experience": "Because of my profound interest in software development, I studied software through online content and solved test cases on websites like HackerRank to invest into the career that I desired to have during my studentship.",
 		"about-me": "I am an English Language and Literature graduate from Ege University.",
 		"about-preferences": "I generally prefer developing apps with TypeScript and React. Additionally, I write tests using Vitest and react-testing-library, and depending on the project I may use Playwright as well."
+	},
+	"clippy": {
+		"greeting": "Hello! I'm Clippy!"
 	}
 }
