@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { Text } from "@/components/Styled";
 
-import LogoutIcon from "pixelarticons/svg/logout.svg";
+import LogoutIcon from "pixelarticons/svg/logout.svg?react";
 import ClockIcon from "pixelarticons/svg/clock.svg";
 import ReactLogo from "@/assets/icons/react.svg?react";
 
@@ -34,7 +34,7 @@ export function StartButton() {
 					<Separator />
 
 					<MenuListItem onClick={() => window.close()}>
-						<SVGIcon marginRight src={LogoutIcon} alt='arrow pointing out of door, a logout icon' />
+						<LogoutIcon height={24} />
 						{t("nav.logout")}
 					</MenuListItem>
 				</MenuList>
