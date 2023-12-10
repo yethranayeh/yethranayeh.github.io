@@ -7,6 +7,6 @@
 		"about-preferences": "Genel olarak web uygulamalarını TypeScript ve React.js ile geliştirmeyi tercih ediyorum. Geliştirdiğim uygulamaları ise Vitest ve react-testing-library ile, bazen de projeye göre Playwright ile de test ediyorum."
 	},
 	"clippy": {
-		"greeting": "Merhaba! Ben Clippy!"
+		"greeting": "Merhaba, ben Clippy!"
 	}
 }

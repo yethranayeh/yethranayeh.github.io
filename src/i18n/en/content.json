@@ -7,6 +7,6 @@
 		"about-preferences": "I generally prefer developing apps with TypeScript and React. Additionally, I write tests using Vitest and react-testing-library, and depending on the project I may use Playwright as well."
 	},
 	"clippy": {
-		"greeting": "Hello! I'm Clippy!"
+		"greeting": "Hello, I'm Clippy!"
 	}
 }
