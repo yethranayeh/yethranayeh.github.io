@@ -1,4 +1,4 @@
-import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame, Anchor } from "react95";
+import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame } from "react95";
 
 import Draggable from "react-draggable";
 import { useTranslation } from "react-i18next";
@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Flex, Text } from "@/components/Styled";
 import { SocialLink } from "@/components/SocialLink";
 import { CloseButton } from "@/components/CloseButton";
+import { MailLink } from "@/components/MailLink";
 
 import Github from "@/assets/icons/github.svg";
 import LinkedIn from "@/assets/icons/linkedin.svg";
@@ -38,7 +39,7 @@ export function IntroductionWindow() {
 				</WindowContent>
 				<Frame variant='well' className={styles.frame}>
 					<Flex gap={12} justify='space-between'>
-						<Anchor href='mailto:contact@aktasalper.com'>contact@aktasalper.com</Anchor>
+						<MailLink />
 						<Flex gap={12}>
 							<SocialLink iconSrc={Github} name='Github' link='https://github.com/yethranayeh' />
 							<SocialLink iconSrc={LinkedIn} name='LinkedIn' link='https://www.linkedin.com/in/aktasalper/' />

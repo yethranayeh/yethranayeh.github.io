@@ -5,6 +5,14 @@
 	display: inline-block;
 }
 
+.reactIcon {
+	height: 24px;
+	width: auto;
+	margin-right: $spacing;
+
+	filter: drop-shadow(-1px -1px 0px #fff) drop-shadow(0px 0px 0px #fff);
+}
+
 .list {
 	position: absolute !important;
 	left: 0;

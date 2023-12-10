@@ -7,7 +7,7 @@ import { Text } from "@/components/Styled";
 
 import LogoutIcon from "pixelarticons/svg/logout.svg";
 import ClockIcon from "pixelarticons/svg/clock.svg";
-import ReactLogo from "@/assets/icons/react.svg";
+import ReactLogo from "@/assets/icons/react.svg?react";
 
 import styles from "./StartButton.module.scss";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -22,7 +22,7 @@ export function StartButton() {
 	return (
 		<div className={styles.container}>
 			<Button onClick={() => setOpen(!open)} active={open}>
-				<SVGIcon small src={ReactLogo} marginRight={biggerThanSm} alt='react logo as start button icon' />
+				<ReactLogo className={styles.reactIcon} />
 				{biggerThanSm && <Text>{t("nav.start")}</Text>}
 			</Button>
 			{open && (

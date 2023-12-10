@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
 import path from "path";
 
 import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfill";
@@ -47,7 +48,7 @@ export default defineConfig({
 			domain: "rollup-plugin-node-polyfills/polyfills/domain"
 		}
 	},
-	plugins: [react()],
+	plugins: [react(), svgr({ include: "**/*.svg?react" })],
 	optimizeDeps: {
 		esbuildOptions: {
 			// Node.js global to browser globalThis
