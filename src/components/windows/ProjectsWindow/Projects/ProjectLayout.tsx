@@ -7,8 +7,8 @@ import { Flex } from "@/components/Styled";
 import { SocialLink } from "@/components/SocialLink";
 import { SVGIcon } from "@/components/SVGIcon";
 
-import Github from "@/assets/icons/github.svg";
-import OpenIcon from "pixelarticons/svg/open.svg";
+import Github from "@/assets/icons/github.svg?react";
+import OpenIcon from "pixelarticons/svg/open.svg?react";
 
 import windowStyles from "../../Window.module.scss";
 import styles from "./ProjectLayout.module.scss";
@@ -28,10 +28,10 @@ export function ProjectLayout({ children, website, repo }: ProjectLayoutProps) {
 			<Frame variant='well' className={windowStyles.frame}>
 				<Flex gap={12} justify='space-between'>
 					<Anchor href={website} target='_blank' className={styles.webLink}>
-						<SVGIcon marginRight src={OpenIcon} alt='arrow pointing outside of a box' />
+						<SVGIcon marginRight Icon={OpenIcon} />
 						{t("btn.go-to-page")}
 					</Anchor>
-					{repo && <SocialLink iconSrc={Github} name='Github' link={repo} />}
+					{repo && <SocialLink Icon={Github} name='Github' link={repo} />}
 				</Flex>
 			</Frame>
 		</Flex>

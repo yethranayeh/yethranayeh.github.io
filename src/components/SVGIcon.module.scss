@@ -1,8 +1,9 @@
 @import "../styles/variables.module.scss";
 @import "../styles/mixins.scss";
 
-img.icon {
+.icon {
 	height: 24px;
+	width: auto;
 	margin: 0;
 
 	&.disabled {

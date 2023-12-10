@@ -1,9 +1,9 @@
 import { Flex } from "@/components/Styled";
+import { SVGIcon } from "@/components/SVGIcon";
+
+import ReactLogo from "@/assets/icons/react.svg?react";
 
 import styles from "./LoadingScreen.module.scss";
-import { SVGIcon } from "./SVGIcon";
-
-import ReactLogo from "@/assets/icons/react.svg";
 
 export const LoadingScreen = () => (
 	<main className={styles.container}>
@@ -11,7 +11,7 @@ export const LoadingScreen = () => (
 			<section>
 				<Flex align='flex-end'>
 					<p className={styles.company}>Meta</p>
-					<SVGIcon className={styles.logo} src={ReactLogo} alt='react logo' />
+					<SVGIcon Icon={ReactLogo} className={styles.logo} />
 				</Flex>
 				<p className={styles.product}>
 					React<span className={styles.language}>JS</span>

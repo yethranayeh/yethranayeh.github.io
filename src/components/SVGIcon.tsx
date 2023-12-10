@@ -1,22 +1,20 @@
+import type { FunctionComponent, SVGProps } from "react";
+
 import { clsx } from "clsx";
 
 import styles from "./SVGIcon.module.scss";
 
-interface SVGIconProps {
-	src: string;
-	alt: string;
-	className?: string;
-
+export interface SVGIconProps extends SVGProps<any> {
+	Icon: FunctionComponent<SVGProps<SVGSVGElement>>;
 	disabled?: boolean;
 	marginRight?: boolean;
 	marginLeft?: boolean;
 	small?: boolean;
 }
 
-export const SVGIcon = ({ src, alt, className, disabled, marginLeft, marginRight, small }: SVGIconProps) => (
-	<img
+export const SVGIcon = ({ Icon, className, disabled, marginLeft, marginRight, small }: SVGIconProps) => (
+	<Icon
 		aria-roledescription='icon'
-		src={src}
 		className={clsx(
 			styles.icon,
 			className,
@@ -25,6 +23,5 @@ export const SVGIcon = ({ src, alt, className, disabled, marginLeft, marginRight
 			marginRight && styles.mr,
 			small && styles.small
 		)}
-		alt={alt}
 	/>
 );

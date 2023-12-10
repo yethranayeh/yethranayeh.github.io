@@ -3,15 +3,16 @@ import { Button, MenuList, MenuListItem, Separator } from "react95";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+
 import { Text } from "@/components/Styled";
+import { SVGIcon } from "@/components/SVGIcon";
 
 import LogoutIcon from "pixelarticons/svg/logout.svg?react";
-import ClockIcon from "pixelarticons/svg/clock.svg";
+import ClockIcon from "pixelarticons/svg/clock.svg?react";
 import ReactLogo from "@/assets/icons/react.svg?react";
 
 import styles from "./StartButton.module.scss";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { SVGIcon } from "../SVGIcon";
 
 export function StartButton() {
 	const { t } = useTranslation("menu");
@@ -28,7 +29,7 @@ export function StartButton() {
 			{open && (
 				<MenuList className={styles.list} onClick={() => setOpen(false)}>
 					<MenuListItem disabled aria-disabled>
-						<SVGIcon disabled marginRight src={ClockIcon} alt='clock icon' /> In Progress
+						<SVGIcon disabled marginRight Icon={ClockIcon} /> In Progress
 					</MenuListItem>
 
 					<Separator />

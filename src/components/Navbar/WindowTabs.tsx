@@ -5,8 +5,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { SVGIcon } from "@/components/SVGIcon";
 import { Flex } from "@/components/Styled";
 
-import NotesIcon from "pixelarticons/svg/notes.svg";
-import BriefCaseSearchIcon from "pixelarticons/svg/briefcase-search.svg";
+import NotesIcon from "pixelarticons/svg/notes.svg?react";
+import BriefCaseSearchIcon from "pixelarticons/svg/briefcase-search.svg?react";
 
 import styles from "./WindowTabs.module.scss";
 
@@ -21,14 +21,14 @@ export function WindowTabs() {
 	return (
 		<Flex className={styles.container}>
 			<Button active={path === routes.hello} onClick={() => navigate(path === routes.hello ? "/" : routes.hello)}>
-				<SVGIcon marginRight src={NotesIcon} alt='an icon of a page, indicating writing' />
+				<SVGIcon marginRight Icon={NotesIcon} />
 				{t("window.hello")}
 			</Button>
 
 			<Button
 				active={path === routes.projects}
 				onClick={() => navigate(path === routes.projects ? "/" : routes.projects)}>
-				<SVGIcon marginRight src={BriefCaseSearchIcon} alt='an icon of a briefcase' />
+				<SVGIcon marginRight Icon={BriefCaseSearchIcon} />
 				{t("window.projects")}
 			</Button>
 		</Flex>
