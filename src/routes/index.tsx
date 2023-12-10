@@ -1,23 +1,14 @@
-/** @format */
-
 import { createHashRouter } from "react-router-dom";
-import MainLayout from "../layout/MainLayout";
-import HomePage from "./home";
+
+import MainLayout from "@/layout/MainLayout";
+
+import { pathDefinitions } from "@/constants/path-definitions";
 
 const router = createHashRouter([
 	{
 		path: "/",
 		element: <MainLayout />,
-		children: [
-			{
-				path: "/",
-				element: <HomePage />
-			},
-			{
-				path: "test",
-				element: <div>test</div>
-			}
-		]
+		children: pathDefinitions
 	}
 ]);
 

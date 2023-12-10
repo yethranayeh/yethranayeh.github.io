@@ -1,15 +1,16 @@
 import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame, Anchor } from "react95";
 
+import Draggable from "react-draggable";
 import { useTranslation } from "react-i18next";
 
 import { Flex, Text } from "@/components/Styled";
 import { SocialLink } from "@/components/SocialLink";
+import { CloseButton } from "@/components/CloseButton";
 
 import Github from "@/assets/icons/github.svg";
 import LinkedIn from "@/assets/icons/linkedin.svg";
 
 import styles from "./Window.module.scss";
-import Draggable from "react-draggable";
 
 export function IntroductionWindow() {
 	const { t } = useTranslation(["content", "menu"]);
@@ -17,8 +18,9 @@ export function IntroductionWindow() {
 	return (
 		<Draggable bounds='main' handle='.sc-cabOPr'>
 			<Window as='section' className={styles.window}>
-				<WindowHeader>
+				<WindowHeader className={styles.header}>
 					<span className='window-title'>{t("menu:window.hello")}</span>
+					<CloseButton />
 				</WindowHeader>
 				<Toolbar>
 					<Button disabled variant='menu' size='sm'>
@@ -28,7 +30,7 @@ export function IntroductionWindow() {
 						Düzenle
 					</Button>
 				</Toolbar>
-				<WindowContent as='article' className={styles.windowContent}>
+				<WindowContent as='article' className={styles.content}>
 					<Text>{t("introduction.about-me")}</Text>
 					<Text>{t("introduction.about-experience")}</Text>
 					<Text>{t("introduction.about-preferences")}</Text>

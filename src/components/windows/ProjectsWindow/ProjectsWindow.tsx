@@ -4,6 +4,8 @@ import { Suspense, lazy, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Draggable from "react-draggable";
 
+import { CloseButton } from "@/components/CloseButton";
+
 import windowStyles from "../Window.module.scss";
 import styles from "./ProjectsWindow.module.scss";
 
@@ -24,8 +26,9 @@ export function ProjectsWindow() {
 	return (
 		<Draggable bounds='main' handle='.sc-cabOPr'>
 			<Window as='section' className={windowStyles.window}>
-				<WindowHeader>
+				<WindowHeader className={windowStyles.header}>
 					<span className='window-title'>{t("menu:window.projects")}</span>
+					<CloseButton />
 				</WindowHeader>
 				<Tabs value={activeTab} onChange={setActiveTab}>
 					{tabs.map((tab) => (

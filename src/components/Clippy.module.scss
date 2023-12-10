@@ -8,6 +8,8 @@
 	right: $spacing-4;
 
 	width: max-content;
+
+	@include no-select;
 }
 
 .clippy {

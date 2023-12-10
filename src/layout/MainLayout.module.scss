@@ -3,7 +3,7 @@
 
 .container {
 	margin: 0;
-	min-height: 100vh;
+	min-height: 100svh;
 
 	display: grid;
 	grid-template-rows: auto 1fr auto;
@@ -18,12 +18,19 @@
 }
 
 .main {
-	min-height: calc(100vh - 60px);
-	padding-top: 50px;
+	min-height: calc(100svh - $navbar-height);
+	padding-top: $navbar-height;
+}
+
+.avatar {
+	position: absolute;
+	top: calc($navbar-height + $spacing-2);
+	left: $spacing-2;
+
+	@include no-select;
 
 	@include media-min-sm {
-		min-height: calc(100vh - 70px);
-		padding-top: 60px;
+		padding: 0;
 	}
 }
 

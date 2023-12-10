@@ -1,10 +1,10 @@
-/** @format */
+import { useEffect } from "react";
+import { Avatar } from "react95";
+
+import useCounter from "@/hooks/useCounter";
 
 import PixelatedIMG from "@/assets/pixelated.png";
 import PixelatedIMGEyesClosed from "@/assets/pixelated_c.png";
-import useCounter from "@/hooks/useCounter";
-import { useEffect } from "react";
-import { Avatar } from "react95";
 
 export function BlinkingEyesAvatar() {
 	const { count, increment } = useCounter(0);
