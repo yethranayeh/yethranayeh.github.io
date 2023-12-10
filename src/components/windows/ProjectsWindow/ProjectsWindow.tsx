@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import Draggable from "react-draggable";
 
 import { CloseButton } from "@/components/CloseButton";
+import { Loader } from "@/components/Loader";
 
 import windowStyles from "../Window.module.scss";
 import styles from "./ProjectsWindow.module.scss";
@@ -38,7 +39,9 @@ export function ProjectsWindow() {
 					))}
 				</Tabs>
 				<TabBody as='article' className={styles.tabBody}>
-					<Suspense fallback={null}>{activeTab === "Daily Space Palette" && <Project.DailySpacePalette />}</Suspense>
+					<Suspense fallback={<Loader />}>
+						{activeTab === "Daily Space Palette" && <Project.DailySpacePalette />}
+					</Suspense>
 				</TabBody>
 			</Window>
 		</Draggable>

@@ -10,6 +10,7 @@ import { LoadingScreen } from "@/components/LoadingScreen";
 import { Navbar } from "@/components/Navbar";
 
 import styles from "./MainLayout.module.scss";
+import { Loader } from "@/components/Loader";
 
 const loadingTime = getRandomIntRange(2500, 4000);
 
@@ -50,7 +51,7 @@ export default function MainLayout() {
 					</Flex>
 				</Flex>
 
-				<Suspense fallback={null}>
+				<Suspense fallback={<Loader />}>
 					<Outlet />
 				</Suspense>
 
