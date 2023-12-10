@@ -1,0 +1,48 @@
+@import "../styles/variables.module.scss";
+
+/* https://codepen.io/duptitung/pen/XMVNyZ */
+.container {
+	& * {
+		color: #fff;
+	}
+}
+
+.version {
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 30px;
+}
+
+.company {
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 16px;
+
+	margin-right: $spacing-2;
+
+	&:after {
+		content: "\00a9";
+		font-size: 10px;
+		position: relative;
+		top: -5px;
+		margin-left: 2px;
+	}
+}
+
+.logo {
+	height: 55px !important;
+}
+
+.product {
+	font-size: 46px;
+	font-weight: 700;
+	line-height: 36px;
+}
+
+.language {
+	font-size: 22px;
+	display: inline-block;
+	vertical-align: top;
+	color: #ff6821 !important;
+	margin-top: -8px;
+}

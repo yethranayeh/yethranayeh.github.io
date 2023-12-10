@@ -1,6 +1,6 @@
 import { Button, MenuList, MenuListItem, Separator } from "react95";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -8,14 +8,20 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Text } from "@/components/Styled";
 import { SVGIcon } from "@/components/SVGIcon";
 
+import { AuthContext } from "@/context/AuthContext";
+
 import LogoutIcon from "pixelarticons/svg/logout.svg?react";
 import ClockIcon from "pixelarticons/svg/clock.svg?react";
 import ReactLogo from "@/assets/icons/react.svg?react";
 
 import styles from "./StartButton.module.scss";
+import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
+import { useNavigate } from "react-router-dom";
 
 export function StartButton() {
 	const { t } = useTranslation("menu");
+	const { setIsLoggedIn } = useContext(AuthContext);
+	const navigate = useNavigate();
 	const biggerThanSm = useMediaQuery("sm");
 
 	const [open, setOpen] = useState(false);
@@ -34,7 +40,12 @@ export function StartButton() {
 
 					<Separator />
 
-					<MenuListItem onClick={() => window.close()}>
+					<MenuListItem
+						onClick={() => {
+							navigate("/");
+							setIsLoggedIn(false);
+							setBodyLoadingState("true");
+						}}>
 						<LogoutIcon height={24} />
 						{t("nav.logout")}
 					</MenuListItem>
