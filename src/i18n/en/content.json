@@ -8,5 +8,8 @@
 	},
 	"clippy": {
 		"greeting": "Hello, I'm Clippy!"
+	},
+	"error": {
+		"fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
 	}
 }

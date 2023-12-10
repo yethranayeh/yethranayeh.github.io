@@ -8,5 +8,8 @@
 	},
 	"clippy": {
 		"greeting": "Merhaba, ben Clippy!"
+	},
+	"error": {
+		"fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
 	}
 }

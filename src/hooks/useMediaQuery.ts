@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 
 import vars from "@/styles/variables.module.scss";
-console.log("🚀 ~ file: useMediaQuery.ts:5 ~ vars:", vars);
 
 const breakpoint = {
 	sm: vars.mediaSm,
