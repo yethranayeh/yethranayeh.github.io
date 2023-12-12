@@ -12,6 +12,7 @@ import { Navbar } from "@/components/Navbar";
 import { Loader } from "@/components/Loader";
 
 import { AuthContext } from "@/context/AuthContext";
+import { isLoggedOutKey } from "@/constants/storage";
 
 import styles from "./MainLayout.module.scss";
 
@@ -19,18 +20,21 @@ const LoginPage = lazy(() =>
 	import("@/components/LoginPage/LoginPage").then((module) => ({ default: module.LoginPage }))
 );
 
-const loadingTime = getRandomIntRange(2500, 4000);
+const isLoggedInStorageVal = localStorage.getItem(isLoggedOutKey) !== "true";
+
+const loadingTimeMultiplier = isLoggedInStorageVal ? 1 : 0.6;
+const loadingTime = getRandomIntRange(2500 * loadingTimeMultiplier, 4000 * loadingTimeMultiplier);
 
 export default function MainLayout() {
-	const [loading, setLoading] = useState(!import.meta.env.DEV);
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [loading, setLoading] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInStorageVal);
 
 	const authContextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn]);
 
 	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setLoading(false);
-			setBodyLoadingState("false");
+			isLoggedIn && setBodyLoadingState("false");
 		}, loadingTime);
 
 		return () => clearTimeout(timeout);

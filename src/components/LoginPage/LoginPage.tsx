@@ -1,17 +1,19 @@
 import { useContext } from "react";
 import { Button, TextInput } from "react95";
 
+import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
+
 import { Branding } from "@/components/Branding";
 import { Flex } from "@/components/Styled";
 import { BlinkingEyesAvatar } from "@/components/BlinkingEyesAvatar";
 import { SVGIcon } from "@/components/SVGIcon";
 
-import { AuthContext } from "@/context/AuthContext";
-
 import ArrowRight from "pixelarticons/svg/arrow-right.svg?react";
 
+import { AuthContext } from "@/context/AuthContext";
+import { isLoggedOutKey } from "@/constants/storage";
+
 import styles from "./LoginPage.module.scss";
-import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 
 function User() {
 	const { setIsLoggedIn } = useContext(AuthContext);
@@ -26,6 +28,7 @@ function User() {
 						e.preventDefault();
 						setIsLoggedIn(true);
 						setBodyLoadingState("false");
+						localStorage.setItem(isLoggedOutKey, "false");
 					}}>
 					<Flex gap={4}>
 						<TextInput required fullWidth minLength={6} className={styles.input} placeholder='Password' />
