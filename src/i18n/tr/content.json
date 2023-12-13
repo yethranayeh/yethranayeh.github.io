@@ -10,7 +10,7 @@
 		"about-current-job": "Şu anda, Etstur'da Yazılım Geliştirme Uzman Yardımcısı olarak çalışıyorum. Şirketin React bazlı B2B web uygulamarının geliştirilmesinde rol alıyorum.",
 		"about-experience": "Yazılım geliştirmeye oldukça ilgi duyduğum için, hedeflediğim kariyere öğrencilik dönemimde online içerikler tüketerek ile ve HackerRank vb. sitelerde testler çözerek yatırım yaptım.",
 		"about-me": "Ege Üniversitesi, İngiliz Dili ve Edebiyatı mezunuyum.",
-		"about-preferences": "Genel olarak web uygulamalarını TypeScript ve React.js ile geliştirmeyi tercih ediyorum. Geliştirdiğim uygulamaları ise Vitest ve react-testing-library ile, bazen de projeye göre Playwright ile de test ediyorum."
+		"about-preferences": "Genel olarak web uygulamalarını TypeScript ve React.js ile geliştirmeyi tercih ediyorum. Yaptığım geliştirmeleri Vitest ve react-testing-library ile, bazen de Playwright ile test ediyorum."
 	},
 	"login-screen": {
 		"footer-info": "Giriş yaptıktan sonra kullanıcı hesabı ekleyebilir veyak kullanıcıyı değiştirebilirsiniz.",
