@@ -11,5 +11,10 @@
 	},
 	"error": {
 		"fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
+	},
+	"login-screen": {
+		"footer-info": "After you log on, you can add or change accounts.",
+		"instructions": "To begin, please enter your password",
+		"turn-off": "Turn off computer"
 	}
 }

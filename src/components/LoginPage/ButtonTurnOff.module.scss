@@ -1,0 +1,102 @@
+// https://codepen.io/jkantner/pen/oNPRMQY
+.button {
+	display: flex;
+	position: relative;
+	margin: 0 auto 0.25em auto;
+	width: 3.3em;
+	height: 3.3em;
+
+	cursor: pointer;
+
+	outline: transparent;
+	border-radius: 0.5em;
+	background-color: hsl(12, 76%, 53%);
+	box-shadow: 0 0 0 1px hsl(0, 0%, 100%) inset, -5px -5px 5px hsla(0, 0%, 0%, 0.5) inset;
+	appearance: none;
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: transparent;
+
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+
+		inset: 4px;
+		border-radius: 0.25em;
+
+		background-color: hsla(0, 0%, 100%, 0);
+		background-image: radial-gradient(100% 100% at 0 0, hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0) 40%),
+			radial-gradient(100% 100% at 90% 90%, hsla(0, 0%, 100%, 0.15), hsla(0, 0%, 100%, 0) 50%);
+		box-shadow: 0.5em 0.5em 0.5em hsla(0, 0%, 100%, 0.15) inset;
+
+		transition: background-color 0.3s;
+	}
+
+	&:focus-visible::before,
+	&:hover::before {
+		background-color: hsla(0, 0%, 100%, 0.1);
+	}
+
+	&:active::before {
+		background-color: hsla(0, 0%, 0%, 0.2);
+	}
+}
+
+.icon {
+	margin: auto;
+	pointer-events: none;
+	width: 2.4em;
+	height: 2.4em;
+}
+
+.iconPart {
+	animation-duration: 1s;
+
+	&.animated {
+		transform-origin: 12px 12px;
+		animation-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+	}
+}
+
+.part1.animated {
+	animation-name: turnOff1;
+}
+
+.part2.animated {
+	animation-name: turnOff2;
+}
+
+/* Animations */
+@keyframes turnOff1 {
+	from {
+		transform: rotate(0);
+	}
+	33.33% {
+		transform: rotate(45deg);
+	}
+	66.67% {
+		transform: rotate(-225deg);
+	}
+	to {
+		transform: rotate(-180deg);
+	}
+}
+
+@keyframes turnOff2 {
+	from {
+		stroke-dashoffset: 0;
+		transform: rotate(-90deg);
+	}
+	33.33% {
+		stroke-dashoffset: 7.069;
+		transform: rotate(-45deg);
+	}
+	66.67% {
+		stroke-dashoffset: 49.48;
+		transform: rotate(-540deg);
+	}
+	to {
+		stroke-dashoffset: 0;
+		transform: rotate(-450deg);
+	}
+}

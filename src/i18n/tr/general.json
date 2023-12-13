@@ -1,6 +1,8 @@
 {
 	"btn": {
-		"go-to-page": "Web sayfasına git"
+		"go-to-page": "Web sayfasına git",
+		"login": "Giriş"
 	},
-	"loading": "Yükleniyor"
+	"loading": "Yükleniyor",
+	"password": "Şifre"
 }

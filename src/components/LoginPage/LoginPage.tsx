@@ -1,60 +1,25 @@
-import { useContext } from "react";
-import { Button, TextInput } from "react95";
-
-import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
+import { useTranslation } from "react-i18next";
 
 import { Branding } from "@/components/Branding";
 import { Flex } from "@/components/Styled";
-import { BlinkingEyesAvatar } from "@/components/BlinkingEyesAvatar";
-import { SVGIcon } from "@/components/SVGIcon";
-
-import ArrowRight from "pixelarticons/svg/arrow-right.svg?react";
-
-import { AuthContext } from "@/context/AuthContext";
-import { isLoggedOutKey } from "@/constants/storage";
+import { User } from "./User";
+import { ButtonTurnOff } from "./ButtonTurnOff";
 
 import styles from "./LoginPage.module.scss";
 
-function User() {
-	const { setIsLoggedIn } = useContext(AuthContext);
-
-	return (
-		<Flex gap={20}>
-			<BlinkingEyesAvatar />
-			<Flex direction='column' gap={8}>
-				<p>Alper Aktaş</p>
-				<form
-					onSubmit={(e) => {
-						e.preventDefault();
-						setIsLoggedIn(true);
-						setBodyLoadingState("false");
-						localStorage.setItem(isLoggedOutKey, "false");
-					}}>
-					<Flex gap={4}>
-						<TextInput required fullWidth minLength={6} className={styles.input} placeholder='Password' />
-						<Button type='submit'>
-							<SVGIcon Icon={ArrowRight} />
-						</Button>
-					</Flex>
-				</form>
-			</Flex>
-		</Flex>
-	);
-}
-
 export function LoginPage() {
+	const { t } = useTranslation("content");
 	return (
 		<main className={styles.container}>
 			<header className={styles.header}></header>
+
 			<section className={styles.branding}>
-				<Flex direction='column'>
+				<Flex direction='column' align='flex-end' gap={16}>
 					<Branding />
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis voluptatem neque totam minus distinctio
-						nesciunt.
-					</p>
+					<p>{t("login-screen.instructions")}</p>
 				</Flex>
 			</section>
+
 			<section className={styles.users}>
 				<ul>
 					<li>
@@ -62,7 +27,17 @@ export function LoginPage() {
 					</li>
 				</ul>
 			</section>
-			<footer className={styles.footer}></footer>
+
+			<Flex as='footer' className={styles.footer}>
+				<Flex as='section' align='center' justify='space-between' sx={{ width: "100%" }} wrap='wrap' gap={8}>
+					<Flex gap={12} align='center'>
+						<ButtonTurnOff />
+						<span>{t("login-screen.turn-off")}</span>
+					</Flex>
+
+					<p>{t("login-screen.footer-info")}</p>
+				</Flex>
+			</Flex>
 		</main>
 	);
 }

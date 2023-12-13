@@ -1,6 +1,8 @@
 {
 	"btn": {
-		"go-to-page": "Go to webpage"
+		"go-to-page": "Go to webpage",
+		"login": "Login"
 	},
-	"loading": "Loading"
+	"loading": "Loading",
+	"password": "Password"
 }
