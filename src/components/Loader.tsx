@@ -3,7 +3,7 @@ import { ProgressBar } from "react95";
 
 import styles from "./Loader.module.scss";
 
-const interval = 200;
+const interval = 50;
 
 export function Loader() {
 	const [percent, setPercent] = useState(0);
