@@ -1,4 +1,29 @@
 @import "../../styles/variables.module.scss";
+@import "../../styles/mixins.scss";
+
+.container {
+	flex-direction: column;
+	gap: $spacing-2;
+
+	@include media-min-md {
+		flex-direction: row;
+		gap: $spacing-5;
+	}
+}
+
+.formContainer,
+.container {
+	align-items: center;
+}
+
+.formContainer {
+	padding: 0 $spacing-6;
+
+	@include media-min-md {
+		align-items: flex-start;
+		padding: 0;
+	}
+}
 
 .input {
 	& > input {

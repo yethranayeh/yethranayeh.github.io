@@ -20,24 +20,31 @@ export function User() {
 	const { t } = useTranslation("general");
 
 	return (
-		<Flex gap={20}>
+		<Flex className={styles.container}>
 			<BlinkingEyesAvatar />
-			<Flex direction='column' gap={8}>
-				<p>Alper Aktaş</p>
-				<form
+			<Flex direction='column' gap={8} className={styles.formContainer}>
+				<label htmlFor='password'>Alper Aktaş</label>
+				<Flex
+					as='form'
+					gap={8}
 					onSubmit={(e) => {
 						e.preventDefault();
 						setIsLoggedIn(true);
 						setBodyLoadingState("false");
 						localStorage.setItem(isLoggedOutKey, "false");
 					}}>
-					<Flex gap={4}>
-						<TextInput required fullWidth minLength={6} className={styles.input} placeholder={t("password")} />
-						<Button type='submit' className={styles.button} title={t("btn.login")}>
-							<SVGIcon Icon={ArrowRight} />
-						</Button>
-					</Flex>
-				</form>
+					<TextInput
+						required
+						id='password'
+						fullWidth
+						minLength={6}
+						className={styles.input}
+						placeholder={t("password")}
+					/>
+					<Button type='submit' className={styles.button} title={t("btn.login")}>
+						<SVGIcon Icon={ArrowRight} />
+					</Button>
+				</Flex>
 			</Flex>
 		</Flex>
 	);
