@@ -9,7 +9,7 @@ import styles from "./Navbar.module.scss";
 
 export const Navbar = () => (
 	<AppBar as='nav' className={styles.container}>
-		<Toolbar>
+		<Toolbar className={styles.toolbar}>
 			<Flex gap={4} sx={{ marginRight: 4 }}>
 				<StartButton />
 				<Handle size={35} />
