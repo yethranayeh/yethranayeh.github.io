@@ -1,7 +1,8 @@
 import type { ButtonProps } from "react95";
 
-import { Button } from "react95";
 import { useNavigate } from "react-router-dom";
+
+import { AudioButton } from "@/components/AudioButton";
 
 import styles from "./CloseButton.module.scss";
 
@@ -10,8 +11,8 @@ export function CloseButton(props: ButtonProps) {
 	const returnToHomePage = () => navigate("/");
 
 	return (
-		<Button onClick={returnToHomePage} onTouchEnd={returnToHomePage} {...props}>
+		<AudioButton onClick={returnToHomePage} onTouchEnd={returnToHomePage} {...props}>
 			<span className={styles.icon} />
-		</Button>
+		</AudioButton>
 	);
 }

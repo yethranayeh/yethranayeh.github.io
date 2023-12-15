@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Button, TextInput } from "react95";
 import { useTranslation } from "react-i18next";
+import useSound from "use-sound";
 
 import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 
@@ -10,6 +11,8 @@ import { SVGIcon } from "@/components/SVGIcon";
 
 import ArrowRight from "pixelarticons/svg/arrow-right.svg?react";
 
+import LoginSound from "@/assets/audio/login.mp3";
+
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/constants/storage";
 
@@ -18,6 +21,7 @@ import styles from "./User.module.scss";
 export function User() {
 	const { setIsLoggedIn } = useContext(AuthContext);
 	const { t } = useTranslation("general");
+	const [playLogin] = useSound(LoginSound, { volume: 0.25 });
 
 	return (
 		<Flex className={styles.container}>
@@ -29,6 +33,7 @@ export function User() {
 					gap={8}
 					onSubmit={(e) => {
 						e.preventDefault();
+						playLogin();
 						setIsLoggedIn(true);
 						setBodyLoadingState("false");
 						localStorage.setItem(isLoggedOutKey, "false");

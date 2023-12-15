@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "react95";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { SVGIcon } from "@/components/SVGIcon";
+import { AudioButton } from "@/components/AudioButton";
 import { Flex } from "@/components/Styled";
+import { SVGIcon } from "@/components/SVGIcon";
 
 import NotesIcon from "pixelarticons/svg/notes.svg?react";
 import BriefCaseSearchIcon from "pixelarticons/svg/briefcase-search.svg?react";
@@ -20,17 +20,17 @@ export function WindowTabs() {
 
 	return (
 		<Flex className={styles.container}>
-			<Button active={path === routes.hello} onClick={() => navigate(path === routes.hello ? "/" : routes.hello)}>
+			<AudioButton active={path === routes.hello} onClick={() => navigate(path === routes.hello ? "/" : routes.hello)}>
 				<SVGIcon marginRight Icon={NotesIcon} />
 				{t("window.hello")}
-			</Button>
+			</AudioButton>
 
-			<Button
+			<AudioButton
 				active={path === routes.projects}
 				onClick={() => navigate(path === routes.projects ? "/" : routes.projects)}>
 				<SVGIcon marginRight Icon={BriefCaseSearchIcon} />
 				{t("window.projects")}
-			</Button>
+			</AudioButton>
 		</Flex>
 	);
 }
