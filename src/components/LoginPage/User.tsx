@@ -12,6 +12,7 @@ import { SVGIcon } from "@/components/SVGIcon";
 import ArrowRight from "pixelarticons/svg/arrow-right.svg?react";
 
 import LoginSound from "@/assets/audio/login.mp3";
+import TypingSound from "@/assets/audio/typing.mp3";
 
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/constants/storage";
@@ -22,6 +23,7 @@ export function User() {
 	const { setIsLoggedIn } = useContext(AuthContext);
 	const { t } = useTranslation("general");
 	const [playLogin] = useSound(LoginSound, { volume: 0.25 });
+	const [playTyping] = useSound(TypingSound);
 
 	return (
 		<Flex className={styles.container}>
@@ -45,6 +47,7 @@ export function User() {
 						minLength={6}
 						className={styles.input}
 						placeholder={t("password")}
+						onChange={() => playTyping()}
 					/>
 					<Button type='submit' className={styles.button} title={t("btn.login")}>
 						<SVGIcon Icon={ArrowRight} />
