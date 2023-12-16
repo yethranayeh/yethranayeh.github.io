@@ -4,12 +4,8 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 import { Branding } from "@/components/Branding";
 import { Flex } from "@/components/Styled";
-import { LanguageSelect } from "@/components/Navbar/LanguageSelect";
-import { SocialLink } from "@/components/SocialLink";
 import { User } from "./User";
 import { ButtonTurnOff } from "./ButtonTurnOff";
-
-import Github from "@/assets/icons/github.svg?react";
 
 import styles from "./LoginPage.module.scss";
 
@@ -19,17 +15,6 @@ export function LoginPage() {
 
 	return (
 		<main className={styles.container}>
-			{biggerThanLg && (
-				<Flex as='header' justify='space-between' className={styles.header}>
-					<SocialLink
-						name='Github Repo'
-						Icon={Github}
-						link='https://github.com/yethranayeh/yethranayeh.github.io/tree/react95'
-					/>
-					<LanguageSelect variant='flat' />
-				</Flex>
-			)}
-
 			<section className={styles.branding}>
 				<Flex direction='column' align={biggerThanLg ? "flex-end" : "center"} gap={16}>
 					<Branding />
