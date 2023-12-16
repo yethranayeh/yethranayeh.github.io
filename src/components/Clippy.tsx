@@ -54,6 +54,7 @@ export function Clippy() {
 		transitionState.bikeIn
 	);
 	const [isHovered, setIsHovered] = useState(false);
+	const isTransitioning = currentState.src === BikeIn || currentState.src === BikeOut
 
 	// Render Clippy riding bike in
 	useLayoutEffect(() => {
@@ -103,9 +104,9 @@ export function Clippy() {
 				className={styles.clippy}
 				title='Clippy'
 				alt='Microsoft Clippit animation'
-				onMouseEnter={() => setIsHovered(true)}
+				onMouseEnter={() => !isTransitioning && setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
-				onTouchStart={() => setIsHovered(true)}
+				onTouchStart={() => !isTransitioning && setIsHovered(true)}
 				onTouchEnd={() => setIsHovered(false)}
 			/>
 		</div>

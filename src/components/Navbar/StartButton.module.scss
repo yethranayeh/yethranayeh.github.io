@@ -8,9 +8,12 @@
 .reactIcon {
 	height: 24px;
 	width: auto;
-	margin-right: $spacing;
 
 	filter: drop-shadow(-1px -1px 0px #fff) drop-shadow(0px 0px 0px #fff);
+
+	@include media-min-sm {
+		margin-right: $spacing;
+	}
 }
 
 .list {
