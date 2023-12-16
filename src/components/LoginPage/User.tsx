@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, TextInput } from "react95";
 import { useTranslation } from "react-i18next";
 import useSound from "use-sound";
@@ -23,9 +23,17 @@ import styles from "./User.module.scss";
 export function User() {
 	const { setIsLoggedIn } = useContext(AuthContext);
 	const { t } = useTranslation("general");
+
+	const [isFormError, setIsFormError] = useState(false);
 	const [playLogin] = useSound(LoginSound, { volume: 0.25 });
 	const [playTyping] = useSound(TypingSound);
 	const [playError] = useSound(ErrorSound, { volume: 0.5 });
+
+	useEffect(() => {
+		const timeout = setTimeout(() => setIsFormError(false), 820);
+
+		return () => clearTimeout(timeout);
+	}, [isFormError]);
 
 	return (
 		<Flex className={styles.container}>
@@ -35,7 +43,11 @@ export function User() {
 				<Flex
 					as='form'
 					gap={8}
-					onInvalid={() => playError()}
+					className={isFormError ? styles.formError : undefined}
+					onInvalid={() => {
+						setIsFormError(true);
+						playError();
+					}}
 					onSubmit={(e) => {
 						e.preventDefault();
 						playLogin();
