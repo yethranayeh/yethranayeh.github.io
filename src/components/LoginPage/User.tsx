@@ -13,6 +13,7 @@ import ArrowRight from "pixelarticons/svg/arrow-right.svg?react";
 
 import LoginSound from "@/assets/audio/login.mp3";
 import TypingSound from "@/assets/audio/typing.mp3";
+import ErrorSound from "@/assets/audio/error.mp3";
 
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/constants/storage";
@@ -24,6 +25,7 @@ export function User() {
 	const { t } = useTranslation("general");
 	const [playLogin] = useSound(LoginSound, { volume: 0.25 });
 	const [playTyping] = useSound(TypingSound);
+	const [playError] = useSound(ErrorSound, { volume: 0.5 });
 
 	return (
 		<Flex className={styles.container}>
@@ -33,6 +35,7 @@ export function User() {
 				<Flex
 					as='form'
 					gap={8}
+					onInvalid={() => playError()}
 					onSubmit={(e) => {
 						e.preventDefault();
 						playLogin();
