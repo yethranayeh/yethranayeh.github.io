@@ -1,4 +1,5 @@
 export const routes = {
 	hello: "/hello",
-	projects: "/projects"
+	projects: "/projects",
+	apps: "/apps"
 } as const;

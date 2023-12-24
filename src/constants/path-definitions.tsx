@@ -11,6 +11,9 @@ const Windows = {
 	ProjectsWindow: lazy(() =>
 		import("@/components/windows/ProjectsWindow/ProjectsWindow").then((module) => ({ default: module.ProjectsWindow }))
 	),
+	AppsWindow: lazy(() =>
+		import("@/components/windows/AppsWindow/AppsWindow").then((module) => ({ default: module.AppsWindow }))
+	),
 	NotFoundWindow: lazy(() =>
 		import("@/components/windows/NotFoundWindow").then((module) => ({ default: module.NotFoundWindow }))
 	)
@@ -28,6 +31,10 @@ export const pathDefinitions: Array<RouteObject> = [
 	{
 		path: routes.projects,
 		element: <Windows.ProjectsWindow />
+	},
+	{
+		path: routes.apps,
+		element: <Windows.AppsWindow />
 	},
 	{
 		path: "*",

@@ -45,6 +45,9 @@ export function StartButton() {
 						<SVGIcon disabled marginRight Icon={ClockIcon} /> In Progress
 					</MenuListItem>
 
+					{/* TODO: Add meta information (the stack used to build this - libraries etc.) */}
+					{/* TODO: Add "volume-3" & "volume-x" pixelart icons to toggle app-wide sound on or off */}
+
 					<Separator />
 
 					<MenuListItem

@@ -19,7 +19,7 @@ const Project = {
 	)
 } as const;
 
-const tabs = ["Daily Space Palette", "Civciv"] as const;
+const tabs = ["Daily Space Palette"] as const;
 
 export function ProjectsWindow() {
 	const { t } = useTranslation(["content", "menu"]);
