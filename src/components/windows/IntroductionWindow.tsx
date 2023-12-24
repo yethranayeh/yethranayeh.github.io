@@ -33,10 +33,12 @@ export function IntroductionWindow() {
 					</Button>
 				</Toolbar>
 				<WindowContent as='article' className={styles.content}>
-					<Text>{t("introduction.about-me")}</Text>
-					<Text>{t("introduction.about-experience")}</Text>
-					<Text>{t("introduction.about-preferences")}</Text>
-					<Text>{t("introduction.about-current-job")}</Text>
+					<Frame variant='field' style={{ padding: 12 }}>
+						<Text contentEditable>{t("introduction.about-me")}</Text>
+						<Text contentEditable>{t("introduction.about-experience")}</Text>
+						<Text contentEditable>{t("introduction.about-preferences")}</Text>
+						<Text contentEditable>{t("introduction.about-current-job")}</Text>
+					</Frame>
 				</WindowContent>
 				<Frame variant='well' className={styles.frame}>
 					<Flex gap={12} justify='space-between'>
