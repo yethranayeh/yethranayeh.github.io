@@ -3,6 +3,7 @@ import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame } from "rea
 import Draggable from "react-draggable";
 import { useTranslation } from "react-i18next";
 
+import { WindowTitleText } from "./WindowTitleText";
 import { Flex, Text } from "@/components/Styled";
 import { SocialLink } from "@/components/SocialLink";
 import { CloseButton } from "@/components/CloseButton";
@@ -20,7 +21,7 @@ export function IntroductionWindow() {
 		<Draggable bounds='main' handle='.sc-cabOPr'>
 			<Window as='section' className={styles.window}>
 				<WindowHeader className={styles.header}>
-					<span className='window-title'>{t("menu:window.hello")}</span>
+					<WindowTitleText>{t("menu:window.hello")}</WindowTitleText>
 					<CloseButton />
 				</WindowHeader>
 				<Toolbar>

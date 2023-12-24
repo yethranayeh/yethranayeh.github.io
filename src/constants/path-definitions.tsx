@@ -10,6 +10,9 @@ const Windows = {
 	),
 	ProjectsWindow: lazy(() =>
 		import("@/components/windows/ProjectsWindow/ProjectsWindow").then((module) => ({ default: module.ProjectsWindow }))
+	),
+	NotFoundWindow: lazy(() =>
+		import("@/components/windows/NotFoundWindow").then((module) => ({ default: module.NotFoundWindow }))
 	)
 } as const;
 
@@ -28,6 +31,6 @@ export const pathDefinitions: Array<RouteObject> = [
 	},
 	{
 		path: "*",
-		element: <div>404</div>
+		element: <Windows.NotFoundWindow />
 	}
 ];

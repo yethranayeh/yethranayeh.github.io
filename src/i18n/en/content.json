@@ -1,16 +1,20 @@
 {
+	"404": {
+		"descripton": "The content you are trying to reach at '/{{path}}' is not available.",
+		"title": "404 - Content Not Found!"
+	},
+	"clippy": {
+		"greeting": "Hello, I'm Clippy!"
+	},
 	"daily-space-palette": "Daily Space Palette is a web project that fetches the Astronomy Picture of the Day using NASA's API, then generates a color palette from that picture.",
+	"error": {
+		"fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
+	},
 	"introduction": {
 		"about-current-job": "Currently, I work at Etstur as a Software Development Assistant and I participate in developing React-based B2B web applications.",
 		"about-experience": "Because of my profound interest in software development, I studied software through online content and solved test cases on websites like HackerRank to invest into the career that I desired to have during my studentship.",
 		"about-me": "I am an English Language and Literature graduate from Ege University.",
 		"about-preferences": "I generally prefer developing apps with TypeScript and React. Additionally, I write tests using Vitest and react-testing-library, and depending on the project, I may use Playwright as well."
-	},
-	"clippy": {
-		"greeting": "Hello, I'm Clippy!"
-	},
-	"error": {
-		"fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
 	},
 	"login-screen": {
 		"footer-info": "After you log on, you can add or change accounts.",

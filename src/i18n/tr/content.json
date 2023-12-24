@@ -1,4 +1,8 @@
 {
+	"404": {
+		"descripton": "'{{path}}' dizininde erişmeye çalıştığınız içerik bulunamadı.",
+		"title": "404 - İçerik Bulunamadı!"
+	},
 	"clippy": {
 		"greeting": "Merhaba, ben Clippy!"
 	},

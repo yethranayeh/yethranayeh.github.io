@@ -9,6 +9,7 @@ import { ButtonTurnOff } from "./ButtonTurnOff";
 
 import styles from "./LoginPage.module.scss";
 
+// TODO: make a static password and allow user 3 tries before locking out for 5 minutes with <Counter />
 export function LoginPage() {
 	const { t } = useTranslation("content");
 	const biggerThanLg = useMediaQuery("lg");
