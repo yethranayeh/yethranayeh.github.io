@@ -5,6 +5,7 @@ import styles from "./Loader.module.scss";
 
 const interval = 50;
 
+// TODO: Fix scrollbars appearing when loader is present on screen
 export function Loader() {
 	const [percent, setPercent] = useState(0);
 

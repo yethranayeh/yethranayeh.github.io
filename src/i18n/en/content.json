@@ -3,6 +3,7 @@
 		"descripton": "The content you are trying to reach at '/{{path}}' is not available.",
 		"title": "404 - Content Not Found!"
 	},
+	"base-url": "C:\\Users\\alperaktas",
 	"clippy": {
 		"greeting": "Hello, I'm Clippy!"
 	},
@@ -20,5 +21,17 @@
 		"footer-info": "After you log on, you can add or change accounts.",
 		"instructions": "To begin, please enter your password",
 		"turn-off": "Turn off computer"
+	},
+	"vigenere-cipher": {
+		"alphabet": "Alphabet",
+		"alphabet-disabled-tooltip": "Alphabet is currently restricted to only Latin characters",
+		"decrypt": "Decrypt",
+		"encrypt": "Encrypt",
+		"input": "Input",
+		"key": "Key",
+		"key-descripton": "Key to use for '{{method}}' method",
+		"method": "Method",
+		"output": "Output",
+		"title": "Vigenère Cipher"
 	}
 }

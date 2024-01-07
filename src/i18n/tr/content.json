@@ -3,6 +3,7 @@
 		"descripton": "'{{path}}' dizininde erişmeye çalıştığınız içerik bulunamadı.",
 		"title": "404 - İçerik Bulunamadı!"
 	},
+	"base-url": "C:\\Kullanıcılar\\alperaktas",
 	"clippy": {
 		"greeting": "Merhaba, ben Clippy!"
 	},
@@ -20,5 +21,17 @@
 		"footer-info": "Giriş yaptıktan sonra kullanıcı hesabı ekleyebilir veyak kullanıcıyı değiştirebilirsiniz.",
 		"instructions": "Başlamak için lütfen şifrenizi giriniz",
 		"turn-off": "Bilgisayarı kapat"
+	},
+	"vigenere-cipher": {
+		"alphabet": "Alfabe",
+		"alphabet-disabled-tooltip": "Alfabe şimdilik Latin harfleriyle sınırlandırılmıştır",
+		"decrypt": "Şifre Çöz",
+		"encrypt": "Şifrele",
+		"input": "Girdi",
+		"key": "Anahtar",
+		"key-descripton": "'{{method}}' yöntemi için kullanacağınız anahtar",
+		"method": "Yöntem",
+		"output": "Çıktı",
+		"title": "Vigenère Şifrelemesi"
 	}
 }

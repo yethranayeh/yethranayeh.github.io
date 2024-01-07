@@ -3,15 +3,18 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Frame } from "react95";
 import { useRef } from "react";
 
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+
 import { Flex } from "@/components/Styled";
+import { ImgIcon } from "@/components/ImgIcon";
 
 import OpenedFolderIcon from "@/assets/icons/Opened-Folder.ico";
 
 import styles from "./WindowURL.module.scss";
-import { ImgIcon } from "../ImgIcon";
 
 export function WindowURL() {
 	const { t } = useTranslation("content");
+	const biggerThanSm = useMediaQuery("sm");
 	const urlRef = useRef<HTMLSpanElement>(null);
 	const pathname = useLocation().pathname.replace("/", "");
 	const navigate = useNavigate();
@@ -21,7 +24,7 @@ export function WindowURL() {
 			<Flex as='header' align='center' gap={8}>
 				<ImgIcon src={OpenedFolderIcon} size={20} />
 				<div>
-					<span>{t("base-url") + "\\"}</span>
+					<span>{(biggerThanSm ? t("base-url") : "\\..\\alperaktas") + "\\"}</span>
 					<span
 						contentEditable
 						suppressContentEditableWarning

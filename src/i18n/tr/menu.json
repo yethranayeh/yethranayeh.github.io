@@ -4,6 +4,7 @@
 		"start": "Başlat"
 	},
 	"window": {
+		"apps": "Uygulamalar",
 		"hello": "Merhaba.txt",
 		"projects": "Projeler.exe"
 	}

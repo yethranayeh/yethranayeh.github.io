@@ -4,7 +4,8 @@
 		"start": "Start"
 	},
 	"window": {
+		"apps": "Apps",
 		"hello": "Hello.txt",
-		"projects": "Projects.exe"
+		"projects": "Projects"
 	}
 }
