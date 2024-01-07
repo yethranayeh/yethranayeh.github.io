@@ -3,7 +3,7 @@ import { Frame, GroupBox, Hourglass, Radio, TextInput, Window, WindowContent, Wi
 import { useTranslation } from "react-i18next";
 import Draggable from "react-draggable";
 
-import { handleCrypt } from "./functions";
+import { handleVigenere } from "./functions";
 
 import { Flex, Text } from "@/components/Styled";
 import { WindowTitleText } from "@/components/windows/WindowTitleText";
@@ -31,7 +31,7 @@ export function VigenereCipher({ handleCloseProps }: AppWindowProps) {
 		setIsLoading(true);
 		setTimeout(() => {
 			setIsLoading(false);
-			setOutput(handleCrypt({ method: method, key, message: input, alphabet }));
+			setOutput(handleVigenere({ method: method, key: key.toUpperCase(), message: input.toUpperCase(), alphabet }));
 		}, 0);
 	}, [method, key, input, alphabet]);
 
@@ -51,7 +51,6 @@ export function VigenereCipher({ handleCloseProps }: AppWindowProps) {
 							onChange={() => setMethod("encrypt")}
 						/>
 						<Radio
-							disabled
 							label={t("vigenere-cipher.decrypt")}
 							checked={method === "decrypt"}
 							value='decrypt'

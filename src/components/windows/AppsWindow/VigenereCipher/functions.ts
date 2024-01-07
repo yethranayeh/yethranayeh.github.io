@@ -1,13 +1,5 @@
-interface FunctionProps {
-	method: "encrypt" | "decrypt";
-	key: string;
-	message: string;
-	alphabet: string;
-}
-
-export function handleCrypt({ method, key, message, alphabet }: FunctionProps) {
+function generateColumn(alphabet: string) {
 	const column: Record<string, Array<string>> = {};
-	const msg = message.toUpperCase();
 
 	for (let letter of alphabet) {
 		const splitArr = alphabet.split(letter);
@@ -15,23 +7,47 @@ export function handleCrypt({ method, key, message, alphabet }: FunctionProps) {
 		column[letter] = letterPattern;
 	}
 
+	return column;
+}
+
+interface FunctionParams {
+	method: "encrypt" | "decrypt";
+	key: string;
+	message: string;
+	alphabet: string;
+}
+
+export function handleVigenere({ method, key, message, alphabet }: FunctionParams) {
+	const column = generateColumn(alphabet);
+
 	let ciphered = "";
 	let keyIndex = 0;
 
-	for (let character of msg) {
+	for (let character of message) {
+		let characterToAppend = "";
+
 		if (alphabet.includes(character)) {
-			// Check column <character>, at <key[keyIndex]>
 			const currentKeyChar = key[keyIndex];
-			const alphabetIndex = alphabet.indexOf(currentKeyChar);
-			const currentColumn = column[character];
-			const cipheredLetter = currentColumn[alphabetIndex];
+			if (method === "encrypt") {
+				const currentColumn = column[character];
+				const alphabetIndex = alphabet.indexOf(currentKeyChar);
+
+				characterToAppend = currentColumn[alphabetIndex];
+			} else if (method === "decrypt") {
+				const currentColumn = column[currentKeyChar];
+				const columnIndex = currentColumn.indexOf(character);
+
+				characterToAppend = alphabet[columnIndex];
+			}
+
 			if (++keyIndex >= key.length) {
 				keyIndex = 0;
 			}
-			ciphered += cipheredLetter;
 		} else {
-			ciphered += character;
+			characterToAppend = character;
 		}
+		ciphered += characterToAppend;
 	}
+
 	return ciphered;
 }
