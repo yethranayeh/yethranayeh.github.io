@@ -33,5 +33,93 @@
 		"method": "Yöntem",
 		"output": "Çıktı",
 		"title": "Vigenère Şifrelemesi"
+	},
+	"resume": {
+		"header": {
+			"name": "Alper Aktaş",
+			"title": "Yazılım Geliştirici",
+			"phone": "+90 534 621 81 05",
+			"mail": "contact@aktasalper.com",
+			"linkedIn": "https://www.linkedin.com/in/aktasalper/",
+			"portfolio": "https://www.aktasalper.com/",
+			"location": "Avcılar, İstanbul"
+		},
+		"education": {
+			"title": "Eğitim",
+			"list": [
+				{
+					"school": "Ege Üniversitesi",
+					"degree": "İngiliz Dili ve Edebiyatı",
+					"period": "Ekim 2021 - Kasım 2023"
+				}
+			]
+		},
+		"language": [],
+		"experience": {
+			"title": "Tecrübe",
+			"list": [
+				{
+					"company": "Etstur",
+					"title": "Yazılım Geliştirme Uzmanı",
+					"period": { "start": "Temmuz 3, 2024" },
+					"description": "Şirketin React bazlı B2B web uygulamarının geliştirilmesinde rol alıyorum.",
+					"roles": [
+						{
+							"project": "B2B UI Kit",
+							"description": "Standartlaştırılmış UI Kit",
+							"stack": ["Storybook", "React"]
+						}
+					]
+				},
+				{
+					"company": "Etstur",
+					"title": "Yazılım Geliştirme Uzman Yardımcısı",
+					"period": { "start": "Temmuz 25, 2022", "end": "Mayıs 13, 2024" },
+					"description": "Şirketin React bazlı B2B web uygulamarının geliştirilmesinde rol alıyorum. Confluence Wiki de dokümantasyon yazdım. 'DevOps Heroes' olarak adlandırılan şirket içindeki takımda, Front-end temsilcisi olarak bulundum.",
+					"roles": [
+						{
+							"project": "E-mail Templates",
+							"description": "En başta 'Etspartners' olmak üzere, Etstur tarafından kullanıcılara gönderilen e-postaların standartlaştırılması adına bu projeyi oluşturdum ve mevcut e-posta sürecine entegre ettim. Bu proje dahilinde yazmış olduğun CLI tool ile e-posta dosyalarında yapılan değişikliklerin hızlıca ve otomatik bir şekilde Mandrill'e deploy edilmesini sağladım.",
+							"stack": ["MJML", "React", "Mandrill"]
+						},
+						{
+							"project": "Extranet & Intranet Bakım",
+							"description": "Modernleştirme sürecinde, halihazırda müşteriler tarafından kullanılan eski projelerin bakım süreçlerinde de zaman zaman yer aldım.",
+							"stack": ["JavaScript", "FTL", "JSTL", "JSP", "Java"]
+						},
+						{
+							"project": "Dijital Kontrat",
+							"description": "Etstur kontrat ekibinin, otellerle imzalanan kontratların dijitalleştirilmesi ve kontrat süreçlerinin takibi için talep ettiği proje. Projenin başlangıcından canlıya çıktığı süreç boyunca tek front-end geliştirici olarak 'Dijital Kontrat'ın sorumluluğunu üstlendim. Böylece, Estur bünyesinde canlıya alınan ilk React projesinin geliştirilmesinde rol aldım. Proje canlıya alındıktan sonra ise, yerime devralan front-end ekibine aktarım ve bakım konusunda destek oldum.",
+							"stack": ["TypeScript", "React", "Vite"]
+						},
+						{
+							"project": "B2B Boilerplate",
+							"description": "B2B React projelerinin hızlıca ayağa kaldırılabilmesi adına oluşturduğum boilerplate projesi. Bu 'Etspartners' temellerini attıktan sonra, diğer B2B projelerimizde de ihtiyacımız olabilecek teknolojileri, kod standartlarını ve proje yapısını derleyip boilerplate üzerinde tekrar kullanılabilir hale getirdim.",
+							"stack": ["TypeScript", "React", "Vite", "Redux", "CASL"]
+						},
+						{
+							"project": "etspartners.com",
+							"description": "Etstur'un, birlikte çalıştığı otellere sunduğu B2B dashboard uygulamasının React ve Java Spring Boot kullanılarak tekrardan yazılmış modern hali. Projenin ön yüz iskeletinin oluşturulmasında rol aldım ve 'Dijital Kontrat' projesinde geçirdiğim zaman haricinde tüm geliştirme, bakım ve onarım süreçlerinde yer aldım.",
+							"stack": ["TypeScript", "React", "Vite"]
+						}
+					]
+				},
+				{
+					"company": "1Pixel Digital Agency",
+					"title": "Front-end Stajyerliği",
+					"period": { "start": "Ekim 2021", "end": "Kasım 2021" },
+					"description": "Jira üzerinden yönetilen Agile süreçte, sayfaların ilgili grafik tasarımlarına karşılık gelen işlevsel ve responsive bölümlerinin kodlanması.",
+					"roles": [
+						{
+							"project": "Shopify",
+							"description": "Shopify kullanan satıcılara, özelleştirilebilir temaların oluşturulması ve kullanımı kolay CMS kontrollerinin eklenmesi. Bu kontrolleri temalara entegre etmenin yanı sıra, Liquid templating dilini kullanarak dinamik mağaza verilerin sayfa öğelerine akışının sağlanması.",
+							"stack": ["HTML", "CSS", "Liquid"]
+						}
+					]
+				}
+			]
+		},
+		"reference": [],
+		"certificates": []
 	}
 }
