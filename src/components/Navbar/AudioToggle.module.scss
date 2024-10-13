@@ -1,0 +1,7 @@
+.button {
+	&::before,
+	&::after {
+		content: none;
+	}
+	padding: 4px;
+}

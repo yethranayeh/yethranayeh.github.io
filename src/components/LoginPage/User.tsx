@@ -19,15 +19,18 @@ import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/constants/storage";
 
 import styles from "./User.module.scss";
+import { useAtom } from "jotai";
+import { soundAtom } from "@/atoms/soundAtom";
 
 export function User() {
 	const { setIsLoggedIn } = useContext(AuthContext);
 	const { t } = useTranslation("general");
+	const [sound] = useAtom(soundAtom);
 
 	const [isFormError, setIsFormError] = useState(false);
-	const [playLogin] = useSound(LoginSound, { volume: 0.25 });
-	const [playTyping] = useSound(TypingSound);
-	const [playError] = useSound(ErrorSound, { volume: 0.5 });
+	const [playLogin] = useSound(LoginSound, { volume: 0.25, soundEnabled: sound.enabled });
+	const [playTyping] = useSound(TypingSound, { soundEnabled: sound.enabled });
+	const [playError] = useSound(ErrorSound, { volume: 0.5, soundEnabled: sound.enabled });
 
 	useEffect(() => {
 		const timeout = setTimeout(() => setIsFormError(false), 820);

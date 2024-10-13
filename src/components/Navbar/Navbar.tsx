@@ -1,9 +1,10 @@
 import { AppBar, Handle, Toolbar } from "react95";
 
+import Flex from "@/components/Styled/Flex";
 import { StartButton } from "./StartButton";
 import { LanguageSelect } from "./LanguageSelect";
-import Flex from "@/components/Styled/Flex";
 import { WindowTabs } from "./WindowTabs";
+import { AudioToggle } from "./AudioToggle";
 
 import styles from "./Navbar.module.scss";
 
@@ -20,6 +21,7 @@ export const Navbar = () => (
 			{/* TODO: Add battery icon for mobile or laptop: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getBattery */}
 			<Flex gap={4} sx={{ marginLeft: "auto" }}>
 				<Handle size={35} />
+				<AudioToggle />
 				<LanguageSelect />
 			</Flex>
 		</Toolbar>

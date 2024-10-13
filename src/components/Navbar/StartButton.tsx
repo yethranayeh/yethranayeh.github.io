@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import useSound from "use-sound";
+import { useAtom } from "jotai";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
@@ -23,13 +24,15 @@ import LogoffSound from "@/assets/audio/logoff.mp3";
 import styles from "./StartButton.module.scss";
 
 import { isLoggedOutKey } from "@/constants/storage";
+import { soundAtom } from "@/atoms/soundAtom";
 
 export function StartButton() {
 	const { t } = useTranslation("menu");
 	const { setIsLoggedIn } = useContext(AuthContext);
-	const [playLogoff] = useSound(LogoffSound, { volume: 0.25 });
 	const navigate = useNavigate();
 	const biggerThanSm = useMediaQuery("sm");
+	const [sound] = useAtom(soundAtom);
+	const [playLogoff] = useSound(LogoffSound, { volume: 0.25, soundEnabled: sound.enabled });
 
 	const [open, setOpen] = useState(false);
 
