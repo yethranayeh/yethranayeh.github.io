@@ -1,7 +1,7 @@
 .button {
 	&::before,
 	&::after {
-		content: none;
+		content: none !important;
 	}
-	padding: 4px;
+	padding: 4px !important;
 }
