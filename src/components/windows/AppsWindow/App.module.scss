@@ -1,0 +1,27 @@
+@import "../../../styles/variables.module.scss";
+@import "../../../styles/mixins.scss";
+
+.container {
+	max-width: 60px;
+	overflow: hidden;
+	padding: $spacing;
+
+	transition: background-color 100ms ease;
+
+	&:hover {
+		background-color: rgba($background, 0.3);
+	}
+
+	&.focused {
+		background-color: rgba($background, 0.5);
+	}
+}
+
+.name {
+	word-wrap: anywhere;
+	text-align: center;
+	font-size: 12px;
+	line-height: 12px;
+
+	@include no-select;
+}

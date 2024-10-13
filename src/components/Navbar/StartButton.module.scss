@@ -1,0 +1,23 @@
+@import "../../styles/variables.module.scss";
+@import "../../styles/mixins.scss";
+
+.container {
+	display: inline-block;
+}
+
+.reactIcon {
+	height: 24px;
+	width: auto;
+
+	filter: drop-shadow(-1px -1px 0px #fff) drop-shadow(0px 0px 0px #fff);
+
+	@include media-min-sm {
+		margin-right: $spacing;
+	}
+}
+
+.list {
+	position: absolute !important;
+	left: 0;
+	top: 100%;
+}

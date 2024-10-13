@@ -1,0 +1,11 @@
+{
+	"nav": {
+		"logout": "Çıkış",
+		"start": "Başlat"
+	},
+	"window": {
+		"apps": "Uygulamalar",
+		"resume": "Özgeçmiş.pdf",
+		"projects": "Projeler.exe"
+	}
+}

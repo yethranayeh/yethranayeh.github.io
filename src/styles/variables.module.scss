@@ -1,0 +1,25 @@
+$grey: rgb(198, 198, 198);
+$dark: rgb(10, 10, 10);
+$black: #0a0a0a;
+$background: #008080;
+
+$spacing: 4px;
+$spacing-2: 8px;
+$spacing-3: 12px;
+$spacing-4: 16px;
+$spacing-5: 20px;
+$spacing-6: 24px;
+
+$breakpoint-sm: 576;
+$breakpoint-md: 768;
+$breakpoint-lg: 992;
+$breakpoint-xl: 1200;
+
+$navbar-height: 56px;
+
+:export {
+	mediaSm: $breakpoint-sm;
+	mediaMd: $breakpoint-md;
+	mediaLg: $breakpoint-lg;
+	mediaXl: $breakpoint-xl;
+}

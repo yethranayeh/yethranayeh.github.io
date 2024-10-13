@@ -1,0 +1,40 @@
+{
+	"404": {
+		"descripton": "'{{path}}' dizininde erişmeye çalıştığınız içerik bulunamadı.",
+		"title": "404 - İçerik Bulunamadı!"
+	},
+	"base-url": "C:\\Kullanıcılar\\alperaktas",
+	"clippy": {
+		"greeting": "Merhaba, ben Clippy!"
+	},
+	"daily-space-palette": "Daily Space Palette, NASA'nın API içeriğini kullanarak Günün Astronomi Fotoğrafı'nı gösteriyor. Ek olarak, gelen bu fotoğraftaki renkleri analiz ederek çeşitli renk paletleri oluşturuyor.",
+	"error": {
+		"fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
+	},
+	"introduction": {
+		"menu": {
+			"resume": "Özgeçmiş"
+		},
+		"about-current-job": "Şu anda, Etstur'da Yazılım Geliştirme Uzman Yardımcısı olarak çalışıyorum. Şirketin React bazlı B2B web uygulamarının geliştirilmesinde rol alıyorum.",
+		"about-experience": "Yazılım geliştirmeye oldukça ilgi duyduğum için, hedeflediğim kariyere öğrencilik dönemimde online içerikler tüketerek ile ve HackerRank vb. sitelerde testler çözerek yatırım yaptım.",
+		"about-me": "Ege Üniversitesi, İngiliz Dili ve Edebiyatı mezunuyum.",
+		"about-preferences": "Genel olarak web uygulamalarını TypeScript ve React.js ile geliştirmeyi tercih ediyorum. Yaptığım geliştirmeleri Vitest ve react-testing-library ile, bazen de Playwright ile test ediyorum."
+	},
+	"login-screen": {
+		"footer-info": "Giriş yaptıktan sonra kullanıcı hesabı ekleyebilir veyak kullanıcıyı değiştirebilirsiniz.",
+		"instructions": "Başlamak için lütfen şifrenizi giriniz",
+		"turn-off": "Bilgisayarı kapat"
+	},
+	"vigenere-cipher": {
+		"alphabet": "Alfabe",
+		"alphabet-disabled-tooltip": "Alfabe şimdilik Latin harfleriyle sınırlandırılmıştır",
+		"decrypt": "Şifre Çöz",
+		"encrypt": "Şifrele",
+		"input": "Girdi",
+		"key": "Anahtar",
+		"key-descripton": "'{{method}}' yöntemi için kullanacağınız anahtar",
+		"method": "Yöntem",
+		"output": "Çıktı",
+		"title": "Vigenère Şifrelemesi"
+	}
+}

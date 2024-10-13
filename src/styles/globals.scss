@@ -1,0 +1,40 @@
+@import "./variables.module.scss";
+
+@font-face {
+	font-family: "pixeloid_sans";
+	src: url("../assets/fonts/PixeloidSans.ttf");
+	font-weight: 400;
+	font-style: normal;
+}
+
+body {
+	margin: 0 !important;
+	color: currentColor;
+	font-weight: 400;
+	font-family: "pixeloid_sans", sans-serif !important;
+
+	min-height: 100vh;
+
+	transition: background-color 300ms ease;
+
+	&[data-loading="false"] {
+		background-color: $background !important;
+	}
+}
+
+a {
+	img {
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+.window-title {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	margin-left: $spacing;
+}

@@ -1,0 +1,45 @@
+@import "../styles/variables.module.scss";
+@import "../styles/mixins.scss";
+
+.container {
+	margin: 0;
+	min-height: 100svh;
+
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+.container.fadeIn {
+	animation-name: fade-in;
+	animation-duration: 400ms;
+	animation-timing-function: ease-in;
+	animation-fill-mode: backwards;
+	animation-delay: 100ms;
+}
+
+.main {
+	min-height: calc(100svh - $navbar-height);
+	padding-top: $navbar-height;
+}
+
+.avatar {
+	position: absolute;
+	top: calc($navbar-height + $spacing-2);
+	left: $spacing-2;
+
+	@include no-select;
+
+	@include media-min-sm {
+		padding: 0;
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
