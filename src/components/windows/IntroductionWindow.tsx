@@ -15,29 +15,22 @@ import LinkedIn from "@/assets/icons/linkedin.svg?react";
 import styles from "./Window.module.scss";
 
 export function IntroductionWindow() {
-	const { t } = useTranslation(["content", "menu"]);
+	const { t, i18n } = useTranslation(["content", "menu"]);
 
 	return (
 		<Draggable bounds='main' handle='.sc-cabOPr'>
-			<Window as='section' className={styles.window}>
+			<Window as='section' className={styles.window} style={{ width: "22.7cm", maxWidth: "unset" }}>
 				<WindowHeader className={styles.header}>
-					<WindowTitleText>{t("menu:window.hello")}</WindowTitleText>
+					<WindowTitleText>{t("menu:window.resume")}</WindowTitleText>
 					<CloseButton />
 				</WindowHeader>
-				<Toolbar>
-					<Button disabled variant='menu' size='sm'>
-						Dosya
-					</Button>
-					<Button disabled variant='menu' size='sm'>
-						Düzenle
-					</Button>
-				</Toolbar>
+
 				<WindowContent as='article' className={styles.content}>
-					<Frame variant='field' style={{ padding: 12 }}>
-						<Text contentEditable>{t("introduction.about-me")}</Text>
-						<Text contentEditable>{t("introduction.about-experience")}</Text>
-						<Text contentEditable>{t("introduction.about-preferences")}</Text>
-						<Text contentEditable>{t("introduction.about-current-job")}</Text>
+					<Frame variant='field' style={{ overflowY: "scroll", overflowX: "hidden" }}>
+						<iframe
+							src={"https://www.aktasalper.com/resume/#/" + i18n.language}
+							style={{ width: "21.5cm", height: "29.7cm" }}
+						/>
 					</Frame>
 				</WindowContent>
 				<Frame variant='well' className={styles.frame}>

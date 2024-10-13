@@ -1,5 +1,5 @@
 export const routes = {
-	hello: "/hello",
+	resume: "/resume",
 	projects: "/projects",
 	apps: "/apps"
 } as const;

@@ -8,8 +8,8 @@ import { Flex } from "@/components/Styled";
 import { SVGIcon } from "@/components/SVGIcon";
 import { ImgIcon } from "@/components/ImgIcon";
 
-import NotesIcon from "pixelarticons/svg/notes.svg?react";
-import BriefCaseSearchIcon from "pixelarticons/svg/briefcase-search.svg?react";
+import UserSheetIcon from "@/assets/icons/User-Sheet.ico";
+import WebDocumentIcon from "@/assets/icons/Web-Document.ico";
 import FolderIcon from "@/assets/icons/Folder.ico";
 import OpenedFolderIcon from "@/assets/icons/Opened-Folder.ico";
 
@@ -45,8 +45,8 @@ export function WindowTabs() {
 
 	return (
 		<Flex className={styles.container}>
-			<WindowButton route={routes.hello} Icon={NotesIcon} text={t("window.hello")} />
-			<WindowButton route={routes.projects} Icon={BriefCaseSearchIcon} text={t("window.projects")} />
+			<WindowButton route={routes.resume} iconSrc={UserSheetIcon} text={t("window.resume")} />
+			<WindowButton route={routes.projects} iconSrc={WebDocumentIcon} text={t("window.projects")} />
 			<WindowButton route={routes.apps} iconSrc={FolderIcon} activeIconSrc={OpenedFolderIcon} text={t("window.apps")} />
 		</Flex>
 	);

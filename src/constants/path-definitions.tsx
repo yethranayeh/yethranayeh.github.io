@@ -25,7 +25,7 @@ export const pathDefinitions: Array<RouteObject> = [
 		element: <div></div>
 	},
 	{
-		path: routes.hello,
+		path: routes.resume,
 		element: <Windows.IntroductionWindow />
 	},
 	{
