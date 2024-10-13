@@ -38,11 +38,11 @@ export function StartButton() {
 
 	return (
 		<div className={styles.container}>
-			<AudioButton onClick={() => setOpen(!open)} active={open}>
+			<AudioButton onClick={() => setOpen(!open)} active={false} style={{ padding: "0 10px" }}>
 				<ReactLogo className={styles.reactIcon} />
 				{biggerThanSm && <Text>{t("nav.start")}</Text>}
 			</AudioButton>
-			{open && (
+			{false && (
 				<MenuList className={styles.list} onClick={() => setOpen(false)}>
 					<MenuListItem disabled aria-disabled>
 						<SVGIcon disabled marginRight Icon={ClockIcon} /> In Progress
