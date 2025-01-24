@@ -9,7 +9,6 @@ import rollupNodePolyFill from "rollup-plugin-node-polyfills";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	base: "https://www.aktasalper.com/",
 	define: {
 		"process.env": {}
 	},
