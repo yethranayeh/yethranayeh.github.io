@@ -1,0 +1,1 @@
+import{u as e,D as a,b as o,o as s}from"./index.d42229b9.js";import{D as i}from"./DraggableWindow.bef283bd.js";import{w as r}from"./Window.module.99eb4cf8.js";function m(){const{t}=e("content"),n=a().pathname.replace("/","");return o(i,{title:t("404.title"),children:o(s,{className:r.content,children:t("404.descripton",{path:n})})})}export{m as NotFoundWindow};
