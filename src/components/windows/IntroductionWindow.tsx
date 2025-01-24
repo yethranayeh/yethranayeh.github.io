@@ -1,10 +1,9 @@
-import { Window, Button, WindowHeader, WindowContent, Toolbar, Frame } from "react95";
-
-import Draggable from "react-draggable";
 import { useTranslation } from "react-i18next";
+import { Window, WindowHeader, WindowContent, Frame } from "react95";
+import Draggable from "react-draggable";
 
 import { WindowTitleText } from "./WindowTitleText";
-import { Flex, Text } from "@/components/Styled";
+import { Flex } from "@/components/Styled";
 import { SocialLink } from "@/components/SocialLink";
 import { CloseButton } from "@/components/CloseButton";
 import { MailLink } from "@/components/MailLink";
@@ -18,7 +17,7 @@ export function IntroductionWindow() {
 	const { t, i18n } = useTranslation(["content", "menu"]);
 
 	return (
-		<Draggable bounds='main' handle='.sc-cabOPr'>
+		<Draggable bounds='main' handle={styles.header}>
 			<Window as='section' className={styles.window} style={{ width: "22.7cm", maxWidth: "unset" }}>
 				<WindowHeader className={styles.header}>
 					<WindowTitleText>{t("menu:window.resume")}</WindowTitleText>
@@ -28,6 +27,7 @@ export function IntroductionWindow() {
 				<WindowContent as='article' className={styles.content}>
 					<Frame variant='field' style={{ overflowY: "scroll", overflowX: "hidden" }}>
 						<iframe
+							title='Resume'
 							src={"https://www.aktasalper.com/resume/#/" + i18n.language}
 							style={{ width: "21.5cm", height: "29.7cm" }}
 						/>

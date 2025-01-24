@@ -1,16 +1,13 @@
-import Draggable from "react-draggable";
 import { Suspense, lazy, useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Frame, Window, WindowHeader } from "react95";
+import { Frame } from "react95";
 
-import { WindowTitleText } from "../WindowTitleText";
-import { CloseButton } from "@/components/CloseButton";
+import { App } from "./App";
+import { WindowURL } from "../WindowURL";
+import { DraggableWindow } from "../DraggableWindow";
 import { Loader } from "@/components/Loader";
 
 import styles from "./AppsWindow.module.scss";
-import windowStyles from "../Window.module.scss";
-import { App } from "./App";
-import { WindowURL } from "../WindowURL";
 
 const Apps = {
 	VigenereCipher: {
@@ -41,20 +38,15 @@ export function AppsWindow() {
 
 	return (
 		<>
-			<Draggable bounds='main' handle='.sc-cabOPr'>
-				<Window className={windowStyles.window}>
-					<WindowHeader active={openedApp === -1} className={windowStyles.header}>
-						<WindowTitleText>{t("window.apps")}</WindowTitleText>
-						<CloseButton />
-					</WindowHeader>
-					<WindowURL />
-					<Frame as='section' variant='field' className={styles.frame}>
-						{appKeys.map((appKey, index) => (
-							<App key={Apps[appKey].name} name={Apps[appKey].name} onDoubleClick={() => setOpenedApp(index)} />
-						))}
-					</Frame>
-				</Window>
-			</Draggable>
+			<DraggableWindow title={t("window.apps")} HeaderProps={{ active: openedApp === -1 }}>
+				<WindowURL />
+				<Frame as='section' variant='field' className={styles.frame}>
+					{appKeys.map((appKey, index) => (
+						<App key={Apps[appKey].name} name={Apps[appKey].name} onDoubleClick={() => setOpenedApp(index)} />
+					))}
+				</Frame>
+			</DraggableWindow>
+
 			<Suspense fallback={<Loader />}>
 				{appKeys.map((appKey, index) => {
 					if (index === openedApp) {
