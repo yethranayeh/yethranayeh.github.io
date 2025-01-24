@@ -25,6 +25,7 @@ import styles from "./StartButton.module.scss";
 
 import { isLoggedOutKey } from "@/constants/storage";
 import { soundAtom } from "@/atoms/soundAtom";
+import ClickAwayListener from "react-click-away-listener";
 
 export function StartButton() {
 	const { t } = useTranslation("menu");
@@ -42,29 +43,31 @@ export function StartButton() {
 				<ReactLogo className={styles.reactIcon} />
 				{biggerThanSm && <Text>{t("nav.start")}</Text>}
 			</AudioButton>
-			{false && (
-				<MenuList className={styles.list} onClick={() => setOpen(false)}>
-					<MenuListItem disabled aria-disabled>
-						<SVGIcon disabled marginRight Icon={ClockIcon} /> In Progress
-					</MenuListItem>
+			{open && (
+				<ClickAwayListener onClickAway={() => setOpen(false)}>
+					<MenuList className={styles.list} onClick={() => setOpen(false)}>
+						<MenuListItem disabled aria-disabled>
+							<SVGIcon disabled marginRight Icon={ClockIcon} /> In Progress
+						</MenuListItem>
 
-					{/* TODO: Add meta information (the stack used to build this - libraries etc.) */}
-					{/* TODO: Add "volume-3" & "volume-x" pixelart icons to toggle app-wide sound on or off */}
+						{/* TODO: Add meta information (the stack used to build this - libraries etc.) */}
+						{/* TODO: Add "volume-3" & "volume-x" pixelart icons to toggle app-wide sound on or off */}
 
-					<Separator />
+						<Separator />
 
-					<MenuListItem
-						onClick={() => {
-							playLogoff();
-							navigate("/");
-							setIsLoggedIn(false);
-							setBodyLoadingState("true");
-							localStorage.setItem(isLoggedOutKey, "true");
-						}}>
-						<LogoutIcon height={24} />
-						{t("nav.logout")}
-					</MenuListItem>
-				</MenuList>
+						<MenuListItem
+							onClick={() => {
+								playLogoff();
+								navigate("/");
+								setIsLoggedIn(false);
+								setBodyLoadingState("true");
+								localStorage.setItem(isLoggedOutKey, "true");
+							}}>
+							<LogoutIcon height={24} />
+							{t("nav.logout")}
+						</MenuListItem>
+					</MenuList>
+				</ClickAwayListener>
 			)}
 		</div>
 	);
