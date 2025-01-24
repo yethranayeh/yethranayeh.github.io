@@ -11,7 +11,11 @@ export function CloseButton(props: ButtonProps) {
 	const returnToHomePage = () => navigate("/");
 
 	return (
-		<AudioButton onClick={returnToHomePage} onTouchEnd={returnToHomePage} {...props}>
+		<AudioButton
+			onMouseDown={(e) => e.stopPropagation()}
+			onClick={returnToHomePage}
+			onTouchEnd={returnToHomePage}
+			{...props}>
 			<span className={styles.icon} />
 		</AudioButton>
 	);
