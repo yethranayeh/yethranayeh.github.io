@@ -11,13 +11,14 @@ import styles from "./Window.module.scss";
 
 type Props = PropsWithChildren<{
 	title: string;
+	WindowProps?: ComponentProps<typeof Window>;
 	HeaderProps?: ComponentProps<typeof WindowHeader>;
 	CloseButtonProps?: ButtonProps;
 }>;
 
-export const DraggableWindow = ({ title, HeaderProps, CloseButtonProps, children }: Props) => (
+export const DraggableWindow = ({ title, WindowProps, HeaderProps, CloseButtonProps, children }: Props) => (
 	<Draggable bounds='main' handle={"." + styles.header}>
-		<Window className={styles.window}>
+		<Window className={styles.window} {...WindowProps}>
 			<WindowHeader className={styles.header} {...HeaderProps}>
 				<WindowTitleText>{title}</WindowTitleText>
 				<CloseButton {...CloseButtonProps} />

@@ -6,7 +6,7 @@ import { routes } from "@/constants/routes";
 
 const Windows = {
 	IntroductionWindow: lazy(() =>
-		import("@/components/windows/IntroductionWindow").then((module) => ({ default: module.IntroductionWindow }))
+		import("@/components/windows/ResumeWindow").then((module) => ({ default: module.ResumeWindow }))
 	),
 	ProjectsWindow: lazy(() =>
 		import("@/components/windows/ProjectsWindow/ProjectsWindow").then((module) => ({ default: module.ProjectsWindow }))
