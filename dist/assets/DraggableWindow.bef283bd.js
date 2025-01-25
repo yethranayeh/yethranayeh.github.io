@@ -1,1 +1,0 @@
-import{c as r,w as s,W as l,C as t}from"./Window.module.99eb4cf8.js";import{b as a,j as e,W as c,n as w}from"./index.d42229b9.js";const W=({title:n,HeaderProps:o,CloseButtonProps:d,children:i})=>a(r.exports,{bounds:"main",handle:"."+s.header,children:e(c,{className:s.window,children:[e(w,{className:s.header,...o,children:[a(l,{children:n}),a(t,{...d})]}),i]})});export{W as D};
