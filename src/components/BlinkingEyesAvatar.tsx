@@ -16,5 +16,7 @@ export function BlinkingEyesAvatar() {
 		return () => clearInterval(interval);
 	}, []);
 
-	return <Avatar size={80} src={count % 10 ? PixelatedIMG : PixelatedIMGEyesClosed} />;
+	return (
+		<Avatar size={80} src={count % 10 ? PixelatedIMG : PixelatedIMGEyesClosed} style={{ pointerEvents: "none" }} />
+	);
 }
