@@ -7,6 +7,7 @@ import PixelatedIMG from "@/assets/pixelated.png";
 import PixelatedIMGEyesClosed from "@/assets/pixelated_c.png";
 
 export function BlinkingEyesAvatar() {
+	// TODO: switch to GIF or webp?
 	const { count, increment } = useCounter(0);
 
 	useEffect(() => {

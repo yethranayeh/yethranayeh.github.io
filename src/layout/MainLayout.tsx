@@ -4,20 +4,22 @@ import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { getRandomIntRange } from "@/utils/getRandomIntRange";
 import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 
+import { Navbar } from "./components/Navbar";
+import { LoadingScreen } from "./components/LoadingScreen";
+import { Clippy } from "./components/Clippy";
+
 import { BlinkingEyesAvatar } from "@/components/BlinkingEyesAvatar";
-import { Clippy } from "@/components/Clippy";
 import { Flex, Text } from "@/components/Styled";
-import { LoadingScreen } from "@/components/LoadingScreen";
-import { Navbar } from "@/components/Navbar";
 import { Loader } from "@/components/Loader";
 
 import { AuthContext } from "@/context/AuthContext";
-import { isLoggedOutKey } from "@/constants/storage";
+import { isLoggedOutKey } from "@/config/storage";
 
 import styles from "./MainLayout.module.scss";
 
+// TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout
 const LoginPage = lazy(() =>
-	import("@/components/LoginPage/LoginPage").then((module) => ({ default: module.LoginPage }))
+	import("@/features/LoginPage/LoginPage").then((module) => ({ default: module.LoginPage }))
 );
 
 const isLoggedInStorageVal = localStorage.getItem(isLoggedOutKey) !== "true";

@@ -4,7 +4,7 @@ import { Button } from "react95";
 import { useAtom } from "jotai";
 import useSound from "use-sound";
 
-import { soundAtom } from "@/atoms/soundAtom";
+import { soundAtom } from "@/stores/soundAtom";
 
 import ClickSound from "@/assets/audio/click.mp3";
 

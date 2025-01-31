@@ -1,1 +1,0 @@
-type CipherMethod = "encrypt" | "decrypt";

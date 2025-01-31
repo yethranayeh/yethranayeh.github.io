@@ -1,0 +1,28 @@
+@import "../../../styles/variables.module.scss";
+
+.container {
+	padding: $spacing;
+	z-index: 999;
+
+	max-height: 56px;
+
+	animation-name: slide-down;
+	animation-duration: 600ms;
+	animation-timing-function: cubic-bezier(0.83, 0, 0.17, 1);
+	animation-delay: 600ms;
+	animation-fill-mode: backwards;
+}
+
+.toolbar {
+	max-height: 44px !important;
+}
+
+@keyframes slide-down {
+	0% {
+		transform: translateY(-60px);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}

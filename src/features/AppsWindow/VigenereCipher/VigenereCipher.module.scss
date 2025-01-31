@@ -1,0 +1,20 @@
+@import "../../../styles/variables.module.scss";
+
+.radioGroup_P4859 {
+	display: flex;
+	gap: $spacing-4;
+}
+
+.frame_R5g7 {
+	width: 100%;
+}
+
+.textArea_uKn24U {
+	width: 97.5% !important;
+	resize: vertical;
+	max-height: 150px;
+	min-height: 46px;
+	transform: translate(2px, 2px);
+
+	border: none;
+}

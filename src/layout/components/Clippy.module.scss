@@ -1,0 +1,38 @@
+@import "../../styles/variables.module.scss";
+@import "../../styles/mixins.scss";
+
+.container {
+	position: absolute;
+	top: unset;
+	bottom: $spacing-4;
+	right: $spacing-4;
+
+	width: max-content;
+
+	@include no-select;
+}
+
+.clippy {
+	cursor: pointer;
+}
+
+// react95's tooltip css
+.tooltip {
+	position: absolute;
+	z-index: 1;
+	display: block;
+	padding: 4px;
+	top: 60%;
+	left: -60%;
+	width: max-content;
+
+	border: 2px solid #0a0a0a;
+	background: #fefbcc;
+	box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.35);
+
+	text-align: center;
+	font-size: 1rem;
+	-webkit-transform: translate(-50%, -100%);
+	-ms-transform: translate(-50%, -100%);
+	transform: translate(-50%, -100%);
+}
