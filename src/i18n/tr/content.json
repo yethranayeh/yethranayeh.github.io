@@ -8,6 +8,7 @@
 		"greeting": "Merhaba, ben Clippy!"
 	},
 	"daily-space-palette": "Daily Space Palette, NASA'nın Astronomy Picture of The Day sitesinde paylaştığı fotoğraftan renk paleti üreten bir web projesidir. Astronomi resmi günlük olarak değişir ve her gün o resimden yeni bir renk paleti üretilir.",
+	"exalt-rates": "Path of Exile 2 oyuncuları için basit bir para birimi hesaplayıcısı sağlamayı amaçlayan bir proje. Kullanıcı birincil bir para birimi seçebilir, bir miktar girebilir ve diğer mevcut para birimleri için döviz kurlarını görüntüleyebilir.",
 	"error": {
 		"fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
 	},

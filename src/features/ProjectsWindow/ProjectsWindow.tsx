@@ -13,10 +13,15 @@ const Project = {
 		import("@/features/ProjectsWindow/Projects/DailySpacePalette").then((module) => ({
 			default: module.DailySpacePalette
 		}))
+	),
+	ExaltRates: lazy(() =>
+		import("@/features/ProjectsWindow/Projects/ExaltRates").then((module) => ({
+			default: module.ExaltRates
+		}))
 	)
 } as const;
 
-const tabs = ["Daily Space Palette"] as const;
+const tabs = ["Daily Space Palette", "Exalt Rates"] as const;
 
 export function ProjectsWindow() {
 	const { t } = useTranslation(["content", "menu"]);
@@ -34,6 +39,7 @@ export function ProjectsWindow() {
 			<TabBody as='article' className={styles.tabBody}>
 				<Suspense fallback={<Loader />}>
 					{activeTab === "Daily Space Palette" && <Project.DailySpacePalette />}
+					{activeTab === "Exalt Rates" && <Project.ExaltRates />}
 				</Suspense>
 			</TabBody>
 		</DraggableWindow>

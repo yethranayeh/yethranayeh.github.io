@@ -21,6 +21,8 @@ interface ProjectLayoutProps {
 
 export function ProjectLayout({ children, website, repo }: ProjectLayoutProps) {
 	const { t } = useTranslation();
+
+	// FIXME: text area should act like "flex: 1", and socials should always be at the bottom
 	return (
 		<Flex direction='column' gap={16}>
 			<article>{children}</article>
