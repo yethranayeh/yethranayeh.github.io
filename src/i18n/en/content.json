@@ -7,7 +7,7 @@
 	"clippy": {
 		"greeting": "Hello, I'm Clippy!"
 	},
-	"daily-space-palette": "Daily Space Palette is a web project that fetches the Astronomy Picture of the Day using NASA's API, then generates a color palette from that picture.",
+	"daily-space-palette": "Daily Space Palette is a web project that generates a color palette from NASA's Astronomy Picture of the Day. The astronomy picture changes daily, and each day a new color palette is generated from that picture.",
 	"error": {
 		"fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
 	},

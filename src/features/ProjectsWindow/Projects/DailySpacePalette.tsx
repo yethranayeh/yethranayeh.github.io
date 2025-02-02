@@ -7,9 +7,7 @@ export function DailySpacePalette() {
 	const { t } = useTranslation("content");
 
 	return (
-		<ProjectLayout
-			website='https://www.aktasalper.com/daily-space-palette/'
-			repo='https://github.com/yethranayeh/daily-space-palette'>
+		<ProjectLayout website='https://spacepalette.design/' repo='https://github.com/yethranayeh/daily-space-palette'>
 			<Text>{t("daily-space-palette")}</Text>
 		</ProjectLayout>
 	);
