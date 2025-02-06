@@ -42,7 +42,10 @@ export function User() {
 		<Flex className={styles.container}>
 			<BlinkingEyesAvatar />
 			<Flex direction='column' gap={8} className={styles.formContainer}>
-				<label htmlFor='password'>Alper Aktaş</label>
+				<label htmlFor='password' className={styles["label-user"]}>
+					<span>Alper Aktaş</span>
+					<span className={styles["user-role"]}>Web Developer</span>
+				</label>
 				<Flex
 					as='form'
 					gap={8}

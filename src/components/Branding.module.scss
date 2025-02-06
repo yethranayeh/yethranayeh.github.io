@@ -1,14 +1,16 @@
 @import "../styles/variables.module.scss";
+@import "../styles/mixins.scss";
 
 /* https://codepen.io/duptitung/pen/XMVNyZ */
 .container {
 	& * {
+		@include no-select;
 		color: #fff;
 	}
 }
 
 .version {
-	font-size: 20px;
+	font-size: 12px;
 	font-weight: 300;
 	line-height: 30px;
 }
@@ -27,10 +29,6 @@
 		top: -5px;
 		margin-left: 2px;
 	}
-}
-
-.logo {
-	height: 55px !important;
 }
 
 .product {

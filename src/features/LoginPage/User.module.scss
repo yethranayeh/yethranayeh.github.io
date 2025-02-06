@@ -1,6 +1,17 @@
 @import "../../styles/variables.module.scss";
 @import "../../styles/mixins.scss";
 
+.label-user {
+	display: inline-flex;
+	flex-direction: column;
+	line-height: 1.1;
+}
+
+.user-role {
+	font-size: 0.7rem;
+	opacity: 0.5;
+}
+
 .container {
 	flex-direction: column;
 	gap: $spacing-2;
