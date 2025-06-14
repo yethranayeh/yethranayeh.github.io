@@ -12,10 +12,19 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-		<script type="module" crossorigin src="/assets/index.bf253f1c.js"></script>
-		<link rel="stylesheet" href="/assets/index.a3dfaeb5.css" />
+		<script type="module" crossorigin src="/assets/index.e620d060.js"></script>
+		<link rel="stylesheet" href="/assets/index.a3dfaeb5.css">
 	</head>
 	<body style="background-color: #008080" data-loading="true">
 		<div id="root"></div>
+		
+		<script src="console/consoleimg.min.js"></script>
+		<script>
+			if (navigator.userAgent.indexOf("Firefox") > 0) {
+				consoleimg.load("console/spider-ff.gif", { size: 150 });
+			} else {
+				consoleimg.load("console/spider.gif", { size: 150 });
+			}
+		</script>
 	</body>
 </html>
