@@ -19,11 +19,11 @@ export function ResumeWindow() {
 			title={t("menu:window.resume")}
 			WindowProps={{ as: "section", style: { minWidth: "22.7cm", maxWidth: "unset" } }}>
 			<WindowContent as='article' className={styles.content}>
-				<Frame variant='field' style={{ overflowY: "scroll", overflowX: "hidden" }}>
+				<Frame variant='field' style={{ overflowY: "auto", overflowX: "hidden" }}>
 					<iframe
 						title='Resume'
 						src={"https://www.aktasalper.com/resume/#/" + i18n.language}
-						style={{ width: "21.5cm", height: "calc(29.7cm * 2)" }}
+						style={{ width: "21.5cm", height: "calc(30cm * 2)" }}
 					/>
 				</Frame>
 			</WindowContent>

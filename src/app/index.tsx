@@ -2,12 +2,12 @@
 import "@/styles/globals.scss";
 
 import { AppProvider } from "./provider";
-import { CRT } from "./components/CRT";
+import { ScanLineEffect } from "./components/ScanLineEffect";
 import GlobalStyles from "../config/GlobalStyles";
 
 const App = () => (
 	<AppProvider>
-		<CRT />
+		<ScanLineEffect />
 		<GlobalStyles />
 	</AppProvider>
 );

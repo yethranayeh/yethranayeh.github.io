@@ -74,7 +74,7 @@ export default function MainLayout() {
 
 						<Flex direction='column'>
 							<Text bold variant='title'>
-								Alper Aktaş
+								Alper
 							</Text>
 							<Text>Web Developer</Text>
 						</Flex>

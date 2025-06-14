@@ -9,13 +9,16 @@ const ErrorPage = lazy(() =>
 	import("@/app/routes/components/ErrorPage").then((module) => ({ default: module.ErrorPage }))
 );
 
-const router = createHashRouter([
-	{
-		path: "/",
-		element: <MainLayout />,
-		children: pathDefinitions,
-		errorElement: <ErrorPage />
-	}
-]);
+const router = createHashRouter(
+	[
+		{
+			path: "/",
+			element: <MainLayout />,
+			children: pathDefinitions,
+			errorElement: <ErrorPage />
+		}
+	],
+	{ future: { v7_relativeSplatPath: true } }
+);
 
 export default router;

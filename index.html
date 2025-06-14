@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Alper Aktaş - Web Developer</title>
+		<title>Alper - Web Developer</title>
 
 		<meta name="msapplication-TileColor" content="#00a300" />
 		<meta name="theme-color" content="#ffffff" />
@@ -16,5 +16,13 @@
 	<body style="background-color: #008080" data-loading="true">
 		<div id="root"></div>
 		<script type="module" src="/src/main.tsx"></script>
+		<script src="console/consoleimg.min.js"></script>
+		<script>
+			if (navigator.userAgent.indexOf("Firefox") > 0) {
+				consoleimg.load("console/spider-ff.gif", { size: 150 });
+			} else {
+				consoleimg.load("console/spider.gif", { size: 150 });
+			}
+		</script>
 	</body>
 </html>

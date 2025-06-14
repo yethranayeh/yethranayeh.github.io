@@ -4,6 +4,7 @@ import styles from "./Branding.module.scss";
 import { ReactAtom3D } from "./ReactAtom3D";
 import { Canvas } from "@react-three/fiber";
 
+// TODO: avoid 3D logo import on slow / metered connections
 const Logo = () => (
 	<Canvas style={{ width: 90, height: 110, marginLeft: -25, marginBottom: -25 }}>
 		<ambientLight intensity={1} />
