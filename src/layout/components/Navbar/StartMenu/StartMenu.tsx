@@ -20,6 +20,8 @@ import { SVGIcon } from "@/components/SVGIcon";
 import { ListItem } from "./ListItem/ListItem";
 
 import styles from "../StartButton.module.scss";
+import { closeModalAtom, openModalAtom } from "@/stores/modalAtom";
+import { ShutdownDialogContent } from "./ShutdownDialogContent";
 
 export function StartMenu({ onClose }: { onClose: () => void }) {
 	const { t } = useTranslation("menu");
@@ -27,6 +29,10 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	const navigate = useNavigate();
 	const [sound] = useAtom(soundAtom);
 	const [playLogoff] = useSound(LogoffSound, { volume: 0.25, soundEnabled: sound.enabled });
+
+	// TODO: refactor general modal handling
+	const [_, openModal] = useAtom(openModalAtom);
+	const [__, closeModal] = useAtom(closeModalAtom);
 
 	const onClickLogout = () => {
 		playLogoff();
@@ -36,11 +42,23 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 		localStorage.setItem(isLoggedOutKey, "true");
 	};
 
-	const onClickShutdown = () => {
-		// TODO: Implement a confirmation dialog before actually shutting down
-		document.documentElement.innerHTML = "";
-		document.body.style.backgroundColor = "black";
-	};
+	const onClickShutdown = () =>
+		openModal({
+			title: t("content:shutdown.title"),
+			content: (
+				<ShutdownDialogContent
+					onConfirm={(choice) => {
+						if (choice === "shutdown") {
+							document.documentElement.innerHTML = "";
+							document.body.style.backgroundColor = "black";
+						} else if (choice === "restart") {
+							window.location.reload();
+						}
+					}}
+					onCancel={closeModal}
+				/>
+			)
+		});
 
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {

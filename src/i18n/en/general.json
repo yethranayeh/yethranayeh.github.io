@@ -1,7 +1,11 @@
 {
 	"btn": {
 		"go-to-page": "Go to webpage",
-		"login": "Login"
+		"login": "Login",
+		"yes": "Yes",
+		"no": "No",
+		"ok": "OK",
+		"cancel": "Cancel"
 	},
 	"loading": "Loading",
 	"password": "Password"

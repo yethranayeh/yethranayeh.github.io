@@ -16,6 +16,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
 
 import styles from "./MainLayout.module.scss";
+import { GeneralModal } from "@/components/GeneralModal";
 
 // TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout
 const LoginPage = lazy(() =>
@@ -88,6 +89,7 @@ export default function MainLayout() {
 				</Suspense>
 
 				<Clippy />
+				<GeneralModal />
 			</main>
 		</div>
 	);
