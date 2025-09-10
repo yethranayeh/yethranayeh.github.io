@@ -7,7 +7,6 @@ import { DraggableWindow } from "@/components/windows/DraggableWindow";
 
 import styles from "./ProjectsWindow.module.scss";
 
-// TODO: Add ExaltRates
 const Project = {
 	DailySpacePalette: lazy(() =>
 		import("@/features/ProjectsWindow/Projects/DailySpacePalette").then((module) => ({

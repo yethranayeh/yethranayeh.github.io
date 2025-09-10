@@ -36,7 +36,7 @@ export function VigenereCipher({ handleCloseProps }: AppWindowProps) {
 	}, [method, key, input, alphabet]);
 
 	return (
-		<DraggableWindow title={t("vigenere-cipher.title")} CloseButtonProps={handleCloseProps}>
+		<DraggableWindow title={t("vigenere-cipher.title")} slotProps={{ closeButton: handleCloseProps }}>
 			<WindowContent className={windowStyles.content}>
 				<GroupBox label={t("vigenere-cipher.method")} className={styles.radioGroup_P4859}>
 					<Radio

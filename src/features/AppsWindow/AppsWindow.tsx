@@ -38,7 +38,7 @@ export function AppsWindow() {
 
 	return (
 		<>
-			<DraggableWindow title={t("window.apps")} HeaderProps={{ active: openedApp === -1 }}>
+			<DraggableWindow title={t("window.apps")} slotProps={{ header: { active: openedApp === -1 } }}>
 				<WindowURL />
 				<Frame as='section' variant='field' className={styles.frame}>
 					{appKeys.map((appKey, index) => (

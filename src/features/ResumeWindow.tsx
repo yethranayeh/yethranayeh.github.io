@@ -17,7 +17,7 @@ export function ResumeWindow() {
 	return (
 		<DraggableWindow
 			title={t("menu:window.resume")}
-			WindowProps={{ as: "section", style: { minWidth: "22.7cm", maxWidth: "unset" } }}>
+			slotProps={{ window: { as: "section", style: { minWidth: "22.7cm", maxWidth: "unset" } } }}>
 			<WindowContent as='article' className={styles.content}>
 				<Frame variant='field' style={{ overflowY: "auto", overflowX: "hidden" }}>
 					<iframe
