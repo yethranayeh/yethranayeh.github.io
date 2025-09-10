@@ -25,11 +25,13 @@ const LoginPage = lazy(() =>
 const isLoggedInStorageVal = localStorage.getItem(isLoggedOutKey) !== "true";
 
 const loadingTimeMultiplier = isLoggedInStorageVal ? 1 : 0.6;
-const loadingTime = getRandomIntRange(2500 * loadingTimeMultiplier, 4000 * loadingTimeMultiplier);
+const loadingTime = import.meta.env.DEV
+	? 0
+	: getRandomIntRange(2500 * loadingTimeMultiplier, 4000 * loadingTimeMultiplier);
 
 // TODO: refactor loading screen handling
 export default function MainLayout() {
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(!import.meta.env.DEV);
 	const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInStorageVal);
 
 	const authContextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn]);

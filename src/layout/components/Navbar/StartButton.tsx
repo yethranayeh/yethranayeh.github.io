@@ -1,40 +1,20 @@
-import { MenuList, MenuListItem, Separator } from "react95";
-
-import { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
-import useSound from "use-sound";
-import { useAtom } from "jotai";
+
+import { useState } from "react";
 
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 
 import { AudioButton } from "@/components/AudioButton";
 import { Text } from "@/components/Styled";
-import { SVGIcon } from "@/components/SVGIcon";
 
-import { AuthContext } from "@/context/AuthContext";
-
-import LogoutIcon from "pixelarticons/svg/logout.svg?react";
-import ClockIcon from "pixelarticons/svg/clock.svg?react";
 import ReactLogo from "@/assets/icons/react.svg?react";
 
-import LogoffSound from "@/assets/audio/logoff.mp3";
-
 import styles from "./StartButton.module.scss";
-
-import { isLoggedOutKey } from "@/config/storage";
-import { soundAtom } from "@/stores/soundAtom";
-import ClickAwayListener from "react-click-away-listener";
+import { StartMenu } from "./StartMenu";
 
 export function StartButton() {
 	const { t } = useTranslation("menu");
-	const { setIsLoggedIn } = useContext(AuthContext);
-	const navigate = useNavigate();
 	const biggerThanSm = useMediaQuery("sm");
-	const [sound] = useAtom(soundAtom);
-	const [playLogoff] = useSound(LogoffSound, { volume: 0.25, soundEnabled: sound.enabled });
-
 	const [open, setOpen] = useState(false);
 
 	return (
@@ -43,32 +23,7 @@ export function StartButton() {
 				<ReactLogo className={styles.reactIcon} />
 				{biggerThanSm && <Text>{t("nav.start")}</Text>}
 			</AudioButton>
-			{open && (
-				<ClickAwayListener onClickAway={() => setOpen(false)}>
-					<MenuList className={styles.list} onClick={() => setOpen(false)}>
-						<MenuListItem disabled aria-disabled>
-							<SVGIcon disabled marginRight Icon={ClockIcon} /> In Progress
-						</MenuListItem>
-
-						{/* TODO: Add meta information (the stack used to build this - libraries etc.) */}
-						{/* TODO: Add "volume-3" & "volume-x" pixelart icons to toggle app-wide sound on or off */}
-
-						<Separator />
-
-						<MenuListItem
-							onClick={() => {
-								playLogoff();
-								navigate("/");
-								setIsLoggedIn(false);
-								setBodyLoadingState("true");
-								localStorage.setItem(isLoggedOutKey, "true");
-							}}>
-							<LogoutIcon height={24} />
-							{t("nav.logout")}
-						</MenuListItem>
-					</MenuList>
-				</ClickAwayListener>
-			)}
+			{open && <StartMenu onClose={() => setOpen(false)} />}
 		</div>
 	);
 }
