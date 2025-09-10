@@ -1,22 +1,25 @@
 import { MenuList, MenuListItem, Separator } from "react95";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useSound from "use-sound";
 import { useAtom } from "jotai";
 import { useTranslation } from "react-i18next";
+import useSound from "use-sound";
 import ClickAwayListener from "react-click-away-listener";
 
 import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
 import { soundAtom } from "@/stores/soundAtom";
-import { SVGIcon } from "@/components/SVGIcon";
 
-import LogoutIcon from "pixelarticons/svg/logout.svg?react";
 import ClockIcon from "pixelarticons/svg/clock.svg?react";
+import W98Key from "@/assets/icons/w98_key.ico";
+import ShutdownIcon from "@/assets/icons/shutdown.ico";
 import LogoffSound from "@/assets/audio/logoff.mp3";
 
-import styles from "./StartButton.module.scss";
+import { SVGIcon } from "@/components/SVGIcon";
+import { ListItem } from "./ListItem/ListItem";
+
+import styles from "../StartButton.module.scss";
 
 export function StartMenu({ onClose }: { onClose: () => void }) {
 	const { t } = useTranslation("menu");
@@ -24,6 +27,46 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	const navigate = useNavigate();
 	const [sound] = useAtom(soundAtom);
 	const [playLogoff] = useSound(LogoffSound, { volume: 0.25, soundEnabled: sound.enabled });
+
+	const onClickLogout = () => {
+		playLogoff();
+		navigate("/");
+		setIsLoggedIn(false);
+		setBodyLoadingState("true");
+		localStorage.setItem(isLoggedOutKey, "true");
+	};
+
+	const onClickShutdown = () => {
+		// TODO: Implement a confirmation dialog before actually shutting down
+		document.documentElement.innerHTML = "";
+		document.body.style.backgroundColor = "black";
+	};
+
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			switch (event.key.toLowerCase()) {
+				case "Escape":
+					onClose();
+					break;
+				case "l":
+					onClose();
+					onClickLogout();
+					break;
+				case "u":
+					onClose();
+					onClickShutdown();
+					break;
+				default:
+					break;
+			}
+		};
+
+		document.addEventListener("keydown", handleKeyDown);
+
+		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
+		};
+	}, []);
 
 	return (
 		<ClickAwayListener onClickAway={onClose}>
@@ -37,17 +80,13 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 
 				<Separator />
 
-				<MenuListItem
-					onClick={() => {
-						playLogoff();
-						navigate("/");
-						setIsLoggedIn(false);
-						setBodyLoadingState("true");
-						localStorage.setItem(isLoggedOutKey, "true");
-					}}>
-					<LogoutIcon height={24} />
+				<ListItem onClick={onClickLogout} iconSrc={W98Key} hotkeyLetterIndex={0}>
 					{t("nav.logout")}
-				</MenuListItem>
+				</ListItem>
+
+				<ListItem onClick={onClickShutdown} iconSrc={ShutdownIcon} hotkeyLetterIndex={2}>
+					{t("nav.shutdown")}
+				</ListItem>
 			</MenuList>
 		</ClickAwayListener>
 	);

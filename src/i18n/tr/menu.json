@@ -1,6 +1,7 @@
 {
 	"nav": {
 		"logout": "Çıkış",
+		"shutdown": "Kapat...",
 		"start": "Başlat"
 	},
 	"window": {

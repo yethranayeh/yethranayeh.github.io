@@ -1,6 +1,7 @@
 {
 	"nav": {
 		"logout": "Logout",
+		"shutdown": "Shut Down...",
 		"start": "Start"
 	},
 	"window": {

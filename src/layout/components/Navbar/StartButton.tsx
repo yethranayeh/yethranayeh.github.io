@@ -10,7 +10,7 @@ import { Text } from "@/components/Styled";
 import ReactLogo from "@/assets/icons/react.svg?react";
 
 import styles from "./StartButton.module.scss";
-import { StartMenu } from "./StartMenu";
+import { StartMenu } from "./StartMenu/StartMenu";
 
 export function StartButton() {
 	const { t } = useTranslation("menu");
