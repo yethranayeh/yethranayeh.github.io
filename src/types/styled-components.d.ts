@@ -14,6 +14,7 @@ interface FlexProps {
 
 interface TextProps {
 	bold?: boolean;
+	underline?: boolean;
 	variant?: "title" | "body" | "caption";
 	p?: string | number;
 	m?: string | number;

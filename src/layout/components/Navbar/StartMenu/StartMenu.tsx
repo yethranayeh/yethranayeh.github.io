@@ -1,4 +1,4 @@
-import { MenuList, MenuListItem, Separator } from "react95";
+import { Frame, MenuList, MenuListItem, Separator } from "react95";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
@@ -11,7 +11,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
 import { soundAtom } from "@/stores/soundAtom";
 
-import ClockIcon from "pixelarticons/svg/clock.svg?react";
+import W98Book from "@/assets/icons/w98_book.ico";
 import W98Key from "@/assets/icons/w98_key.ico";
 import ShutdownIcon from "@/assets/icons/shutdown.ico";
 import LogoffSound from "@/assets/audio/logoff.mp3";
@@ -22,7 +22,9 @@ import { ListItem } from "./ListItem/ListItem";
 import styles from "../StartButton.module.scss";
 import { closeModalAtom, openModalAtom } from "@/stores/modalAtom";
 import { ShutdownDialogContent } from "./ShutdownDialogContent";
+import HelpDialogContent from "./HelpDialogContent";
 
+// FIXME: add alternating logic for hotkeys when language changes
 export function StartMenu({ onClose }: { onClose: () => void }) {
 	const { t } = useTranslation("menu");
 	const { setIsLoggedIn } = useContext(AuthContext);
@@ -33,6 +35,12 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	// TODO: refactor general modal handling
 	const [_, openModal] = useAtom(openModalAtom);
 	const [__, closeModal] = useAtom(closeModalAtom);
+
+	const onClickHelp = () =>
+		openModal({
+			title: t("nav.help"),
+			content: <HelpDialogContent />
+		});
 
 	const onClickLogout = () => {
 		playLogoff();
@@ -62,9 +70,14 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
+			// TODO: refactor to reduce code duplication
 			switch (event.key.toLowerCase()) {
 				case "Escape":
 					onClose();
+					break;
+				case "h":
+					onClose();
+					onClickHelp();
 					break;
 				case "l":
 					onClose();
@@ -89,9 +102,9 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	return (
 		<ClickAwayListener onClickAway={onClose}>
 			<MenuList className={styles.list} onClick={onClose}>
-				<MenuListItem disabled aria-disabled>
-					<SVGIcon disabled marginRight Icon={ClockIcon} /> In Progress
-				</MenuListItem>
+				<ListItem onClick={onClickHelp} iconSrc={W98Book} iconSize={24} hotkeyLetterIndex={0}>
+					{t("nav.help")}
+				</ListItem>
 
 				{/* TODO: Add meta information (the stack used to build this - libraries etc.) */}
 				{/* TODO: Add "volume-3" & "volume-x" pixelart icons to toggle app-wide sound on or off */}

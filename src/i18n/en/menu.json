@@ -1,12 +1,13 @@
 {
 	"nav": {
+		"help": "Help",
 		"logout": "Logout",
 		"shutdown": "Shut Down...",
 		"start": "Start"
 	},
 	"window": {
 		"apps": "Apps",
-		"resume": "Resume.pdf",
-		"projects": "Projects.exe"
+		"projects": "Projects.exe",
+		"resume": "Resume.pdf"
 	}
 }

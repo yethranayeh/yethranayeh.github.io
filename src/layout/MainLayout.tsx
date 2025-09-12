@@ -71,19 +71,6 @@ export default function MainLayout() {
 			</AuthContext.Provider>
 
 			<main className={styles.main}>
-				<Flex wrap='wrap' gap={24} justify='space-around' align='center' className={styles.avatar}>
-					<Flex align='center' gap={14}>
-						<BlinkingEyesAvatar />
-
-						<Flex direction='column'>
-							<Text bold variant='title'>
-								Alper
-							</Text>
-							<Text>Web Developer</Text>
-						</Flex>
-					</Flex>
-				</Flex>
-
 				<Suspense fallback={<Loader />}>
 					<Outlet />
 				</Suspense>

@@ -22,18 +22,6 @@
 	padding-top: $navbar-height;
 }
 
-.avatar {
-	position: absolute;
-	top: calc($navbar-height + $spacing-2);
-	left: $spacing-2;
-
-	@include no-select;
-
-	@include media-min-sm {
-		padding: 0;
-	}
-}
-
 @keyframes fade-in {
 	0% {
 		opacity: 0;

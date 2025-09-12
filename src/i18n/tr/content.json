@@ -12,6 +12,22 @@
 		"fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
 	},
 	"exalt-rates": "Path of Exile 2 oyuncuları için basit bir para birimi hesaplayıcısı sağlamayı amaçlayan bir proje. Kullanıcı birincil bir para birimi seçebilir, bir miktar girebilir ve diğer mevcut para birimleri için döviz kurlarını görüntüleyebilir.",
+	"help-dialog": {
+		"information-body": "Bu benim kişisel sayfam. Burada özgeçmişimi görüntüleyebilir, projelerimi inceleyebilir ve bu işletim sistemi içinde sunduğum küçük 'uygulamaları' çalıştırabilirsiniz.",
+		"information-title": "Bilgi",
+		"tips": {
+			"feedback-body": "Geri bildiriminiz değerli! Herhangi bir sorunla karşılaşırsanız veya öneriniz olursa lütfen bana bildirin.",
+			"feedback-title": "Geri Bildirim:",
+			"navigation-body": "Farklı bölümlere ve uygulamalara erişmek için Başlat Menüsünü kullanın.",
+			"navigation-title": "Navigasyon:",
+			"responsiveness-body": "Arayüz çeşitli ekran boyutlarında iyi çalışacak şekilde tasarlanmıştır, ancak en iyi deneyim için masaüstü veya dizüstü bilgisayar kullanın.",
+			"responsiveness-title": "Arayüz:",
+			"shortcuts-body": "Daha hızlı gezinmek için klavye kısayolları mevcuttur. Menü öğelerinde altı çizili harflere dikkat edin.",
+			"shortcuts-title": "Kısayollar:"
+		},
+		"tips-title": "İpuçları",
+		"title": "Yazılım Geliştirici"
+	},
 	"introduction": {
 		"about-current-job": "Şu anda, Etstur'da Yazılım Geliştirme Uzman Yardımcısı olarak çalışıyorum. Şirketin React bazlı B2B web uygulamarının geliştirilmesinde rol alıyorum.",
 		"about-experience": "Yazılım geliştirmeye oldukça ilgi duyduğum için, hedeflediğim kariyere öğrencilik dönemimde online içerikler tüketerek ile ve HackerRank vb. sitelerde testler çözerek yatırım yaptım.",

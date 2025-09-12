@@ -12,6 +12,22 @@
 		"fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
 	},
 	"exalt-rates": "A project that aims to provide a simple currency calculator for Path of Exile 2 players. The user can select a primary currency, enter an amount, and see view the exchange rates for other available currencies.",
+	"help-dialog": {
+		"information-body": "This is my portfolio page. Here you can view my resume, explore my projects, and run smaller 'apps' I included within this operating system.",
+		"information-title": "Information",
+		"tips": {
+			"feedback-body": "Your feedback is valuable! If you encounter any issues or have suggestions, please let me know.",
+			"feedback-title": "Feedback:",
+			"navigation-body": "Use the Start Menu to access different sections and applications.",
+			"navigation-title": "Navigation:",
+			"responsiveness-body": "The interface is designed to work well on various screen sizes, but for the best experience, use a desktop or laptop.",
+			"responsiveness-title": "Responsiveness:",
+			"shortcuts-body": "Keyboard shortcuts are available for quicker navigation. Look for underlined letters in menu items.",
+			"shortcuts-title": "Shortcuts:"
+		},
+		"tips-title": "Tips",
+		"title": "Software Developer"
+	},
 	"introduction": {
 		"about-current-job": "Currently, I work at Etstur as a Software Development Assistant and I participate in developing React-based B2B web applications.",
 		"about-experience": "Because of my profound interest in software development, I studied software through online content and solved test cases on websites like HackerRank to invest into the career that I desired to have during my studentship.",

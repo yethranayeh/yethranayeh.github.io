@@ -4,8 +4,9 @@ import { transformCssValue } from "@/utils/transformCssValue";
 
 const Text = styled.p<TextProps>`
 	display: inline-block;
-	font-size: ${(props) => (props.variant === "title" ? "24px" : props.variant === "caption" ? "10px" : "13px")};
+	font-size: ${(props) => (props.variant === "title" ? "24px" : props.variant === "caption" ? "10px" : "16px")};
 	font-weight: ${(props) => (props.bold ? "600" : "400")};
+	text-decoration: ${(props) => (props.underline ? "underline" : "none")};
 	color: ${(props) => (props.variant === "title" ? "#0a0a0a" : "#1a1a1a")} !important;
 	&::selection {
 		background-color: #c6c6c6;

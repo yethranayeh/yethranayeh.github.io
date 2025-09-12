@@ -6,7 +6,7 @@ import useCounter from "@/hooks/useCounter";
 import PixelatedIMG from "@/assets/pixelated.png";
 import PixelatedIMGEyesClosed from "@/assets/pixelated_c.png";
 
-export function BlinkingEyesAvatar() {
+export function BlinkingEyesAvatar({ avatarSize = 80 }: { avatarSize?: number }) {
 	// TODO: switch to GIF or webp?
 	const { count, increment } = useCounter(0);
 
@@ -18,6 +18,10 @@ export function BlinkingEyesAvatar() {
 	}, []);
 
 	return (
-		<Avatar size={80} src={count % 10 ? PixelatedIMG : PixelatedIMGEyesClosed} style={{ pointerEvents: "none" }} />
+		<Avatar
+			size={avatarSize}
+			src={count % 10 ? PixelatedIMG : PixelatedIMGEyesClosed}
+			style={{ pointerEvents: "none" }}
+		/>
 	);
 }
