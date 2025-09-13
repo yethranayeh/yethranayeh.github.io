@@ -1,1 +1,0 @@
-import{u as e,v as a,b as n,D as s,W as i,w as c}from"./index.a7aec950.js";function l(){const{t}=e("content"),o=a().pathname.replace("/","");return n(s,{title:t("404.title"),children:n(i,{className:c.content,children:t("404.descripton",{path:o})})})}export{l as NotFoundWindow};
