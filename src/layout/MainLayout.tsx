@@ -7,7 +7,6 @@ import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 import { Navbar } from "./components/Navbar";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { Clippy } from "./components/Clippy";
-import { GeneralModal } from "@/components/GeneralModal";
 import { WindowsOutlet } from "./components/WindowsOutlet";
 import DesktopOutlet from "./components/DesktopOutlet";
 import { Loader } from "@/components/Loader";
@@ -77,10 +76,8 @@ export default function MainLayout() {
 					<Outlet />
 				</Suspense>
 
-				<Clippy />
-				{/* TODO: phase out general modal and utilize WindowsOutlet */}
-				<GeneralModal />
 				<WindowsOutlet />
+				<Clippy />
 			</main>
 		</div>
 	);
