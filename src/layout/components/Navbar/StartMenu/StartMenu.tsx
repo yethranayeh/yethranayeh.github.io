@@ -10,7 +10,6 @@ import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
 import { soundAtom } from "@/stores/soundAtom";
-import { closeModalAtom, openModalAtom } from "@/stores/modalAtom";
 import { addWindowAtom } from "@/stores/window.atom";
 
 import W98Book from "@/assets/icons/w98_book.ico";
@@ -19,11 +18,11 @@ import ShutdownIcon from "@/assets/icons/shutdown.ico";
 import LogoffSound from "@/assets/audio/logoff.mp3";
 
 import { ListItem } from "./ListItem/ListItem";
-import { ShutdownDialogContent } from "./ShutdownDialogContent";
 
 import styles from "../StartButton.module.scss";
 
 const HelpDialogContent = lazy(() => import("./HelpDialogContent"));
+const ShutdownDialogContent = lazy(() => import("./ShutdownDialogContent"));
 
 // FIXME: add alternating logic for hotkeys when language changes
 export function StartMenu({ onClose }: { onClose: () => void }) {
@@ -33,10 +32,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	const [sound] = useAtom(soundAtom);
 	const [playLogoff] = useSound(LogoffSound, { volume: 0.25, soundEnabled: sound.enabled });
 
-	// TODO: refactor general modal handling
-	const [_, openModal] = useAtom(openModalAtom);
-	const [__, closeModal] = useAtom(closeModalAtom);
-	const [___, addWindow] = useAtom(addWindowAtom);
+	const [_, addWindow] = useAtom(addWindowAtom);
 
 	const onClickHelp = () =>
 		addWindow({
@@ -56,21 +52,21 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	};
 
 	const onClickShutdown = () =>
-		openModal({
+		addWindow({
+			id: "shutdown-dialog",
 			title: t("content:shutdown.title"),
-			content: (
-				<ShutdownDialogContent
-					onConfirm={(choice) => {
-						if (choice === "shutdown") {
-							document.documentElement.innerHTML = "";
-							document.body.style.backgroundColor = "black";
-						} else if (choice === "restart") {
-							window.location.reload();
-						}
-					}}
-					onCancel={closeModal}
-				/>
-			)
+			content: ShutdownDialogContent,
+			WindowProps: {
+				slotProps: {
+					draggable: {
+						defaultPosition: { x: (document.body.clientWidth - 340) / 2, y: (document.body.clientHeight - 230) / 2 }
+					}
+				}
+			},
+
+			// TODO: this window should not be minimizable
+			minimized: false,
+			iconSrc: ShutdownIcon
 		});
 
 	useEffect(() => {

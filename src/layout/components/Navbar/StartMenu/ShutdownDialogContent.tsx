@@ -1,21 +1,21 @@
-import { ImgIcon } from "@/components/ImgIcon";
-import { Flex } from "@/components/Styled";
-import ShutdownIcon from "@/assets/icons/shutdown.ico";
 import { useTranslation } from "react-i18next";
 import { Button, Radio, WindowContent } from "react95";
 import { useState } from "react";
+import { useAtom } from "jotai";
+
+import { removeWindowAtom } from "@/stores/window.atom";
+
+import { ImgIcon } from "@/components/ImgIcon";
+import { Flex } from "@/components/Styled";
+import ShutdownIcon from "@/assets/icons/shutdown.ico";
 
 type ShutdownChoice = "shutdown" | "restart";
 
-export function ShutdownDialogContent({
-	onConfirm,
-	onCancel
-}: {
-	onConfirm: (choice: ShutdownChoice) => void;
-	onCancel: () => void;
-}) {
+export default function ShutdownDialogContent() {
 	const { t } = useTranslation();
 	const [choice, setChoice] = useState<ShutdownChoice>("shutdown");
+
+	const [_, closeWindow] = useAtom(removeWindowAtom);
 
 	return (
 		<WindowContent>
@@ -43,8 +43,24 @@ export function ShutdownDialogContent({
 					</Flex>
 
 					<Flex gap={8}>
-						<Button onClick={() => onConfirm(choice)}>{t("btn.yes")}</Button>
-						<Button onClick={onCancel}>{t("btn.no")}</Button>
+						<Button
+							onClick={() => {
+								if (choice === "shutdown") {
+									document.documentElement.innerHTML = "";
+									document.body.style.backgroundColor = "black";
+								} else if (choice === "restart") {
+									window.location.reload();
+								}
+							}}>
+							{t("btn.yes")}
+						</Button>
+						<Button
+							onClick={() =>
+								// ? Maybe this component should not be aware of the window id; its responsibility should be to just render the content
+								closeWindow("shutdown-dialog")
+							}>
+							{t("btn.no")}
+						</Button>
 					</Flex>
 				</Flex>
 			</Flex>

@@ -19,8 +19,8 @@ export function WindowsOutlet() {
 					const Content = w.content;
 					return (
 						<DraggableWindow
-							{...w.WindowProps}
 							key={w.id}
+							{...w.WindowProps}
 							title={w.title}
 							slotProps={{
 								...w.WindowProps?.slotProps,
