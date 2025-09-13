@@ -7,16 +7,15 @@ import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 import { Navbar } from "./components/Navbar";
 import { LoadingScreen } from "./components/LoadingScreen";
 import { Clippy } from "./components/Clippy";
-
-import { BlinkingEyesAvatar } from "@/components/BlinkingEyesAvatar";
-import { Flex, Text } from "@/components/Styled";
+import { GeneralModal } from "@/components/GeneralModal";
+import { WindowsOutlet } from "./components/WindowsOutlet";
+import DesktopOutlet from "./components/DesktopOutlet";
 import { Loader } from "@/components/Loader";
 
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
 
 import styles from "./MainLayout.module.scss";
-import { GeneralModal } from "@/components/GeneralModal";
 
 // TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout
 const LoginPage = lazy(() =>
@@ -71,12 +70,17 @@ export default function MainLayout() {
 			</AuthContext.Provider>
 
 			<main className={styles.main}>
+				<DesktopOutlet />
+
+				{/* TODO: decide on what to do with routing and Outlet */}
 				<Suspense fallback={<Loader />}>
 					<Outlet />
 				</Suspense>
 
 				<Clippy />
+				{/* TODO: phase out general modal and utilize WindowsOutlet */}
 				<GeneralModal />
+				<WindowsOutlet />
 			</main>
 		</div>
 	);

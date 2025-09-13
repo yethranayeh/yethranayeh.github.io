@@ -3,7 +3,6 @@ import { Suspense, lazy, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Loader } from "@/components/Loader";
-import { DraggableWindow } from "@/components/windows/DraggableWindow";
 
 import styles from "./ProjectsWindow.module.scss";
 
@@ -27,7 +26,7 @@ export function ProjectsWindow() {
 	const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>(tabs[0]);
 
 	return (
-		<DraggableWindow title={t("menu:window.projects")}>
+		<>
 			<Tabs value={activeTab} onChange={setActiveTab}>
 				{tabs.map((tab) => (
 					<Tab key={tab} value={tab}>
@@ -41,6 +40,6 @@ export function ProjectsWindow() {
 					{activeTab === "Exalt Rates" && <Project.ExaltRates />}
 				</Suspense>
 			</TabBody>
-		</DraggableWindow>
+		</>
 	);
 }

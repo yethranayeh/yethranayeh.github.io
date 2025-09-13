@@ -15,9 +15,7 @@ export function ResumeWindow() {
 	const { t, i18n } = useTranslation(["content", "menu"]);
 
 	return (
-		<DraggableWindow
-			title={t("menu:window.resume")}
-			slotProps={{ window: { as: "section", style: { minWidth: "22.7cm", maxWidth: "unset" } } }}>
+		<>
 			<WindowContent as='article' className={styles.content}>
 				<Frame variant='field' style={{ overflowY: "auto", overflowX: "hidden" }}>
 					<iframe
@@ -36,6 +34,6 @@ export function ResumeWindow() {
 					</Flex>
 				</Flex>
 			</Frame>
-		</DraggableWindow>
+		</>
 	);
 }

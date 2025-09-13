@@ -1,0 +1,18 @@
+@import "../../styles/variables.module.scss";
+
+.icon {
+	position: relative;
+	width: 16px;
+	height: 16px;
+
+	&:before {
+		content: "";
+		position: absolute;
+		background: $black;
+		height: 4px;
+		width: 12px;
+		left: 35%;
+		bottom: 1px;
+		transform: translateX(-50%);
+	}
+}

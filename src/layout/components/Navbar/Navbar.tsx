@@ -16,6 +16,7 @@ export const Navbar = () => (
 				<StartButton />
 				<Handle size={35} />
 			</Flex>
+
 			<WindowTabs />
 
 			{/* TODO: Add battery icon for mobile or laptop: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getBattery */}

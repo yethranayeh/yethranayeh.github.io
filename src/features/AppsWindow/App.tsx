@@ -5,14 +5,12 @@ import clsx from "clsx";
 import { Flex } from "@/components/Styled";
 import { ImgIcon } from "@/components/ImgIcon";
 
-import ProgramIcon from "@/assets/icons/Program.ico";
-
 import styles from "./App.module.scss";
 
 interface AppProps {
 	name: string;
-	onDoubleClick: Function;
-	iconSrc?: string;
+	onDoubleClick: () => void;
+	iconSrc: string;
 }
 
 export function App({ name, onDoubleClick, iconSrc }: AppProps) {
@@ -27,12 +25,9 @@ export function App({ name, onDoubleClick, iconSrc }: AppProps) {
 				className={clsx(styles.container, isFocused && styles.focused)}
 				onClick={(e) => {
 					setIsFocused(true);
-
-					if (e.detail === 2) {
-						onDoubleClick();
-					}
-				}}>
-				<ImgIcon src={iconSrc ?? ProgramIcon} size={32} />
+				}}
+				onDoubleClick={onDoubleClick}>
+				<ImgIcon src={iconSrc} size={32} />
 				<span className={styles.name}>{`${name}.exe`}</span>
 			</Flex>
 		</ClickAwayListener>

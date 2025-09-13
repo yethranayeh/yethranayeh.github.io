@@ -1,5 +1,5 @@
-import { Frame, MenuList, MenuListItem, Separator } from "react95";
-import { useContext, useEffect } from "react";
+import { MenuList, Separator } from "react95";
+import { lazy, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { useTranslation } from "react-i18next";
@@ -10,19 +10,20 @@ import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
 import { soundAtom } from "@/stores/soundAtom";
+import { closeModalAtom, openModalAtom } from "@/stores/modalAtom";
+import { addWindowAtom } from "@/stores/window.atom";
 
 import W98Book from "@/assets/icons/w98_book.ico";
 import W98Key from "@/assets/icons/w98_key.ico";
 import ShutdownIcon from "@/assets/icons/shutdown.ico";
 import LogoffSound from "@/assets/audio/logoff.mp3";
 
-import { SVGIcon } from "@/components/SVGIcon";
 import { ListItem } from "./ListItem/ListItem";
+import { ShutdownDialogContent } from "./ShutdownDialogContent";
 
 import styles from "../StartButton.module.scss";
-import { closeModalAtom, openModalAtom } from "@/stores/modalAtom";
-import { ShutdownDialogContent } from "./ShutdownDialogContent";
-import HelpDialogContent from "./HelpDialogContent";
+
+const HelpDialogContent = lazy(() => import("./HelpDialogContent"));
 
 // FIXME: add alternating logic for hotkeys when language changes
 export function StartMenu({ onClose }: { onClose: () => void }) {
@@ -35,11 +36,15 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	// TODO: refactor general modal handling
 	const [_, openModal] = useAtom(openModalAtom);
 	const [__, closeModal] = useAtom(closeModalAtom);
+	const [___, addWindow] = useAtom(addWindowAtom);
 
 	const onClickHelp = () =>
-		openModal({
+		addWindow({
+			id: "help",
 			title: t("nav.help"),
-			content: <HelpDialogContent />
+			content: HelpDialogContent,
+			minimized: false,
+			iconSrc: W98Book
 		});
 
 	const onClickLogout = () => {
