@@ -1,1 +1,0 @@
-import{P as a}from"./ProjectLayout.00d480b0.js";import{u as s,b as t,T as o}from"./index.a7aec950.js";import"./github.f539c0b6.js";function n(){const{t:e}=s("content");return t(a,{website:"https://spacepalette.design/",repo:"https://github.com/yethranayeh/daily-space-palette",children:t(o,{children:e("daily-space-palette")})})}export{n as DailySpacePalette};

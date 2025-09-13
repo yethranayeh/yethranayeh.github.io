@@ -1,1 +1,0 @@
-import{u as a,b as t,T as r}from"./index.a7aec950.js";import{P as s}from"./ProjectLayout.00d480b0.js";import"./github.f539c0b6.js";function c(){const{t:e}=a("content");return t(s,{website:"https://exaltrates.trade/",repo:"https://github.com/yethranayeh/ExaltRates",children:t(r,{children:e("exalt-rates")})})}export{c as ExaltRates};
