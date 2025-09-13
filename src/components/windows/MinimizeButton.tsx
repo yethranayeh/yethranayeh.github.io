@@ -1,11 +1,9 @@
 import type { ButtonProps } from "react95";
-
-import { AudioButton } from "@/components/AudioButton";
-
+import { WindowButton } from "./WindowButton";
 import styles from "./MinimizeButton.module.scss";
 
-export const MinimizeButton = ({ onClick, ...props }: ButtonProps) => (
-	<AudioButton onMouseDown={(e) => e.stopPropagation()} onClick={onClick} onTouchEnd={onClick as any} {...props}>
+export const MinimizeButton = ({ onClick, ...props }: Omit<ButtonProps, "children">) => (
+	<WindowButton {...props}>
 		<span className={styles.icon} />
-	</AudioButton>
+	</WindowButton>
 );

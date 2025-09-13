@@ -1,11 +1,9 @@
 import type { ButtonProps } from "react95";
-
-import { AudioButton } from "@/components/AudioButton";
-
+import { WindowButton } from "./WindowButton";
 import styles from "./CloseButton.module.scss";
 
-export const CloseButton = ({ onClick, ...props }: ButtonProps) => (
-	<AudioButton onMouseDown={(e) => e.stopPropagation()} onClick={onClick} onTouchEnd={onClick as any} {...props}>
+export const CloseButton = ({ ...props }: Omit<ButtonProps, "children">) => (
+	<WindowButton {...props}>
 		<span className={styles.icon} />
-	</AudioButton>
+	</WindowButton>
 );
