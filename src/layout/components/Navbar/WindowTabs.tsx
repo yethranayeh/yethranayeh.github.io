@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { toggleMinimizeWindowAtom, windowsAtom } from "@/stores/window.atom";
 
 import { Flex } from "@/components/Styled";
-import { WindowButton } from "./WindowButton";
+import { TaskbarButton } from "./TaskbarButton";
 
 import styles from "./WindowTabs.module.scss";
 
@@ -16,7 +16,7 @@ export function WindowTabs() {
 	return (
 		<Flex className={styles.container}>
 			{windows.map((w) => (
-				<WindowButton
+				<TaskbarButton
 					key={w.id}
 					onClick={() => toggleMinimize(w.id)}
 					isActive={!w.minimized}
