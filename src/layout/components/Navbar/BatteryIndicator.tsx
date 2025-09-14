@@ -33,7 +33,7 @@ export function BatteryIndicator() {
 	const [battery, setBattery] = useState<Battery | null>(null);
 
 	useEffect(() => {
-		(navigator as any).getBattery().then((bat: BatteryManager) => {
+		(navigator as any)?.getBattery().then((bat: BatteryManager) => {
 			setBattery({
 				charging: bat.charging,
 				percent: bat.level * 100

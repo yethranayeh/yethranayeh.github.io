@@ -10,12 +10,6 @@ import { CurrentTime } from "./CurrentTime";
 import styles from "./Navbar.module.scss";
 import { BatteryIndicator } from "./BatteryIndicator";
 
-(navigator as any)?.getBattery().then((battery: any) => {
-	console.log("🚀 ~ battery:", battery);
-	// You can use the battery object here
-	console.log("Battery level:", battery.level * 100 + "%");
-});
-
 // FIXME: Navbar height changes when start button menu is opened
 export const Navbar = () => (
 	<AppBar as='nav' className={styles.container}>
@@ -27,7 +21,6 @@ export const Navbar = () => (
 
 			<WindowTabs />
 
-			{/* TODO: Add battery icon for mobile or laptop: https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getBattery */}
 			<Flex gap={4} sx={{ marginLeft: "auto" }}>
 				<Handle size={35} />
 				<Frame variant='well' style={{ height: 35, display: "flex", alignItems: "center" }}>
