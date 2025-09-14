@@ -7,7 +7,6 @@ import { removeWindowAtom } from "@/stores/window.atom";
 
 import { ImgIcon } from "@/components/ImgIcon";
 import { Flex } from "@/components/Styled";
-import ShutdownIcon from "@/assets/icons/shutdown.ico";
 import { computer } from "@/lib/computer";
 
 type ShutdownChoice = "shutdown" | "restart";
@@ -21,7 +20,7 @@ export default function ShutdownDialogContent() {
 	return (
 		<WindowContent>
 			<Flex gap={12}>
-				<ImgIcon size={44} src={ShutdownIcon} />
+				<ImgIcon size={44} src='/icon/shut_down_with_computer.ico' />
 				<Flex direction='column' align='flex-end' gap={16}>
 					<Flex direction='column' gap={8}>
 						<p>{t("content:shutdown.message")}</p>
