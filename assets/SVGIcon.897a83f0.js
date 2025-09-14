@@ -1,1 +1,0 @@
-import{b as e,h as m,n as s}from"./index.63e8fb09.js";const t=({Icon:a,className:o,disabled:l,marginLeft:c,marginRight:i,small:r})=>e(a,{"aria-roledescription":"icon",className:m(s.icon,o,l&&s.disabled,c&&s.ml,i&&s.mr,r&&s.small)});export{t as S};
