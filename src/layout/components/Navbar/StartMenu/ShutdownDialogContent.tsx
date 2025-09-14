@@ -8,6 +8,7 @@ import { removeWindowAtom } from "@/stores/window.atom";
 import { ImgIcon } from "@/components/ImgIcon";
 import { Flex } from "@/components/Styled";
 import ShutdownIcon from "@/assets/icons/shutdown.ico";
+import { computer } from "@/lib/computer";
 
 type ShutdownChoice = "shutdown" | "restart";
 
@@ -46,8 +47,7 @@ export default function ShutdownDialogContent() {
 						<Button
 							onClick={() => {
 								if (choice === "shutdown") {
-									document.documentElement.innerHTML = "";
-									document.body.style.backgroundColor = "black";
+									computer.shutdown();
 								} else if (choice === "restart") {
 									window.location.reload();
 								}

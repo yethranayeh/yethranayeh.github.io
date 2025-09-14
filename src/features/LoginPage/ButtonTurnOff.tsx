@@ -1,10 +1,12 @@
 // https://codepen.io/jkantner/pen/oNPRMQY
 
+import clsx from "clsx";
 import { useTranslation } from "react-i18next";
+import { useEffect, useRef, useState } from "react";
+
+import { computer } from "@/lib/computer";
 
 import styles from "./ButtonTurnOff.module.scss";
-import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
 
 export function ButtonTurnOff() {
 	const { t } = useTranslation("content");
@@ -36,7 +38,7 @@ export function ButtonTurnOff() {
 			onFocus={handleHover}
 			onMouseOver={handleHover}
 			onTouchStart={handleHover}
-			onClick={() => window.close()}>
+			onClick={() => computer.shutdown()}>
 			<svg className={styles.icon} viewBox='0 0 24 24' width='24px' height='24px' aria-hidden='true'>
 				<g fill='none' stroke='#fff'>
 					<polyline
