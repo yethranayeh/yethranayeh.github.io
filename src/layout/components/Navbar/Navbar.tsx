@@ -8,6 +8,13 @@ import { LanguageSelect } from "./LanguageSelect";
 import { CurrentTime } from "./CurrentTime";
 
 import styles from "./Navbar.module.scss";
+import { BatteryIndicator } from "./BatteryIndicator";
+
+(navigator as any)?.getBattery().then((battery: any) => {
+	console.log("🚀 ~ battery:", battery);
+	// You can use the battery object here
+	console.log("Battery level:", battery.level * 100 + "%");
+});
 
 // FIXME: Navbar height changes when start button menu is opened
 export const Navbar = () => (
@@ -28,6 +35,7 @@ export const Navbar = () => (
 						<AudioToggle />
 						<LanguageSelect />
 						<CurrentTime />
+						<BatteryIndicator />
 					</Flex>
 				</Frame>
 			</Flex>
