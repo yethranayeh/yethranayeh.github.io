@@ -20,7 +20,7 @@ import { soundAtom } from "@/stores/soundAtom";
 
 export function User() {
 	const { setIsLoggedIn } = useContext(AuthContext);
-	const { t } = useTranslation("general");
+	const { t } = useTranslation();
 	const [sound] = useAtom(soundAtom);
 
 	const [isFormError, setIsFormError] = useState(false);
@@ -40,7 +40,7 @@ export function User() {
 			<Flex direction='column' gap={8} className={styles.formContainer}>
 				<label htmlFor='password' className={styles["label-user"]}>
 					<span>Alper</span>
-					<span className={styles["user-role"]}>Web Developer</span>
+					<span className={styles["user-role"]}>{t("content:user.title")}</span>
 				</label>
 				<Flex
 					as='form'

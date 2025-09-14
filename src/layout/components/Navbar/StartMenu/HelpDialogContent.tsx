@@ -15,7 +15,7 @@ const MyCard = () => {
 						<Text bold variant='title'>
 							Alper
 						</Text>
-						<Text>{t("help-dialog.title")}</Text>
+						<Text>{t("user.title")}</Text>
 					</Flex>
 				</Flex>
 			</Flex>

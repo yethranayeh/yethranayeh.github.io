@@ -25,8 +25,7 @@
 			"shortcuts-body": "Keyboard shortcuts are available for quicker navigation. Look for underlined letters in menu items.",
 			"shortcuts-title": "Shortcuts:"
 		},
-		"tips-title": "Tips",
-		"title": "Software Developer"
+		"tips-title": "Tips"
 	},
 	"introduction": {
 		"about-current-job": "Currently, I work at Etstur as a Software Development Assistant and I participate in developing React-based B2B web applications.",
@@ -47,6 +46,9 @@
 		"option-restart": "Restart the page?",
 		"option-shutdown": "Shut down the page?",
 		"title": "Shut Down"
+	},
+	"user": {
+		"title": "Software Developer"
 	},
 	"vigenere-cipher": {
 		"alphabet": "Alphabet",
