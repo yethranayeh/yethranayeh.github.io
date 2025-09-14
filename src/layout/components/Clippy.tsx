@@ -2,18 +2,6 @@
 import { useLayoutEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import BikeIn from "@/assets/clippy/bike_in.gif";
-import BikeOut from "@/assets/clippy/bike_out.gif";
-import Atom from "@/assets/clippy/atom.gif";
-import Dozing from "@/assets/clippy/dozing.gif";
-import Grinder from "@/assets/clippy/grinder.gif";
-import Laze from "@/assets/clippy/laze.gif";
-import ListeningToMusic from "@/assets/clippy/listening_music.gif";
-import LookingDown from "@/assets/clippy/looking_down.gif";
-import Stationary from "@/assets/clippy/stationary.gif";
-import TappingScreen from "@/assets/clippy/tapping_screen.gif";
-import Thinking from "@/assets/clippy/thinking.gif";
-
 import styles from "./Clippy.module.scss";
 
 const initialRenderDelay = 1000;
@@ -23,18 +11,18 @@ type TransitionState = "stationary" | "bikeIn" | "bikeOut";
 type CycleState = "atom" | "dozing" | "laze" | "music" | "grinder" | "tapping" | "thinking";
 
 const transitionState: ClippyStateObj<TransitionState> = {
-	stationary: { src: Stationary, duration: 4000 },
-	bikeIn: { src: BikeIn, duration: 3500 },
-	bikeOut: { src: BikeOut, duration: 4000 }
+	stationary: { src: "/clippy/stationary.gif", duration: 4000 },
+	bikeIn: { src: "/clippy/bike_in.gif", duration: 3500 },
+	bikeOut: { src: "/clippy/bike_out.gif", duration: 4000 }
 };
 const cycleState: ClippyStateObj<CycleState> = {
-	atom: { src: Atom, duration: 4500 },
-	dozing: { src: Dozing, duration: 7500 },
-	laze: { src: Laze, duration: 13800 },
-	music: { src: ListeningToMusic, duration: 5400 },
-	grinder: { src: Grinder, duration: 8400 },
-	tapping: { src: TappingScreen, duration: 2500 },
-	thinking: { src: Thinking, duration: 1900 }
+	atom: { src: "/clippy/atom.gif", duration: 4500 },
+	dozing: { src: "/clippy/dozing.gif", duration: 7500 },
+	laze: { src: "/clippy/laze.gif", duration: 13800 },
+	music: { src: "/clippy/listening_music.gif", duration: 5400 },
+	grinder: { src: "/clippy/grinder.gif", duration: 8400 },
+	tapping: { src: "/clippy/tapping_screen.gif", duration: 2500 },
+	thinking: { src: "/clippy/thinking.gif", duration: 1900 }
 };
 
 function getRandomClippyState() {
@@ -54,7 +42,8 @@ export function Clippy() {
 		transitionState.bikeIn
 	);
 	const [isHovered, setIsHovered] = useState(false);
-	const isTransitioning = currentState.src === BikeIn || currentState.src === BikeOut
+	const isTransitioning =
+		currentState.src === transitionState.bikeIn.src || currentState.src === transitionState.bikeOut.src;
 
 	// Render Clippy riding bike in
 	useLayoutEffect(() => {
@@ -100,10 +89,10 @@ export function Clippy() {
 			{isHovered && <span className={styles.tooltip}>{t("clippy.greeting")}</span>}
 
 			<img
-				src={isHovered ? LookingDown : currentState.src}
+				src={isHovered ? "/clippy/looking_down.gif" : currentState.src}
 				className={styles.clippy}
 				title='Clippy'
-				alt='Microsoft Clippit animation'
+				alt='Microsoft Clippy animation'
 				onMouseEnter={() => !isTransitioning && setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
 				onTouchStart={() => !isTransitioning && setIsHovered(true)}

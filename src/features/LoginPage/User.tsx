@@ -11,10 +11,6 @@ import { SVGIcon } from "@/components/SVGIcon";
 
 import ArrowRight from "pixelarticons/svg/arrow-right.svg?react";
 
-import LoginSound from "@/assets/audio/login.mp3";
-import TypingSound from "@/assets/audio/typing.mp3";
-import ErrorSound from "@/assets/audio/error.mp3";
-
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
 
@@ -28,9 +24,9 @@ export function User() {
 	const [sound] = useAtom(soundAtom);
 
 	const [isFormError, setIsFormError] = useState(false);
-	const [playLogin] = useSound(LoginSound, { volume: 0.25, soundEnabled: sound.enabled });
-	const [playTyping] = useSound(TypingSound, { soundEnabled: sound.enabled });
-	const [playError] = useSound(ErrorSound, { volume: 0.5, soundEnabled: sound.enabled });
+	const [playLogin] = useSound("/audio/login.mp3", { volume: 0.25, soundEnabled: sound.enabled });
+	const [playTyping] = useSound("/audio/typing.mp3", { soundEnabled: sound.enabled });
+	const [playError] = useSound("/audio/error.mp3", { volume: 0.5, soundEnabled: sound.enabled });
 
 	useEffect(() => {
 		const timeout = setTimeout(() => setIsFormError(false), 820);

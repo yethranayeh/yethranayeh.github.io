@@ -8,7 +8,7 @@ export type AppWindow = {
 	title: string;
 	minimized: boolean;
 	iconSrc: string;
-	minimizedIconSrc?: string;
+	openWindowIconSrc?: string;
 	content: LazyExoticComponent<() => JSX.Element>;
 	WindowProps?: Omit<DraggableWindowProps, "title">;
 };

@@ -20,7 +20,7 @@ export function WindowTabs() {
 					key={w.id}
 					onClick={() => toggleMinimize(w.id)}
 					isActive={!w.minimized}
-					iconSrc={w.minimized ? w.minimizedIconSrc ?? w.iconSrc : w.iconSrc}
+					iconSrc={!w.minimized ? w.openWindowIconSrc ?? w.iconSrc : w.iconSrc}
 					text={w.title}
 				/>
 			))}

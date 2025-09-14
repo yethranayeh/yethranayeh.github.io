@@ -6,11 +6,9 @@ import useSound from "use-sound";
 
 import { soundAtom } from "@/stores/soundAtom";
 
-import ClickSound from "@/assets/audio/click.mp3";
-
 export function AudioButton(props: ButtonProps) {
 	const [sound] = useAtom(soundAtom);
-	const [play] = useSound(ClickSound, { soundEnabled: sound.enabled });
+	const [play] = useSound("/audio/click.mp3", { soundEnabled: sound.enabled });
 
 	return (
 		<Button

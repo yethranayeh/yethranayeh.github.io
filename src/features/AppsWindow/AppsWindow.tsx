@@ -3,11 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Frame } from "react95";
 import { useAtom } from "jotai";
 
-import { addWindowAtom, removeWindowAtom } from "@/stores/window.atom";
+import { addWindowAtom } from "@/stores/window.atom";
 
 import { App } from "./App";
 import { WindowURL } from "@/components/windows/WindowURL";
-import ProgramIcon from "@/assets/icons/Program.ico";
 
 import styles from "./AppsWindow.module.scss";
 
@@ -15,7 +14,7 @@ const Apps = {
 	VigenereCipher: {
 		name: "vigenère cipher",
 		translationId: "vigenere-cipher.title", // TODO: find a better field name
-		iconSrc: ProgramIcon,
+		iconSrc: "/icon/program.ico",
 		Element: lazy(() =>
 			import("@/features/AppsWindow/VigenereCipher/VigenereCipher").then((module) => ({
 				default: module.VigenereCipher
@@ -49,7 +48,7 @@ export function AppsWindow() {
 								addWindow({
 									id: `app:${app.name}`,
 									title: t(app.translationId),
-									iconSrc: ProgramIcon,
+									iconSrc: "/icon/program.ico",
 									minimized: false,
 									content: Element
 								});

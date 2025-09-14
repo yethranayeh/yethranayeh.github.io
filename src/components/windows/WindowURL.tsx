@@ -8,22 +8,22 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { Flex } from "@/components/Styled";
 import { ImgIcon } from "@/components/ImgIcon";
 
-import OpenedFolderIcon from "@/assets/icons/Opened-Folder.ico";
-
 import styles from "./WindowURL.module.scss";
 
 export function WindowURL() {
 	const { t } = useTranslation("content");
 	const biggerThanSm = useMediaQuery("sm");
 	const urlRef = useRef<HTMLSpanElement>(null);
+	// FIXME: windows are no longer tied to routes, so this is misleading
 	const pathname = useLocation().pathname.replace("/", "");
 	const navigate = useNavigate();
 
 	return (
 		<Frame variant='field' className={styles.frame}>
 			<Flex as='header' align='center' gap={8}>
-				<ImgIcon src={OpenedFolderIcon} size={20} />
+				<ImgIcon src='/icon/folder_open.ico' size={20} />
 				<div>
+					{/* FIXME: change user name */}
 					<span>{(biggerThanSm ? t("base-url") : "\\..\\alperaktas") + "\\"}</span>
 					<span
 						contentEditable

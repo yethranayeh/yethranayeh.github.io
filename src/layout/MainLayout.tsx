@@ -16,7 +16,7 @@ import { isLoggedOutKey } from "@/config/storage";
 
 import styles from "./MainLayout.module.scss";
 
-// TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout
+// TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout. Maybe utilize route transition technology for this?
 const LoginPage = lazy(() =>
 	import("@/features/LoginPage/LoginPage").then((module) => ({ default: module.LoginPage }))
 );
@@ -71,7 +71,7 @@ export default function MainLayout() {
 			<main className={styles.main}>
 				<DesktopOutlet />
 
-				{/* TODO: decide on what to do with routing and Outlet */}
+				{/* TODO: decide on what to do with routing and Outlet, since window management is now independent of route state */}
 				<Suspense fallback={<Loader />}>
 					<Outlet />
 				</Suspense>

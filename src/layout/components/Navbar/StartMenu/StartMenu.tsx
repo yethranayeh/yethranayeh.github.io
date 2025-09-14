@@ -12,11 +12,6 @@ import { isLoggedOutKey } from "@/config/storage";
 import { soundAtom } from "@/stores/soundAtom";
 import { addWindowAtom } from "@/stores/window.atom";
 
-import W98Book from "@/assets/icons/w98_book.ico";
-import W98Key from "@/assets/icons/w98_key.ico";
-import ShutdownIcon from "@/assets/icons/shutdown.ico";
-import LogoffSound from "@/assets/audio/logoff.mp3";
-
 import { ListItem } from "./ListItem/ListItem";
 
 import styles from "../StartButton.module.scss";
@@ -24,13 +19,19 @@ import styles from "../StartButton.module.scss";
 const HelpDialogContent = lazy(() => import("./HelpDialogContent"));
 const ShutdownDialogContent = lazy(() => import("./ShutdownDialogContent"));
 
+const iconMap = {
+	help: "/icon/book.ico",
+	logout: "/icon/key_win.ico",
+	shutdown: "/icon/shut_down_with_computer.ico"
+};
+
 // FIXME: add alternating logic for hotkeys when language changes
 export function StartMenu({ onClose }: { onClose: () => void }) {
 	const { t } = useTranslation("menu");
 	const { setIsLoggedIn } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const [sound] = useAtom(soundAtom);
-	const [playLogoff] = useSound(LogoffSound, { volume: 0.25, soundEnabled: sound.enabled });
+	const [playLogoff] = useSound("/audio/logoff.mp3", { volume: 0.25, soundEnabled: sound.enabled });
 
 	const [_, addWindow] = useAtom(addWindowAtom);
 
@@ -40,7 +41,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 			title: t("nav.help"),
 			content: HelpDialogContent,
 			minimized: false,
-			iconSrc: W98Book
+			iconSrc: iconMap.help
 		});
 
 	const onClickLogout = () => {
@@ -66,7 +67,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 
 			// TODO: this window should not be minimizable
 			minimized: false,
-			iconSrc: ShutdownIcon
+			iconSrc: iconMap.shutdown
 		});
 
 	useEffect(() => {
@@ -103,7 +104,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	return (
 		<ClickAwayListener onClickAway={onClose}>
 			<MenuList className={styles.list} onClick={onClose}>
-				<ListItem onClick={onClickHelp} iconSrc={W98Book} iconSize={24} hotkeyLetterIndex={0}>
+				<ListItem onClick={onClickHelp} iconSrc={iconMap.help} iconSize={24} hotkeyLetterIndex={0}>
 					{t("nav.help")}
 				</ListItem>
 
@@ -112,11 +113,11 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 
 				<Separator />
 
-				<ListItem onClick={onClickLogout} iconSrc={W98Key} hotkeyLetterIndex={0}>
+				<ListItem onClick={onClickLogout} iconSrc={iconMap.logout} hotkeyLetterIndex={0}>
 					{t("nav.logout")}
 				</ListItem>
 
-				<ListItem onClick={onClickShutdown} iconSrc={ShutdownIcon} hotkeyLetterIndex={2}>
+				<ListItem onClick={onClickShutdown} iconSrc={iconMap.shutdown} hotkeyLetterIndex={2}>
 					{t("nav.shutdown")}
 				</ListItem>
 			</MenuList>
