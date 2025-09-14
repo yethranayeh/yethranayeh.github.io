@@ -3,5 +3,8 @@
 	&::after {
 		content: none !important;
 	}
-	padding: 4px !important;
+	height: max-content !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	background-color: transparent !important;
 }

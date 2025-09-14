@@ -16,6 +16,7 @@ interface TextProps {
 	bold?: boolean;
 	underline?: boolean;
 	light?: boolean;
+	inheritColor?: boolean;
 	variant?: "title" | "body" | "small";
 	p?: string | number;
 	m?: string | number;
