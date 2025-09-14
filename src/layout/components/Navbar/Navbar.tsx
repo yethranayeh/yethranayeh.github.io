@@ -2,9 +2,10 @@ import { AppBar, Frame, Handle, Toolbar } from "react95";
 
 import Flex from "@/components/Styled/Flex";
 import { StartButton } from "./StartButton";
-import { LanguageSelect } from "./LanguageSelect";
 import { WindowTabs } from "./WindowTabs";
 import { AudioToggle } from "./AudioToggle";
+import { LanguageSelect } from "./LanguageSelect";
+import { CurrentTime } from "./CurrentTime";
 
 import styles from "./Navbar.module.scss";
 
@@ -26,6 +27,7 @@ export const Navbar = () => (
 					<Flex gap={8} align='center' sx={{ padding: "0 8px" }}>
 						<AudioToggle />
 						<LanguageSelect />
+						<CurrentTime />
 					</Flex>
 				</Frame>
 			</Flex>
