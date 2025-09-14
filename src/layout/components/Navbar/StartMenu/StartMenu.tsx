@@ -14,7 +14,7 @@ import { addWindowAtom } from "@/stores/window.atom";
 
 import { ListItem } from "./ListItem/ListItem";
 
-import styles from "../StartButton.module.scss";
+import styles from "./StartMenu.module.scss";
 
 const HelpDialogContent = lazy(() => import("./HelpDialogContent"));
 const ShutdownDialogContent = lazy(() => import("./ShutdownDialogContent"));
