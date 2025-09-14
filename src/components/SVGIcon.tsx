@@ -12,8 +12,9 @@ export interface SVGIconProps extends SVGProps<any> {
 	small?: boolean;
 }
 
-export const SVGIcon = ({ Icon, className, disabled, marginLeft, marginRight, small }: SVGIconProps) => (
+export const SVGIcon = ({ Icon, className, disabled, marginLeft, marginRight, small, ...props }: SVGIconProps) => (
 	<Icon
+		{...props}
 		aria-roledescription='icon'
 		className={clsx(
 			styles.icon,
