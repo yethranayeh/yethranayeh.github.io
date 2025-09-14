@@ -1,0 +1,1 @@
+import{u as e,n as s,o as i,b as n,D as c,W as l,w as r}from"./index.18782eb5.js";function u(){const{t}=e("content"),o=s(),a=i().pathname.replace("/","");return n(c,{title:t("404.title"),slotProps:{closeButton:{onClick:()=>o("/")}},children:n(l,{className:r.content,children:t("404.descripton",{path:a})})})}export{u as NotFoundWindow};
