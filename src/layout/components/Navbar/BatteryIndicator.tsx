@@ -33,25 +33,29 @@ export function BatteryIndicator() {
 	const [battery, setBattery] = useState<Battery | null>(null);
 
 	useEffect(() => {
-		(navigator as any)?.getBattery().then((bat: BatteryManager) => {
-			setBattery({
-				charging: bat.charging,
-				percent: bat.level * 100
-			});
+		// @ts-expect-error Not fully supported API
+		if (navigator.getBattery) {
+			// @ts-expect-error Not fully supported API
+			navigator.getBattery().then((bat: BatteryManager) => {
+				setBattery({
+					charging: bat.charging,
+					percent: bat.level * 100
+				});
 
-			bat.onlevelchange = () => {
-				setBattery({
-					charging: bat.charging,
-					percent: bat.level * 100
-				});
-			};
-			bat.onchargingchange = () => {
-				setBattery({
-					charging: bat.charging,
-					percent: bat.level * 100
-				});
-			};
-		});
+				bat.onlevelchange = () => {
+					setBattery({
+						charging: bat.charging,
+						percent: bat.level * 100
+					});
+				};
+				bat.onchargingchange = () => {
+					setBattery({
+						charging: bat.charging,
+						percent: bat.level * 100
+					});
+				};
+			});
+		}
 	}, []);
 
 	if (!battery) return null;
