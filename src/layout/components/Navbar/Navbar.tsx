@@ -10,7 +10,6 @@ import { CurrentTime } from "./CurrentTime";
 import styles from "./Navbar.module.scss";
 import { BatteryIndicator } from "./BatteryIndicator";
 
-// FIXME: Navbar height changes when start button menu is opened
 export const Navbar = () => (
 	<AppBar as='nav' className={styles.container}>
 		<Toolbar className={styles.toolbar}>

@@ -18,10 +18,16 @@ export default function DesktopIcon({ title, iconSrc, onDoubleClick }: DesktopIc
 			onDoubleClick={onDoubleClick}
 			align='center'
 			gap={4}
-			style={{ cursor: "pointer" }}
+			style={{ cursor: "pointer", height: 75, width: 75 }}
 			className='no-select'>
-			<ImgIcon src={iconSrc} size={48} />
-			<Text light variant='small'>
+			<ImgIcon strictSizing src={iconSrc} size={48} />
+			<Text
+				light
+				variant='small'
+				style={{
+					wordBreak: "break-all",
+					textAlign: "center"
+				}}>
 				{title}
 			</Text>
 		</Flex>
