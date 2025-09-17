@@ -8,6 +8,11 @@
 	font-style: normal;
 }
 
+*::selection {
+	background-color: variables.$highlight;
+	color: white;
+}
+
 body {
 	margin: 0 !important;
 	color: currentColor;

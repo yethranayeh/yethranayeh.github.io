@@ -19,6 +19,7 @@ $breakpoint-xl: 1200;
 $navbar-height: 56px;
 
 :export {
+	highlight: $highlight;
 	mediaSm: $breakpoint-sm;
 	mediaMd: $breakpoint-md;
 	mediaLg: $breakpoint-lg;

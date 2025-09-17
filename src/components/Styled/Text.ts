@@ -15,10 +15,6 @@ const Text = styled.p<TextProps>`
 				: props.variant === "title"
 					? "#0a0a0a"
 					: "#1a1a1a"} !important;
-	&::selection {
-		background-color: #c6c6c6;
-		color: #0a0a0a;
-	}
 	padding: ${(props) => transformCssValue(props.p) ?? "0"};
 	margin: ${(props) => transformCssValue(props.m) ?? "0"};
 `;
