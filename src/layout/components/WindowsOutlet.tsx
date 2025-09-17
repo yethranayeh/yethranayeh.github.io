@@ -1,5 +1,6 @@
 import { useAtom } from "jotai";
 import { Suspense } from "react";
+import { useTranslation } from "react-i18next";
 
 import { removeWindowAtom, toggleMinimizeWindowAtom, windowsAtom } from "@/stores/window.atom";
 
@@ -7,6 +8,7 @@ import { DraggableWindow } from "@/components/windows/DraggableWindow";
 import { Loader } from "@/components/Loader";
 
 export function WindowsOutlet() {
+	const { t } = useTranslation();
 	const [windows] = useAtom(windowsAtom);
 	const [_, closeWindow] = useAtom(removeWindowAtom);
 	const [__, toggleMinimizeWindow] = useAtom(toggleMinimizeWindowAtom);
@@ -21,7 +23,7 @@ export function WindowsOutlet() {
 						<DraggableWindow
 							key={w.id}
 							{...w.WindowProps}
-							title={w.title}
+							title={t(w.titleKey)}
 							slotProps={{
 								...w.WindowProps?.slotProps,
 								minimizeButton: {

@@ -27,7 +27,7 @@ const iconMap = {
 
 // FIXME: add alternating logic for hotkeys when language changes
 export function StartMenu({ onClose }: { onClose: () => void }) {
-	const { t } = useTranslation("menu");
+	const { t, i18n } = useTranslation("menu");
 	const { setIsLoggedIn } = useContext(AuthContext);
 	const navigate = useNavigate();
 	const [sound] = useAtom(soundAtom);
@@ -38,7 +38,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	const onClickHelp = () =>
 		addWindow({
 			id: "help",
-			title: t("nav.help"),
+			titleKey: "menu:nav.help",
 			content: HelpDialogContent,
 			minimized: false,
 			iconSrc: iconMap.help
@@ -55,7 +55,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	const onClickShutdown = () =>
 		addWindow({
 			id: "shutdown-dialog",
-			title: t("content:shutdown.title"),
+			titleKey: "content:shutdown.title",
 			content: ShutdownDialogContent,
 			WindowProps: {
 				slotProps: {
@@ -72,6 +72,10 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
+			if (i18n.language !== "en") {
+				// TODO: alternative hotkey handling for other languages
+				return;
+			}
 			// TODO: refactor to reduce code duplication
 			switch (event.key.toLowerCase()) {
 				case "Escape":
@@ -104,7 +108,11 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	return (
 		<ClickAwayListener onClickAway={onClose}>
 			<MenuList className={styles.list} onClick={onClose}>
-				<ListItem onClick={onClickHelp} iconSrc={iconMap.help} iconSize={24} hotkeyLetterIndex={0}>
+				<ListItem
+					onClick={onClickHelp}
+					iconSrc={iconMap.help}
+					iconSize={24}
+					hotkeyLetterIndex={i18n.language === "en" ? 0 : undefined}>
 					{t("nav.help")}
 				</ListItem>
 
@@ -113,11 +121,17 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 
 				<Separator />
 
-				<ListItem onClick={onClickLogout} iconSrc={iconMap.logout} hotkeyLetterIndex={0}>
+				<ListItem
+					onClick={onClickLogout}
+					iconSrc={iconMap.logout}
+					hotkeyLetterIndex={i18n.language === "en" ? 0 : undefined}>
 					{t("nav.logout")}
 				</ListItem>
 
-				<ListItem onClick={onClickShutdown} iconSrc={iconMap.shutdown} hotkeyLetterIndex={2}>
+				<ListItem
+					onClick={onClickShutdown}
+					iconSrc={iconMap.shutdown}
+					hotkeyLetterIndex={i18n.language === "en" ? 2 : undefined}>
 					{t("nav.shutdown")}
 				</ListItem>
 			</MenuList>

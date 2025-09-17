@@ -9,7 +9,7 @@ import { TaskbarButton } from "./TaskbarButton";
 import styles from "./WindowTabs.module.scss";
 
 export function WindowTabs() {
-	const { t } = useTranslation("menu");
+	const { t } = useTranslation();
 	const [windows] = useAtom(windowsAtom);
 	const [_, toggleMinimize] = useAtom(toggleMinimizeWindowAtom);
 
@@ -21,7 +21,7 @@ export function WindowTabs() {
 					onClick={() => toggleMinimize(w.id)}
 					isActive={!w.minimized}
 					iconSrc={!w.minimized ? w.openWindowIconSrc ?? w.iconSrc : w.iconSrc}
-					text={w.title}
+					text={t(w.titleKey)}
 				/>
 			))}
 		</Flex>
