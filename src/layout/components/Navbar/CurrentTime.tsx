@@ -6,6 +6,7 @@ export const CurrentTime = () => {
 
 	useEffect(() => {
 		const now = new Date();
+		// TODO: the logic for syncing with system time is AI generated, so may need a refactor or a better look for performance, etc.
 		const msToNextMinute = (60 - now.getSeconds()) * 1000 - now.getMilliseconds();
 		let intervalId: NodeJS.Timeout;
 		const timeoutId = setTimeout(() => {

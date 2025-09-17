@@ -1,4 +1,5 @@
 @import "./variables.module.scss";
+@import "./mixins.scss";
 
 @font-face {
 	font-family: "pixeloid_sans";
@@ -31,10 +32,10 @@ a {
 }
 
 .window-title {
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-
+	@include no-select;
 	margin-left: $spacing;
+}
+
+.no-select {
+	@include no-select;
 }

@@ -13,7 +13,13 @@ export interface DesktopIconProps {
 // TODO: add Draggable with "grid" prop allow dragging icons on desktop grid
 export default function DesktopIcon({ title, iconSrc, onDoubleClick }: DesktopIconProps) {
 	return (
-		<Flex direction='column' onDoubleClick={onDoubleClick} align='center' gap={4} style={{ cursor: "pointer" }}>
+		<Flex
+			direction='column'
+			onDoubleClick={onDoubleClick}
+			align='center'
+			gap={4}
+			style={{ cursor: "pointer" }}
+			className='no-select'>
 			<ImgIcon src={iconSrc} size={48} />
 			<Text light variant='small'>
 				{title}
