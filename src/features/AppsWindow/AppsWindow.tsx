@@ -13,7 +13,7 @@ import styles from "./AppsWindow.module.scss";
 const Apps = {
 	VigenereCipher: {
 		name: "vigenère cipher",
-		translationId: "vigenere-cipher.title", // TODO: find a better field name
+		titleKey: "vigenere-cipher.title", // TODO: find a better field name
 		iconSrc: "/icon/program.ico",
 		Element: lazy(() =>
 			import("@/features/AppsWindow/VigenereCipher/VigenereCipher").then((module) => ({
@@ -47,7 +47,7 @@ export function AppsWindow() {
 
 								addWindow({
 									id: `app:${app.name}`,
-									title: t(app.translationId),
+									titleKey: app.titleKey,
 									iconSrc: "/icon/program.ico",
 									minimized: false,
 									content: Element
