@@ -1,5 +1,5 @@
-@import "../../styles/variables.module.scss";
-@import "../../styles/mixins.scss";
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.scss";
 
 .label-user {
 	display: inline-flex;
@@ -14,11 +14,11 @@
 
 .container {
 	flex-direction: column;
-	gap: $spacing-2;
+	gap: variables.$spacing-2;
 
-	@include media-min-md {
+	@include mixins.media-min-md {
 		flex-direction: row;
-		gap: $spacing-5;
+		gap: variables.$spacing-5;
 	}
 }
 
@@ -28,9 +28,9 @@
 }
 
 .formContainer {
-	padding: 0 $spacing-6;
+	padding: 0 variables.$spacing-6;
 
-	@include media-min-md {
+	@include mixins.media-min-md {
 		align-items: flex-start;
 		padding: 0;
 	}
@@ -45,13 +45,13 @@
 
 .input {
 	& > input {
-		color: $black !important;
+		color: variables.$black !important;
 	}
 }
 
 .button {
 	& * {
-		color: $black !important;
+		color: variables.$black !important;
 	}
 }
 

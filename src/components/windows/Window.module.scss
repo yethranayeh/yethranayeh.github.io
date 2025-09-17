@@ -1,5 +1,5 @@
-@import "../../styles/variables.module.scss";
-@import "../../styles/mixins.scss";
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.scss";
 
 .window {
 	position: absolute !important;
@@ -21,12 +21,12 @@
 .content {
 	display: flex;
 	flex-direction: column;
-	gap: $spacing-3;
+	gap: variables.$spacing-3;
 
 	max-height: 440px; // 600 for the container window, minus all other content. result is 440
 }
 
 .frame {
 	width: 100%;
-	padding: $spacing-2 $spacing-3 0;
+	padding: variables.$spacing-2 variables.$spacing-3 0;
 }

@@ -1,12 +1,12 @@
-@import "../styles/variables.module.scss";
+@use "../styles/variables.module.scss";
 
 .loader {
 	z-index: 999999;
 	position: absolute;
 	top: 50px;
-	left: calc(-1 * $spacing);
+	left: calc(-1 * variables.$spacing);
 
-	width: calc(100svw + $spacing-2);
+	width: calc(100svw + variables.$spacing-2);
 
 	& > div {
 		height: 16px !important;

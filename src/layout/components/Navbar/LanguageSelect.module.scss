@@ -1,5 +1,5 @@
-@import "../../../styles/mixins.scss";
-@import "../../../styles/variables.module.scss";
+@use "../../../styles/mixins.scss";
+@use "../../../styles/variables.module.scss";
 
 .button {
 	// Reset all button styles
@@ -10,7 +10,7 @@
 
 .languageAbbreviation {
 	text-transform: capitalize;
-	background-color: $highlight;
+	background-color: variables.$highlight;
 	line-height: 26px;
-	padding: 0 $spacing !important;
+	padding: 0 variables.$spacing !important;
 }

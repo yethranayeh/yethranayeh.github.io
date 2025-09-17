@@ -1,8 +1,8 @@
-@import "../../../styles/variables.module.scss";
+@use "../../../styles/variables.module.scss";
 
 .radioGroup_P4859 {
 	display: flex;
-	gap: $spacing-4;
+	gap: variables.$spacing-4;
 }
 
 .frame_R5g7 {

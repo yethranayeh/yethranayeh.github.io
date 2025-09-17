@@ -1,5 +1,5 @@
-@import "../styles/variables.module.scss";
-@import "../styles/mixins.scss";
+@use "../styles/variables.module.scss";
+@use "../styles/mixins.scss";
 
 .container {
 	margin: 0;
@@ -18,8 +18,8 @@
 }
 
 .main {
-	min-height: calc(100svh - $navbar-height);
-	padding-top: $navbar-height;
+	min-height: calc(100svh - variables.$navbar-height);
+	padding-top: variables.$navbar-height;
 }
 
 @keyframes fade-in {

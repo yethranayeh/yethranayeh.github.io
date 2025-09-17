@@ -1,19 +1,19 @@
-@import "../../styles/variables.module.scss";
-@import "../../styles/mixins.scss";
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.scss";
 
 .container {
 	max-width: 60px;
 	overflow: hidden;
-	padding: $spacing;
+	padding: variables.$spacing;
 
 	transition: background-color 100ms ease;
 
 	&:hover {
-		background-color: rgba($background, 0.3);
+		background-color: rgba(variables.$background, 0.3);
 	}
 
 	&.focused {
-		background-color: rgba($background, 0.5);
+		background-color: rgba(variables.$background, 0.5);
 	}
 }
 
@@ -23,5 +23,5 @@
 	font-size: 12px;
 	line-height: 12px;
 
-	@include no-select;
+	@include mixins.no-select;
 }

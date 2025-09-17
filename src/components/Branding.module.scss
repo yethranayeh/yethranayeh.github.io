@@ -1,10 +1,10 @@
-@import "../styles/variables.module.scss";
-@import "../styles/mixins.scss";
+@use "../styles/variables.module.scss";
+@use "../styles/mixins.scss";
 
 /* https://codepen.io/duptitung/pen/XMVNyZ */
 .container {
 	& * {
-		@include no-select;
+		@include mixins.no-select;
 		color: #fff;
 	}
 }
@@ -20,7 +20,7 @@
 	font-weight: 300;
 	line-height: 16px;
 
-	margin-right: $spacing-2;
+	margin-right: variables.$spacing-2;
 
 	&:after {
 		content: "\00a9";

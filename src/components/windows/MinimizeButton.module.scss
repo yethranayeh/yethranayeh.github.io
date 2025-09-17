@@ -1,4 +1,4 @@
-@import "../../styles/variables.module.scss";
+@use "../../styles/variables.module.scss";
 
 .icon {
 	position: relative;
@@ -8,7 +8,7 @@
 	&:before {
 		content: "";
 		position: absolute;
-		background: $black;
+		background: variables.$black;
 		height: 4px;
 		width: 12px;
 		left: 35%;

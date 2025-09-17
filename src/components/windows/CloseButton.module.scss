@@ -1,4 +1,4 @@
-@import "../../styles/variables.module.scss";
+@use "../../styles/variables.module.scss";
 
 // react95 - https://storybook.react95.io/?path=/story/environment-window--default
 .icon {
@@ -16,7 +16,7 @@
 	&:after {
 		content: "";
 		position: absolute;
-		background: $black;
+		background: variables.$black;
 	}
 
 	&:before {

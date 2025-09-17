@@ -1,7 +1,7 @@
-@import "../../../styles/variables.module.scss";
+@use "../../../styles/variables.module.scss";
 
 .container {
-	padding: $spacing;
+	padding: variables.$spacing;
 	z-index: 999;
 
 	max-height: 56px;

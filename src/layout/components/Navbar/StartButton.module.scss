@@ -1,5 +1,5 @@
-@import "../../../styles/variables.module.scss";
-@import "../../../styles/mixins.scss";
+@use "../../../styles/variables.module.scss";
+@use "../../../styles/mixins.scss";
 
 .container {
 	display: inline-block;
@@ -11,7 +11,7 @@
 
 	filter: drop-shadow(1px 1px 1px #fff) drop-shadow(1px 0px 4px #fff);
 
-	@include media-min-sm {
-		margin-right: $spacing;
+	@include mixins.media-min-sm {
+		margin-right: variables.$spacing;
 	}
 }

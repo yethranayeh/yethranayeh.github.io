@@ -1,8 +1,8 @@
-@import "../../../styles/variables.module.scss";
-@import "../../../styles/mixins.scss";
+@use "../../../styles/variables.module.scss";
+@use "../../../styles/mixins.scss";
 
 .container {
-	gap: $spacing !important;
+	gap: variables.$spacing !important;
 
 	overflow-x: auto;
 	overflow-y: hidden; // Butonlara basıldığında height değişikliğinden dolayı overflow tetikleniyor.
@@ -12,12 +12,12 @@
 		scroll-snap-align: start;
 	}
 
-	@include media-min-sm {
+	@include mixins.media-min-sm {
 		overflow-x: hidden;
-		gap: $spacing-2 !important;
+		gap: variables.$spacing-2 !important;
 	}
 }
 
 .button {
-	gap: $spacing-2;
+	gap: variables.$spacing-2;
 }

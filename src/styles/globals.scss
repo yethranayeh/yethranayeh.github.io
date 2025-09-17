@@ -1,5 +1,5 @@
-@import "./variables.module.scss";
-@import "./mixins.scss";
+@use "variables.module.scss";
+@use "mixins.scss";
 
 @font-face {
 	font-family: "pixeloid_sans";
@@ -19,7 +19,7 @@ body {
 	transition: background-color 300ms ease;
 
 	&[data-loading="false"] {
-		background-color: $background !important;
+		background-color: variables.$background !important;
 	}
 }
 
@@ -32,10 +32,10 @@ a {
 }
 
 .window-title {
-	@include no-select;
-	margin-left: $spacing;
+	@include mixins.no-select;
+	margin-left: variables.$spacing;
 }
 
 .no-select {
-	@include no-select;
+	@include mixins.no-select;
 }

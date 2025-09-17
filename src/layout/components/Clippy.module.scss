@@ -1,15 +1,15 @@
-@import "../../styles/variables.module.scss";
-@import "../../styles/mixins.scss";
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.scss";
 
 .container {
 	position: absolute;
 	top: unset;
-	bottom: $spacing-4;
-	right: $spacing-4;
+	bottom: variables.$spacing-4;
+	right: variables.$spacing-4;
 
 	width: max-content;
 
-	@include no-select;
+	@include mixins.no-select;
 }
 
 .clippy {
