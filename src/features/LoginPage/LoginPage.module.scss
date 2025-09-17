@@ -172,6 +172,14 @@
 	@include slide-anim(slide-in-up);
 }
 
+@media (prefers-reduced-motion: reduce) {
+	.branding,
+	.users,
+	.footer {
+		animation: none !important;
+	}
+}
+
 @keyframes slide-in-right {
 	0% {
 		opacity: 0;

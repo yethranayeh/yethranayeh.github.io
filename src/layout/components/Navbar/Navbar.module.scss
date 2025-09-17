@@ -17,6 +17,12 @@
 	max-height: 44px !important;
 }
 
+@media (prefers-reduced-motion: reduce) {
+	.container {
+		animation: none !important;
+	}
+}
+
 @keyframes slide-down {
 	0% {
 		transform: translateY(-60px);

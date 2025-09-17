@@ -55,6 +55,12 @@
 	}
 }
 
+@media (prefers-reduced-motion: reduce) {
+	.formError {
+		animation: none !important;
+	}
+}
+
 // https://css-tricks.com/snippets/css/shake-css-keyframe-animation/
 @keyframes shake {
 	10%,
