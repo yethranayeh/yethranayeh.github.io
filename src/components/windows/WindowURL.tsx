@@ -23,8 +23,7 @@ export function WindowURL() {
 			<Flex as='header' align='center' gap={8}>
 				<ImgIcon src='/icon/folder_open.ico' size={20} />
 				<div>
-					{/* FIXME: change user name */}
-					<span>{(biggerThanSm ? t("base-url") : "\\..\\alperaktas") + "\\"}</span>
+					<span>{(biggerThanSm ? t("base-url") : "\\..") + "\\alper\\"}</span>
 					<span
 						contentEditable
 						suppressContentEditableWarning

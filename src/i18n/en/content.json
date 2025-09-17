@@ -3,7 +3,7 @@
 		"descripton": "The content you are trying to reach at '/{{path}}' is not available.",
 		"title": "404 - Content Not Found!"
 	},
-	"base-url": "C:\\Users\\alperaktas",
+	"base-url": "C:\\Users",
 	"clippy": {
 		"greeting": "Hello, I'm Clippy!"
 	},
