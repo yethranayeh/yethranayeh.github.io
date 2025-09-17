@@ -1,0 +1,13 @@
+{
+	"nav": {
+		"help": "Hilfe",
+		"logout": "Abmelden",
+		"shutdown": "Herunterfahren...",
+		"start": "Start"
+	},
+	"window": {
+		"apps": "Apps",
+		"projects": "Projekte",
+		"resume": "Lebenslauf"
+	}
+}

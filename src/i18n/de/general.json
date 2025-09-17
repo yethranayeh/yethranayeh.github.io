@@ -1,0 +1,12 @@
+{
+	"btn": {
+		"go-to-page": "Zur Webseite gehen",
+		"login": "Anmelden",
+		"yes": "Ja",
+		"no": "Nein",
+		"ok": "OK",
+		"cancel": "Abbrechen"
+	},
+	"loading": "Wird geladen",
+	"password": "Passwort"
+}

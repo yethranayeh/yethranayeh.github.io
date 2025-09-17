@@ -10,6 +10,10 @@ import general_tr from "./tr/general.json";
 import content_tr from "./tr/content.json";
 import menu_tr from "./tr/menu.json";
 
+import general_de from "./de/general.json";
+import content_de from "./de/content.json";
+import menu_de from "./de/menu.json";
+
 const namespaces = ["general", "menu", "content"] as const;
 
 export const defaultNS = namespaces[0];
@@ -20,6 +24,11 @@ export const resources: I18nResources = {
 		general: general_en,
 		content: content_en,
 		menu: menu_en
+	},
+	de: {
+		general: general_de,
+		content: content_de,
+		menu: menu_de
 	},
 	tr: {
 		general: general_tr,

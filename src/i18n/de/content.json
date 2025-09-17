@@ -1,0 +1,65 @@
+{
+	"404": {
+		"descripton": "Der Inhalt, den Sie unter '/{{path}}' erreichen möchten, ist nicht verfügbar.",
+		"title": "404 - Inhalt nicht gefunden!"
+	},
+	"base-url": "C:\\Benutzer",
+	"clippy": {
+		"greeting": "Hallo, ich bin Clippy!"
+	},
+	"daily-space-palette": "Daily Space Palette ist eine Webseite, die Farbpaletten aus dem NASA Astronomy Picture of the Day generiert. Das Astronomiebild ändert sich täglich und jeden Tag wird eine neue Farbpalette aus dem bereitgestellten Bild erstellt.",
+	"error": {
+		"fallback-element": "Hoppla! Sieht so aus, als hätten Sie meine Website kaputt gemacht! Wenn Sie mir helfen möchten, sie zu reparieren, können Sie die Fehlermeldung in der Browser-Konsole überprüfen und sie mir bitte schicken :)"
+	},
+	"exalt-rates": "Ein Projekt, das darauf abzielt, einen einfachen Währungsrechner für Path of Exile 2-Spieler bereitzustellen. Der Benutzer kann eine Hauptwährung auswählen, einen Betrag eingeben und die Wechselkurse für andere verfügbare Währungen anzeigen.",
+	"help-dialog": {
+		"information-body": "Dies ist meine Portfolio-Seite. Hier können Sie meinen Lebenslauf ansehen, meine Projekte erkunden und kleinere 'Apps' ausführen, die ich in dieses Betriebssystem integriert habe.",
+		"information-title": "Informationen",
+		"tips": {
+			"feedback-body": "Ihr Feedback ist wertvoll! Wenn Sie auf Probleme stoßen oder Vorschläge haben, lassen Sie es mich bitte wissen.",
+			"feedback-title": "Feedback:",
+			"navigation-body": "Verwenden Sie das Startmenü, um auf verschiedene Bereiche und Anwendungen zuzugreifen.",
+			"navigation-title": "Navigation:",
+			"responsiveness-body": "Die Benutzeroberfläche ist so gestaltet, dass sie auf verschiedenen Bildschirmgrößen gut funktioniert. Für das beste Erlebnis verwenden Sie bitte einen Desktop oder Laptop.",
+			"responsiveness-title": "Reaktionsfähigkeit:",
+			"shortcuts-body": "Tastenkombinationen sind für eine schnellere Navigation verfügbar. Achten Sie auf unterstrichene Buchstaben in den Menüpunkten.",
+			"shortcuts-title": "Tastenkombinationen:"
+		},
+		"tips-title": "Tipps"
+	},
+	"introduction": {
+		"about-current-job": "Derzeit arbeite ich bei Etstur als Softwareentwicklungsassistent und bin an der Entwicklung von React-basierten B2B-Webanwendungen beteiligt.",
+		"about-experience": "Aufgrund meines großen Interesses an der Softwareentwicklung habe ich während meines Studiums Online-Inhalte studiert und Testfälle auf Websites wie HackerRank gelöst, um in die Karriere zu investieren, die ich anstrebte.",
+		"about-me": "Ich bin Absolvent der Anglistik an der Universität Ege.",
+		"about-preferences": "Im Allgemeinen entwickle ich Anwendungen mit TypeScript und React. Außerdem schreibe ich Tests mit Vitest und react-testing-library und verwende je nach Projekt auch Playwright.",
+		"menu": {
+			"resume": "Lebenslauf"
+		}
+	},
+	"login-screen": {
+		"footer-info": "Nachdem Sie sich angemeldet haben, können Sie Konten hinzufügen oder ändern.",
+		"instructions": "Bitte geben Sie Ihr Passwort ein, um zu beginnen",
+		"turn-off": "Computer ausschalten"
+	},
+	"shutdown": {
+		"message": "Sind Sie sicher, dass Sie:",
+		"option-restart": "Die Seite neu starten?",
+		"option-shutdown": "Die Seite herunterfahren?",
+		"title": "Herunterfahren"
+	},
+	"user": {
+		"title": "Softwareentwickler"
+	},
+	"vigenere-cipher": {
+		"alphabet": "Alphabet",
+		"alphabet-disabled-tooltip": "Das Alphabet ist derzeit auf lateinische Zeichen beschränkt",
+		"decrypt": "Entschlüsseln",
+		"encrypt": "Verschlüsseln",
+		"input": "Eingabe",
+		"key": "Schlüssel",
+		"key-descripton": "Schlüssel für die '{{method}}'-Methode",
+		"method": "Methode",
+		"output": "Ausgabe",
+		"title": "Vigenère-Verschlüsselung"
+	}
+}

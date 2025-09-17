@@ -1,5 +1,3 @@
-import type { SelectVariants } from "react95/dist/Select/Select.types";
-
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MenuList, MenuListItem } from "react95";
@@ -14,6 +12,7 @@ import styles from "./LanguageSelect.module.scss";
 
 const languageDescriptionMap = {
 	en: "English (United States)",
+	de: "Deutsch",
 	tr: "Türkçe"
 };
 

@@ -25,7 +25,6 @@ const iconMap = {
 	shutdown: "/icon/shut_down_with_computer.ico"
 };
 
-// FIXME: add alternating logic for hotkeys when language changes
 export function StartMenu({ onClose }: { onClose: () => void }) {
 	const { t, i18n } = useTranslation("menu");
 	const { setIsLoggedIn } = useContext(AuthContext);
