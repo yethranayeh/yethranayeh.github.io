@@ -12,14 +12,19 @@ const Project = {
 			default: module.DailySpacePalette
 		}))
 	),
-	ExaltRates: lazy(() =>
-		import("@/features/ProjectsWindow/Projects/ExaltRates").then((module) => ({
-			default: module.ExaltRates
+	Sarmal: lazy(() =>
+		import("@/features/ProjectsWindow/Projects/Sarmal").then((module) => ({
+			default: module.Sarmal
+		}))
+	),
+	Deckplate: lazy(() =>
+		import("@/features/ProjectsWindow/Projects/Deckplate").then((module) => ({
+			default: module.Deckplate
 		}))
 	)
 } as const;
 
-const tabs = ["Daily Space Palette", "Exalt Rates"] as const;
+const tabs = ["Daily Space Palette", "Sarmal", "Deckplate"] as const;
 
 export function ProjectsWindow() {
 	const { t } = useTranslation(["content", "menu"]);
@@ -37,7 +42,8 @@ export function ProjectsWindow() {
 			<TabBody as='article' className={styles.tabBody}>
 				<Suspense fallback={<Loader />}>
 					{activeTab === "Daily Space Palette" && <Project.DailySpacePalette />}
-					{activeTab === "Exalt Rates" && <Project.ExaltRates />}
+					{activeTab === "Sarmal" && <Project.Sarmal />}
+					{activeTab === "Deckplate" && <Project.Deckplate />}
 				</Suspense>
 			</TabBody>
 		</>

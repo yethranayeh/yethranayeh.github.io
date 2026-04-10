@@ -11,7 +11,8 @@
 	"error": {
 		"fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
 	},
-	"exalt-rates": "Path of Exile 2 oyuncuları için basit bir para birimi hesaplayıcısı sağlamayı amaçlayan bir proje. Kullanıcı birincil bir para birimi seçebilir, bir miktar girebilir ve diğer mevcut para birimleri için döviz kurlarını görüntüleyebilir.",
+	"sarmal": "Sarmal, yükleme ve düşünme göstergeleri için parametrik eğri animasyonları sunan bir kütüphanedir. Canvas ve SVG renderer'ları, standart eğri koleksiyonu, programatik zaman kontrolü ve sıfır bağımlılık ile npm'den veya CDN üzerinden doğrudan kullanılabilir.",
+	"deckplate": "Deckplate, sistem izleme terminalleri ve fabrika tabelalarından ilham alan yüksek kontrastlı, endüstriyel bir tasarım sistemidir. Tailwind v4 ve Radix UI ile oluşturulmuş, tek bir CLI komutuyla kurulabilen Shadcn uyumlu bir bileşen kaydı olarak sunulmaktadır.",
 	"help-dialog": {
 		"information-body": "Bu benim kişisel sayfam. Burada özgeçmişimi görüntüleyebilir, projelerimi inceleyebilir ve bu işletim sistemi içinde sunduğum küçük 'uygulamaları' çalıştırabilirsiniz.",
 		"information-title": "Bilgi",

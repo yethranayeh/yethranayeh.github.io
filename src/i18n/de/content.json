@@ -11,7 +11,8 @@
 	"error": {
 		"fallback-element": "Hoppla! Sieht so aus, als hätten Sie meine Website kaputt gemacht! Wenn Sie mir helfen möchten, sie zu reparieren, können Sie die Fehlermeldung in der Browser-Konsole überprüfen und sie mir bitte schicken :)"
 	},
-	"exalt-rates": "Ein Projekt, das darauf abzielt, einen einfachen Währungsrechner für Path of Exile 2-Spieler bereitzustellen. Der Benutzer kann eine Hauptwährung auswählen, einen Betrag eingeben und die Wechselkurse für andere verfügbare Währungen anzeigen.",
+	"sarmal": "Sarmal ist eine Bibliothek für parametrische Kurvenanimationen, die als Lade- und Denkindikatoren eingesetzt werden können. Sie bietet Canvas- und SVG-Renderer, eine Auswahl an Standardkurven, programmatische Zeitsteuerung und ist ohne externe Abhängigkeiten – per npm oder direkt über CDN nutzbar.",
+	"deckplate": "Deckplate ist ein hochkontrastiges, industrielles Designsystem, das von Systemüberwachungsterminals und Fabrikbeschilderungen inspiriert wurde. Es wird als Shadcn-kompatibles Komponentenregister bereitgestellt, das mit Tailwind v4 und Radix UI entwickelt wurde und mit einem einzigen CLI-Befehl installiert werden kann.",
 	"help-dialog": {
 		"information-body": "Dies ist meine Portfolio-Seite. Hier können Sie meinen Lebenslauf ansehen, meine Projekte erkunden und kleinere 'Apps' ausführen, die ich in dieses Betriebssystem integriert habe.",
 		"information-title": "Informationen",

@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 import { ProjectLayout } from "./ProjectLayout";
 import { Text } from "@/components/Styled";
 
-export function DailySpacePalette() {
+export function Deckplate() {
 	const { t } = useTranslation("content");
 	return (
-		<ProjectLayout website='https://daily-space-palette.vercel.app/' repo='https://github.com/yethranayeh/daily-space-palette'>
-			<Text>{t("daily-space-palette")}</Text>
+		<ProjectLayout website='https://deckplate.netlify.app' repo='https://github.com/yethranayeh/DECKPLATE'>
+			<Text>{t("deckplate")}</Text>
 		</ProjectLayout>
 	);
 }
