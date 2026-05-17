@@ -4,6 +4,7 @@ import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { getRandomIntRange } from "@/utils/getRandomIntRange";
 import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 import { useAssetPreload } from "@/hooks/useAssetPreload";
+import { startMenuIcons } from "@/config/startMenu";
 
 import { Navbar } from "./components/Navbar";
 import { LoadingScreen } from "./components/LoadingScreen";
@@ -34,7 +35,7 @@ export default function MainLayout() {
   const [loading, setLoading] = useState(!import.meta.env.DEV);
   const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInStorageVal);
 
-  useAssetPreload();
+  useAssetPreload(Object.values(startMenuIcons));
 
   const authContextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn]);
 

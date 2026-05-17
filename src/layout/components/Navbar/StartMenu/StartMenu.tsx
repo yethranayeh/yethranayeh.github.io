@@ -11,6 +11,7 @@ import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
 import { soundAtom } from "@/stores/soundAtom";
 import { addWindowAtom } from "@/stores/window.atom";
+import { startMenuIcons } from "@/config/startMenu";
 
 import { ListItem } from "./ListItem/ListItem";
 
@@ -19,11 +20,7 @@ import styles from "./StartMenu.module.scss";
 const HelpDialogContent = lazy(() => import("./HelpDialogContent"));
 const ShutdownDialogContent = lazy(() => import("./ShutdownDialogContent"));
 
-const iconMap = {
-	help: "/icon/book.ico",
-	logout: "/icon/key_win.ico",
-	shutdown: "/icon/shut_down_with_computer.ico"
-};
+const iconMap = startMenuIcons;
 
 export function StartMenu({ onClose }: { onClose: () => void }) {
 	const { t, i18n } = useTranslation("menu");
