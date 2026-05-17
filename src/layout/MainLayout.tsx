@@ -3,6 +3,7 @@ import { Suspense, lazy, useEffect, useMemo, useState } from "react";
 
 import { getRandomIntRange } from "@/utils/getRandomIntRange";
 import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
+import { useAssetPreload } from "@/hooks/useAssetPreload";
 
 import { Navbar } from "./components/Navbar";
 import { LoadingScreen } from "./components/LoadingScreen";
@@ -18,67 +19,69 @@ import styles from "./MainLayout.module.scss";
 
 // TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout. Maybe utilize route transition technology for this?
 const LoginPage = lazy(() =>
-	import("@/features/LoginPage/LoginPage").then((module) => ({ default: module.LoginPage }))
+  import("@/features/LoginPage/LoginPage").then((module) => ({ default: module.LoginPage })),
 );
 
 const isLoggedInStorageVal = localStorage.getItem(isLoggedOutKey) !== "true";
 
 const loadingTimeMultiplier = isLoggedInStorageVal ? 1 : 0.6;
 const loadingTime = import.meta.env.DEV
-	? 0
-	: getRandomIntRange(2500 * loadingTimeMultiplier, 4000 * loadingTimeMultiplier);
+  ? 0
+  : getRandomIntRange(2500 * loadingTimeMultiplier, 4000 * loadingTimeMultiplier);
 
 // TODO: refactor loading screen handling
 export default function MainLayout() {
-	const [loading, setLoading] = useState(!import.meta.env.DEV);
-	const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInStorageVal);
+  const [loading, setLoading] = useState(!import.meta.env.DEV);
+  const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInStorageVal);
 
-	const authContextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn]);
+  useAssetPreload();
 
-	useEffect(() => {
-		const timeout = setTimeout(() => {
-			setLoading(false);
-			isLoggedIn && setBodyLoadingState("false");
-		}, loadingTime);
+  const authContextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn]);
 
-		return () => clearTimeout(timeout);
-	}, []);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+      isLoggedIn && setBodyLoadingState("false");
+    }, loadingTime);
 
-	if (loading) {
-		return (
-			<div className={styles.container}>
-				<LoadingScreen />
-			</div>
-		);
-	}
+    return () => clearTimeout(timeout);
+  }, []);
 
-	if (!isLoggedIn) {
-		return (
-			<AuthContext.Provider value={authContextValue}>
-				<Suspense fallback={null}>
-					<LoginPage />
-				</Suspense>
-			</AuthContext.Provider>
-		);
-	}
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <LoadingScreen />
+      </div>
+    );
+  }
 
-	return (
-		<div className={[styles.container, styles.fadeIn].join(" ")}>
-			<AuthContext.Provider value={authContextValue}>
-				<Navbar />
-			</AuthContext.Provider>
+  if (!isLoggedIn) {
+    return (
+      <AuthContext.Provider value={authContextValue}>
+        <Suspense fallback={null}>
+          <LoginPage />
+        </Suspense>
+      </AuthContext.Provider>
+    );
+  }
 
-			<main className={styles.main}>
-				<DesktopOutlet />
+  return (
+    <div className={[styles.container, styles.fadeIn].join(" ")}>
+      <AuthContext.Provider value={authContextValue}>
+        <Navbar />
+      </AuthContext.Provider>
 
-				{/* TODO: decide on what to do with routing and Outlet, since window management is now independent of route state */}
-				<Suspense fallback={<Loader />}>
-					<Outlet />
-				</Suspense>
+      <main className={styles.main}>
+        <DesktopOutlet />
 
-				<WindowsOutlet />
-				<Clippy />
-			</main>
-		</div>
-	);
+        {/* TODO: decide on what to do with routing and Outlet, since window management is now independent of route state */}
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+
+        <WindowsOutlet />
+        <Clippy />
+      </main>
+    </div>
+  );
 }
