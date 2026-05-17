@@ -21,7 +21,7 @@ export function WindowTabs() {
 					onClick={() => toggleMinimize(w.id)}
 					isActive={!w.minimized}
 					iconSrc={!w.minimized ? w.openWindowIconSrc ?? w.iconSrc : w.iconSrc}
-					text={t(w.titleKey)}
+					text={t(w.titleI18nKey)}
 				/>
 			))}
 		</Flex>

@@ -16,7 +16,7 @@ export default function DesktopOutlet() {
 				<DesktopIcon
 					key={app.id}
 					id={app.id}
-					title={t(app.titleKey)}
+					title={t(app.titleI18nKey)}
 					iconSrc={app.iconSrc}
 					onDoubleClick={() => addWindow(app)}
 				/>

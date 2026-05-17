@@ -5,7 +5,7 @@ import { atom } from "jotai";
 
 export type AppWindow = {
 	id: string;
-	titleKey: string;
+	titleI18nKey: string;
 	minimized: boolean;
 	iconSrc: string;
 	openWindowIconSrc?: string;

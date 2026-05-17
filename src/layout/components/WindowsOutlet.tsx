@@ -23,7 +23,7 @@ export function WindowsOutlet() {
 						<DraggableWindow
 							key={w.id}
 							{...w.WindowProps}
-							title={t(w.titleKey)}
+							title={t(w.titleI18nKey)}
 							slotProps={{
 								...w.WindowProps?.slotProps,
 								minimizeButton: {

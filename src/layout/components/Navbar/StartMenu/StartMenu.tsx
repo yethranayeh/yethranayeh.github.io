@@ -37,7 +37,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	const onClickHelp = () =>
 		addWindow({
 			id: "help",
-			titleKey: "menu:nav.help",
+			titleI18nKey: "menu:nav.help",
 			content: HelpDialogContent,
 			minimized: false,
 			iconSrc: iconMap.help
@@ -54,7 +54,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 	const onClickShutdown = () =>
 		addWindow({
 			id: "shutdown-dialog",
-			titleKey: "content:shutdown.title",
+			titleI18nKey: "content:shutdown.title",
 			content: ShutdownDialogContent,
 			WindowProps: {
 				slotProps: {

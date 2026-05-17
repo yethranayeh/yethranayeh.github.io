@@ -15,7 +15,7 @@ const AppsContent = lazy(() =>
 export const desktopApps: Array<AppWindow> = [
 	{
 		id: "resume",
-		titleKey: "menu:window.resume",
+		titleI18nKey: "menu:window.resume",
 		minimized: false,
 		iconSrc: "/icon/user_card.ico",
 		content: ResumeContent,
@@ -25,14 +25,14 @@ export const desktopApps: Array<AppWindow> = [
 	},
 	{
 		id: "projects",
-		titleKey: "menu:window.projects",
+		titleI18nKey: "menu:window.projects",
 		minimized: false,
 		iconSrc: "/icon/desktop.ico",
 		content: ProjectsContent
 	},
 	{
 		id: "apps",
-		titleKey: "menu:window.apps",
+		titleI18nKey: "menu:window.apps",
 		minimized: false,
 		iconSrc: "/icon/folder.ico",
 		openWindowIconSrc: "/icon/folder_open.ico",
