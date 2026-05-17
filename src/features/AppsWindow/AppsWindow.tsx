@@ -4,59 +4,38 @@ import { Frame } from "react95";
 import { useAtom } from "jotai";
 
 import { addWindowAtom } from "@/stores/window.atom";
+import { appKeys, createAppWindow } from "@/config/windowRegistry";
 
 import { App } from "./App";
 import { WindowURL } from "@/components/windows/WindowURL";
 
 import styles from "./AppsWindow.module.scss";
 
-const Apps = {
-	VigenereCipher: {
-		name: "vigenère cipher",
-		titleI18nKey: "vigenere-cipher.title",
-		iconSrc: "/icon/program.ico",
-		Element: lazy(() =>
-			import("@/features/AppsWindow/VigenereCipher/VigenereCipher").then((module) => ({
-				default: module.VigenereCipher
-			}))
-		)
-	}
-} as const;
-
-const appKeys = Object.keys(Apps) as Array<keyof typeof Apps>;
-
 export function AppsWindow() {
-	const { t } = useTranslation("content");
+  const { t } = useTranslation("content");
 
-	const [_, addWindow] = useAtom(addWindowAtom);
+  const [_, addWindow] = useAtom(addWindowAtom);
 
-	return (
-		<>
-			<WindowURL />
-			<Frame as='section' variant='field' className={styles.frame}>
-				{appKeys.map((appKey, index) => {
-					const app = Apps[appKey];
+  return (
+    <>
+      <WindowURL />
+      <Frame as="section" variant="field" className={styles.frame}>
+        {appKeys.map((appKey) => {
+          const appWindow = createAppWindow(appKey);
+          if (!appWindow) {
+            return null;
+          }
 
-					return (
-						<App
-							key={app.name}
-							name={app.name}
-							iconSrc={app.iconSrc}
-							onDoubleClick={() => {
-								const Element = app.Element;
-
-								addWindow({
-									id: `app:${app.name}`,
-									titleI18nKey: app.titleI18nKey,
-									iconSrc: "/icon/program.ico",
-									minimized: false,
-									content: Element
-								});
-							}}
-						/>
-					);
-				})}
-			</Frame>
-		</>
-	);
+          return (
+            <App
+              key={appWindow.id}
+              name={t(appWindow.titleI18nKey)}
+              iconSrc={appWindow.iconSrc}
+              onDoubleClick={() => addWindow(appWindow)}
+            />
+          );
+        })}
+      </Frame>
+    </>
+  );
 }
