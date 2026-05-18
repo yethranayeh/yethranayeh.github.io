@@ -1,0 +1,1 @@
+import{u as s,a as t,j as r,F as n,T as a}from"./index-m-eesMek.js";import{M as l}from"./MailLink-B_Oh8FxN.js";function u(){const{t:o}=s("content"),e=t();return console.error(e),r.jsxs(n,{direction:"column",style:{color:"#fff"},gap:8,children:[r.jsx(a,{children:o("error.fallback-element")}),r.jsx(l,{})]})}export{u as ErrorPage};
