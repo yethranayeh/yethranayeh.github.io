@@ -5,7 +5,22 @@
 	},
 	"base-url": "C:\\Kullanıcılar",
 	"clippy": {
-		"greeting": "Merhaba, ben Clippy!"
+		"actions": {
+			"openCipher": "Şifrelemeyi Aç",
+			"openResume": "Özgeçmişi Aç",
+			"showHelp": "Yardımı Göster"
+		},
+		"dismiss": "Kapat",
+		"greeting": "Merhaba, ben Clippy!",
+		"tips": {
+			"appsOpen": "Vigenère Şifrelemesi ile gizli mesajları şifrele veya çöz!",
+			"firstVisit": "Hoş geldin! Başlamak için masaüstündeki bir simgeye çift tıkla.",
+			"helpOpen": "Geri bildirimin varsa veya bir hata bulursan bana bildir!",
+			"idle": "Yardıma mı ihtiyacın var? Gezinme ipuçları ve kısayollar için Başlat Menüsüne tıkla.",
+			"noWindows": "Hiçbir şey açık değil? Özgeçmişime veya projelerime göz at!",
+			"projectsOpen": "Projelerimi merak ediyor musun? Detayları görmek için bir projeye çift tıkla!",
+			"resumeOpen": "Özgeçmişimi okuyorsun gibi görünüyor. Hakkımda daha fazla bilgi ister misin?"
+		}
 	},
 	"daily-space-palette": "Daily Space Palette, NASA'nın Astronomy Picture of The Day sitesinde paylaştığı fotoğraftan renk paleti üreten bir web projesidir. Astronomi resmi günlük olarak değişir ve her gün o resimden yeni bir renk paleti üretilir.",
 	"error": {

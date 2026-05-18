@@ -5,7 +5,22 @@
 	},
 	"base-url": "C:\\Benutzer",
 	"clippy": {
-		"greeting": "Hallo, ich bin Clippy!"
+		"actions": {
+			"openCipher": "Chiffre öffnen",
+			"openResume": "Lebenslauf öffnen",
+			"showHelp": "Hilfe anzeigen"
+		},
+		"dismiss": "Schließen",
+		"greeting": "Hallo, ich bin Clippy!",
+		"tips": {
+			"appsOpen": "Versuchen Sie die Vigenère-Verschlüsselung — geheime Nachrichten verschlüsseln und entschlüsseln!",
+			"firstVisit": "Willkommen! Doppelklicken Sie auf ein Symbol auf dem Desktop, um zu beginnen.",
+			"helpOpen": "Wenn Sie Feedback haben oder einen Fehler finden, lassen Sie es mich wissen! Ihr Input ist wertvoll.",
+			"idle": "Brauchen Sie Hilfe? Klicken Sie auf das Startmenü für Navigationstipps und Tastenkombinationen.",
+			"noWindows": "Nichts geöffnet? Schauen Sie sich meinen Lebenslauf oder meine Projekte an!",
+			"projectsOpen": "Neugierig auf meine Projekte? Doppelklicken Sie auf ein Projekt, um die Details zu sehen!",
+			"resumeOpen": "Sie lesen meinen Lebenslauf. Möchten Sie mehr über meine Erfahrung erfahren?"
+		}
 	},
 	"daily-space-palette": "Daily Space Palette ist eine Webseite, die Farbpaletten aus dem NASA Astronomy Picture of the Day generiert. Das Astronomiebild ändert sich täglich und jeden Tag wird eine neue Farbpalette aus dem bereitgestellten Bild erstellt.",
 	"error": {

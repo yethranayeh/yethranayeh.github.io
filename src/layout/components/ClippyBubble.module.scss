@@ -1,0 +1,66 @@
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.scss";
+
+.bubble {
+	position: absolute;
+	bottom: 100%;
+	right: 0;
+	margin-bottom: variables.$spacing-4;
+
+	width: 260px;
+	padding: variables.$spacing-4;
+
+	border: 2px solid #0a0a0a;
+	background: #fefbcc;
+	box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.35);
+
+	animation: fadeIn 0.3s ease-out;
+
+	@include mixins.no-select;
+}
+
+.text {
+	margin: 0 0 variables.$spacing-4 0;
+
+	font-size: 0.85rem;
+	line-height: 1.4;
+	color: #0a0a0a;
+}
+
+.actions {
+	display: flex;
+	gap: variables.$spacing-2;
+	justify-content: flex-end;
+}
+
+// Triangle tail at bottom-right
+.bubble::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	right: 24px;
+
+	border: 8px solid transparent;
+	border-top-color: #fefbcc;
+}
+
+.bubble::before {
+	content: "";
+	position: absolute;
+	top: calc(100% + 2px);
+	right: 22px;
+
+	border: 10px solid transparent;
+	border-top-color: #0a0a0a;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

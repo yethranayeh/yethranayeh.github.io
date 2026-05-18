@@ -5,7 +5,22 @@
 	},
 	"base-url": "C:\\Users",
 	"clippy": {
-		"greeting": "Hello, I'm Clippy!"
+		"actions": {
+			"openCipher": "Open Cipher",
+			"openResume": "Open Resume",
+			"showHelp": "Show Help"
+		},
+		"dismiss": "Dismiss",
+		"greeting": "Hello, I'm Clippy!",
+		"tips": {
+			"appsOpen": "Try the Vigenère Cipher to encrypt and decrypt secret messages!",
+			"firstVisit": "Welcome! Double-click an icon on the desktop to get started.",
+			"helpOpen": "If you have feedback or find a bug, let me know! Your input is valuable.",
+			"idle": "Need help? Click the Start menu for navigation tips and shortcuts.",
+			"noWindows": "Nothing open? Try checking out my Resume or Projects!",
+			"projectsOpen": "Curious about my projects? Double-click a project to see the details!",
+			"resumeOpen": "Looks like you're reading my resume. Want to know more about my experience?"
+		}
 	},
 	"daily-space-palette": "Daily Space Palette is a webpage that generates color palettes from NASA's Astronomy Picture of the Day. The astronomy picture changes daily, and each day a new color palette is generated from the picture provided.",
 	"error": {
