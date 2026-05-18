@@ -8,18 +8,35 @@
 		"actions": {
 			"openCipher": "Şifrelemeyi Aç",
 			"openResume": "Özgeçmişi Aç",
-			"showHelp": "Yardımı Göster"
+			"showHelp": "Yardımı Göster",
+			"viewTechStack": "Teknoloji Yığınını Gör"
 		},
 		"dismiss": "Kapat",
+		"facts": [
+			"Biliyor muydun? Bu portföy React, TypeScript ve bolca nostalji ile yapıldı!",
+			"Microsoft'un en tartışmalı ataç isminden adımı alıyorum.",
+			"İlk günden beri bu masaüstünde bisikletimi sürüyorum.",
+			"Windows 95 başlat menüsü neredeyse 'sistem menüsü' olarak adlandırılacaktı.",
+			"Clippy Office 97'de tanıtıldı ve Office 2007'de kaldırıldı. Güzel bir yolculuktu.",
+			"Bu site state yönetimi için Jotai kullanıyor — React'in useState'i gibi ama steroidli.",
+			"Orijinal Windows 95'in 4MB RAM'e ihtiyacı vardı. Bu portföy muhtemelen sadece yükleme ekranı için daha fazlasını kullanıyor.",
+			"Gerçekten hislerim yok ama 11 farklı GIF'im var."
+		],
 		"greeting": "Merhaba, ben Clippy!",
+		"milestones": {
+			"click5": "Vay be, beni tıklamayı gerçekten çok seviyorsun!",
+			"click10": "Tamam, özel bir şeyi hak ettin...",
+			"click10Action": "Teknoloji Yığınını Gör",
+			"click11Plus": "Hala devam mı ediyorsun? Saygı duyuyorum."
+		},
 		"tips": {
-			"appsOpen": "Vigenère Şifrelemesi ile gizli mesajları şifrele veya çöz!",
+			"appsOpen": "Vigenère Şifrelemesini dene — gizli mesajları şifrele ve çöz!",
 			"firstVisit": "Hoş geldin! Başlamak için masaüstündeki bir simgeye çift tıkla.",
-			"helpOpen": "Geri bildirimin varsa veya bir hata bulursan bana bildir!",
+			"helpOpen": "Geri bildirimin varsa veya bir hata bulursan bana bildir! Senin görüşlerin değerli.",
 			"idle": "Yardıma mı ihtiyacın var? Gezinme ipuçları ve kısayollar için Başlat Menüsüne tıkla.",
 			"noWindows": "Hiçbir şey açık değil? Özgeçmişime veya projelerime göz at!",
 			"projectsOpen": "Projelerimi merak ediyor musun? Detayları görmek için bir projeye çift tıkla!",
-			"resumeOpen": "Özgeçmişimi okuyorsun gibi görünüyor. Hakkımda daha fazla bilgi ister misin?"
+			"resumeOpen": "Özgeçmişimi okuyorsun gibi görünüyor. Deneyimlerim hakkında daha fazla bilgi ister misin?"
 		}
 	},
 	"daily-space-palette": "Daily Space Palette, NASA'nın Astronomy Picture of The Day sitesinde paylaştığı fotoğraftan renk paleti üreten bir web projesidir. Astronomi resmi günlük olarak değişir ve her gün o resimden yeni bir renk paleti üretilir.",

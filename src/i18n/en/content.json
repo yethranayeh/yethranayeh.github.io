@@ -8,10 +8,27 @@
 		"actions": {
 			"openCipher": "Open Cipher",
 			"openResume": "Open Resume",
-			"showHelp": "Show Help"
+			"showHelp": "Show Help",
+			"viewTechStack": "View Tech Stack"
 		},
 		"dismiss": "Dismiss",
+		"facts": [
+			"Did you know? This portfolio is built with React, TypeScript, and a lot of nostalgia!",
+			"I'm named after Microsoft's most controversial paperclip.",
+			"I've been riding my bike around this desktop since day one.",
+			"The Windows 95 start menu was almost called the 'system menu'.",
+			"Clippy was introduced in Office 97 and removed in Office 2007. He had a good run.",
+			"This site uses Jotai for state management — it's like React's useState but on steroids.",
+			"The original Windows 95 required 4MB of RAM. This portfolio probably uses more just for the loading screen.",
+			"I don't actually have feelings, but I do have 11 different GIFs."
+		],
 		"greeting": "Hello, I'm Clippy!",
+		"milestones": {
+			"click5": "Wow, you really like clicking me!",
+			"click10": "Okay, you've earned something special...",
+			"click10Action": "View Tech Stack",
+			"click11Plus": "Still going? I respect that."
+		},
 		"tips": {
 			"appsOpen": "Try the Vigenère Cipher to encrypt and decrypt secret messages!",
 			"firstVisit": "Welcome! Double-click an icon on the desktop to get started.",

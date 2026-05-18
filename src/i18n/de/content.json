@@ -8,10 +8,27 @@
 		"actions": {
 			"openCipher": "Chiffre öffnen",
 			"openResume": "Lebenslauf öffnen",
-			"showHelp": "Hilfe anzeigen"
+			"showHelp": "Hilfe anzeigen",
+			"viewTechStack": "Tech-Stack ansehen"
 		},
 		"dismiss": "Schließen",
+		"facts": [
+			"Wusstest du? Dieses Portfolio ist mit React, TypeScript und viel Nostalgie gebaut!",
+			"Ich bin nach Microsofts umstrittenster Büroklammer benannt.",
+			"Ich fahre seit dem ersten Tag mit meinem Fahrrad auf diesem Desktop herum.",
+			"Das Windows 95 Startmenü sollte fast 'Systemmenü' heißen.",
+			"Clippy wurde in Office 97 eingeführt und in Office 2007 entfernt. Er hatte einen guten Lauf.",
+			"Diese Seite nutzt Jotai für das State-Management — wie Reacts useState, aber auf Steroiden.",
+			"Das originale Windows 95 benötigte 4MB RAM. Dieses Portfolio verbraucht wahrscheinlich mehr nur für den Ladebildschirm.",
+			"Ich habe eigentlich keine Gefühle, aber ich habe 11 verschiedene GIFs."
+		],
 		"greeting": "Hallo, ich bin Clippy!",
+		"milestones": {
+			"click5": "Wow, du klickst mich wirklich gerne!",
+			"click10": "Okay, du hast dir etwas Besonderes verdient...",
+			"click10Action": "Tech-Stack ansehen",
+			"click11Plus": "Immer noch dabei? Ich respektiere das."
+		},
 		"tips": {
 			"appsOpen": "Versuchen Sie die Vigenère-Verschlüsselung — geheime Nachrichten verschlüsseln und entschlüsseln!",
 			"firstVisit": "Willkommen! Doppelklicken Sie auf ein Symbol auf dem Desktop, um zu beginnen.",

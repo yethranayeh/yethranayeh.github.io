@@ -1,6 +1,7 @@
 // https://codepen.io/Jemimaabu/pen/BaOLPby
-// TODO: Add easter eggs — hidden interactions (e.g. rapid clicks, secret combos) trigger surprise animations or hidden content
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+// TODO: Add easter eggs: hidden interactions (e.g. rapid clicks, secret combos) trigger surprise animations or hidden content
+// TODO: Add mini game: click Clippy to play a tiny game (coin flip, guess the number, rock-paper-scissors)
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useAtomValue, useStore } from "jotai";
 import { useTranslation } from "react-i18next";
 
@@ -12,6 +13,7 @@ import styles from "./Clippy.module.scss";
 
 const initialRenderDelay = 1000;
 const idleThresholdMs = 30_000;
+const factAutoDismissMs = 6000;
 
 type ClippyStateObj<T> = Record<T extends string ? T : string, { src: string; duration: number }>;
 type TransitionState = "stationary" | "bikeIn" | "bikeOut";
@@ -55,10 +57,16 @@ export function Clippy() {
   const [isIdle, setIsIdle] = useState(false);
   const idleTimerRef = useRef<ReturnType<typeof setTimeout>>();
 
+  const clickCountRef = useRef(0);
+  const shownFactsRef = useRef<Set<number>>(new Set());
+  const [activeFact, setActiveFact] = useState<string | null>(null);
+
   const isTransitioning =
     currentState.src === transitionState.bikeIn.src ||
     currentState.src === transitionState.bikeOut.src;
-  const isBubbleVisible = activeTipId !== null;
+  const isBubbleVisible = activeTipId !== null || activeFact !== null;
+
+  const facts = useMemo(() => t("clippy.facts", { returnObjects: true }) as string[], [t]);
 
   const resetIdleTimer = useCallback(() => {
     setIsIdle(false);
@@ -160,20 +168,56 @@ export function Clippy() {
   const handleDismiss = useCallback(() => {
     if (activeTipId) {
       setLastShownTimes((prev) => new Map(prev).set(activeTipId, Date.now()));
+      setActiveTipId(null);
+    } else if (activeFact) {
+      setActiveFact(null);
     }
-    setActiveTipId(null);
-  }, [activeTipId]);
+  }, [activeTipId, activeFact]);
 
-  const handleAction = useCallback(() => {
+  const handleTipAction = useCallback(() => {
     const tip = tips.find((t) => t.id === activeTipId);
     if (tip?.actionWindow) {
       store.set(addWindowAtom, tip.actionWindow);
     }
-
     handleDismiss();
   }, [activeTipId, store, handleDismiss]);
 
-  if (!shouldRender) return null;
+  const handleClick = useCallback(() => {
+    if (isBubbleVisible || isTransitioning) {
+      return;
+    }
+
+    const newCount = clickCountRef.current + 1;
+    clickCountRef.current = newCount;
+
+    let factText: string;
+
+    if (newCount === 5) {
+      factText = t("clippy.milestones.click5");
+    } else if (newCount === 10) {
+      factText = t("clippy.milestones.click10");
+    } else if (newCount > 10) {
+      factText = t("clippy.milestones.click11Plus");
+    } else {
+      const availableFacts = facts.map((_, i) => i).filter((i) => !shownFactsRef.current.has(i));
+
+      if (availableFacts.length === 0) {
+        shownFactsRef.current = new Set();
+        const randomIndex = Math.floor(Math.random() * facts.length);
+        factText = facts[randomIndex];
+      } else {
+        const randomIndex = availableFacts[Math.floor(Math.random() * availableFacts.length)];
+        factText = facts[randomIndex];
+        shownFactsRef.current.add(randomIndex);
+      }
+    }
+
+    setActiveFact(factText);
+  }, [isBubbleVisible, isTransitioning, facts, t]);
+
+  if (!shouldRender) {
+    return null;
+  }
 
   const activeTip = tips.find((t) => t.id === activeTipId);
 
@@ -183,8 +227,16 @@ export function Clippy() {
         <ClippyBubble
           text={t(activeTip.i18nKey)}
           actionLabel={activeTip.actionLabelI18nKey ? t(activeTip.actionLabelI18nKey) : undefined}
-          onAction={activeTip.actionWindow ? handleAction : undefined}
+          onAction={activeTip.actionWindow ? handleTipAction : undefined}
           onDismiss={handleDismiss}
+        />
+      )}
+
+      {isBubbleVisible && activeFact && (
+        <ClippyBubble
+          text={activeFact}
+          onDismiss={handleDismiss}
+          autoDismissMs={factAutoDismissMs}
         />
       )}
 
@@ -203,6 +255,7 @@ export function Clippy() {
         className={styles.clippy}
         title="Clippy"
         alt="Microsoft Clippy animation"
+        onClick={handleClick}
         onMouseEnter={() => !isTransitioning && setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onTouchStart={() => !isTransitioning && setIsHovered(true)}
