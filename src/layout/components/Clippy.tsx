@@ -240,10 +240,6 @@ export function Clippy() {
         />
       )}
 
-      {!isBubbleVisible && isHovered && (
-        <span className={styles.tooltip}>{t("clippy.greeting")}</span>
-      )}
-
       <img
         src={
           isBubbleVisible
