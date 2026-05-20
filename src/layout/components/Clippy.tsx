@@ -14,6 +14,10 @@ import styles from "./Clippy.module.scss";
 const initialRenderDelay = 1000;
 const idleThresholdMs = 30_000;
 const factAutoDismissMs = 6000;
+// TODO: Replace this global cooldown with a queue-based tip system (FIFO) where
+// tips enqueue themselves when their conditions are met, allowing natural pacing
+// and context-aware scheduling without arbitrary delays.
+const minIntervalBetweenTipsMs = 5_000;
 
 type ClippyStateObj<T> = Record<T extends string ? T : string, { src: string; duration: number }>;
 type TransitionState = "stationary" | "bikeIn" | "bikeOut";
@@ -59,6 +63,7 @@ export function Clippy() {
 
   const clickCountRef = useRef(0);
   const shownFactsRef = useRef<Set<number>>(new Set());
+  const lastDismissTimeRef = useRef(0);
   const [activeFact, setActiveFact] = useState<string | null>(null);
 
   const isTransitioning =
@@ -88,6 +93,10 @@ export function Clippy() {
 
   const selectTip = useCallback(() => {
     const now = Date.now();
+    if (now - lastDismissTimeRef.current < minIntervalBetweenTipsMs) {
+      return;
+    }
+
     const matchingTips = tips.filter((tip) => {
       if (tip.id === "idle" && !isIdle) {
         return false;
@@ -167,6 +176,7 @@ export function Clippy() {
 
   const handleDismiss = useCallback(() => {
     if (activeTipId) {
+      lastDismissTimeRef.current = Date.now();
       setLastShownTimes((prev) => new Map(prev).set(activeTipId, Date.now()));
       setActiveTipId(null);
     } else if (activeFact) {
