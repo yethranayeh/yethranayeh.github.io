@@ -36,7 +36,6 @@ const HelpDialogContent = () => {
 					style={{
 						background: "#ffffe1",
 						padding: "1.5rem"
-						// color: "#333",
 					}}>
 					<Flex direction='column' gap={16}>
 						<MyCard />

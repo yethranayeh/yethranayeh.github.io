@@ -1,4 +1,3 @@
-import React from "react";
 import { Flex, Text } from "./Styled";
 import { ImgIcon } from "./ImgIcon";
 
@@ -20,7 +19,7 @@ export default function DesktopIcon({ title, iconSrc, onDoubleClick }: DesktopIc
 			gap={4}
 			style={{ cursor: "pointer", height: 75, width: 75 }}
 			className='no-select'>
-			<ImgIcon strictSizing src={iconSrc} size={48} />
+			<ImgIcon strictSizing src={iconSrc} size={48} alt={title} />
 			<Text
 				light
 				variant='small'

@@ -37,7 +37,7 @@ export default function MainLayout() {
 
   useAssetPreload(Object.values(startMenuIcons));
 
-  const authContextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn]);
+  const authContextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn, setIsLoggedIn]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
