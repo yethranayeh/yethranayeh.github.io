@@ -18,8 +18,7 @@ import { isLoggedOutKey } from "@/config/storage";
 
 import styles from "./MainLayout.module.scss";
 
-// const isDevMode = import.meta.env.DEV
-const isDevMode = false;
+const isDevMode = import.meta.env.DEV;
 
 // TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout. Maybe utilize route transition technology for this?
 const LoginPage = lazy(() =>
