@@ -72,7 +72,8 @@
   "login-screen": {
     "footer-info": "After you log on, you can add or change accounts.",
     "instructions": "To begin, please enter your password",
-    "turn-off": "Turn off computer"
+    "turn-off": "Turn off computer",
+    "hint": "You can just type anything, really"
   },
   "shutdown": {
     "message": "Are you sure you want to:",

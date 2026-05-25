@@ -55,6 +55,16 @@
   }
 }
 
+.hint {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  visibility: hidden;
+
+  &[data-visible="true"] {
+    visibility: visible;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .formError {
     animation: none !important;

@@ -72,7 +72,8 @@
   "login-screen": {
     "footer-info": "Nachdem Sie sich angemeldet haben, können Sie Konten hinzufügen oder ändern.",
     "instructions": "Bitte geben Sie Ihr Passwort ein, um zu beginnen",
-    "turn-off": "Computer ausschalten"
+    "turn-off": "Computer ausschalten",
+    "hint": "Du kannst einfach irgendetwas eingeben"
   },
   "shutdown": {
     "message": "Sind Sie sicher, dass Sie:",

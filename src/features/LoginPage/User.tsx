@@ -24,6 +24,7 @@ export function User() {
   const [sound] = useAtom(soundAtom);
 
   const [isFormError, setIsFormError] = useState(false);
+  const [showHint, setShowHint] = useState(false);
   const [playLogin] = useSound("/audio/login.mp3", { volume: 0.25, soundEnabled: sound.enabled });
   const [playTyping] = useSound("/audio/typing.mp3", { soundEnabled: sound.enabled });
   const [playError] = useSound("/audio/error.mp3", { volume: 0.5, soundEnabled: sound.enabled });
@@ -35,7 +36,7 @@ export function User() {
   }, [isFormError]);
 
   return (
-    <Flex className={styles.container}>
+    <Flex gap={12} className={styles.container}>
       <BlinkingEyesAvatar />
       <Flex direction="column" gap={8} className={styles.formContainer}>
         <label htmlFor="password" className={styles["label-user"]}>
@@ -48,6 +49,7 @@ export function User() {
           className={isFormError ? styles.formError : undefined}
           onInvalid={() => {
             setIsFormError(true);
+            setShowHint(true);
             playError();
           }}
           onSubmit={(e) => {
@@ -71,6 +73,9 @@ export function User() {
             <SVGIcon Icon={ArrowRight} />
           </Button>
         </Flex>
+        <p className={styles.hint} data-visible={showHint}>
+          {t("content:login-screen.hint")}
+        </p>
       </Flex>
     </Flex>
   );

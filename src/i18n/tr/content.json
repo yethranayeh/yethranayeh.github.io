@@ -72,7 +72,8 @@
   "login-screen": {
     "footer-info": "Giriş yaptıktan sonra kullanıcı hesabı ekleyebilir veyak kullanıcıyı değiştirebilirsiniz.",
     "instructions": "Başlamak için lütfen şifrenizi giriniz",
-    "turn-off": "Bilgisayarı kapat"
+    "turn-off": "Bilgisayarı kapat",
+    "hint": "Rastgele bir şey de yazabilirsin"
   },
   "shutdown": {
     "message": "Emin misiniz?",
