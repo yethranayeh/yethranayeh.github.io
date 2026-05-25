@@ -1,1 +1,0 @@
-import{N as a,t,i as p}from"./index-Bw4PxcQE.js";import{P as s}from"./ProjectLayout-LqfzP5FA.js";import"./github-Ntv31nch.js";function c(){const{t:e}=a("content");return t.jsx(s,{website:"https://daily-space-palette.vercel.app/",repo:"https://github.com/yethranayeh/daily-space-palette",children:t.jsx(p,{children:e("daily-space-palette")})})}export{c as DailySpacePalette};
