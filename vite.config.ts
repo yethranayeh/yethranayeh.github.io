@@ -13,7 +13,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
-  plugins: [react(), svgr({ include: "**/*.svg?react" })],
+  plugins: [
+    react({
+      babel: {
+        plugins: [["babel-plugin-react-compiler", { target: "18", compilationMode: "annotation" }]],
+      },
+    }),
+    svgr({ include: "**/*.svg?react" }),
+  ],
   optimizeDeps: {
     esbuildOptions: {
       // Node.js global to browser globalThis

@@ -14,6 +14,7 @@ interface AppProps {
 }
 
 export function App({ name, onDoubleClick, iconSrc }: AppProps) {
+  "use memo";
   const [isFocused, setIsFocused] = useState(false);
 
   return (

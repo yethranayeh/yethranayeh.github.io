@@ -11,6 +11,7 @@ export interface DesktopIconProps {
 // TODO: add highlight state on single click. @see: Apps content
 // TODO: add Draggable with "grid" prop allow dragging icons on desktop grid
 export default function DesktopIcon({ title, iconSrc, onDoubleClick }: DesktopIconProps) {
+  "use memo";
   return (
     <Flex
       direction="column"

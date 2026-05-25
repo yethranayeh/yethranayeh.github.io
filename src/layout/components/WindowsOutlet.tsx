@@ -8,6 +8,7 @@ import { DraggableWindow } from "@/components/windows/DraggableWindow";
 import { Loader } from "@/components/Loader";
 
 export function WindowsOutlet() {
+  "use memo";
   const { t } = useTranslation();
   const [windows] = useAtom(windowsAtom);
   const [_, closeWindow] = useAtom(removeWindowAtom);

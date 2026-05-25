@@ -90,3 +90,23 @@ The `react-hooks-js` JS plugin loads `eslint-plugin-react-hooks` v7 to provide R
 | `refs`                     | warn     | Ref access during render (disabled for LanguageSelect.tsx — @floating-ui callback refs are valid) |
 | `error-boundaries`         | warn     | Missing error boundaries                                                                          |
 | `component-hook-factories` | warn     | Factory patterns incompatible with compiler                                                       |
+
+### React Compiler
+
+The project uses [React Compiler](https://react.dev/learn/react-compiler) in **annotation mode** (`compilationMode: "annotation"`). Only components with a `"use memo"` directive are compiled.
+
+**Setup:**
+- `babel-plugin-react-compiler` (Babel plugin) configured in `vite.config.ts`
+- `react-compiler-runtime` (runtime shim required for React 18)
+- Target: `"18"` (matches the React version in use)
+
+**Currently compiled components** (annotation mode test set):
+- `src/components/DesktopIcon.tsx`
+- `src/layout/components/WindowsOutlet.tsx`
+- `src/features/AppsWindow/App.tsx`
+
+To compile additional components, add `"use memo"` at the top of the function body. To skip a component in infer mode, use `"use no memo"`.
+
+**Phases:**
+- Phase 2 (current): Annotation mode — opt-in compilation for testing
+- Phase 3 (future): Switch to infer mode (`compilationMode: "infer"`) for full compilation, with `"use no memo"` escape hatches
