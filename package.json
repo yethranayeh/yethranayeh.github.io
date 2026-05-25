@@ -13,13 +13,12 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
-    "fix": "npm run format && npm run lint:fix",
-    "g": "gltfjsx scene.gltf --transform"
+    "fix": "npm run format && npm run lint:fix"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.6",
-    "@react-three/drei": "^9.121.4",
-    "@react-three/fiber": "^8.17.14",
+    "@sarmal/core": "0.38.0",
+    "@sarmal/react": "0.8.3",
     "clsx": "^2.0.0",
     "i18next": "^23.7.6",
     "jotai": "^2.10.0",
@@ -33,7 +32,6 @@
     "react-router-dom": "^6.4.3",
     "react95": "4",
     "styled-components": "^5.3.6",
-    "three": "^0.173.0",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
@@ -41,7 +39,6 @@
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@types/styled-components": "^5.1.26",
-    "@types/three": "^0.180.0",
     "@vitejs/plugin-react": "^5.0.3",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint-plugin-react-hooks": "7.1.1",

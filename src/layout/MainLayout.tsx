@@ -18,6 +18,9 @@ import { isLoggedOutKey } from "@/config/storage";
 
 import styles from "./MainLayout.module.scss";
 
+// const isDevMode = import.meta.env.DEV
+const isDevMode = false;
+
 // TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout. Maybe utilize route transition technology for this?
 const LoginPage = lazy(() =>
   import("@/features/LoginPage/LoginPage").then((module) => ({ default: module.LoginPage })),
@@ -26,13 +29,13 @@ const LoginPage = lazy(() =>
 const isLoggedInStorageVal = localStorage.getItem(isLoggedOutKey) !== "true";
 
 const loadingTimeMultiplier = isLoggedInStorageVal ? 1 : 0.6;
-const loadingTime = import.meta.env.DEV
+const loadingTime = isDevMode
   ? 0
   : getRandomIntRange(2500 * loadingTimeMultiplier, 4000 * loadingTimeMultiplier);
 
 // TODO: refactor loading screen handling
 export default function MainLayout() {
-  const [loading, setLoading] = useState(!import.meta.env.DEV);
+  const [loading, setLoading] = useState(!isDevMode);
   const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInStorageVal);
 
   useAssetPreload(Object.values(startMenuIcons));
