@@ -2,15 +2,15 @@
 @use "../../../styles/variables.module.scss";
 
 .button {
-	// Reset all button styles
-	all: unset;
-	cursor: pointer;
-	text-transform: capitalize;
+  // Reset all button styles
+  all: unset;
+  cursor: pointer;
+  text-transform: capitalize;
 }
 
 .languageAbbreviation {
-	text-transform: capitalize;
-	background-color: variables.$highlight;
-	line-height: 26px;
-	padding: 0 variables.$spacing !important;
+  text-transform: capitalize;
+  background-color: variables.$highlight;
+  line-height: 26px;
+  padding: 0 variables.$spacing !important;
 }

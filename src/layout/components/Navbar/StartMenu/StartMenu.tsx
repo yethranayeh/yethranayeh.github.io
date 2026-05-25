@@ -1,5 +1,5 @@
 import { MenuList, Separator } from "react95";
-import { lazy, useContext, useEffect } from "react";
+import { useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { useTranslation } from "react-i18next";
@@ -29,17 +29,17 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
 
   const [_, addWindow] = useAtom(addWindowAtom);
 
-  const onClickHelp = () => addWindow(helpWindow);
+  const onClickHelp = useCallback(() => addWindow(helpWindow), [addWindow]);
 
-  const onClickLogout = () => {
+  const onClickLogout = useCallback(() => {
     playLogoff();
     navigate("/");
     setIsLoggedIn(false);
     setBodyLoadingState("true");
     localStorage.setItem(isLoggedOutKey, "true");
-  };
+  }, [playLogoff, navigate, setIsLoggedIn]);
 
-  const onClickShutdown = () => addWindow(shutdownWindow);
+  const onClickShutdown = useCallback(() => addWindow(shutdownWindow), [addWindow]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -74,7 +74,7 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onClose, onClickHelp, onClickLogout, onClickShutdown, i18n.language]);
 
   return (
     <ClickAwayListener onClickAway={onClose}>

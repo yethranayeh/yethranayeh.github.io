@@ -13,41 +13,44 @@ import { CloseButton } from "./CloseButton";
 import styles from "./Window.module.scss";
 
 export type DraggableWindowProps = PropsWithChildren<{
-	title: string;
-	slotProps?: {
-		draggable?: ComponentProps<typeof Draggable>;
-		window?: ComponentProps<typeof Window>;
-		header?: ComponentProps<typeof WindowHeader>;
-		minimizeButton?: ButtonProps;
-		closeButton?: ButtonProps;
-	};
+  title: string;
+  slotProps?: {
+    draggable?: ComponentProps<typeof Draggable>;
+    window?: ComponentProps<typeof Window>;
+    header?: ComponentProps<typeof WindowHeader>;
+    minimizeButton?: ButtonProps;
+    closeButton?: ButtonProps;
+  };
 }>;
 
 export const DraggableWindow = ({ title, slotProps, children }: DraggableWindowProps) => {
-	const windowRef = useRef<HTMLDivElement | null>(null);
-	return (
-		<Draggable
-			defaultPosition={{ x: 50, y: 100 }}
-			{...slotProps?.draggable}
-			bounds='main'
-			handle={"." + styles.header}
-			nodeRef={windowRef}>
-			<Window ref={windowRef} className={styles.window} {...slotProps?.window}>
-				<WindowHeader className={styles.header} {...slotProps?.header}>
-					<WindowTitleText>{title}</WindowTitleText>
-					<Flex gap={4}>
-						{/**
-						 * The Windows 95 UI strangely separates the close button from the minimize and maximize buttons.
-						 * The minimize and maximize buttons have no space,
-						 * 	but the close button has a small space to its left.
-						 */}
-						<Flex>{slotProps?.minimizeButton && <MinimizeButton {...slotProps.minimizeButton} />}</Flex>
-						<CloseButton {...slotProps?.closeButton} />
-					</Flex>
-				</WindowHeader>
+  const windowRef = useRef<HTMLDivElement | null>(null);
+  return (
+    <Draggable
+      defaultPosition={{ x: 50, y: 100 }}
+      {...slotProps?.draggable}
+      bounds="main"
+      handle={"." + styles.header}
+      nodeRef={windowRef}
+    >
+      <Window ref={windowRef} className={styles.window} {...slotProps?.window}>
+        <WindowHeader className={styles.header} {...slotProps?.header}>
+          <WindowTitleText>{title}</WindowTitleText>
+          <Flex gap={4}>
+            {/**
+             * The Windows 95 UI strangely separates the close button from the minimize and maximize buttons.
+             * The minimize and maximize buttons have no space,
+             * 	but the close button has a small space to its left.
+             */}
+            <Flex>
+              {slotProps?.minimizeButton && <MinimizeButton {...slotProps.minimizeButton} />}
+            </Flex>
+            <CloseButton {...slotProps?.closeButton} />
+          </Flex>
+        </WindowHeader>
 
-				{children}
-			</Window>
-		</Draggable>
-	);
+        {children}
+      </Window>
+    </Draggable>
+  );
 };

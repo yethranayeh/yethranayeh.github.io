@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { MenuList, MenuListItem } from "react95";
 import { useFloating } from "@floating-ui/react-dom";
@@ -23,7 +23,7 @@ export function LanguageSelect() {
   });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const languages = useRef(i18n.languages).current;
+  const languages = i18n.languages;
 
   return (
     <>
@@ -37,7 +37,7 @@ export function LanguageSelect() {
       {isMenuOpen && (
         <ClickAwayListener onClickAway={() => setIsMenuOpen(false)}>
           <MenuList ref={refs.setFloating} style={floatingStyles}>
-            {languages.map((lang, index) => (
+            {languages.map((lang) => (
               <MenuListItem
                 key={lang}
                 onClick={() => {

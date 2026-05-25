@@ -1,12 +1,12 @@
 @use "../../../styles/variables.module.scss";
 
 .container {
-	padding: variables.$spacing;
-	z-index: 999;
+  padding: variables.$spacing;
+  z-index: 999;
 
-	max-height: 56px;
+  max-height: 56px;
 }
 
 .toolbar {
-	max-height: 44px !important;
+  max-height: 44px !important;
 }

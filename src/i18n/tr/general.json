@@ -1,12 +1,12 @@
 {
-	"btn": {
-		"go-to-page": "Web sayfasına git",
-		"login": "Giriş",
-		"yes": "Evet",
-		"no": "Hayır",
-		"ok": "Tamam",
-		"cancel": "İptal"
-	},
-	"loading": "Yükleniyor",
-	"password": "Şifre"
+  "btn": {
+    "go-to-page": "Web sayfasına git",
+    "login": "Giriş",
+    "yes": "Evet",
+    "no": "Hayır",
+    "ok": "Tamam",
+    "cancel": "İptal"
+  },
+  "loading": "Yükleniyor",
+  "password": "Şifre"
 }

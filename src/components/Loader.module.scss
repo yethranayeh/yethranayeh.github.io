@@ -1,22 +1,22 @@
 @use "../styles/variables.module.scss";
 
 .loader {
-	z-index: 999999;
-	position: absolute;
-	top: 50px;
-	left: calc(-1 * variables.$spacing);
+  z-index: 999999;
+  position: absolute;
+  top: 50px;
+  left: calc(-1 * variables.$spacing);
 
-	width: calc(100svw + variables.$spacing-2);
+  width: calc(100svw + variables.$spacing-2);
 
-	& > div {
-		height: 16px !important;
+  & > div {
+    height: 16px !important;
 
-		& > div {
-			border: none !important;
+    & > div {
+      border: none !important;
 
-			&::before {
-				content: none;
-			}
-		}
-	}
+      &::before {
+        content: none;
+      }
+    }
+  }
 }

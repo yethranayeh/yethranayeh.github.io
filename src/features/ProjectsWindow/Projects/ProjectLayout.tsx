@@ -14,27 +14,27 @@ import windowStyles from "@/components/windows/Window.module.scss";
 import styles from "./ProjectLayout.module.scss";
 
 interface ProjectLayoutProps {
-	children: ReactNode;
-	website?: string;
-	repo?: string;
+  children: ReactNode;
+  website?: string;
+  repo?: string;
 }
 
 export function ProjectLayout({ children, website, repo }: ProjectLayoutProps) {
-	const { t } = useTranslation();
+  const { t } = useTranslation();
 
-	return (
-		<Flex direction='column' gap={16}>
-			<article style={{ minHeight: 200 }}>{children}</article>
+  return (
+    <Flex direction="column" gap={16}>
+      <article style={{ minHeight: 200 }}>{children}</article>
 
-			<Frame variant='well' className={windowStyles.frame}>
-				<Flex gap={12} justify='space-between'>
-					<Anchor href={website} target='_blank' className={styles.webLink}>
-						<SVGIcon marginRight Icon={OpenIcon} />
-						{t("btn.go-to-page")}
-					</Anchor>
-					{repo && <SocialLink Icon={Github} name='Github' link={repo} />}
-				</Flex>
-			</Frame>
-		</Flex>
-	);
+      <Frame variant="well" className={windowStyles.frame}>
+        <Flex gap={12} justify="space-between">
+          <Anchor href={website} target="_blank" className={styles.webLink}>
+            <SVGIcon marginRight Icon={OpenIcon} />
+            {t("btn.go-to-page")}
+          </Anchor>
+          {repo && <SocialLink Icon={Github} name="Github" link={repo} />}
+        </Flex>
+      </Frame>
+    </Flex>
+  );
 }

@@ -1,13 +1,13 @@
 {
-	"nav": {
-		"help": "Yardım",
-		"logout": "Çıkış",
-		"shutdown": "Kapat...",
-		"start": "Başlat"
-	},
-	"window": {
-		"apps": "Uygulamalar",
-		"projects": "Projeler",
-		"resume": "Özgeçmiş"
-	}
+  "nav": {
+    "help": "Yardım",
+    "logout": "Çıkış",
+    "shutdown": "Kapat...",
+    "start": "Başlat"
+  },
+  "window": {
+    "apps": "Uygulamalar",
+    "projects": "Projeler",
+    "resume": "Özgeçmiş"
+  }
 }

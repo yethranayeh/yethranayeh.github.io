@@ -2,22 +2,22 @@
 @use "../../../styles/mixins.scss";
 
 .container {
-	gap: variables.$spacing !important;
+  gap: variables.$spacing !important;
 
-	overflow-x: auto;
-	overflow-y: hidden; // Butonlara basıldığında height değişikliğinden dolayı overflow tetikleniyor.
-	scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  overflow-y: hidden; // Butonlara basıldığında height değişikliğinden dolayı overflow tetikleniyor.
+  scroll-snap-type: x mandatory;
 
-	& > button {
-		scroll-snap-align: start;
-	}
+  & > button {
+    scroll-snap-align: start;
+  }
 
-	@include mixins.media-min-sm {
-		overflow-x: hidden;
-		gap: variables.$spacing-2 !important;
-	}
+  @include mixins.media-min-sm {
+    overflow-x: hidden;
+    gap: variables.$spacing-2 !important;
+  }
 }
 
 .button {
-	gap: variables.$spacing-2;
+  gap: variables.$spacing-2;
 }

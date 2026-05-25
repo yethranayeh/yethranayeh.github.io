@@ -9,56 +9,64 @@ import { computer } from "@/lib/computer";
 import styles from "./ButtonTurnOff.module.scss";
 
 export function ButtonTurnOff() {
-	const { t } = useTranslation("content");
-	const polylineRef = useRef<SVGPolylineElement>(null);
-	const [shouldPlayAnimation, setShouldPlayAnimation] = useState(false);
+  const { t } = useTranslation("content");
+  const polylineRef = useRef<SVGPolylineElement>(null);
+  const [shouldPlayAnimation, setShouldPlayAnimation] = useState(false);
 
-	function handleAnimationEnd() {
-		setShouldPlayAnimation(false);
-	}
+  function handleAnimationEnd() {
+    setShouldPlayAnimation(false);
+  }
 
-	function handleHover() {
-		setShouldPlayAnimation(true);
-	}
+  function handleHover() {
+    setShouldPlayAnimation(true);
+  }
 
-	useEffect(() => {
-		polylineRef.current?.addEventListener("animationend", handleAnimationEnd);
+  useEffect(() => {
+    const el = polylineRef.current;
+    el?.addEventListener("animationend", handleAnimationEnd);
 
-		return () => {
-			polylineRef.current?.removeEventListener("animationend", handleAnimationEnd);
-		};
-	}, []);
+    return () => {
+      el?.removeEventListener("animationend", handleAnimationEnd);
+    };
+  }, []);
 
-	return (
-		<button
-			className={clsx(styles.button, shouldPlayAnimation && styles.animated)}
-			type='button'
-			title={t("login-screen.turn-off")}
-			aria-label={t("login-screen.turn-off")}
-			onFocus={handleHover}
-			onMouseOver={handleHover}
-			onTouchStart={handleHover}
-			onClick={() => computer.shutdown()}>
-			<svg className={styles.icon} viewBox='0 0 24 24' width='24px' height='24px' aria-hidden='true'>
-				<g fill='none' stroke='#fff'>
-					<polyline
-						ref={polylineRef}
-						className={clsx(styles.iconPart, styles.part1, shouldPlayAnimation && styles.animated)}
-						strokeWidth='3'
-						points='12,7 12,17'
-					/>
-					<circle
-						className={clsx(styles.iconPart, styles.part2, shouldPlayAnimation && styles.animated)}
-						cx='12'
-						cy='12'
-						r='9'
-						strokeDasharray='56.549 56.549'
-						strokeLinecap='square'
-						strokeWidth='2'
-						transform='rotate(-90,12,12)'
-					/>
-				</g>
-			</svg>
-		</button>
-	);
+  return (
+    <button
+      className={clsx(styles.button, shouldPlayAnimation && styles.animated)}
+      type="button"
+      title={t("login-screen.turn-off")}
+      aria-label={t("login-screen.turn-off")}
+      onFocus={handleHover}
+      onMouseOver={handleHover}
+      onTouchStart={handleHover}
+      onClick={() => computer.shutdown()}
+    >
+      <svg
+        className={styles.icon}
+        viewBox="0 0 24 24"
+        width="24px"
+        height="24px"
+        aria-hidden="true"
+      >
+        <g fill="none" stroke="#fff">
+          <polyline
+            ref={polylineRef}
+            className={clsx(styles.iconPart, styles.part1, shouldPlayAnimation && styles.animated)}
+            strokeWidth="3"
+            points="12,7 12,17"
+          />
+          <circle
+            className={clsx(styles.iconPart, styles.part2, shouldPlayAnimation && styles.animated)}
+            cx="12"
+            cy="12"
+            r="9"
+            strokeDasharray="56.549 56.549"
+            strokeLinecap="square"
+            strokeWidth="2"
+            transform="rotate(-90,12,12)"
+          />
+        </g>
+      </svg>
+    </button>
+  );
 }

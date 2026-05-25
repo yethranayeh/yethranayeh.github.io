@@ -1,4 +1,3 @@
-import { lazy } from "react";
 import { useTranslation } from "react-i18next";
 import { Frame } from "react95";
 import { useAtom } from "jotai";

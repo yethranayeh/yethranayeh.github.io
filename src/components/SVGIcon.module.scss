@@ -2,31 +2,31 @@
 @use "../styles/mixins.scss";
 
 .icon {
-	height: 24px;
-	width: auto;
-	margin: 0;
+  height: 24px;
+  width: auto;
+  margin: 0;
 
-	&.disabled {
-		opacity: 0.4;
-	}
+  &.disabled {
+    opacity: 0.4;
+  }
 
-	&.mr {
-		margin: 0 variables.$spacing 0 0;
+  &.mr {
+    margin: 0 variables.$spacing 0 0;
 
-		@include mixins.media-min-sm {
-			margin: 0 variables.$spacing-2 0 0;
-		}
-	}
+    @include mixins.media-min-sm {
+      margin: 0 variables.$spacing-2 0 0;
+    }
+  }
 
-	&.ml {
-		margin: 0 0 0 variables.$spacing;
+  &.ml {
+    margin: 0 0 0 variables.$spacing;
 
-		@include mixins.media-min-sm {
-			margin: 0 0 0 variables.$spacing-2;
-		}
-	}
+    @include mixins.media-min-sm {
+      margin: 0 0 0 variables.$spacing-2;
+    }
+  }
 
-	&.small {
-		height: 20px;
-	}
+  &.small {
+    height: 20px;
+  }
 }

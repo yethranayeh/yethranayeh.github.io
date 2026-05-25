@@ -6,5 +6,5 @@ export function useAssetPreload(imageSrcs: string[]) {
       const img = new Image();
       img.src = src;
     });
-  }, []);
+  }, [imageSrcs]);
 }

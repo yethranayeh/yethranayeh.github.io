@@ -2,26 +2,26 @@
 @use "../../styles/mixins.scss";
 
 .container {
-	max-width: 60px;
-	overflow: hidden;
-	padding: variables.$spacing;
+  max-width: 60px;
+  overflow: hidden;
+  padding: variables.$spacing;
 
-	transition: background-color 100ms ease;
+  transition: background-color 100ms ease;
 
-	&:hover {
-		background-color: rgba(variables.$background, 0.3);
-	}
+  &:hover {
+    background-color: rgba(variables.$background, 0.3);
+  }
 
-	&.focused {
-		background-color: rgba(variables.$background, 0.5);
-	}
+  &.focused {
+    background-color: rgba(variables.$background, 0.5);
+  }
 }
 
 .name {
-	word-wrap: anywhere;
-	text-align: center;
-	font-size: 12px;
-	line-height: 12px;
+  word-wrap: anywhere;
+  text-align: center;
+  font-size: 12px;
+  line-height: 12px;
 
-	@include mixins.no-select;
+  @include mixins.no-select;
 }

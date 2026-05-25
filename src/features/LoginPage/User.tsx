@@ -19,58 +19,59 @@ import { useAtom } from "jotai";
 import { soundAtom } from "@/stores/soundAtom";
 
 export function User() {
-	const { setIsLoggedIn } = useContext(AuthContext);
-	const { t } = useTranslation();
-	const [sound] = useAtom(soundAtom);
+  const { setIsLoggedIn } = useContext(AuthContext);
+  const { t } = useTranslation();
+  const [sound] = useAtom(soundAtom);
 
-	const [isFormError, setIsFormError] = useState(false);
-	const [playLogin] = useSound("/audio/login.mp3", { volume: 0.25, soundEnabled: sound.enabled });
-	const [playTyping] = useSound("/audio/typing.mp3", { soundEnabled: sound.enabled });
-	const [playError] = useSound("/audio/error.mp3", { volume: 0.5, soundEnabled: sound.enabled });
+  const [isFormError, setIsFormError] = useState(false);
+  const [playLogin] = useSound("/audio/login.mp3", { volume: 0.25, soundEnabled: sound.enabled });
+  const [playTyping] = useSound("/audio/typing.mp3", { soundEnabled: sound.enabled });
+  const [playError] = useSound("/audio/error.mp3", { volume: 0.5, soundEnabled: sound.enabled });
 
-	useEffect(() => {
-		const timeout = setTimeout(() => setIsFormError(false), 820);
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsFormError(false), 820);
 
-		return () => clearTimeout(timeout);
-	}, [isFormError]);
+    return () => clearTimeout(timeout);
+  }, [isFormError]);
 
-	return (
-		<Flex className={styles.container}>
-			<BlinkingEyesAvatar />
-			<Flex direction='column' gap={8} className={styles.formContainer}>
-				<label htmlFor='password' className={styles["label-user"]}>
-					<span>Alper</span>
-					<span className={styles["user-role"]}>{t("content:user.title")}</span>
-				</label>
-				<Flex
-					as='form'
-					gap={8}
-					className={isFormError ? styles.formError : undefined}
-					onInvalid={() => {
-						setIsFormError(true);
-						playError();
-					}}
-					onSubmit={(e) => {
-						e.preventDefault();
-						playLogin();
-						setIsLoggedIn(true);
-						setBodyLoadingState("false");
-						localStorage.setItem(isLoggedOutKey, "false");
-					}}>
-					<TextInput
-						required
-						id='password'
-						fullWidth
-						minLength={6}
-						className={styles.input}
-						placeholder={t("password")}
-						onChange={() => playTyping()}
-					/>
-					<Button type='submit' className={styles.button} title={t("btn.login")}>
-						<SVGIcon Icon={ArrowRight} />
-					</Button>
-				</Flex>
-			</Flex>
-		</Flex>
-	);
+  return (
+    <Flex className={styles.container}>
+      <BlinkingEyesAvatar />
+      <Flex direction="column" gap={8} className={styles.formContainer}>
+        <label htmlFor="password" className={styles["label-user"]}>
+          <span>Alper</span>
+          <span className={styles["user-role"]}>{t("content:user.title")}</span>
+        </label>
+        <Flex
+          as="form"
+          gap={8}
+          className={isFormError ? styles.formError : undefined}
+          onInvalid={() => {
+            setIsFormError(true);
+            playError();
+          }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            playLogin();
+            setIsLoggedIn(true);
+            setBodyLoadingState("false");
+            localStorage.setItem(isLoggedOutKey, "false");
+          }}
+        >
+          <TextInput
+            required
+            id="password"
+            fullWidth
+            minLength={6}
+            className={styles.input}
+            placeholder={t("password")}
+            onChange={() => playTyping()}
+          />
+          <Button type="submit" className={styles.button} title={t("btn.login")}>
+            <SVGIcon Icon={ArrowRight} />
+          </Button>
+        </Flex>
+      </Flex>
+    </Flex>
+  );
 }

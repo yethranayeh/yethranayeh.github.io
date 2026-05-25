@@ -2,38 +2,38 @@
 @use "../styles/mixins.scss";
 
 .container {
-	margin: 0;
-	min-height: 100svh;
+  margin: 0;
+  min-height: 100svh;
 
-	display: grid;
-	grid-template-rows: auto 1fr auto;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 .container.fadeIn {
-	animation-name: fade-in;
-	animation-duration: 400ms;
-	animation-timing-function: ease-in;
-	animation-fill-mode: backwards;
-	animation-delay: 100ms;
+  animation-name: fade-in;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: backwards;
+  animation-delay: 100ms;
 }
 
 .main {
-	min-height: calc(100svh - variables.$navbar-height);
-	padding-top: variables.$navbar-height;
+  min-height: calc(100svh - variables.$navbar-height);
+  padding-top: variables.$navbar-height;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.fadeIn {
-		animation: none !important;
-	}
+  .fadeIn {
+    animation: none !important;
+  }
 }
 
 @keyframes fade-in {
-	0% {
-		opacity: 0;
-	}
+  0% {
+    opacity: 0;
+  }
 
-	100% {
-		opacity: 1;
-	}
+  100% {
+    opacity: 1;
+  }
 }

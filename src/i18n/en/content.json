@@ -1,98 +1,98 @@
 {
-	"404": {
-		"descripton": "The content you are trying to reach at '/{{path}}' is not available.",
-		"title": "404 - Content Not Found!"
-	},
-	"base-url": "C:\\Users",
-	"clippy": {
-		"actions": {
-			"openCipher": "Open Cipher",
-			"openResume": "Open Resume",
-			"showHelp": "Show Help",
-			"viewTechStack": "View Tech Stack"
-		},
-		"dismiss": "Dismiss",
-		"facts": [
-			"Did you know? This portfolio is built with React, TypeScript, and a lot of nostalgia!",
-			"I'm named after Microsoft's most controversial paperclip.",
-			"I've been riding my bike around this desktop since day one.",
-			"The Windows 95 start menu was almost called the 'system menu'.",
-			"Clippy was introduced in Office 97 and removed in Office 2007. He had a good run.",
-			"This site uses Jotai for state management — it's like React's useState but on steroids.",
-			"The original Windows 95 required 4MB of RAM. This portfolio probably uses more just for the loading screen.",
-			"I don't actually have feelings, but I do have 11 different GIFs."
-		],
-		"greeting": "Hello, I'm Clippy!",
-		"milestones": {
-			"click5": "Wow, you really like clicking me!",
-			"click10": "Okay, you've earned something special...",
-			"click10Action": "View Tech Stack",
-			"click11Plus": "Still going? I respect that."
-		},
-		"tips": {
-			"appsOpen": "Try the Vigenère Cipher to encrypt and decrypt secret messages!",
-			"firstVisit": "Welcome! Double-click an icon on the desktop to get started.",
-			"helpOpen": "If you have feedback or find a bug, let me know! Your input is valuable.",
-			"idle": "Need help? Click the Start menu for navigation tips and shortcuts.",
-			"noWindows": "Nothing open? Try checking out my Resume or Projects!",
-			"projectsOpen": "Curious about my projects? Double-click a project to see the details!",
-			"resumeOpen": "Looks like you're reading my resume. Want to know more about my experience?"
-		}
-	},
-	"daily-space-palette": "Daily Space Palette is a webpage that generates color palettes from NASA's Astronomy Picture of the Day. The astronomy picture changes daily, and each day a new color palette is generated from the picture provided.",
-	"error": {
-		"fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
-	},
-	"sarmal": "Sarmal is a parametric curve animation library for loading and thinking indicators. It provides Canvas and SVG renderers, a set of standard curves, programmatic time control, and zero dependencies — usable from npm or directly via CDN.",
-	"deckplate": "Deckplate is a high-contrast industrial design system influenced by system monitoring terminals and factory signage. It ships as a Shadcn-compatible component registry built with Tailwind v4 and Radix UI, installable with a single CLI command.",
-	"help-dialog": {
-		"information-body": "This is my portfolio page. Here you can view my resume, explore my projects, and run smaller 'apps' I included within this operating system.",
-		"information-title": "Information",
-		"tips": {
-			"feedback-body": "Your feedback is valuable! If you encounter any issues or have suggestions, please let me know.",
-			"feedback-title": "Feedback:",
-			"navigation-body": "Use the Start Menu to access different sections and applications.",
-			"navigation-title": "Navigation:",
-			"responsiveness-body": "The interface is designed to work well on various screen sizes, but for the best experience, use a desktop or laptop.",
-			"responsiveness-title": "Responsiveness:",
-			"shortcuts-body": "Keyboard shortcuts are available for quicker navigation. Look for underlined letters in menu items.",
-			"shortcuts-title": "Shortcuts:"
-		},
-		"tips-title": "Tips"
-	},
-	"introduction": {
-		"about-current-job": "Currently, I work at Etstur as a Software Development Assistant and I participate in developing React-based B2B web applications.",
-		"about-experience": "Because of my profound interest in software development, I studied software through online content and solved test cases on websites like HackerRank to invest into the career that I desired to have during my studentship.",
-		"about-me": "I am an English Language and Literature graduate from Ege University.",
-		"about-preferences": "I generally prefer developing apps with TypeScript and React. Additionally, I write tests using Vitest and react-testing-library, and depending on the project, I may use Playwright as well.",
-		"menu": {
-			"resume": "Resume"
-		}
-	},
-	"login-screen": {
-		"footer-info": "After you log on, you can add or change accounts.",
-		"instructions": "To begin, please enter your password",
-		"turn-off": "Turn off computer"
-	},
-	"shutdown": {
-		"message": "Are you sure you want to:",
-		"option-restart": "Restart the page?",
-		"option-shutdown": "Shut down the page?",
-		"title": "Shut Down"
-	},
-	"user": {
-		"title": "Software Developer"
-	},
-	"vigenere-cipher": {
-		"alphabet": "Alphabet",
-		"alphabet-disabled-tooltip": "Alphabet is currently restricted to only Latin characters",
-		"decrypt": "Decrypt",
-		"encrypt": "Encrypt",
-		"input": "Input",
-		"key": "Key",
-		"key-descripton": "Key to use for '{{method}}' method",
-		"method": "Method",
-		"output": "Output",
-		"title": "Vigenère Cipher"
-	}
+  "404": {
+    "descripton": "The content you are trying to reach at '/{{path}}' is not available.",
+    "title": "404 - Content Not Found!"
+  },
+  "base-url": "C:\\Users",
+  "clippy": {
+    "actions": {
+      "openCipher": "Open Cipher",
+      "openResume": "Open Resume",
+      "showHelp": "Show Help",
+      "viewTechStack": "View Tech Stack"
+    },
+    "dismiss": "Dismiss",
+    "facts": [
+      "Did you know? This portfolio is built with React, TypeScript, and a lot of nostalgia!",
+      "I'm named after Microsoft's most controversial paperclip.",
+      "I've been riding my bike around this desktop since day one.",
+      "The Windows 95 start menu was almost called the 'system menu'.",
+      "Clippy was introduced in Office 97 and removed in Office 2007. He had a good run.",
+      "This site uses Jotai for state management — it's like React's useState but on steroids.",
+      "The original Windows 95 required 4MB of RAM. This portfolio probably uses more just for the loading screen.",
+      "I don't actually have feelings, but I do have 11 different GIFs."
+    ],
+    "greeting": "Hello, I'm Clippy!",
+    "milestones": {
+      "click5": "Wow, you really like clicking me!",
+      "click10": "Okay, you've earned something special...",
+      "click10Action": "View Tech Stack",
+      "click11Plus": "Still going? I respect that."
+    },
+    "tips": {
+      "appsOpen": "Try the Vigenère Cipher to encrypt and decrypt secret messages!",
+      "firstVisit": "Welcome! Double-click an icon on the desktop to get started.",
+      "helpOpen": "If you have feedback or find a bug, let me know! Your input is valuable.",
+      "idle": "Need help? Click the Start menu for navigation tips and shortcuts.",
+      "noWindows": "Nothing open? Try checking out my Resume or Projects!",
+      "projectsOpen": "Curious about my projects? Double-click a project to see the details!",
+      "resumeOpen": "Looks like you're reading my resume. Want to know more about my experience?"
+    }
+  },
+  "daily-space-palette": "Daily Space Palette is a webpage that generates color palettes from NASA's Astronomy Picture of the Day. The astronomy picture changes daily, and each day a new color palette is generated from the picture provided.",
+  "error": {
+    "fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
+  },
+  "sarmal": "Sarmal is a parametric curve animation library for loading and thinking indicators. It provides Canvas and SVG renderers, a set of standard curves, programmatic time control, and zero dependencies — usable from npm or directly via CDN.",
+  "deckplate": "Deckplate is a high-contrast industrial design system influenced by system monitoring terminals and factory signage. It ships as a Shadcn-compatible component registry built with Tailwind v4 and Radix UI, installable with a single CLI command.",
+  "help-dialog": {
+    "information-body": "This is my portfolio page. Here you can view my resume, explore my projects, and run smaller 'apps' I included within this operating system.",
+    "information-title": "Information",
+    "tips": {
+      "feedback-body": "Your feedback is valuable! If you encounter any issues or have suggestions, please let me know.",
+      "feedback-title": "Feedback:",
+      "navigation-body": "Use the Start Menu to access different sections and applications.",
+      "navigation-title": "Navigation:",
+      "responsiveness-body": "The interface is designed to work well on various screen sizes, but for the best experience, use a desktop or laptop.",
+      "responsiveness-title": "Responsiveness:",
+      "shortcuts-body": "Keyboard shortcuts are available for quicker navigation. Look for underlined letters in menu items.",
+      "shortcuts-title": "Shortcuts:"
+    },
+    "tips-title": "Tips"
+  },
+  "introduction": {
+    "about-current-job": "Currently, I work at Etstur as a Software Development Assistant and I participate in developing React-based B2B web applications.",
+    "about-experience": "Because of my profound interest in software development, I studied software through online content and solved test cases on websites like HackerRank to invest into the career that I desired to have during my studentship.",
+    "about-me": "I am an English Language and Literature graduate from Ege University.",
+    "about-preferences": "I generally prefer developing apps with TypeScript and React. Additionally, I write tests using Vitest and react-testing-library, and depending on the project, I may use Playwright as well.",
+    "menu": {
+      "resume": "Resume"
+    }
+  },
+  "login-screen": {
+    "footer-info": "After you log on, you can add or change accounts.",
+    "instructions": "To begin, please enter your password",
+    "turn-off": "Turn off computer"
+  },
+  "shutdown": {
+    "message": "Are you sure you want to:",
+    "option-restart": "Restart the page?",
+    "option-shutdown": "Shut down the page?",
+    "title": "Shut Down"
+  },
+  "user": {
+    "title": "Software Developer"
+  },
+  "vigenere-cipher": {
+    "alphabet": "Alphabet",
+    "alphabet-disabled-tooltip": "Alphabet is currently restricted to only Latin characters",
+    "decrypt": "Decrypt",
+    "encrypt": "Encrypt",
+    "input": "Input",
+    "key": "Key",
+    "key-descripton": "Key to use for '{{method}}' method",
+    "method": "Method",
+    "output": "Output",
+    "title": "Vigenère Cipher"
+  }
 }

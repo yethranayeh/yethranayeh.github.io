@@ -1,9 +1,9 @@
 @use "../styles/mixins.scss";
 
 .avatar {
-	@include mixins.no-select;
-	pointer-events: none;
-	& > img {
-		object-fit: cover;
-	}
+  @include mixins.no-select;
+  pointer-events: none;
+  & > img {
+    object-fit: cover;
+  }
 }

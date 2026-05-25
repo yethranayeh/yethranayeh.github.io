@@ -37,16 +37,19 @@ export default function MainLayout() {
 
   useAssetPreload(Object.values(startMenuIcons));
 
-  const authContextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn, setIsLoggedIn]);
+  const authContextValue = useMemo(
+    () => ({ isLoggedIn, setIsLoggedIn }),
+    [isLoggedIn, setIsLoggedIn],
+  );
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-      isLoggedIn && setBodyLoadingState("false");
+      if (isLoggedIn) setBodyLoadingState("false");
     }, loadingTime);
 
     return () => clearTimeout(timeout);
-  }, []);
+  }, [isLoggedIn]);
 
   if (loading) {
     return (

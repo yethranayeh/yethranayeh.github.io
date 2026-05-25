@@ -3,7 +3,7 @@ import { WindowButton } from "./WindowButton";
 import styles from "./MinimizeButton.module.scss";
 
 export const MinimizeButton = (props: Omit<ButtonProps, "children">) => (
-	<WindowButton {...props}>
-		<span className={styles.icon} />
-	</WindowButton>
+  <WindowButton {...props}>
+    <span className={styles.icon} />
+  </WindowButton>
 );

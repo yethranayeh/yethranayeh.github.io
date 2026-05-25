@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claudia and other clankers
 
 ## Commands
 
@@ -9,6 +9,10 @@ npm run dev          # Start dev server (loading screen is skipped in DEV mode)
 npm run build        # Type-check with tsc, then build for production
 npm run build:dev    # Build in development mode
 npm run preview      # Preview production build locally
+npm run lint         # Lint with oxlint
+npm run lint:fix     # Lint with auto-fix
+npm run format       # Format with oxfmt
+npm run fix          # Format + lint:fix
 npm run pipeline     # Full deploy: build → git commit → push → deploy to gh-pages
 npm run deploy       # Deploy dist/ to gh-pages branch via git subtree
 ```
@@ -32,6 +36,7 @@ Each `AppWindow` has a `content` field that is a lazy-loaded React component. De
 ### Layout Flow
 
 `MainLayout` (`src/layout/MainLayout.tsx`) controls three top-level states:
+
 1. **Loading screen** — shown on initial load (skipped in dev)
 2. **Login page** — shown if `localStorage` has `isLoggedOut=true`
 3. **Desktop** — Navbar + `DesktopOutlet` (icons) + `WindowsOutlet` (open windows) + Clippy
@@ -58,6 +63,30 @@ Three languages: English (`en`), German (`de`), Turkish (`tr`). Three namespaces
 
 `@/` maps to `src/` (configured in `vite.config.ts` and `tsconfig.json`).
 
-### Deployment
+### Linting & Formatting
 
-The site deploys to GitHub Pages via the `gh-pages` branch. The `dist/` folder is pushed using `git subtree push --prefix dist origin gh-pages`. The `pipeline` script automates the full build-commit-push-deploy cycle.
+This project uses the [OXC](https://oxc.rs) toolchain:
+
+- **oxlint** (`npm run lint` / `npm run lint:fix`) — native rules from the `react` plugin (eslint-plugin-react, eslint-plugin-react-hooks) plus React Compiler diagnostic rules via the JS plugin system (`eslint-plugin-react-hooks` aliased as `react-hooks-js` in `.oxlintrc.json`)
+- **oxfmt** (`npm run format`) — formatting with `.oxfmtrc.json` config
+- **`npm run fix`** — runs format then lint:fix
+
+Config files:
+
+- `.oxlintrc.json` — lint rules and JS plugin setup
+- `.oxfmtrc.json` — formatter ignore patterns
+
+#### React Compiler Lint Rules
+
+The `react-hooks-js` JS plugin loads `eslint-plugin-react-hooks` v7 to provide React Compiler diagnostic rules. These catch patterns that would prevent React Compiler from working:
+
+| Rule                       | Severity | What it catches                                                                                   |
+| -------------------------- | -------- | ------------------------------------------------------------------------------------------------- |
+| `invariant`                | error    | Code that violates React's rules                                                                  |
+| `set-state-in-render`      | error    | setState calls in render body (infinite loops)                                                    |
+| `purity`                   | warn     | Impure code during render                                                                         |
+| `immutability`             | warn     | Mutations of props/state                                                                          |
+| `globals`                  | warn     | Global variable mutations                                                                         |
+| `refs`                     | warn     | Ref access during render (disabled for LanguageSelect.tsx — @floating-ui callback refs are valid) |
+| `error-boundaries`         | warn     | Missing error boundaries                                                                          |
+| `component-hook-factories` | warn     | Factory patterns incompatible with compiler                                                       |

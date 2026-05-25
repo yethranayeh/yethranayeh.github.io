@@ -6,10 +6,10 @@ import { ScanLineEffect } from "./components/ScanLineEffect";
 import GlobalStyles from "../config/GlobalStyles";
 
 const App = () => (
-	<AppProvider>
-		<ScanLineEffect />
-		<GlobalStyles />
-	</AppProvider>
+  <AppProvider>
+    <ScanLineEffect />
+    <GlobalStyles />
+  </AppProvider>
 );
 
 export default App;

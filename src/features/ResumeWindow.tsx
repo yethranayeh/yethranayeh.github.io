@@ -4,7 +4,6 @@ import { WindowContent, Frame } from "react95";
 import { Flex } from "@/components/Styled";
 import { SocialLink } from "@/components/SocialLink";
 import { MailLink } from "@/components/MailLink";
-import { DraggableWindow } from "@/components/windows/DraggableWindow";
 
 import Github from "@/assets/icons/github.svg?react";
 import LinkedIn from "@/assets/icons/linkedin.svg?react";
@@ -15,28 +14,32 @@ const frameStyle = { overflowY: "auto", overflowX: "hidden" } as const;
 const iframeStyle = { width: "21.5cm", height: "calc(30cm * 2)" } as const;
 
 export function ResumeWindow() {
-	const { t, i18n } = useTranslation(["content", "menu"]);
+  const { i18n } = useTranslation(["content", "menu"]);
 
-	return (
-		<>
-			<WindowContent as='article' className={styles.content}>
-				<Frame variant='field' style={frameStyle}>
-					<iframe
-						title='Resume'
-						src={"https://www.aktasalper.com/resume/#/" + i18n.language}
-						style={iframeStyle}
-					/>
-				</Frame>
-			</WindowContent>
-			<Frame variant='well' className={styles.frame}>
-				<Flex gap={12} justify='space-between'>
-					<MailLink />
-					<Flex gap={12}>
-						<SocialLink Icon={Github} name='Github' link='https://github.com/yethranayeh' />
-						<SocialLink Icon={LinkedIn} name='LinkedIn' link='https://www.linkedin.com/in/aktasalper/' />
-					</Flex>
-				</Flex>
-			</Frame>
-		</>
-	);
+  return (
+    <>
+      <WindowContent as="article" className={styles.content}>
+        <Frame variant="field" style={frameStyle}>
+          <iframe
+            title="Resume"
+            src={"https://www.aktasalper.com/resume/#/" + i18n.language}
+            style={iframeStyle}
+          />
+        </Frame>
+      </WindowContent>
+      <Frame variant="well" className={styles.frame}>
+        <Flex gap={12} justify="space-between">
+          <MailLink />
+          <Flex gap={12}>
+            <SocialLink Icon={Github} name="Github" link="https://github.com/yethranayeh" />
+            <SocialLink
+              Icon={LinkedIn}
+              name="LinkedIn"
+              link="https://www.linkedin.com/in/aktasalper/"
+            />
+          </Flex>
+        </Flex>
+      </Frame>
+    </>
+  );
 }

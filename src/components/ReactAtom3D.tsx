@@ -17,35 +17,36 @@ const rotationStep = Math.PI / 30; // 22.5 degrees per step
 const interval = 100; // Update every 100ms
 
 export function ReactAtom3D() {
-	const { nodes, materials } = useGLTF("/3d/react-atom.glb");
-	const groupRef = useRef<any>();
+  const { nodes, materials } = useGLTF("/3d/react-atom.glb");
+  const groupRef = useRef<any>();
+  const lastUpdateTime = useRef<number | null>(null);
 
-	// Track the last update time
-	const lastUpdateTime = useRef(Date.now());
+  useFrame(() => {
+    const now = Date.now();
+    if (lastUpdateTime.current === null) {
+      lastUpdateTime.current = now;
+      return;
+    }
+    if (now - lastUpdateTime.current >= interval) {
+      if (groupRef.current) {
+        groupRef.current.rotation.y += rotationStep;
+        lastUpdateTime.current = now;
+      }
+    }
+  });
 
-	useFrame(() => {
-		const now = Date.now();
-		if (now - lastUpdateTime.current >= interval) {
-			if (groupRef.current) {
-				// Update the rotation in discrete steps
-				groupRef.current.rotation.y += rotationStep;
-				lastUpdateTime.current = now;
-			}
-		}
-	});
-
-	return (
-		<group ref={groupRef} dispose={null}>
-			<mesh
-				// @ts-expect-error
-				geometry={nodes["React-Logo_Material002_0"].geometry}
-				material={materials["Material.002"]}
-				position={[0, 0.079, 0]}
-				rotation={[0, 0, -Math.PI / 2]}
-				scale={[0.392, 0.392, 0.527]}
-			/>
-		</group>
-	);
+  return (
+    <group ref={groupRef} dispose={null}>
+      <mesh
+        // @ts-expect-error
+        geometry={nodes["React-Logo_Material002_0"].geometry}
+        material={materials["Material.002"]}
+        position={[0, 0.079, 0]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={[0.392, 0.392, 0.527]}
+      />
+    </group>
+  );
 }
 
 useGLTF.preload("/3d/react-atom.glb");

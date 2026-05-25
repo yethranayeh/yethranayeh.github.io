@@ -1,13 +1,13 @@
 {
-	"nav": {
-		"help": "Help",
-		"logout": "Logout",
-		"shutdown": "Shut Down...",
-		"start": "Start"
-	},
-	"window": {
-		"apps": "Apps",
-		"projects": "Projects",
-		"resume": "Resume"
-	}
+  "nav": {
+    "help": "Help",
+    "logout": "Logout",
+    "shutdown": "Shut Down...",
+    "start": "Start"
+  },
+  "window": {
+    "apps": "Apps",
+    "projects": "Projects",
+    "resume": "Resume"
+  }
 }

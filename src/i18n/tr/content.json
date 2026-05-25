@@ -1,98 +1,98 @@
 {
-	"404": {
-		"descripton": "'{{path}}' dizininde erişmeye çalıştığınız içerik bulunamadı.",
-		"title": "404 - İçerik Bulunamadı!"
-	},
-	"base-url": "C:\\Kullanıcılar",
-	"clippy": {
-		"actions": {
-			"openCipher": "Şifrelemeyi Aç",
-			"openResume": "Özgeçmişi Aç",
-			"showHelp": "Yardımı Göster",
-			"viewTechStack": "Teknoloji Yığınını Gör"
-		},
-		"dismiss": "Kapat",
-		"facts": [
-			"Biliyor muydun? Bu portföy React, TypeScript ve bolca nostalji ile yapıldı!",
-			"Microsoft'un en tartışmalı ataç isminden adımı alıyorum.",
-			"İlk günden beri bu masaüstünde bisikletimi sürüyorum.",
-			"Windows 95 başlat menüsü neredeyse 'sistem menüsü' olarak adlandırılacaktı.",
-			"Clippy Office 97'de tanıtıldı ve Office 2007'de kaldırıldı. Güzel bir yolculuktu.",
-			"Bu site state yönetimi için Jotai kullanıyor — React'in useState'i gibi ama steroidli.",
-			"Orijinal Windows 95'in 4MB RAM'e ihtiyacı vardı. Bu portföy muhtemelen sadece yükleme ekranı için daha fazlasını kullanıyor.",
-			"Gerçekten hislerim yok ama 11 farklı GIF'im var."
-		],
-		"greeting": "Merhaba, ben Clippy!",
-		"milestones": {
-			"click5": "Vay be, beni tıklamayı gerçekten çok seviyorsun!",
-			"click10": "Tamam, özel bir şeyi hak ettin...",
-			"click10Action": "Teknoloji Yığınını Gör",
-			"click11Plus": "Hala devam mı ediyorsun? Saygı duyuyorum."
-		},
-		"tips": {
-			"appsOpen": "Vigenère Şifrelemesini dene — gizli mesajları şifrele ve çöz!",
-			"firstVisit": "Hoş geldin! Başlamak için masaüstündeki bir simgeye çift tıkla.",
-			"helpOpen": "Geri bildirimin varsa veya bir hata bulursan bana bildir! Senin görüşlerin değerli.",
-			"idle": "Yardıma mı ihtiyacın var? Gezinme ipuçları ve kısayollar için Başlat Menüsüne tıkla.",
-			"noWindows": "Hiçbir şey açık değil? Özgeçmişime veya projelerime göz at!",
-			"projectsOpen": "Projelerimi merak ediyor musun? Detayları görmek için bir projeye çift tıkla!",
-			"resumeOpen": "Özgeçmişimi okuyorsun gibi görünüyor. Deneyimlerim hakkında daha fazla bilgi ister misin?"
-		}
-	},
-	"daily-space-palette": "Daily Space Palette, NASA'nın Astronomy Picture of The Day sitesinde paylaştığı fotoğraftan renk paleti üreten bir web projesidir. Astronomi resmi günlük olarak değişir ve her gün o resimden yeni bir renk paleti üretilir.",
-	"error": {
-		"fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
-	},
-	"sarmal": "Sarmal, yükleme ve düşünme göstergeleri için parametrik eğri animasyonları sunan bir kütüphanedir. Canvas ve SVG renderer'ları, standart eğri koleksiyonu, programatik zaman kontrolü ve sıfır bağımlılık ile npm'den veya CDN üzerinden doğrudan kullanılabilir.",
-	"deckplate": "Deckplate, sistem izleme terminalleri ve fabrika tabelalarından ilham alan yüksek kontrastlı, endüstriyel bir tasarım sistemidir. Tailwind v4 ve Radix UI ile oluşturulmuş, tek bir CLI komutuyla kurulabilen Shadcn uyumlu bir bileşen kaydı olarak sunulmaktadır.",
-	"help-dialog": {
-		"information-body": "Bu benim kişisel sayfam. Burada özgeçmişimi görüntüleyebilir, projelerimi inceleyebilir ve bu işletim sistemi içinde sunduğum küçük 'uygulamaları' çalıştırabilirsiniz.",
-		"information-title": "Bilgi",
-		"tips": {
-			"feedback-body": "Geri bildiriminiz değerli! Herhangi bir sorunla karşılaşırsanız veya öneriniz olursa lütfen bana bildirin.",
-			"feedback-title": "Geri Bildirim:",
-			"navigation-body": "Farklı bölümlere ve uygulamalara erişmek için Başlat Menüsünü kullanın.",
-			"navigation-title": "Navigasyon:",
-			"responsiveness-body": "Arayüz çeşitli ekran boyutlarında iyi çalışacak şekilde tasarlanmıştır, ancak en iyi deneyim için masaüstü veya dizüstü bilgisayar kullanın.",
-			"responsiveness-title": "Arayüz:",
-			"shortcuts-body": "Daha hızlı gezinmek için klavye kısayolları mevcuttur. Menü öğelerinde altı çizili harflere dikkat edin.",
-			"shortcuts-title": "Kısayollar:"
-		},
-		"tips-title": "İpuçları"
-	},
-	"introduction": {
-		"about-current-job": "Şu anda, Etstur'da Yazılım Geliştirme Uzman Yardımcısı olarak çalışıyorum. Şirketin React bazlı B2B web uygulamarının geliştirilmesinde rol alıyorum.",
-		"about-experience": "Yazılım geliştirmeye oldukça ilgi duyduğum için, hedeflediğim kariyere öğrencilik dönemimde online içerikler tüketerek ile ve HackerRank vb. sitelerde testler çözerek yatırım yaptım.",
-		"about-me": "Ege Üniversitesi, İngiliz Dili ve Edebiyatı mezunuyum.",
-		"about-preferences": "Genel olarak web uygulamalarını TypeScript ve React.js ile geliştirmeyi tercih ediyorum. Yaptığım geliştirmeleri Vitest ve react-testing-library ile, bazen de Playwright ile test ediyorum.",
-		"menu": {
-			"resume": "Özgeçmiş"
-		}
-	},
-	"login-screen": {
-		"footer-info": "Giriş yaptıktan sonra kullanıcı hesabı ekleyebilir veyak kullanıcıyı değiştirebilirsiniz.",
-		"instructions": "Başlamak için lütfen şifrenizi giriniz",
-		"turn-off": "Bilgisayarı kapat"
-	},
-	"shutdown": {
-		"message": "Emin misiniz?",
-		"option-restart": "Sayfayı yeniden başlat",
-		"option-shutdown": "Sayfayı kapat",
-		"title": "Kapat"
-	},
-	"user": {
-		"title": "Yazılım Geliştirici"
-	},
-	"vigenere-cipher": {
-		"alphabet": "Alfabe",
-		"alphabet-disabled-tooltip": "Alfabe şimdilik Latin harfleriyle sınırlandırılmıştır",
-		"decrypt": "Şifre Çöz",
-		"encrypt": "Şifrele",
-		"input": "Girdi",
-		"key": "Anahtar",
-		"key-descripton": "'{{method}}' yöntemi için kullanacağınız anahtar",
-		"method": "Yöntem",
-		"output": "Çıktı",
-		"title": "Vigenère Şifrelemesi"
-	}
+  "404": {
+    "descripton": "'{{path}}' dizininde erişmeye çalıştığınız içerik bulunamadı.",
+    "title": "404 - İçerik Bulunamadı!"
+  },
+  "base-url": "C:\\Kullanıcılar",
+  "clippy": {
+    "actions": {
+      "openCipher": "Şifrelemeyi Aç",
+      "openResume": "Özgeçmişi Aç",
+      "showHelp": "Yardımı Göster",
+      "viewTechStack": "Teknoloji Yığınını Gör"
+    },
+    "dismiss": "Kapat",
+    "facts": [
+      "Biliyor muydun? Bu portföy React, TypeScript ve bolca nostalji ile yapıldı!",
+      "Microsoft'un en tartışmalı ataç isminden adımı alıyorum.",
+      "İlk günden beri bu masaüstünde bisikletimi sürüyorum.",
+      "Windows 95 başlat menüsü neredeyse 'sistem menüsü' olarak adlandırılacaktı.",
+      "Clippy Office 97'de tanıtıldı ve Office 2007'de kaldırıldı. Güzel bir yolculuktu.",
+      "Bu site state yönetimi için Jotai kullanıyor — React'in useState'i gibi ama steroidli.",
+      "Orijinal Windows 95'in 4MB RAM'e ihtiyacı vardı. Bu portföy muhtemelen sadece yükleme ekranı için daha fazlasını kullanıyor.",
+      "Gerçekten hislerim yok ama 11 farklı GIF'im var."
+    ],
+    "greeting": "Merhaba, ben Clippy!",
+    "milestones": {
+      "click5": "Vay be, beni tıklamayı gerçekten çok seviyorsun!",
+      "click10": "Tamam, özel bir şeyi hak ettin...",
+      "click10Action": "Teknoloji Yığınını Gör",
+      "click11Plus": "Hala devam mı ediyorsun? Saygı duyuyorum."
+    },
+    "tips": {
+      "appsOpen": "Vigenère Şifrelemesini dene — gizli mesajları şifrele ve çöz!",
+      "firstVisit": "Hoş geldin! Başlamak için masaüstündeki bir simgeye çift tıkla.",
+      "helpOpen": "Geri bildirimin varsa veya bir hata bulursan bana bildir! Senin görüşlerin değerli.",
+      "idle": "Yardıma mı ihtiyacın var? Gezinme ipuçları ve kısayollar için Başlat Menüsüne tıkla.",
+      "noWindows": "Hiçbir şey açık değil? Özgeçmişime veya projelerime göz at!",
+      "projectsOpen": "Projelerimi merak ediyor musun? Detayları görmek için bir projeye çift tıkla!",
+      "resumeOpen": "Özgeçmişimi okuyorsun gibi görünüyor. Deneyimlerim hakkında daha fazla bilgi ister misin?"
+    }
+  },
+  "daily-space-palette": "Daily Space Palette, NASA'nın Astronomy Picture of The Day sitesinde paylaştığı fotoğraftan renk paleti üreten bir web projesidir. Astronomi resmi günlük olarak değişir ve her gün o resimden yeni bir renk paleti üretilir.",
+  "error": {
+    "fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
+  },
+  "sarmal": "Sarmal, yükleme ve düşünme göstergeleri için parametrik eğri animasyonları sunan bir kütüphanedir. Canvas ve SVG renderer'ları, standart eğri koleksiyonu, programatik zaman kontrolü ve sıfır bağımlılık ile npm'den veya CDN üzerinden doğrudan kullanılabilir.",
+  "deckplate": "Deckplate, sistem izleme terminalleri ve fabrika tabelalarından ilham alan yüksek kontrastlı, endüstriyel bir tasarım sistemidir. Tailwind v4 ve Radix UI ile oluşturulmuş, tek bir CLI komutuyla kurulabilen Shadcn uyumlu bir bileşen kaydı olarak sunulmaktadır.",
+  "help-dialog": {
+    "information-body": "Bu benim kişisel sayfam. Burada özgeçmişimi görüntüleyebilir, projelerimi inceleyebilir ve bu işletim sistemi içinde sunduğum küçük 'uygulamaları' çalıştırabilirsiniz.",
+    "information-title": "Bilgi",
+    "tips": {
+      "feedback-body": "Geri bildiriminiz değerli! Herhangi bir sorunla karşılaşırsanız veya öneriniz olursa lütfen bana bildirin.",
+      "feedback-title": "Geri Bildirim:",
+      "navigation-body": "Farklı bölümlere ve uygulamalara erişmek için Başlat Menüsünü kullanın.",
+      "navigation-title": "Navigasyon:",
+      "responsiveness-body": "Arayüz çeşitli ekran boyutlarında iyi çalışacak şekilde tasarlanmıştır, ancak en iyi deneyim için masaüstü veya dizüstü bilgisayar kullanın.",
+      "responsiveness-title": "Arayüz:",
+      "shortcuts-body": "Daha hızlı gezinmek için klavye kısayolları mevcuttur. Menü öğelerinde altı çizili harflere dikkat edin.",
+      "shortcuts-title": "Kısayollar:"
+    },
+    "tips-title": "İpuçları"
+  },
+  "introduction": {
+    "about-current-job": "Şu anda, Etstur'da Yazılım Geliştirme Uzman Yardımcısı olarak çalışıyorum. Şirketin React bazlı B2B web uygulamarının geliştirilmesinde rol alıyorum.",
+    "about-experience": "Yazılım geliştirmeye oldukça ilgi duyduğum için, hedeflediğim kariyere öğrencilik dönemimde online içerikler tüketerek ile ve HackerRank vb. sitelerde testler çözerek yatırım yaptım.",
+    "about-me": "Ege Üniversitesi, İngiliz Dili ve Edebiyatı mezunuyum.",
+    "about-preferences": "Genel olarak web uygulamalarını TypeScript ve React.js ile geliştirmeyi tercih ediyorum. Yaptığım geliştirmeleri Vitest ve react-testing-library ile, bazen de Playwright ile test ediyorum.",
+    "menu": {
+      "resume": "Özgeçmiş"
+    }
+  },
+  "login-screen": {
+    "footer-info": "Giriş yaptıktan sonra kullanıcı hesabı ekleyebilir veyak kullanıcıyı değiştirebilirsiniz.",
+    "instructions": "Başlamak için lütfen şifrenizi giriniz",
+    "turn-off": "Bilgisayarı kapat"
+  },
+  "shutdown": {
+    "message": "Emin misiniz?",
+    "option-restart": "Sayfayı yeniden başlat",
+    "option-shutdown": "Sayfayı kapat",
+    "title": "Kapat"
+  },
+  "user": {
+    "title": "Yazılım Geliştirici"
+  },
+  "vigenere-cipher": {
+    "alphabet": "Alfabe",
+    "alphabet-disabled-tooltip": "Alfabe şimdilik Latin harfleriyle sınırlandırılmıştır",
+    "decrypt": "Şifre Çöz",
+    "encrypt": "Şifrele",
+    "input": "Girdi",
+    "key": "Anahtar",
+    "key-descripton": "'{{method}}' yöntemi için kullanacağınız anahtar",
+    "method": "Yöntem",
+    "output": "Çıktı",
+    "title": "Vigenère Şifrelemesi"
+  }
 }

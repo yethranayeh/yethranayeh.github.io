@@ -1,0 +1,31 @@
+{
+  "plugins": ["react"],
+  "jsPlugins": [
+    {
+      "name": "react-hooks-js",
+      "specifier": "eslint-plugin-react-hooks"
+    }
+  ],
+  "rules": {
+    "react-hooks-js/invariant": "error",
+    "react-hooks-js/set-state-in-render": "error",
+    "react-hooks-js/purity": "warn",
+    "react-hooks-js/immutability": "warn",
+    "react-hooks-js/globals": "warn",
+    "react-hooks-js/refs": "warn",
+    "react-hooks-js/error-boundaries": "warn",
+    "react-hooks-js/component-hook-factories": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["src/layout/components/Navbar/LanguageSelect.tsx"],
+      "rules": {
+        "react-hooks-js/refs": "off"
+      }
+    }
+  ],
+  "env": {
+    "browser": true
+  },
+  "ignorePatterns": ["dist/", "node_modules/"]
+}

@@ -1,12 +1,12 @@
 {
-	"btn": {
-		"go-to-page": "Go to webpage",
-		"login": "Login",
-		"yes": "Yes",
-		"no": "No",
-		"ok": "OK",
-		"cancel": "Cancel"
-	},
-	"loading": "Loading",
-	"password": "Password"
+  "btn": {
+    "go-to-page": "Go to webpage",
+    "login": "Login",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "cancel": "Cancel"
+  },
+  "loading": "Loading",
+  "password": "Password"
 }

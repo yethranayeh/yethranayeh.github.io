@@ -1,14 +1,11 @@
-// https://usehooks-ts.com/react-hook/use-is-first-render
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 
 export function useIsFirstRender(): boolean {
-	const isFirst = useRef(true);
+  const [isFirst, setIsFirst] = useState(true);
 
-	if (isFirst.current) {
-		isFirst.current = false;
+  useEffect(() => {
+    setIsFirst(false);
+  }, []);
 
-		return true;
-	}
-
-	return isFirst.current;
+  return isFirst;
 }

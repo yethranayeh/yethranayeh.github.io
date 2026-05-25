@@ -2,16 +2,16 @@
 @use "../../../styles/mixins.scss";
 
 .container {
-	display: inline-block;
+  display: inline-block;
 }
 
 .reactIcon {
-	height: 24px;
-	width: auto;
+  height: 24px;
+  width: auto;
 
-	filter: drop-shadow(1px 1px 1px #fff) drop-shadow(1px 0px 4px #fff);
+  filter: drop-shadow(1px 1px 1px #fff) drop-shadow(1px 0px 4px #fff);
 
-	@include mixins.media-min-sm {
-		margin-right: variables.$spacing;
-	}
+  @include mixins.media-min-sm {
+    margin-right: variables.$spacing;
+  }
 }

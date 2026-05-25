@@ -1,10 +1,10 @@
 .button {
-	&::before,
-	&::after {
-		content: none !important;
-	}
-	height: max-content !important;
-	padding: 0 !important;
-	margin: 0 !important;
-	background-color: transparent !important;
+  &::before,
+  &::after {
+    content: none !important;
+  }
+  height: max-content !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: transparent !important;
 }

@@ -4,10 +4,13 @@ import { ProjectLayout } from "./ProjectLayout";
 import { Text } from "@/components/Styled";
 
 export function DailySpacePalette() {
-	const { t } = useTranslation("content");
-	return (
-		<ProjectLayout website='https://daily-space-palette.vercel.app/' repo='https://github.com/yethranayeh/daily-space-palette'>
-			<Text>{t("daily-space-palette")}</Text>
-		</ProjectLayout>
-	);
+  const { t } = useTranslation("content");
+  return (
+    <ProjectLayout
+      website="https://daily-space-palette.vercel.app/"
+      repo="https://github.com/yethranayeh/daily-space-palette"
+    >
+      <Text>{t("daily-space-palette")}</Text>
+    </ProjectLayout>
+  );
 }

@@ -5,8 +5,8 @@ import { RouterProvider } from "react-router-dom";
 import router from "./router";
 
 export const AppProvider = (props: PropsWithChildren) => (
-	<ThemeProvider theme={original}>
-		{props.children}
-		<RouterProvider router={router} />
-	</ThemeProvider>
+  <ThemeProvider theme={original}>
+    {props.children}
+    <RouterProvider router={router} />
+  </ThemeProvider>
 );

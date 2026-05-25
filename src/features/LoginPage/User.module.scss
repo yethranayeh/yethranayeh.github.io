@@ -2,85 +2,85 @@
 @use "../../styles/mixins.scss";
 
 .label-user {
-	display: inline-flex;
-	flex-direction: column;
-	line-height: 1.1;
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.1;
 }
 
 .user-role {
-	font-size: 0.7rem;
-	opacity: 0.5;
+  font-size: 0.7rem;
+  opacity: 0.5;
 }
 
 .container {
-	flex-direction: column;
-	gap: variables.$spacing-2;
+  flex-direction: column;
+  gap: variables.$spacing-2;
 
-	@include mixins.media-min-md {
-		flex-direction: row;
-		gap: variables.$spacing-5;
-	}
+  @include mixins.media-min-md {
+    flex-direction: row;
+    gap: variables.$spacing-5;
+  }
 }
 
 .formContainer,
 .container {
-	align-items: center;
+  align-items: center;
 }
 
 .formContainer {
-	padding: 0 variables.$spacing-6;
+  padding: 0 variables.$spacing-6;
 
-	@include mixins.media-min-md {
-		align-items: flex-start;
-		padding: 0;
-	}
+  @include mixins.media-min-md {
+    align-items: flex-start;
+    padding: 0;
+  }
 }
 
 .formError {
-	animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-	transform: translate3d(0, 0, 0);
-	backface-visibility: hidden;
-	perspective: 1000px;
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 .input {
-	& > input {
-		color: variables.$black !important;
-	}
+  & > input {
+    color: variables.$black !important;
+  }
 }
 
 .button {
-	& * {
-		color: variables.$black !important;
-	}
+  & * {
+    color: variables.$black !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.formError {
-		animation: none !important;
-	}
+  .formError {
+    animation: none !important;
+  }
 }
 
 // https://css-tricks.com/snippets/css/shake-css-keyframe-animation/
 @keyframes shake {
-	10%,
-	90% {
-		transform: translate3d(-1px, 0, 0);
-	}
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
 
-	20%,
-	80% {
-		transform: translate3d(2px, 0, 0);
-	}
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
 
-	30%,
-	50%,
-	70% {
-		transform: translate3d(-4px, 0, 0);
-	}
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
 
-	40%,
-	60% {
-		transform: translate3d(4px, 0, 0);
-	}
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
