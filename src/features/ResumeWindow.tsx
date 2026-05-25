@@ -11,17 +11,20 @@ import LinkedIn from "@/assets/icons/linkedin.svg?react";
 
 import styles from "@/components/windows/Window.module.scss";
 
+const frameStyle = { overflowY: "auto", overflowX: "hidden" } as const;
+const iframeStyle = { width: "21.5cm", height: "calc(30cm * 2)" } as const;
+
 export function ResumeWindow() {
 	const { t, i18n } = useTranslation(["content", "menu"]);
 
 	return (
 		<>
 			<WindowContent as='article' className={styles.content}>
-				<Frame variant='field' style={{ overflowY: "auto", overflowX: "hidden" }}>
+				<Frame variant='field' style={frameStyle}>
 					<iframe
 						title='Resume'
 						src={"https://www.aktasalper.com/resume/#/" + i18n.language}
-						style={{ width: "21.5cm", height: "calc(30cm * 2)" }}
+						style={iframeStyle}
 					/>
 				</Frame>
 			</WindowContent>

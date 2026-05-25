@@ -5,15 +5,17 @@ import { MailLink } from "@/components/MailLink";
 import { Flex, Text } from "@/components/Styled";
 
 export function ErrorPage() {
-	const { t } = useTranslation("content");
-	const error = useRouteError();
+  const { t } = useTranslation("content");
+  const error = useRouteError();
 
-	console.error(error);
+  if (import.meta.env.DEV) {
+    console.error(error);
+  }
 
-	return (
-		<Flex direction='column' style={{ color: "#fff" }} gap={8}>
-			<Text>{t("error.fallback-element")}</Text>
-			<MailLink />
-		</Flex>
-	);
+  return (
+    <Flex direction="column" style={{ color: "#fff" }} gap={8}>
+      <Text>{t("error.fallback-element")}</Text>
+      <MailLink />
+    </Flex>
+  );
 }

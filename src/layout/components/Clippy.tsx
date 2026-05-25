@@ -48,7 +48,7 @@ export function Clippy() {
   const { t } = useTranslation("content");
   const store = useStore();
   const openWindows = useAtomValue(windowsAtom);
-  const openWindowIds = openWindows.map((w) => w.id);
+  const openWindowIds = useMemo(() => openWindows.map((w) => w.id), [openWindows]);
 
   const [shouldRender, setShouldRender] = useState(false);
   const [stateCounter, setStateCounter] = useState(-1);

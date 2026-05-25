@@ -10,6 +10,8 @@ import { CurrentTime } from "./CurrentTime";
 import styles from "./Navbar.module.scss";
 import { BatteryIndicator } from "./BatteryIndicator";
 
+const trayStyle = { height: 35, display: "flex", alignItems: "center" } as const;
+
 export const Navbar = () => (
 	<AppBar as='nav' className={styles.container}>
 		<Toolbar className={styles.toolbar}>
@@ -22,7 +24,7 @@ export const Navbar = () => (
 
 			<Flex gap={4} sx={{ marginLeft: "auto" }}>
 				<Handle size={35} />
-				<Frame variant='well' style={{ height: 35, display: "flex", alignItems: "center" }}>
+				<Frame variant='well' style={trayStyle}>
 					<Flex gap={8} align='center' sx={{ padding: "0 8px" }}>
 						<AudioToggle />
 						<LanguageSelect />
