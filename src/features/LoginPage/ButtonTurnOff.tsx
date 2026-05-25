@@ -1,8 +1,6 @@
 // https://codepen.io/jkantner/pen/oNPRMQY
 
-import clsx from "clsx";
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef, useState } from "react";
 
 import { computer } from "@/lib/computer";
 
@@ -10,35 +8,13 @@ import styles from "./ButtonTurnOff.module.scss";
 
 export function ButtonTurnOff() {
   const { t } = useTranslation("content");
-  const polylineRef = useRef<SVGPolylineElement>(null);
-  const [shouldPlayAnimation, setShouldPlayAnimation] = useState(false);
-
-  function handleAnimationEnd() {
-    setShouldPlayAnimation(false);
-  }
-
-  function handleHover() {
-    setShouldPlayAnimation(true);
-  }
-
-  useEffect(() => {
-    const el = polylineRef.current;
-    el?.addEventListener("animationend", handleAnimationEnd);
-
-    return () => {
-      el?.removeEventListener("animationend", handleAnimationEnd);
-    };
-  }, []);
 
   return (
     <button
-      className={clsx(styles.button, shouldPlayAnimation && styles.animated)}
+      className={styles.button}
       type="button"
       title={t("login-screen.turn-off")}
       aria-label={t("login-screen.turn-off")}
-      onFocus={handleHover}
-      onMouseOver={handleHover}
-      onTouchStart={handleHover}
       onClick={() => computer.shutdown()}
     >
       <svg
@@ -50,13 +26,12 @@ export function ButtonTurnOff() {
       >
         <g fill="none" stroke="#fff">
           <polyline
-            ref={polylineRef}
-            className={clsx(styles.iconPart, styles.part1, shouldPlayAnimation && styles.animated)}
+            className={styles.part1}
             strokeWidth="3"
             points="12,7 12,17"
           />
           <circle
-            className={clsx(styles.iconPart, styles.part2, shouldPlayAnimation && styles.animated)}
+            className={styles.part2}
             cx="12"
             cy="12"
             r="9"
