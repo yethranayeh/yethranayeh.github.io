@@ -1,1 +1,0 @@
-import{u as o,j as t,T as r}from"./index-DbJwDcWu.js";import{P as s}from"./ProjectLayout-BD_BiJ28.js";import"./github-mbZ4gRfU.js";function i(){const{t:e}=o("content");return t.jsx(s,{website:"https://deckplate.netlify.app",repo:"https://github.com/yethranayeh/DECKPLATE",children:t.jsx(r,{children:e("deckplate")})})}export{i as Deckplate};
