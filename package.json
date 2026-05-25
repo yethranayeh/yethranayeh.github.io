@@ -53,5 +53,5 @@
     "vite": "^7.1.5",
     "vite-plugin-svgr": "^4.5.0"
   },
-  "packageManager": "npm@10.9.0"
+  "packageManager": "npm@11.15.0"
 }
