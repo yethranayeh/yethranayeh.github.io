@@ -30,7 +30,6 @@ export default function DesktopIcon({ title, iconSrc, onOpen }: DesktopIconProps
         light
         variant="small"
         style={{
-          wordBreak: "break-all",
           textAlign: "center",
         }}
       >
