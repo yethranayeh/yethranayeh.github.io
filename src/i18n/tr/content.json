@@ -5,6 +5,10 @@
   },
   "base-url": "C:\\Kullanıcılar",
   "clippy": {
+    "action": {
+      "doubleClick": "çift tıkla",
+      "tap": "dokun"
+    },
     "actions": {
       "openCipher": "Şifrelemeyi Aç",
       "openResume": "Özgeçmişi Aç",
@@ -31,11 +35,11 @@
     },
     "tips": {
       "appsOpen": "Vigenère Şifrelemesini dene — gizli mesajları şifrele ve çöz!",
-      "firstVisit": "Hoş geldin! Başlamak için masaüstündeki bir simgeye çift tıkla.",
+      "firstVisit": "Hoş geldin! Başlamak için masaüstündeki bir simgeye {{action}}.",
       "helpOpen": "Geri bildirimin varsa veya bir hata bulursan bana bildir! Senin görüşlerin değerli.",
       "idle": "Yardıma mı ihtiyacın var? Gezinme ipuçları ve kısayollar için Başlat Menüsüne tıkla.",
       "noWindows": "Hiçbir şey açık değil? Özgeçmişime veya projelerime göz at!",
-      "projectsOpen": "Projelerimi merak ediyor musun? Detayları görmek için bir projeye çift tıkla!",
+      "projectsOpen": "Projelerimi merak ediyor musun? Detayları görmek için bir projeye {{action}}!",
       "resumeOpen": "Özgeçmişimi okuyorsun gibi görünüyor. Deneyimlerim hakkında daha fazla bilgi ister misin?"
     }
   },

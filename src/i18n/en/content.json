@@ -5,6 +5,10 @@
   },
   "base-url": "C:\\Users",
   "clippy": {
+    "action": {
+      "doubleClick": "Double-click",
+      "tap": "Tap"
+    },
     "actions": {
       "openCipher": "Open Cipher",
       "openResume": "Open Resume",
@@ -31,11 +35,11 @@
     },
     "tips": {
       "appsOpen": "Try the Vigenère Cipher to encrypt and decrypt secret messages!",
-      "firstVisit": "Welcome! Double-click an icon on the desktop to get started.",
+      "firstVisit": "Welcome! {{action}} an icon on the desktop to get started.",
       "helpOpen": "If you have feedback or find a bug, let me know! Your input is valuable.",
       "idle": "Need help? Click the Start menu for navigation tips and shortcuts.",
       "noWindows": "Nothing open? Try checking out my Resume or Projects!",
-      "projectsOpen": "Curious about my projects? Double-click a project to see the details!",
+      "projectsOpen": "Curious about my projects? {{action}} a project to see the details!",
       "resumeOpen": "Looks like you're reading my resume. Want to know more about my experience?"
     }
   },
