@@ -43,7 +43,7 @@
       "resumeOpen": "Özgeçmişimi okuyorsun gibi görünüyor. Deneyimlerim hakkında daha fazla bilgi ister misin?"
     }
   },
-  "shades-of-space": "Shades of Space, NASA'nın Astronomy Picture of The Day sitesinde paylaştığı fotoğraftan renk paleti üreten bir web projesidir. Astronomi resmi günlük olarak değişir ve her gün o resimden yeni bir renk paleti üretilir.",
+  "shades-of-space": "Shades of Space, NASA'nın Astronomy Picture of The Day sitesinde paylaştığı fotoğraftan node-vibrant kullanarak renk paleti üreten bir web projesidir. Astronomi resmi günlük olarak değişir ve her gün o resimden yeni bir renk paleti üretilir. Geçmiş tarihlere göz atabilir ve paletleri CSS, Tailwind, JSON ya da Figma formatında dışa aktarabilirsiniz.",
   "error": {
     "fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
   },

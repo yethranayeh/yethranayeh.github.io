@@ -5,10 +5,11 @@ import { Text } from "@/components/Styled";
 
 export function DailySpacePalette() {
   const { t } = useTranslation("content");
+
   return (
     <ProjectLayout
       website="https://shadesof.space/"
-      repo="https://github.com/yethranayeh/shades-of-space"
+      repo="https://github.com/yethranayeh/daily-space-palette"
     >
       <Text>{t("shades-of-space")}</Text>
     </ProjectLayout>
