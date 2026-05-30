@@ -2,6 +2,10 @@
 @use "../../../styles/mixins.scss";
 
 .container {
+  // Take all middle space in the toolbar so Start and the system tray never get squished
+  flex: 1;
+  min-width: 0;
+
   gap: variables.$spacing !important;
 
   overflow-x: auto;

@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 
 import { addWindowAtom, windowsAtom } from "@/stores/window.atom";
 import { tips } from "@/config/clippyTips";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 import { ClippyBubble } from "./ClippyBubble";
 import styles from "./Clippy.module.scss";
@@ -46,6 +47,7 @@ function getRandomClippyState() {
 
 export function Clippy() {
   const { t } = useTranslation("content");
+  const isMobile = useIsMobile();
   const store = useStore();
   const openWindows = useAtomValue(windowsAtom);
   const openWindowIds = useMemo(() => openWindows.map((w) => w.id), [openWindows]);
@@ -235,7 +237,7 @@ export function Clippy() {
     <div className={styles.container}>
       {isBubbleVisible && activeTip && (
         <ClippyBubble
-          text={t(activeTip.i18nKey)}
+          text={t(activeTip.i18nKey, { action: t(`clippy.action.${isMobile ? "tap" : "doubleClick"}`) })}
           actionLabel={activeTip.actionLabelI18nKey ? t(activeTip.actionLabelI18nKey) : undefined}
           onAction={activeTip.actionWindow ? handleTipAction : undefined}
           onDismiss={handleDismiss}

@@ -18,7 +18,7 @@ export default function DesktopOutlet() {
           id={app.id}
           title={t(app.titleI18nKey)}
           iconSrc={app.iconSrc}
-          onDoubleClick={() => addWindow(app)}
+          onOpen={() => addWindow(app)}
         />
       ))}
     </Flex>

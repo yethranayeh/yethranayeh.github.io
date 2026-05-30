@@ -21,5 +21,5 @@ export const CurrentTime = () => {
     };
   }, []);
 
-  return <span>{time}</span>;
+  return <span style={{ whiteSpace: "nowrap" }}>{time}</span>;
 };
