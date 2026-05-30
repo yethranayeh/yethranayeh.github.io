@@ -2,11 +2,11 @@
 
 .loader {
   z-index: 999999;
-  position: absolute;
-  top: 50px;
+  position: fixed;
+  top: calc(variables.$navbar-height - 6px);
   left: calc(-1 * variables.$spacing);
 
-  width: calc(100svw + variables.$spacing-2);
+  width: calc(100vw + variables.$spacing-2);
 
   & > div {
     height: 16px !important;

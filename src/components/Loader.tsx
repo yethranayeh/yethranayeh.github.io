@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { ProgressBar } from "react95";
 
 import styles from "./Loader.module.scss";
@@ -23,9 +24,10 @@ export function Loader() {
     };
   }, []);
 
-  return (
+  return createPortal(
     <div className={styles.loader}>
       <ProgressBar variant="tile" value={Math.floor(percent)} />
-    </div>
+    </div>,
+    document.body,
   );
 }
