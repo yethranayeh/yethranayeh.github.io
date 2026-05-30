@@ -47,7 +47,7 @@
   "error": {
     "fallback-element": "Aman! Sanırım web sayfamı bozdun! Hatayı gidermem için yardımcı olmak istersen, tarayıcı konsolundaki hata  mesajını kontrol edip göndermeni önemle rica ediyorum :)"
   },
-  "sarmal": "Sarmal, yükleme ve düşünme göstergeleri için parametrik eğri animasyonları sunan bir kütüphanedir. Canvas ve SVG renderer'ları, standart eğri koleksiyonu, programatik zaman kontrolü ve sıfır bağımlılık ile npm'den veya CDN üzerinden doğrudan kullanılabilir.",
+  "sarmal": "Sarmal, hero bölümleri, yükleme göstergeleri, düşünme durumları ve arka plan animasyonları için animasyonlu bir eğri kütüphanesidir. Canvas, SVG ve nokta matris (dot-matrix) renderer'ları, gül ve Lissajous figürleri gibi yerleşik eğriler, eğri dönüşümüyle programatik zaman kontrolü, sıfır bağımlılık ve React ile Svelte bileşen sarmalayıcıları sunar. npm, CDN veya `npx @sarmal/core` ile CLI üzerinden kullanılabilir.",
   "deckplate": "Deckplate, sistem izleme terminalleri ve fabrika tabelalarından ilham alan yüksek kontrastlı, endüstriyel bir tasarım sistemidir. Tailwind v4 ve Radix UI ile oluşturulmuş, tek bir CLI komutuyla kurulabilen Shadcn uyumlu bir bileşen kaydı olarak sunulmaktadır.",
   "help-dialog": {
     "information-body": "Bu benim kişisel sayfam. Burada özgeçmişimi görüntüleyebilir, projelerimi inceleyebilir ve bu işletim sistemi içinde sunduğum küçük 'uygulamaları' çalıştırabilirsiniz.",

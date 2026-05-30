@@ -47,7 +47,7 @@
   "error": {
     "fallback-element": "Hoppla! Sieht so aus, als hätten Sie meine Website kaputt gemacht! Wenn Sie mir helfen möchten, sie zu reparieren, können Sie die Fehlermeldung in der Browser-Konsole überprüfen und sie mir bitte schicken :)"
   },
-  "sarmal": "Sarmal ist eine Bibliothek für parametrische Kurvenanimationen, die als Lade- und Denkindikatoren eingesetzt werden können. Sie bietet Canvas- und SVG-Renderer, eine Auswahl an Standardkurven, programmatische Zeitsteuerung und ist ohne externe Abhängigkeiten – per npm oder direkt über CDN nutzbar.",
+  "sarmal": "Sarmal ist eine Bibliothek für animierte Kurven für Hero-Sektionen, Ladeindikatoren, Denkindikatoren und Ambient-Motion. Sie bietet Canvas-, SVG- und Dot-Matrix-Renderer, eingebaute Kurven wie Rosen und Lissajous-Figuren, programmatische Zeitsteuerung mit Kurven-Morphing, keine externen Abhängigkeiten sowie React- und Svelte-Komponenten-Wrapper. Verfügbar über npm, CDN oder CLI mit `npx @sarmal/core`.",
   "deckplate": "Deckplate ist ein hochkontrastiges, industrielles Designsystem, das von Systemüberwachungsterminals und Fabrikbeschilderungen inspiriert wurde. Es wird als Shadcn-kompatibles Komponentenregister bereitgestellt, das mit Tailwind v4 und Radix UI entwickelt wurde und mit einem einzigen CLI-Befehl installiert werden kann.",
   "help-dialog": {
     "information-body": "Dies ist meine Portfolio-Seite. Hier können Sie meinen Lebenslauf ansehen, meine Projekte erkunden und kleinere 'Apps' ausführen, die ich in dieses Betriebssystem integriert habe.",
