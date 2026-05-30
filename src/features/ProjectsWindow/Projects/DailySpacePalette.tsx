@@ -7,10 +7,10 @@ export function DailySpacePalette() {
   const { t } = useTranslation("content");
   return (
     <ProjectLayout
-      website="https://daily-space-palette.vercel.app/"
-      repo="https://github.com/yethranayeh/daily-space-palette"
+      website="https://shadesof.space/"
+      repo="https://github.com/yethranayeh/shades-of-space"
     >
-      <Text>{t("daily-space-palette")}</Text>
+      <Text>{t("shades-of-space")}</Text>
     </ProjectLayout>
   );
 }

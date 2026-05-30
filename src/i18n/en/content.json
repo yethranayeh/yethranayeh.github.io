@@ -43,7 +43,7 @@
       "resumeOpen": "Looks like you're reading my resume. Want to know more about my experience?"
     }
   },
-  "daily-space-palette": "Daily Space Palette is a webpage that generates color palettes from NASA's Astronomy Picture of the Day. The astronomy picture changes daily, and each day a new color palette is generated from the picture provided.",
+  "shades-of-space": "Shades of Space is a webpage that generates color palettes from NASA's Astronomy Picture of the Day. The astronomy picture changes daily, and each day a new color palette is generated from the picture provided.",
   "error": {
     "fallback-element": "Oops! Looks like you broke my website! If you want to help me fix it, you can check the browser console for the error message and kindly send it to me, pretty please :)"
   },

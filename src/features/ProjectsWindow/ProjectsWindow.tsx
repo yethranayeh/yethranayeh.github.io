@@ -7,19 +7,19 @@ import styles from "./ProjectsWindow.module.scss";
 
 const preload = {
   Sarmal: () => import("@/features/ProjectsWindow/Projects/Sarmal"),
-  "Daily Space Palette": () => import("@/features/ProjectsWindow/Projects/DailySpacePalette"),
+  "Shades of Space": () => import("@/features/ProjectsWindow/Projects/DailySpacePalette"),
   Deckplate: () => import("@/features/ProjectsWindow/Projects/Deckplate"),
 } as const;
 
 const Project = {
   Sarmal: lazy(() => preload.Sarmal().then((m) => ({ default: m.Sarmal }))),
-  DailySpacePalette: lazy(() =>
-    preload["Daily Space Palette"]().then((m) => ({ default: m.DailySpacePalette })),
+  ShadesOfSpace: lazy(() =>
+    preload["Shades of Space"]().then((m) => ({ default: m.DailySpacePalette })),
   ),
   Deckplate: lazy(() => preload.Deckplate().then((m) => ({ default: m.Deckplate }))),
 } as const;
 
-const tabs = ["Daily Space Palette", "Sarmal", "Deckplate"] as const;
+const tabs = ["Shades of Space", "Sarmal", "Deckplate"] as const;
 
 export function ProjectsWindow() {
   const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>(tabs[0]);
@@ -35,7 +35,7 @@ export function ProjectsWindow() {
       </Tabs>
       <TabBody as="article" className={styles.tabBody}>
         <Suspense fallback={<Loader />}>
-          {activeTab === "Daily Space Palette" && <Project.DailySpacePalette />}
+          {activeTab === "Shades of Space" && <Project.ShadesOfSpace />}
           {activeTab === "Sarmal" && <Project.Sarmal />}
           {activeTab === "Deckplate" && <Project.Deckplate />}
         </Suspense>
