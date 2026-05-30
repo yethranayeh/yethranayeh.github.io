@@ -18,7 +18,10 @@
   },
   "overrides": [
     {
-      "files": ["src/layout/components/Navbar/LanguageSelect.tsx"],
+      "files": [
+        "src/layout/components/Navbar/LanguageSelect.tsx",
+        "src/layout/components/Navbar/MobileOverflowMenu.tsx"
+      ],
       "rules": {
         "react-hooks-js/refs": "off"
       }

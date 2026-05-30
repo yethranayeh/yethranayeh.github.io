@@ -29,7 +29,7 @@ const getBatteryIcon = (charge: number) => {
   }
 };
 
-export function BatteryIndicator() {
+export function BatteryIndicator({ showPercentage = false }: { showPercentage?: boolean }) {
   const [battery, setBattery] = useState<Battery | null>(null);
 
   useEffect(() => {
@@ -58,7 +58,22 @@ export function BatteryIndicator() {
     }
   }, []);
 
-  if (!battery) return null;
+  if (!battery) {
+    return null;
+  }
 
-  return <SVGIcon Icon={battery.charging ? BatteryCharging : getBatteryIcon(battery.percent)} />;
+  const icon = (
+    <SVGIcon Icon={battery.charging ? BatteryCharging : getBatteryIcon(battery.percent)} />
+  );
+
+  if (!showPercentage) {
+    return icon;
+  }
+
+  return (
+    <>
+      {icon}
+      <span style={{ marginLeft: 4 }}>{Math.round(battery.percent)}%</span>
+    </>
+  );
 }

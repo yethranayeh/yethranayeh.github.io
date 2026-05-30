@@ -8,5 +8,9 @@
     "cancel": "Abbrechen"
   },
   "loading": "Wird geladen",
-  "password": "Passwort"
+  "password": "Passwort",
+  "sound": {
+    "on": "Ton an",
+    "off": "Ton aus"
+  }
 }

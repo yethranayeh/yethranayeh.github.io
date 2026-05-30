@@ -8,5 +8,9 @@
     "cancel": "Cancel"
   },
   "loading": "Loading",
-  "password": "Password"
+  "password": "Password",
+  "sound": {
+    "on": "Sound On",
+    "off": "Sound Off"
+  }
 }

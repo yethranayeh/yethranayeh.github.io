@@ -1,0 +1,21 @@
+@use "../../../styles/variables.module.scss";
+
+.button {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.languageAbbreviation {
+  text-transform: capitalize;
+  background-color: variables.$highlight;
+  line-height: 26px;
+  padding: 0 variables.$spacing !important;
+}

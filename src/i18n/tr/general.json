@@ -8,5 +8,9 @@
     "cancel": "İptal"
   },
   "loading": "Yükleniyor",
-  "password": "Şifre"
+  "password": "Şifre",
+  "sound": {
+    "on": "Ses Açık",
+    "off": "Ses Kapalı"
+  }
 }
