@@ -1,9 +1,9 @@
 import type { ButtonProps } from "react95";
 import { WindowButton } from "./WindowButton";
-import styles from "./MinimizeButton.module.scss";
+import { WindowIcon } from "@/components/WindowIcon";
 
 export const MinimizeButton = (props: Omit<ButtonProps, "children">) => (
   <WindowButton {...props}>
-    <span className={styles.icon} />
+    <WindowIcon type="minimize" />
   </WindowButton>
 );
