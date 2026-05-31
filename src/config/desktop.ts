@@ -13,6 +13,11 @@ const ProjectsContent = lazy(() =>
 const AppsContent = lazy(() =>
   import("@/features/AppsWindow/AppsWindow").then((module) => ({ default: module.AppsWindow })),
 );
+const MediaContent = lazy(() =>
+  import("@/features/MediaWindow/MediaWindow").then((module) => ({
+    default: module.MediaWindow,
+  })),
+);
 
 export const desktopApps: Array<AppWindow> = [
   {
@@ -39,5 +44,13 @@ export const desktopApps: Array<AppWindow> = [
     iconSrc: "/icon/folder.ico",
     openWindowIconSrc: "/icon/folder_open.ico",
     content: AppsContent,
+  },
+  {
+    id: "media",
+    titleI18nKey: "menu:window.media",
+    minimized: false,
+    iconSrc: "/icon/folder-media.svg",
+    openWindowIconSrc: "/icon/folder-media-open.svg",
+    content: MediaContent,
   },
 ];

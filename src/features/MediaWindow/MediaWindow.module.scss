@@ -1,0 +1,12 @@
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.scss";
+
+.frame {
+  padding: variables.$spacing;
+  overflow-y: auto;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: variables.$spacing;
+  align-content: start;
+}

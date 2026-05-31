@@ -6,7 +6,9 @@ export const windowHelp: Record<string, { i18nKey: string }> = {
   resume: { i18nKey: "content:windowHelp.resume" },
   projects: { i18nKey: "content:windowHelp.projects" },
   apps: { i18nKey: "content:windowHelp.apps" },
+  media: { i18nKey: "content:windowHelp.media" },
   VigenereCipher: { i18nKey: "content:windowHelp.vigenereCipher" },
+  "media:screensaver": { i18nKey: "content:windowHelp.videoPlayer" },
 };
 
 export const WINDOW_HELP_DEFAULT_KEY = "content:windowHelp.generic";
