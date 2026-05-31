@@ -90,7 +90,9 @@ export function VideoPlayer() {
         <Button size="sm" onClick={handleStop}>
           ⏹
         </Button>
-        <Slider min={0} max={100} step={1} value={progress} onChange={handleSeek} />
+        <div className={styles.sliderWrap}>
+          <Slider min={0} max={100} step={1} value={progress} onChange={handleSeek} />
+        </div>
         <span className={styles.time}>
           {formatTime(currentTime)} / {formatTime(duration)}
         </span>
