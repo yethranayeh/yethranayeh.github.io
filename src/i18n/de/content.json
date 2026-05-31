@@ -8,9 +8,11 @@
     "dismiss": "Verstanden",
     "apps": "Verfügbare Anwendungen, die Sie in diesem Betriebssystem starten können. Doppelklicken oder Enter drücken, um eine App zu öffnen.",
     "generic": "Verwenden Sie die Schaltflächen in der Titelleiste, um dieses Fenster zu minimieren oder zu schließen.",
+    "media": "Durchsuchen und spielen Sie Mediendateien ab. Doppelklicken Sie auf eine Videodatei, um sie im Video-Player zu öffnen.",
     "projects": "Klicken Sie auf ein Projekt, um Details anzuzeigen. Verwenden Sie das Globus-Symbol, um die Live-Seite zu besuchen, oder das GitHub-Symbol, um den Quellcode zu durchsuchen.",
     "resume": "Dies ist mein Lebenslauf. Scrollen Sie nach unten, um meine Berufserfahrung, Ausbildung, Fähigkeiten und mehr zu sehen.",
-    "vigenereCipher": "Geben Sie eine Nachricht und einen geheimen Schlüssel ein und wählen Sie Verschlüsseln oder Entschlüsseln. Die Vigenère-Chiffre verwendet einen sich wiederholenden Schlüssel, um jeden Buchstaben Ihrer Nachricht zu verschieben."
+    "vigenereCipher": "Geben Sie eine Nachricht und einen geheimen Schlüssel ein und wählen Sie Verschlüsseln oder Entschlüsseln. Die Vigenère-Chiffre verwendet einen sich wiederholenden Schlüssel, um jeden Buchstaben Ihrer Nachricht zu verschieben.",
+    "videoPlayer": "Verwenden Sie die Wiedergabe-, Pause- und Stopp-Tasten zur Steuerung. Ziehen Sie den Regler, um durch das Video zu navigieren."
   },
   "clippy": {
     "action": {
@@ -107,5 +109,11 @@
     "method": "Methode",
     "output": "Ausgabe",
     "title": "Vigenère-Verschlüsselung"
+  },
+  "media": {
+    "screensaverVideo": "Bildschirmschoner.mp4"
+  },
+  "screensaver": {
+    "dismissHint": "Klicken oder beliebige Taste drücken zum Beenden"
   }
 }

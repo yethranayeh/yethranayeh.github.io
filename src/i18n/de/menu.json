@@ -7,7 +7,9 @@
   },
   "window": {
     "apps": "Apps",
+    "media": "Medien",
     "projects": "Projekte",
-    "resume": "Lebenslauf"
+    "resume": "Lebenslauf",
+    "videoPlayer": "Video-Player"
   }
 }

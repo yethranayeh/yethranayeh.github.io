@@ -8,9 +8,11 @@
     "dismiss": "Got it",
     "apps": "Available applications you can launch inside this operating system. Double-click or press Enter to open an app.",
     "generic": "Use the buttons in the title bar to minimize or close this window.",
+    "media": "Browse and play media files. Double-click a video file to open it in the Video Player.",
     "projects": "Click any project to view its details. Use the globe icon to visit the live deployment, or the GitHub icon to browse the source code.",
     "resume": "This is my resume. Scroll down to see my work experience, education, skills, and more.",
-    "vigenereCipher": "Enter a message and a secret key phrase, then choose to encrypt or decrypt. The Vigenère cipher uses a repeating key to shift each letter of your message."
+    "vigenereCipher": "Enter a message and a secret key phrase, then choose to encrypt or decrypt. The Vigenère cipher uses a repeating key to shift each letter of your message.",
+    "videoPlayer": "Use the play, pause, and stop buttons to control playback. Drag the slider to seek through the video."
   },
   "clippy": {
     "action": {
@@ -107,5 +109,11 @@
     "method": "Method",
     "output": "Output",
     "title": "Vigenère Cipher"
+  },
+  "media": {
+    "screensaverVideo": "Screensaver.mp4"
+  },
+  "screensaver": {
+    "dismissHint": "Click or press any key to exit"
   }
 }

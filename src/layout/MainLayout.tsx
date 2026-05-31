@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { Suspense, lazy, useEffect, useMemo, useState } from "react";
+import { useAtom } from "jotai";
 
 import { getRandomIntRange } from "@/utils/getRandomIntRange";
 import { setBodyLoadingState } from "@/utils/setBodyLoadingState";
 import { useAssetPreload } from "@/hooks/useAssetPreload";
+import { useIdleTimer } from "@/hooks/useIdleTimer";
 import { startMenuIcons } from "@/config/startMenu";
+import { isScreensaverActiveAtom } from "@/stores/screensaver.atom";
 
 import { Navbar } from "./components/Navbar";
 import { LoadingScreen } from "./components/LoadingScreen";
@@ -20,9 +23,13 @@ import styles from "./MainLayout.module.scss";
 
 const isDevMode = import.meta.env.DEV;
 
-// TODO: consider changing location away from layout. a "route" does not really make sense as a part of layout. Maybe utilize route transition technology for this?
 const LoginPage = lazy(() =>
   import("@/features/LoginPage/LoginPage").then((module) => ({ default: module.LoginPage })),
+);
+const ScreenSaver = lazy(() =>
+  import("@/features/ScreenSaver/ScreenSaver").then((module) => ({
+    default: module.ScreenSaver,
+  })),
 );
 
 const isLoggedInStorageVal = localStorage.getItem(isLoggedOutKey) !== "true";
@@ -36,8 +43,24 @@ const loadingTime = isDevMode
 export default function MainLayout() {
   const [loading, setLoading] = useState(!isDevMode);
   const [isLoggedIn, setIsLoggedIn] = useState(isLoggedInStorageVal);
+  const [isScreensaverActive, setScreensaverActive] = useAtom(isScreensaverActiveAtom);
 
   useAssetPreload(Object.values(startMenuIcons));
+
+  useIdleTimer(30_000, () => {
+    setScreensaverActive(true);
+  });
+
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.hidden) {
+        setScreensaverActive(true);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, [setScreensaverActive]);
 
   const authContextValue = useMemo(
     () => ({ isLoggedIn, setIsLoggedIn }),
@@ -80,7 +103,6 @@ export default function MainLayout() {
       <main className={styles.main}>
         <DesktopOutlet />
 
-        {/* TODO: decide on what to do with routing and Outlet, since window management is now independent of route state */}
         <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
@@ -88,6 +110,12 @@ export default function MainLayout() {
         <WindowsOutlet />
         <Clippy />
       </main>
+
+      {isScreensaverActive && (
+        <Suspense fallback={null}>
+          <ScreenSaver />
+        </Suspense>
+      )}
     </div>
   );
 }
