@@ -16,18 +16,17 @@
   cursor: pointer;
 }
 
-// react95's tooltip css
 .tooltip {
   position: absolute;
   z-index: 1;
   display: block;
-  padding: 4px;
+  padding: var(--space-4);
   top: 60%;
   left: -60%;
   width: max-content;
 
-  border: 2px solid #0a0a0a;
-  background: #fefbcc;
+  border: 2px solid var(--color-border-darkest);
+  background: var(--color-tooltip);
   box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.35);
 
   text-align: center;

@@ -10,8 +10,8 @@
   width: 260px;
   padding: variables.$spacing-4;
 
-  border: 2px solid #0a0a0a;
-  background: #fefbcc;
+  border: 2px solid var(--color-border-darkest);
+  background: var(--color-tooltip);
   box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.35);
 
   animation: fadeIn 0.3s ease-out;
@@ -24,7 +24,7 @@
 
   font-size: 0.85rem;
   line-height: 1.4;
-  color: #0a0a0a;
+  color: var(--color-material-text);
 }
 
 .actions {
@@ -41,7 +41,7 @@
   right: 24px;
 
   border: 8px solid transparent;
-  border-top-color: #fefbcc;
+  border-top-color: var(--color-tooltip);
 }
 
 .bubble::before {
@@ -51,7 +51,7 @@
   right: 22px;
 
   border: 10px solid transparent;
-  border-top-color: #0a0a0a;
+  border-top-color: var(--color-border-darkest);
 }
 
 @keyframes fadeIn {
