@@ -4,6 +4,14 @@
     "title": "404 - İçerik Bulunamadı!"
   },
   "base-url": "C:\\Kullanıcılar",
+  "windowHelp": {
+    "dismiss": "Anladım",
+    "apps": "Bu işletim sisteminde başlatabileceğiniz uygulamalar. Bir uygulamayı açmak için çift tıklayın veya Enter'a basın.",
+    "generic": "Bu pencereyi simge durumuna küçültmek veya kapatmak için başlık çubuğundaki düğmeleri kullanın.",
+    "projects": "Detaylarını görmek için bir projeye tıklayın. Canlı siteyi ziyaret etmek için dünya simgesini, kaynak kodunu incelemek için GitHub simgesini kullanın.",
+    "resume": "Bu benim özgeçmişim. İş deneyimimi, eğitimimi, becerilerimi ve daha fazlasını görmek için aşağı kaydırın.",
+    "vigenereCipher": "Bir mesaj ve gizli bir anahtar girin, ardından şifreleme veya çözme seçeneğini seçin. Vigenère şifrelemesi, mesajınızdaki her harfi kaydırmak için tekrar eden bir anahtar kullanır."
+  },
   "clippy": {
     "action": {
       "doubleClick": "çift tıkla",

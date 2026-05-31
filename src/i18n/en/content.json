@@ -4,6 +4,14 @@
     "title": "404 - Content Not Found!"
   },
   "base-url": "C:\\Users",
+  "windowHelp": {
+    "dismiss": "Got it",
+    "apps": "Available applications you can launch inside this operating system. Double-click or press Enter to open an app.",
+    "generic": "Use the buttons in the title bar to minimize or close this window.",
+    "projects": "Click any project to view its details. Use the globe icon to visit the live deployment, or the GitHub icon to browse the source code.",
+    "resume": "This is my resume. Scroll down to see my work experience, education, skills, and more.",
+    "vigenereCipher": "Enter a message and a secret key phrase, then choose to encrypt or decrypt. The Vigenère cipher uses a repeating key to shift each letter of your message."
+  },
   "clippy": {
     "action": {
       "doubleClick": "Double-click",

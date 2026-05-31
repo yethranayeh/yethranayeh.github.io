@@ -6,6 +6,7 @@ import { removeWindowAtom, toggleMinimizeWindowAtom, windowsAtom } from "@/store
 
 import { DraggableWindow } from "@/components/windows/DraggableWindow";
 import { Loader } from "@/components/Loader";
+import { getWindowHelpTextKey } from "@/config/windowHelp";
 
 export function WindowsOutlet() {
   "use memo";
@@ -25,6 +26,7 @@ export function WindowsOutlet() {
               key={w.id}
               {...w.WindowProps}
               title={t(w.titleI18nKey)}
+              helpText={t(getWindowHelpTextKey(w.id))}
               slotProps={{
                 ...w.WindowProps?.slotProps,
                 minimizeButton: {

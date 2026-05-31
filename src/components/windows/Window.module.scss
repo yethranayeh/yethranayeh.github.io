@@ -18,6 +18,11 @@
   justify-content: space-between;
 }
 
+.helpContainer {
+  position: relative;
+  display: flex;
+}
+
 .content {
   display: flex;
   flex-direction: column;
