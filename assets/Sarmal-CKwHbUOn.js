@@ -1,1 +1,0 @@
-import{Q as a,v as t,j as s}from"./index-qptBffDP.js";import{P as o}from"./ProjectLayout-CmMsEa8n.js";import"./github-R1OF9Ue_.js";function i(){const{t:r}=a("content");return t.jsx(o,{website:"https://sarmal.art",repo:"https://github.com/yethranayeh/sarmal",children:t.jsx(s,{children:r("sarmal")})})}export{i as Sarmal};
