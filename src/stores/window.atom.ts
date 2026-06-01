@@ -1,4 +1,4 @@
-import type { LazyExoticComponent } from "react";
+import type { ComponentType, LazyExoticComponent } from "react";
 import type { DraggableWindowProps } from "@/components/windows/DraggableWindow";
 
 import { atom } from "jotai";
@@ -9,7 +9,9 @@ export type AppWindow = {
   minimized: boolean;
   iconSrc: string;
   openWindowIconSrc?: string;
-  content: LazyExoticComponent<() => JSX.Element>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  content: LazyExoticComponent<ComponentType<any>>;
+  contentProps?: Record<string, unknown>;
   WindowProps?: Omit<DraggableWindowProps, "title">;
 };
 

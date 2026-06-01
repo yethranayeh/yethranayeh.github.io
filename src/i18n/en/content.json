@@ -8,7 +8,8 @@
     "dismiss": "Got it",
     "apps": "Available applications you can launch inside this operating system. Double-click or press Enter to open an app.",
     "generic": "Use the buttons in the title bar to minimize or close this window.",
-    "media": "Browse and play media files. Double-click a video file to open it in the Video Player.",
+    "media": "Browse and play media files. Double-click a video to open it in the Video Player, or double-click an image to open it in the Image Viewer.",
+    "imageViewer": "View images in full window. Use the title bar buttons to minimize or close.",
     "projects": "Click any project to view its details. Use the globe icon to visit the live deployment, or the GitHub icon to browse the source code.",
     "resume": "This is my resume. Scroll down to see my work experience, education, skills, and more.",
     "vigenereCipher": "Enter a message and a secret key phrase, then choose to encrypt or decrypt. The Vigenère cipher uses a repeating key to shift each letter of your message.",
@@ -111,7 +112,9 @@
     "title": "Vigenère Cipher"
   },
   "media": {
-    "screensaverVideo": "Screensaver.mp4"
+    "screensaverVideo": "Screensaver.mp4",
+    "portrait": "Portrait.png",
+    "blinking": "Blinking.webp"
   },
   "screensaver": {
     "dismissHint": "Click or press any key to exit"

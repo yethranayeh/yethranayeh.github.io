@@ -10,7 +10,11 @@ function formatTime(secs: number): string {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
-export function VideoPlayer() {
+interface VideoPlayerProps {
+  src: string;
+}
+
+export function VideoPlayer({ src }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -82,7 +86,7 @@ export function VideoPlayer() {
 
   return (
     <WindowContent as="article" className={styles.wrapper}>
-      <video ref={videoRef} className={styles.player} src="/video/screensaver.mp4" preload="auto" />
+      <video ref={videoRef} className={styles.player} src={src} preload="auto" />
       <div className={styles.controls}>
         <Button size="sm" onClick={togglePlay}>
           {playing ? "⏸" : "▶"}

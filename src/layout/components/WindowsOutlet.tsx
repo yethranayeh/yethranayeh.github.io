@@ -40,7 +40,7 @@ export function WindowsOutlet() {
               }}
             >
               <Suspense fallback={<Loader />}>
-                <Content />
+                <Content {...(w.contentProps ?? {})} />
               </Suspense>
             </DraggableWindow>
           );

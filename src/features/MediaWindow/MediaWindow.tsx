@@ -16,14 +16,41 @@ const VideoPlayerContent = lazy(() =>
   })),
 );
 
+const ImageViewerContent = lazy(() =>
+  import("@/features/ImageViewer/ImageViewer").then((module) => ({
+    default: module.ImageViewer,
+  })),
+);
+
 const MEDIA_FILES = [
   {
     id: "screensaver",
+    type: "video" as const,
     titleI18nKey: "content:media.screensaverVideo",
     iconSrc: "/icon/video-file.svg",
-    videoSrc: "/video/screensaver.mp4",
+    src: "/video/screensaver.mp4",
+    windowTitleI18nKey: "menu:window.videoPlayer",
+    windowIconSrc: "/icon/media-player.svg",
   },
-] as const;
+  {
+    id: "portrait",
+    type: "image" as const,
+    titleI18nKey: "content:media.portrait",
+    iconSrc: "/misc/portrait.png",
+    src: "/misc/portrait.png",
+    windowTitleI18nKey: "menu:window.imageViewer",
+    windowIconSrc: "/icon/media-player.svg",
+  },
+  {
+    id: "blinking",
+    type: "image" as const,
+    titleI18nKey: "content:media.blinking",
+    iconSrc: "/misc/blinking.webp",
+    src: "/misc/blinking.webp",
+    windowTitleI18nKey: "menu:window.imageViewer",
+    windowIconSrc: "/icon/media-player.svg",
+  },
+];
 
 export function MediaWindow() {
   const { t } = useTranslation("content");
@@ -41,10 +68,11 @@ export function MediaWindow() {
             onDoubleClick={() =>
               addWindow({
                 id: `media:${file.id}`,
-                titleI18nKey: "menu:window.videoPlayer",
+                titleI18nKey: file.windowTitleI18nKey,
                 minimized: false,
-                iconSrc: "/icon/media-player.svg",
-                content: VideoPlayerContent,
+                iconSrc: file.windowIconSrc,
+                content: file.type === "video" ? VideoPlayerContent : ImageViewerContent,
+                contentProps: { src: file.src },
               })
             }
           />

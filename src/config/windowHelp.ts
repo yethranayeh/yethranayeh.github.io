@@ -9,6 +9,8 @@ export const windowHelp: Record<string, { i18nKey: string }> = {
   media: { i18nKey: "content:windowHelp.media" },
   VigenereCipher: { i18nKey: "content:windowHelp.vigenereCipher" },
   "media:screensaver": { i18nKey: "content:windowHelp.videoPlayer" },
+  "media:portrait": { i18nKey: "content:windowHelp.imageViewer" },
+  "media:blinking": { i18nKey: "content:windowHelp.imageViewer" },
 };
 
 export const WINDOW_HELP_DEFAULT_KEY = "content:windowHelp.generic";
