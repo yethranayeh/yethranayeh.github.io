@@ -12,6 +12,7 @@ export type AppWindow = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   content: LazyExoticComponent<ComponentType<any>>;
   contentProps?: Record<string, unknown>;
+  helpTextI18nKey?: string;
   WindowProps?: Omit<DraggableWindowProps, "title">;
 };
 

@@ -1,10 +1,11 @@
+import type { PublicFile } from "virtual:public-files";
+
 import { lazy } from "react";
 import { useAtom } from "jotai";
-import { useTranslation } from "react-i18next";
 import { Frame } from "react95";
+import { flatFiles } from "virtual:public-files";
 
 import { addWindowAtom } from "@/stores/window.atom";
-
 import { MediaItem } from "./MediaItem";
 import { WindowURL } from "@/components/windows/WindowURL";
 
@@ -22,38 +23,21 @@ const ImageViewerContent = lazy(() =>
   })),
 );
 
-const MEDIA_FILES = [
-  {
-    id: "screensaver",
-    type: "video" as const,
-    titleI18nKey: "content:media.screensaverVideo",
-    iconSrc: "/icon/video-file.svg",
-    src: "/video/screensaver.mp4",
-    windowTitleI18nKey: "menu:window.videoPlayer",
-    windowIconSrc: "/icon/media-player.svg",
-  },
-  {
-    id: "portrait",
-    type: "image" as const,
-    titleI18nKey: "content:media.portrait",
-    iconSrc: "/misc/portrait.png",
-    src: "/misc/portrait.png",
-    windowTitleI18nKey: "menu:window.imageViewer",
-    windowIconSrc: "/icon/media-player.svg",
-  },
-  {
-    id: "blinking",
-    type: "image" as const,
-    titleI18nKey: "content:media.blinking",
-    iconSrc: "/misc/blinking.webp",
-    src: "/misc/blinking.webp",
-    windowTitleI18nKey: "menu:window.imageViewer",
-    windowIconSrc: "/icon/media-player.svg",
-  },
-];
+const MEDIA_FILES = flatFiles.filter((f) => f.mediaType !== "other");
+
+function getIconSrc(file: PublicFile) {
+  if (file.mediaType === "image") {
+    return file.path;
+  }
+
+  if (file.mediaType === "audio") {
+    return "/icon/volume.ico";
+  }
+
+  return "/icon/video-file.svg";
+}
 
 export function MediaWindow() {
-  const { t } = useTranslation("content");
   const [, addWindow] = useAtom(addWindowAtom);
 
   return (
@@ -62,17 +46,24 @@ export function MediaWindow() {
       <Frame as="section" variant="field" className={styles.frame}>
         {MEDIA_FILES.map((file) => (
           <MediaItem
-            key={file.id}
-            name={t(file.titleI18nKey)}
-            iconSrc={file.iconSrc}
+            key={file.path}
+            name={file.name}
+            iconSrc={getIconSrc(file)}
             onDoubleClick={() =>
               addWindow({
-                id: `media:${file.id}`,
-                titleI18nKey: file.windowTitleI18nKey,
+                id: `media:${file.path}`,
+                titleI18nKey:
+                  file.mediaType === "image"
+                    ? "menu:window.imageViewer"
+                    : "menu:window.videoPlayer",
+                helpTextI18nKey:
+                  file.mediaType === "image"
+                    ? "content:windowHelp.imageViewer"
+                    : "content:windowHelp.videoPlayer",
                 minimized: false,
-                iconSrc: file.windowIconSrc,
-                content: file.type === "video" ? VideoPlayerContent : ImageViewerContent,
-                contentProps: { src: file.src },
+                iconSrc: "/icon/media-player.svg",
+                content: file.mediaType === "image" ? ImageViewerContent : VideoPlayerContent,
+                contentProps: { src: file.path },
               })
             }
           />

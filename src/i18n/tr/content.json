@@ -112,9 +112,7 @@
     "title": "Vigenère Şifrelemesi"
   },
   "media": {
-    "screensaverVideo": "EkranKoruyucu.mp4",
-    "portrait": "Portrait.png",
-    "blinking": "Blinking.webp"
+    "screensaverVideo": "EkranKoruyucu.mp4"
   },
   "screensaver": {
     "dismissHint": "Çıkmak için tıklayın veya herhangi bir tuşa basın"

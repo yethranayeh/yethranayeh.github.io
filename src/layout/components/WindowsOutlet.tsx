@@ -26,7 +26,7 @@ export function WindowsOutlet() {
               key={w.id}
               {...w.WindowProps}
               title={t(w.titleI18nKey)}
-              helpText={t(getWindowHelpTextKey(w.id))}
+              helpText={t(w.helpTextI18nKey ?? getWindowHelpTextKey(w.id))}
               slotProps={{
                 ...w.WindowProps?.slotProps,
                 minimizeButton: {

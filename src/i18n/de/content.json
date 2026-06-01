@@ -112,9 +112,7 @@
     "title": "Vigenère-Verschlüsselung"
   },
   "media": {
-    "screensaverVideo": "Bildschirmschoner.mp4",
-    "portrait": "Portrait.png",
-    "blinking": "Blinking.webp"
+    "screensaverVideo": "Bildschirmschoner.mp4"
   },
   "screensaver": {
     "dismissHint": "Klicken oder beliebige Taste drücken zum Beenden"
