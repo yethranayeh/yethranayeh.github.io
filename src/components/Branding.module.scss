@@ -5,7 +5,7 @@
 .container {
   & * {
     @include mixins.no-select;
-    color: #fff;
+    color: var(--color-header-text);
   }
 }
 
@@ -41,6 +41,6 @@
   font-size: 22px;
   display: inline-block;
   vertical-align: top;
-  color: #ff6821 !important;
+  color: var(--color-brand-orange) !important;
   margin-top: -8px;
 }

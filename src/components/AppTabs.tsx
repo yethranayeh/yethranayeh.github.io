@@ -17,7 +17,7 @@ interface AppTabsProps {
   value: string;
   onChange: (value: string) => void;
   rows?: number;
-  tabBodyProps?: ComponentProps<typeof TabBody>;
+  tabBodyProps?: Omit<ComponentProps<typeof TabBody>, "children">;
   fallback?: ReactNode;
   children: ReactNode;
 }

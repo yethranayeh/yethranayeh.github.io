@@ -11,7 +11,7 @@
 
   border: 2px solid var(--color-border-darkest);
   background: var(--color-tooltip);
-  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-tooltip);
 
   z-index: 10;
   animation: fadeIn 0.3s ease-out;

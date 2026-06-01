@@ -1,7 +1,6 @@
-import { Tabs, Tab, TabBody } from "react95";
-import { Suspense, lazy, useState } from "react";
+import { lazy, useState } from "react";
 
-import { Loader } from "@/components/Loader";
+import { AppTabs } from "@/components/AppTabs";
 
 import styles from "./ProjectsWindow.module.scss";
 
@@ -19,27 +18,24 @@ const Project = {
   Deckplate: lazy(() => preload.Deckplate().then((m) => ({ default: m.Deckplate }))),
 } as const;
 
-const tabs = ["Shades of Space", "Sarmal", "Deckplate"] as const;
-
 export function ProjectsWindow() {
-  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>(tabs[0]);
+  const [activeTab, setActiveTab] = useState("Shades of Space");
 
   return (
-    <>
-      <Tabs value={activeTab} onChange={setActiveTab}>
-        {tabs.map((tab) => (
-          <Tab key={tab} value={tab} onMouseEnter={() => preload[tab]()}>
-            {tab}
-          </Tab>
-        ))}
-      </Tabs>
-      <TabBody as="article" className={styles.tabBody}>
-        <Suspense fallback={<Loader />}>
-          {activeTab === "Shades of Space" && <Project.ShadesOfSpace />}
-          {activeTab === "Sarmal" && <Project.Sarmal />}
-          {activeTab === "Deckplate" && <Project.Deckplate />}
-        </Suspense>
-      </TabBody>
-    </>
+    <AppTabs
+      value={activeTab}
+      onChange={setActiveTab}
+      tabBodyProps={{ as: "article", className: styles.tabBody }}
+    >
+      <AppTabs.Tab title="Shades of Space" onTabHover={() => preload["Shades of Space"]()}>
+        <Project.ShadesOfSpace />
+      </AppTabs.Tab>
+      <AppTabs.Tab title="Sarmal" onTabHover={() => preload.Sarmal()}>
+        <Project.Sarmal />
+      </AppTabs.Tab>
+      <AppTabs.Tab title="Deckplate" onTabHover={() => preload.Deckplate()}>
+        <Project.Deckplate />
+      </AppTabs.Tab>
+    </AppTabs>
   );
 }

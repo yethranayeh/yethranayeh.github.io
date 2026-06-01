@@ -60,6 +60,10 @@
   --shadow-in:
     inset 1px 1px 0px 1px var(--color-border-dark), inset 0 0 0 1px var(--color-border-light),
     1px 1px 0 0px var(--color-border-lightest);
+  --shadow-tooltip: 4px 4px 10px 0 rgba(0, 0, 0, 0.35);
+
+  // Brand
+  --color-brand-orange: #ff6821;
 
   // Font
   --font-family: "pixeloid_sans", sans-serif;
@@ -110,6 +114,7 @@ $color-flat-light: #d8d8d8;
 $color-focus-secondary: #fefe03;
 $color-progress: #060084;
 $color-tooltip: #fefbcc;
+$color-brand-orange: #ff6821;
 
 // Spacing
 $space-4: 4px;
