@@ -1,1 +1,0 @@
-import{Q as o,O as s,v as r,F as t,j as n}from"./index-DpxpJUXU.js";import{M as a}from"./MailLink-BkyWQYS_.js";function c(){const{t:e}=o("content");return s(),r.jsxs(t,{direction:"column",style:{color:"#fff"},gap:8,children:[r.jsx(n,{children:e("error.fallback-element")}),r.jsx(a,{})]})}export{c as ErrorPage};
