@@ -18,8 +18,27 @@ const MediaContent = lazy(() =>
     default: module.MediaWindow,
   })),
 );
+const ComputerContent = lazy(() =>
+  import("@/features/ComputerWindow/ComputerWindow").then((module) => ({
+    default: module.ComputerWindow,
+  })),
+);
 
 export const desktopApps: Array<AppWindow> = [
+  {
+    id: "computer",
+    titleI18nKey: "menu:window.myComputer",
+    minimized: false,
+    iconSrc: "/icon/program.ico",
+    content: ComputerContent,
+  },
+  {
+    id: "projects",
+    titleI18nKey: "menu:window.projects",
+    minimized: false,
+    iconSrc: "/icon/desktop.ico",
+    content: ProjectsContent,
+  },
   {
     id: "resume",
     titleI18nKey: "menu:window.resume",
@@ -29,13 +48,6 @@ export const desktopApps: Array<AppWindow> = [
     WindowProps: {
       slotProps: { window: { as: "section", style: { minWidth: "22.7cm", maxWidth: "unset" } } },
     },
-  },
-  {
-    id: "projects",
-    titleI18nKey: "menu:window.projects",
-    minimized: false,
-    iconSrc: "/icon/desktop.ico",
-    content: ProjectsContent,
   },
   {
     id: "apps",

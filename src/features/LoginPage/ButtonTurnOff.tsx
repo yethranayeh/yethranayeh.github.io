@@ -25,11 +25,7 @@ export function ButtonTurnOff() {
         aria-hidden="true"
       >
         <g fill="none" stroke="#fff">
-          <polyline
-            className={styles.part1}
-            strokeWidth="3"
-            points="12,7 12,17"
-          />
+          <polyline className={styles.part1} strokeWidth="3" points="12,7 12,17" />
           <circle
             className={styles.part2}
             cx="12"

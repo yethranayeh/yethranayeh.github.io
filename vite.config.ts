@@ -15,7 +15,11 @@ export default defineConfig({
     },
   },
   plugins: [
-    publicFilesPlugin(path.resolve(__dirname, "public")),
+    publicFilesPlugin({
+      publicDir: path.resolve(__dirname, "public"),
+      srcDir: path.resolve(__dirname, "src"),
+      rootDir: __dirname,
+    }),
     react({
       babel: {
         plugins: [["babel-plugin-react-compiler", { target: "18", compilationMode: "annotation" }]],

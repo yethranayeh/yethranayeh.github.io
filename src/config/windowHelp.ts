@@ -3,8 +3,9 @@
  * Maps window IDs to i18n keys for the help bubble shown when clicking the ? button.
  */
 export const windowHelp: Record<string, { i18nKey: string }> = {
-  resume: { i18nKey: "content:windowHelp.resume" },
+  computer: { i18nKey: "content:windowHelp.computer" },
   projects: { i18nKey: "content:windowHelp.projects" },
+  resume: { i18nKey: "content:windowHelp.resume" },
   apps: { i18nKey: "content:windowHelp.apps" },
   media: { i18nKey: "content:windowHelp.media" },
   VigenereCipher: { i18nKey: "content:windowHelp.vigenereCipher" },

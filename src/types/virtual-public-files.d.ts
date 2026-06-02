@@ -1,4 +1,6 @@
 declare module "virtual:public-files" {
+  // ─── public/ ───────────────────────────────────────────────────────────────
+
   export type MediaType = "image" | "video" | "audio" | "other";
 
   export type PublicFile = {
@@ -20,4 +22,25 @@ declare module "virtual:public-files" {
 
   export const tree: PublicFolder;
   export const flatFiles: PublicFile[];
+
+  // ─── src/ ──────────────────────────────────────────────────────────────────
+
+  export type SrcFile = {
+    kind: "file";
+    name: string;
+    path: string;
+    ext: string;
+  };
+
+  export type SrcFolder = {
+    kind: "folder";
+    name: string;
+    path: string;
+    children: Array<SrcFile | SrcFolder>;
+  };
+
+  export type SrcEntry = SrcFile | SrcFolder;
+
+  export const srcTree: SrcFolder;
+  export const srcFlatFiles: SrcFile[];
 }
