@@ -237,7 +237,9 @@ export function Clippy() {
     <div className={styles.container}>
       {isBubbleVisible && activeTip && (
         <ClippyBubble
-          text={t(activeTip.i18nKey, { action: t(`clippy.action.${isMobile ? "tap" : "doubleClick"}`) })}
+          text={t(activeTip.i18nKey, {
+            action: t(`clippy.action.${isMobile ? "tap" : "doubleClick"}`),
+          })}
           actionLabel={activeTip.actionLabelI18nKey ? t(activeTip.actionLabelI18nKey) : undefined}
           onAction={activeTip.actionWindow ? handleTipAction : undefined}
           onDismiss={handleDismiss}

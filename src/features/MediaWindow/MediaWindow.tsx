@@ -2,7 +2,7 @@ import type { PublicFile } from "virtual:public-files";
 
 import { lazy } from "react";
 import { useAtom } from "jotai";
-import { Frame } from "react95";
+import { ScrollView } from "react95";
 import { flatFiles } from "virtual:public-files";
 
 import { addWindowAtom } from "@/stores/window.atom";
@@ -43,32 +43,34 @@ export function MediaWindow() {
   return (
     <>
       <WindowURL />
-      <Frame as="section" variant="field" className={styles.frame}>
-        {MEDIA_FILES.map((file) => (
-          <MediaItem
-            key={file.path}
-            name={file.name}
-            iconSrc={getIconSrc(file)}
-            onDoubleClick={() =>
-              addWindow({
-                id: `media:${file.path}`,
-                titleI18nKey:
-                  file.mediaType === "image"
-                    ? "menu:window.imageViewer"
-                    : "menu:window.videoPlayer",
-                helpTextI18nKey:
-                  file.mediaType === "image"
-                    ? "content:windowHelp.imageViewer"
-                    : "content:windowHelp.videoPlayer",
-                minimized: false,
-                iconSrc: "/icon/media-player.svg",
-                content: file.mediaType === "image" ? ImageViewerContent : VideoPlayerContent,
-                contentProps: { src: file.path },
-              })
-            }
-          />
-        ))}
-      </Frame>
+      <ScrollView className={styles.scroll}>
+        <div className={styles.grid}>
+          {MEDIA_FILES.map((file) => (
+            <MediaItem
+              key={file.path}
+              name={file.name}
+              iconSrc={getIconSrc(file)}
+              onDoubleClick={() =>
+                addWindow({
+                  id: `media:${file.path}`,
+                  titleI18nKey:
+                    file.mediaType === "image"
+                      ? "menu:window.imageViewer"
+                      : "menu:window.videoPlayer",
+                  helpTextI18nKey:
+                    file.mediaType === "image"
+                      ? "content:windowHelp.imageViewer"
+                      : "content:windowHelp.videoPlayer",
+                  minimized: false,
+                  iconSrc: "/icon/media-player.svg",
+                  content: file.mediaType === "image" ? ImageViewerContent : VideoPlayerContent,
+                  contentProps: { src: file.path },
+                })
+              }
+            />
+          ))}
+        </div>
+      </ScrollView>
     </>
   );
 }

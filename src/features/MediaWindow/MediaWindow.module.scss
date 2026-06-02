@@ -1,10 +1,20 @@
 @use "../../styles/variables.module.scss";
 @use "../../styles/mixins.scss";
 
-.frame {
-  padding: variables.$spacing;
-  overflow-y: auto;
-  height: 100%;
+.scroll {
+  /* FIXME: terrible approach for window height*/
+  height: 500px;
+  max-height: calc(100svh - variables.$navbar-height * 4);
+  background-color: white;
+
+  @include mixins.media-max-md {
+    height: unset;
+    flex: 1 1 0;
+    min-height: 0;
+  }
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: variables.$spacing;

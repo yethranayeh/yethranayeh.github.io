@@ -111,7 +111,7 @@ export default function MainLayout() {
         <Clippy />
       </main>
 
-      {isScreensaverActive && (
+      {!isDevMode && isScreensaverActive && (
         <Suspense fallback={null}>
           <ScreenSaver />
         </Suspense>
