@@ -9,7 +9,7 @@
     "build:dev": "tsc && vite build --mode development",
     "preview": "vite preview",
     "deploy": "git subtree push --prefix dist origin gh-pages",
-    "pipeline": "npm run build && git add -A && git commit -m 'build files' && git push && npm run deploy",
+    "pipeline": "npm run build && git add dist/ && git commit -m 'build files' && git push && npm run deploy",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
