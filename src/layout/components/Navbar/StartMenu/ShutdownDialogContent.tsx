@@ -44,6 +44,9 @@ export default function ShutdownDialogContent() {
 
           <Flex gap={8}>
             <Button
+              style={{
+                cursor: choice === "shutdown" ? "url('/gta-5-cursor.cur'), auto" : undefined,
+              }}
               onClick={() => {
                 if (choice === "shutdown") {
                   computer.shutdown();

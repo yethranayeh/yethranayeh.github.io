@@ -8,6 +8,10 @@
 
   cursor: pointer;
 
+  &:hover {
+    cursor: url('/gta-5-cursor.cur'), auto;
+  }
+
   outline: transparent;
   border-radius: 0.5em;
   background-color: hsl(12, 76%, 53%);
