@@ -8,10 +8,13 @@
 .reactIcon {
   height: 24px;
   width: auto;
-
-  filter: drop-shadow(1px 1px 1px #fff) drop-shadow(1px 0px 4px #fff);
+  color: black;
 
   @include mixins.media-min-sm {
     margin-right: variables.$spacing;
   }
+}
+
+.container:hover .reactIcon {
+  color: #00d8ff;
 }
