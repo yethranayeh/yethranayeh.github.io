@@ -1,4 +1,5 @@
-import { Button } from "react95";
+import { AudioButton } from "@/components/AudioButton";
+
 import { useTranslation } from "react-i18next";
 
 import styles from "./HelpBubble.module.scss";
@@ -16,9 +17,9 @@ export function HelpBubble({ text, onDismiss }: HelpBubbleProps) {
       <p className={styles.text}>{text}</p>
 
       <div className={styles.actions}>
-        <Button className={styles.dismissButton} onClick={onDismiss}>
+        <AudioButton className={styles.dismissButton} onClick={onDismiss}>
           {t("windowHelp.dismiss")}
-        </Button>
+        </AudioButton>
       </div>
     </div>
   );

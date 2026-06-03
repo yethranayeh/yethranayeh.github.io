@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { Button } from "react95";
+import { AudioButton } from "@/components/AudioButton";
+
 import { useTranslation } from "react-i18next";
 
 import styles from "./ClippyBubble.module.scss";
@@ -43,14 +44,14 @@ export function ClippyBubble({
 
       <div className={styles.actions}>
         {actionLabel && onAction && (
-          <Button size="sm" onClick={onAction}>
+          <AudioButton size="sm" onClick={onAction}>
             {actionLabel}
-          </Button>
+          </AudioButton>
         )}
 
-        <Button size="sm" onClick={onDismiss}>
+        <AudioButton size="sm" onClick={onDismiss}>
           {t("clippy.dismiss")}
-        </Button>
+        </AudioButton>
       </div>
     </div>
   );
