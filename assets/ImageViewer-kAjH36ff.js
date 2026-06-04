@@ -1,1 +1,0 @@
-import{v as e,W as s}from"./index-544SO2Mi.js";const m="_wrapper_wm2yf_1",t="_image_wm2yf_9",a={wrapper:m,image:t};function n({src:r}){return e.jsx(s,{className:a.wrapper,children:e.jsx("img",{src:r,className:a.image,alt:""})})}export{n as ImageViewer};

@@ -1,1 +1,0 @@
-import{Q as e,N as a,K as i,v as n,D as c,W as r,U as l}from"./index-544SO2Mi.js";function p(){const{t}=e("content"),o=a(),s=i().pathname.replace("/","");return n.jsx(c,{title:t("404.title"),slotProps:{closeButton:{onClick:()=>o("/")}},children:n.jsx(r,{className:l.content,children:t("404.descripton",{path:s})})})}export{p as NotFoundWindow};
