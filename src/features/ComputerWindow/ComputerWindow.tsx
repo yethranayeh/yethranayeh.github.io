@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { Button, Frame } from "react95";
-import { srcTree } from "virtual:public-files";
 import type { SrcFolder, SrcEntry } from "virtual:public-files";
+
+import { useState } from "react";
+import { Button, ScrollView } from "react95";
+import { srcTree } from "virtual:public-files";
 
 import { MediaItem } from "@/features/MediaWindow/MediaItem";
 import { Flex } from "@/components/Styled";
+import { WindowURL } from "@/components/windows/WindowURL";
 
 import styles from "./ComputerWindow.module.scss";
 
@@ -42,10 +44,6 @@ function getEntryIcon(entry: SrcEntry): string {
   }
 }
 
-function toWinPath(urlPath: string): string {
-  return `C:\\src${urlPath.replace(/\//g, "\\")}\\`;
-}
-
 export function ComputerWindow() {
   const [currentPath, setCurrentPath] = useState("/");
   const currentFolder = findFolder(srcTree, currentPath);
@@ -62,22 +60,22 @@ export function ComputerWindow() {
         <Button size="sm" disabled={currentPath === "/"} onClick={navigateUp}>
           ↑
         </Button>
-        <Frame variant="status" className={styles.path}>
-          {toWinPath(currentPath)}
-        </Frame>
+        <WindowURL className={styles.urlBar} />
       </Flex>
-      <Frame as="section" variant="field" className={styles.grid}>
-        {currentFolder.children.map((entry) => (
-          <MediaItem
-            key={entry.path}
-            name={entry.name}
-            iconSrc={getEntryIcon(entry)}
-            onDoubleClick={() => {
-              if (entry.kind === "folder") setCurrentPath(entry.path);
-            }}
-          />
-        ))}
-      </Frame>
+      <ScrollView className={styles.scroll}>
+        <div className={styles.grid}>
+          {currentFolder.children.map((entry) => (
+            <MediaItem
+              key={entry.path}
+              name={entry.name}
+              iconSrc={getEntryIcon(entry)}
+              onDoubleClick={() => {
+                if (entry.kind === "folder") setCurrentPath(entry.path);
+              }}
+            />
+          ))}
+        </div>
+      </ScrollView>
     </Flex>
   );
 }

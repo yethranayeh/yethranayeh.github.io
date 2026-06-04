@@ -10,7 +10,7 @@ import { ImgIcon } from "@/components/ImgIcon";
 
 import styles from "./WindowURL.module.scss";
 
-export function WindowURL() {
+export function WindowURL({ className }: { className?: string }) {
   const { t } = useTranslation("content");
   const biggerThanSm = useMediaQuery("sm");
   const urlRef = useRef<HTMLSpanElement>(null);
@@ -18,7 +18,7 @@ export function WindowURL() {
   const pathname = useLocation().pathname.replace("/", "");
 
   return (
-    <Frame variant="field" className={styles.frame}>
+    <Frame variant="field" className={`${styles.frame}${className ? ` ${className}` : ""}`}>
       <Flex as="header" align="center" gap={8}>
         <ImgIcon src="/icon/folder_open.ico" size={20} />
         <div>
