@@ -1,7 +1,7 @@
-import { useState } from "react";
 import ClickAwayListener from "react-click-away-listener";
 import clsx from "clsx";
 
+import { useSelectableItem } from "@/hooks/useSelectableItem";
 import { Flex } from "@/components/Styled";
 import { ImgIcon } from "@/components/ImgIcon";
 
@@ -15,18 +15,16 @@ interface AppProps {
 
 export function App({ name, onDoubleClick, iconSrc }: AppProps) {
   "use memo";
-  const [isFocused, setIsFocused] = useState(false);
+  const { isSelected, onSelect, onDeselect } = useSelectableItem();
 
   return (
-    <ClickAwayListener onClickAway={() => setIsFocused(false)}>
+    <ClickAwayListener onClickAway={onDeselect}>
       <Flex
         direction="column"
         align="center"
         gap={4}
-        className={clsx(styles.container, isFocused && styles.focused)}
-        onClick={() => {
-          setIsFocused(true);
-        }}
+        className={clsx(styles.container, isSelected && styles.selected)}
+        onClick={onSelect}
         onDoubleClick={onDoubleClick}
       >
         <ImgIcon src={iconSrc} size={32} />

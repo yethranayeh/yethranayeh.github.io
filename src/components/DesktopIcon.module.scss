@@ -1,0 +1,6 @@
+@use "../styles/variables.module.scss";
+@use "../styles/mixins.scss";
+
+.icon {
+  @include mixins.selectable-item;
+}

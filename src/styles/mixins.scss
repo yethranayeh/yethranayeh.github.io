@@ -55,3 +55,16 @@
   user-select: none;
   cursor: auto;
 }
+
+@mixin selectable-item {
+  transition: background-color 100ms ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(variables.$highlight, 0.2);
+  }
+
+  &.selected {
+    background-color: rgba(variables.$highlight, 0.4);
+  }
+}

@@ -1,17 +1,12 @@
+@use "../../styles/variables.module.scss";
+@use "../../styles/mixins.scss";
+
 .container {
   max-width: 80px;
   overflow: hidden;
   padding: 4px;
-  transition: background-color 100ms ease;
-  cursor: pointer;
 
-  &:hover {
-    background-color: rgba(0, 0, 128, 0.1);
-  }
-
-  &.focused {
-    background-color: rgba(0, 0, 128, 0.3);
-  }
+  @include mixins.selectable-item;
 }
 
 .name {
