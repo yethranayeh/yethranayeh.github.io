@@ -44,12 +44,12 @@ export function ClippyBubble({
 
       <div className={styles.actions}>
         {actionLabel && onAction && (
-          <AudioButton size="sm" onClick={onAction}>
+          <AudioButton className={styles.tipButton} onClick={onAction}>
             {actionLabel}
           </AudioButton>
         )}
 
-        <AudioButton size="sm" onClick={onDismiss}>
+        <AudioButton className={styles.tipButton} onClick={onDismiss}>
           {t("clippy.dismiss")}
         </AudioButton>
       </div>

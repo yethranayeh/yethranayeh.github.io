@@ -33,9 +33,7 @@
 }
 
 .dismissButton {
-  height: auto !important;
-  width: auto !important;
-  padding: 14px 18px !important;
+  @include mixins.tip-button;
 }
 
 .bubble::after {

@@ -33,6 +33,10 @@
   justify-content: flex-end;
 }
 
+.tipButton {
+  @include mixins.tip-button;
+}
+
 // Triangle tail at bottom-right
 .bubble::after {
   content: "";
