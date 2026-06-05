@@ -1,0 +1,1 @@
+import{U as s,v as t,j as a}from"./index-BXMT9wW3.js";import{P as o}from"./ProjectLayout-367SAfr-.js";import"./github-bQyKgn0-.js";function n(){const{t:e}=s("content");return t.jsx(o,{website:"https://shadesof.space/",repo:"https://github.com/yethranayeh/daily-space-palette",children:t.jsx(a,{children:e("shades-of-space")})})}export{n as DailySpacePalette};
