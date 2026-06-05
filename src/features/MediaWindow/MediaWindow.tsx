@@ -9,6 +9,7 @@ import { addWindowAtom } from "@/stores/window.atom";
 import { Flex } from "@/components/Styled";
 import { MediaItem } from "./MediaItem";
 import { WindowURL } from "@/components/windows/WindowURL";
+import windowStyles from "@/components/windows/Window.module.scss";
 
 import styles from "./MediaWindow.module.scss";
 
@@ -95,6 +96,9 @@ export function MediaWindow() {
                   setCurrentPath(entry.path);
                   return;
                 }
+
+                const isSpiderGif = entry.name === "spider.gif";
+
                 addWindow({
                   id: `media:${entry.path}`,
                   titleI18nKey:
@@ -108,7 +112,23 @@ export function MediaWindow() {
                   minimized: false,
                   iconSrc: "/icon/media-player.svg",
                   content: entry.mediaType === "image" ? ImageViewerContent : VideoPlayerContent,
-                  contentProps: { src: entry.path },
+                  contentProps: {
+                    src: entry.path,
+                    ...(isSpiderGif && { lunge: true, fullscreen: true }),
+                  },
+                  ...(isSpiderGif && {
+                    WindowProps: {
+                      slotProps: {
+                        window: {
+                          className: `${windowStyles.window} ${windowStyles.fullscreen}`,
+                        },
+                        draggable: {
+                          disabled: true,
+                          defaultPosition: { x: 0, y: 0 },
+                        },
+                      },
+                    },
+                  }),
                 });
               }}
             />
