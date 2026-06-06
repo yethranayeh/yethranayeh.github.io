@@ -9,7 +9,7 @@ export const WindowButton = ({ onClick, children, ...props }: ButtonProps) => (
     className={styles.button}
     onMouseDown={(e) => e.stopPropagation()}
     onClick={onClick}
-    onTouchEnd={onClick as any}
+    onTouchEnd={(e) => { e.preventDefault(); (onClick as any)?.(e); }}
     {...props}
   >
     {children}
