@@ -1,3 +1,4 @@
-Sitemap: https://yethranayeh.github.io/sitemap.xml
-User-agent:*
-Disallow:
+User-agent: *
+Allow: /
+
+Sitemap: https://www.aktasalper.com/sitemap.xml

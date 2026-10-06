@@ -1,0 +1,1 @@
+import{V as r,w as t,j as s}from"./index-B4LbN92w.js";import{P as o}from"./ProjectLayout-H3Qvd8Ux.js";import"./github-CbUM8-xV.js";function i(){const{t:e}=r("content");return t.jsx(o,{website:"https://playertype.gg/",children:t.jsx(s,{children:e("project-teasers.player-type")})})}export{i as PlayerType};

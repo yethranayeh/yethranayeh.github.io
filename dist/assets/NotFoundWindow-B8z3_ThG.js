@@ -1,0 +1,1 @@
+import{V as e,O as a,M as i,w as n,D as c,W as r,X as l}from"./index-B4LbN92w.js";function p(){const{t}=e("content"),o=a(),s=i().pathname.replace("/","");return n.jsx(c,{title:t("404.title"),slotProps:{closeButton:{onClick:()=>o("/")}},children:n.jsx(r,{className:l.content,children:t("404.descripton",{path:s})})})}export{p as NotFoundWindow};
