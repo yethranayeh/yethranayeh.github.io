@@ -8,3 +8,22 @@
 button[role="tab"] {
   white-space: nowrap !important;
 }
+
+@include mixins.media-max-md {
+  .tabList {
+    position: relative;
+    z-index: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-top: 4px;
+    padding-bottom: 12px;
+    margin-bottom: -12px;
+    scrollbar-width: thin;
+  }
+
+  .tabList [data-testid="tab-row"] {
+    width: max-content;
+    min-width: calc(100% - 8px);
+    padding-right: 8px;
+  }
+}

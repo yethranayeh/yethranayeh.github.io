@@ -61,8 +61,23 @@
   },
   "sarmal": "Sarmal, hero bölümleri, yükleme göstergeleri, düşünme durumları ve arka plan animasyonları için animasyonlu bir eğri kütüphanesidir. Canvas, SVG ve nokta matris (dot-matrix) renderer'ları, gül ve Lissajous figürleri gibi yerleşik eğriler, eğri dönüşümüyle programatik zaman kontrolü, sıfır bağımlılık ve React ile Svelte bileşen sarmalayıcıları sunar. npm, CDN veya `npx @sarmal/core` ile CLI üzerinden kullanılabilir.",
   "deckplate": "Deckplate, sistem izleme terminalleri ve fabrika tabelalarından ilham alan yüksek kontrastlı, endüstriyel bir tasarım sistemidir. Tailwind v4 ve Radix UI ile oluşturulmuş, tek bir CLI komutuyla kurulabilen Shadcn uyumlu bir bileşen kaydı olarak sunulmaktadır.",
+  "project-teasers": {
+    "zinn": "Terminalde çalışan deneysel bir Kanban iş akışı. Kendi gelişimini, diğer projelerimi ve işlerimi takip etmek için onu her gün kullanıyorum.",
+    "player-type": "Nasıl oynadığımızı keşfeden etkileşimli bir oyun haritası ve oyuncu tipi testi.",
+    "sarmal": "Yükleme durumları, düşünme göstergeleri ve arka plan hareketleri için animasyonlu eğri kütüphanesi.",
+    "shades-of-space": "NASA'nın Günün Astronomi Fotoğrafı'ndan üretilen renk paletleri."
+  },
+  "windowControls": {
+    "help": "Yardım",
+    "minimize": "Simge durumuna küçült",
+    "close": "Kapat"
+  },
+  "resume": {
+    "openExternal": "Özgeçmişi yeni sekmede aç"
+  },
   "help-dialog": {
-    "information-body": "Bu benim kişisel sayfam. Burada özgeçmişimi görüntüleyebilir, projelerimi inceleyebilir ve bu işletim sistemi içinde sunduğum küçük 'uygulamaları' çalıştırabilirsiniz.",
+    "information-body": "Projelerimi özenle geliştiriyor; görünüşleri, hissettirdikleri ve işleyişleri üzerine bilinçli seçimler yaparak her birine kendine özgü bir karakter kazandırıyorum.",
+    "information-navigation": "Projelerimi keşfedin, özgeçmişimi okuyun veya masaüstümde biraz dolaşın.",
     "information-title": "Bilgi",
     "tips": {
       "feedback-body": "Geri bildiriminiz değerli! Herhangi bir sorunla karşılaşırsanız veya öneriniz olursa lütfen bana bildirin.",

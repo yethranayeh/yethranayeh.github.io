@@ -46,6 +46,7 @@ const HelpDialogContent = () => {
                   {t("help-dialog.information-title")}
                 </Text>
                 <Text>{t("help-dialog.information-body")}</Text>
+                <Text>{t("help-dialog.information-navigation")}</Text>
               </Flex>
 
               <Flex direction="column">

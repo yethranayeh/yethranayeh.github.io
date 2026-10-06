@@ -24,6 +24,14 @@ const ComputerContent = lazy(() =>
   })),
 );
 
+export const projectsWindow: AppWindow = {
+  id: "projects",
+  titleI18nKey: "menu:window.projects",
+  minimized: false,
+  iconSrc: "/icon/desktop.ico",
+  content: ProjectsContent,
+};
+
 export const desktopApps: Array<AppWindow> = [
   {
     id: "computer",
@@ -32,13 +40,7 @@ export const desktopApps: Array<AppWindow> = [
     iconSrc: "/icon/program.ico",
     content: ComputerContent,
   },
-  {
-    id: "projects",
-    titleI18nKey: "menu:window.projects",
-    minimized: false,
-    iconSrc: "/icon/desktop.ico",
-    content: ProjectsContent,
-  },
+  projectsWindow,
   {
     id: "resume",
     titleI18nKey: "menu:window.resume",

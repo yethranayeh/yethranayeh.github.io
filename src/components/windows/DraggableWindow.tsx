@@ -2,6 +2,7 @@ import type { ButtonProps } from "react95";
 import type { CSSProperties, ComponentProps, PropsWithChildren } from "react";
 
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Draggable from "react-draggable";
 import { Window, WindowHeader } from "react95";
 
@@ -29,6 +30,7 @@ export type DraggableWindowProps = PropsWithChildren<{
 }>;
 
 export const DraggableWindow = ({ title, helpText, slotProps, children }: DraggableWindowProps) => {
+  const { t } = useTranslation("content");
   const windowRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useIsMobile();
   const [showHelp, setShowHelp] = useState(false);
@@ -60,6 +62,7 @@ export const DraggableWindow = ({ title, helpText, slotProps, children }: Dragga
             {helpText && (
               <div className={styles.helpContainer}>
                 <HelpButton
+                  aria-label={t("windowControls.help")}
                   onClick={() => setShowHelp((prev) => !prev)}
                   {...slotProps?.helpButton}
                 />
@@ -67,9 +70,14 @@ export const DraggableWindow = ({ title, helpText, slotProps, children }: Dragga
               </div>
             )}
             <Flex>
-              {slotProps?.minimizeButton && <MinimizeButton {...slotProps.minimizeButton} />}
+              {slotProps?.minimizeButton && (
+                <MinimizeButton
+                  aria-label={t("windowControls.minimize")}
+                  {...slotProps.minimizeButton}
+                />
+              )}
             </Flex>
-            <CloseButton {...slotProps?.closeButton} />
+            <CloseButton aria-label={t("windowControls.close")} {...slotProps?.closeButton} />
           </Flex>
         </WindowHeader>
 

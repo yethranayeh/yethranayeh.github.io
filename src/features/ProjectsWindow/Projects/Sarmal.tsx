@@ -7,7 +7,7 @@ export function Sarmal() {
   const { t } = useTranslation("content");
   return (
     <ProjectLayout website="https://sarmal.art" repo="https://github.com/yethranayeh/sarmal">
-      <Text>{t("sarmal")}</Text>
+      <Text>{t("project-teasers.sarmal")}</Text>
     </ProjectLayout>
   );
 }

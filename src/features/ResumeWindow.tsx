@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { WindowContent, Frame } from "react95";
+import { WindowContent, Frame, Anchor } from "react95";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
 
@@ -24,11 +24,12 @@ const desktopFrameStyle = { overflowY: "auto", overflowX: "hidden" } as const;
 const desktopIframeStyle = { width: "21.5cm", height: "calc(30cm * 2)" } as const;
 
 export function ResumeWindow() {
-  const { i18n } = useTranslation(["content", "menu"]);
+  const { i18n, t } = useTranslation("content");
   const isMobile = useIsMobile();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const [scale, setScale] = useState(1);
+  const resumeUrl = "https://www.aktasalper.com/resume/#/" + i18n.language;
 
   useEffect(() => {
     if (!isMobile) {
@@ -73,6 +74,9 @@ export function ResumeWindow() {
   return (
     <>
       <WindowContent as="article" className={styles.content}>
+        <Anchor href={resumeUrl} target="_blank" rel="noopener noreferrer">
+          {t("resume.openExternal")}
+        </Anchor>
         <Frame
           variant="field"
           ref={wrapperRef}
@@ -80,7 +84,7 @@ export function ResumeWindow() {
         >
           <iframe
             title="Resume"
-            src={"https://www.aktasalper.com/resume/#/" + i18n.language}
+            src={resumeUrl}
             style={isMobile ? mobileIframeStyle : desktopIframeStyle}
           />
         </Frame>

@@ -61,8 +61,23 @@
   },
   "sarmal": "Sarmal is an animated curve library for hero sections, loading indicators, thinking states, and ambient motion. It provides Canvas, SVG, and dot-matrix renderers, built-in curves like roses and Lissajous figures, programmatic time control with curve morphing, zero dependencies, and React and Svelte component wrappers. Available via npm, CDN, or CLI with `npx @sarmal/core`.",
   "deckplate": "Deckplate is a high-contrast industrial design system influenced by system monitoring terminals and factory signage. It ships as a Shadcn-compatible component registry built with Tailwind v4 and Radix UI, installable with a single CLI command.",
+  "project-teasers": {
+    "zinn": "An experimental kanban workflow in the terminal. I use it every day to track its own development alongside my other projects and work.",
+    "player-type": "An interactive game map and player-type quiz exploring how we play.",
+    "sarmal": "An animated curve library for loading states, thinking indicators and ambient motion.",
+    "shades-of-space": "Color palettes drawn from NASA’s Astronomy Picture of the Day."
+  },
+  "windowControls": {
+    "help": "Help",
+    "minimize": "Minimize",
+    "close": "Close"
+  },
+  "resume": {
+    "openExternal": "Open resume in a new tab"
+  },
   "help-dialog": {
-    "information-body": "This is my portfolio page. Here you can view my resume, explore my projects, and run smaller 'apps' I included within this operating system.",
+    "information-body": "I build projects with intention, giving each its own character through deliberate choices about how it looks, feels and works.",
+    "information-navigation": "Explore my projects, read my resume, or take a look around my desktop.",
     "information-title": "Information",
     "tips": {
       "feedback-body": "Your feedback is valuable! If you encounter any issues or have suggestions, please let me know.",

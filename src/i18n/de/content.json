@@ -61,8 +61,23 @@
   },
   "sarmal": "Sarmal ist eine Bibliothek für animierte Kurven für Hero-Sektionen, Ladeindikatoren, Denkindikatoren und Ambient-Motion. Sie bietet Canvas-, SVG- und Dot-Matrix-Renderer, eingebaute Kurven wie Rosen und Lissajous-Figuren, programmatische Zeitsteuerung mit Kurven-Morphing, keine externen Abhängigkeiten sowie React- und Svelte-Komponenten-Wrapper. Verfügbar über npm, CDN oder CLI mit `npx @sarmal/core`.",
   "deckplate": "Deckplate ist ein hochkontrastiges, industrielles Designsystem, das von Systemüberwachungsterminals und Fabrikbeschilderungen inspiriert wurde. Es wird als Shadcn-kompatibles Komponentenregister bereitgestellt, das mit Tailwind v4 und Radix UI entwickelt wurde und mit einem einzigen CLI-Befehl installiert werden kann.",
+  "project-teasers": {
+    "zinn": "Ein experimenteller Kanban-Workflow im Terminal. Ich nutze ihn täglich, um seine eigene Entwicklung sowie meine anderen Projekte und Aufgaben zu verfolgen.",
+    "player-type": "Eine interaktive Spielkarte und ein Spielertyp-Quiz darüber, wie wir spielen.",
+    "sarmal": "Eine Bibliothek für animierte Kurven, die Ladezustände, Denkprozesse und dezente Bewegung visualisieren.",
+    "shades-of-space": "Farbpaletten aus dem Astronomy Picture of the Day der NASA."
+  },
+  "windowControls": {
+    "help": "Hilfe",
+    "minimize": "Minimieren",
+    "close": "Schließen"
+  },
+  "resume": {
+    "openExternal": "Lebenslauf in neuem Tab öffnen"
+  },
   "help-dialog": {
-    "information-body": "Dies ist meine Portfolio-Seite. Hier können Sie meinen Lebenslauf ansehen, meine Projekte erkunden und kleinere 'Apps' ausführen, die ich in dieses Betriebssystem integriert habe.",
+    "information-body": "Ich gestalte meine Projekte bewusst und gebe jedem einen eigenen Charakter – durch sorgfältige Entscheidungen darüber, wie es aussieht, sich anfühlt und funktioniert.",
+    "information-navigation": "Entdecken Sie meine Projekte, lesen Sie meinen Lebenslauf oder sehen Sie sich auf meinem Desktop um.",
     "information-title": "Informationen",
     "tips": {
       "feedback-body": "Ihr Feedback ist wertvoll! Wenn Sie auf Probleme stoßen oder Vorschläge haben, lassen Sie es mich bitte wissen.",

@@ -17,6 +17,7 @@ interface AppTabsProps {
   value: string;
   onChange: (value: string) => void;
   rows?: number;
+  tabListClassName?: string;
   tabBodyProps?: Omit<ComponentProps<typeof TabBody>, "children">;
   fallback?: ReactNode;
   children: ReactNode;
@@ -26,6 +27,7 @@ const AppTabsRenderer = ({
   value,
   onChange,
   rows,
+  tabListClassName,
   tabBodyProps,
   fallback,
   children,
@@ -34,7 +36,7 @@ const AppTabsRenderer = ({
 
   return (
     <>
-      <Tabs value={value} onChange={onChange} rows={rows}>
+      <Tabs value={value} onChange={onChange} rows={rows} className={tabListClassName}>
         {tabs.map((tab) => (
           <Tab
             key={tab.props.title}

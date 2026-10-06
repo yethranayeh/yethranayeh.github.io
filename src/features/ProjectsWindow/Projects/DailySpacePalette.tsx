@@ -11,7 +11,7 @@ export function DailySpacePalette() {
       website="https://shadesof.space/"
       repo="https://github.com/yethranayeh/daily-space-palette"
     >
-      <Text>{t("shades-of-space")}</Text>
+      <Text>{t("project-teasers.shades-of-space")}</Text>
     </ProjectLayout>
   );
 }

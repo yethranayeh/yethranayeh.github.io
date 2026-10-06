@@ -2,6 +2,7 @@ import type { ComponentType, LazyExoticComponent } from "react";
 import type { DraggableWindowProps } from "@/components/windows/DraggableWindow";
 
 import { atom } from "jotai";
+import { projectsWindow } from "@/config/desktop";
 
 export type AppWindow = {
   id: string;
@@ -16,7 +17,7 @@ export type AppWindow = {
   WindowProps?: Omit<DraggableWindowProps, "title">;
 };
 
-export const windowsAtom = atom<Array<AppWindow>>([]);
+export const windowsAtom = atom<Array<AppWindow>>([projectsWindow]);
 
 export const addWindowAtom = atom(null, (get, set, newWindow: AppWindow) => {
   const windows = get(windowsAtom);

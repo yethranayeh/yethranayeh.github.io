@@ -24,11 +24,16 @@ export function ProjectLayout({ children, website, repo }: ProjectLayoutProps) {
 
   return (
     <Flex direction="column" gap={16}>
-      <article style={{ minHeight: 200 }}>{children}</article>
+      <article>{children}</article>
 
       <Frame variant="well" className={windowStyles.frame}>
         <Flex gap={12} justify="space-between">
-          <Anchor href={website} target="_blank" className={styles.webLink}>
+          <Anchor
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.webLink}
+          >
             <SVGIcon marginRight Icon={OpenIcon} />
             {t("btn.go-to-page")}
           </Anchor>
