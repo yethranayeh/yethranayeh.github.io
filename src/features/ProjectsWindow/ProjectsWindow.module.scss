@@ -1,6 +1,8 @@
 @use "../../styles/mixins.scss";
 
 .tabBody {
+  display: flex;
+  flex-direction: column;
   min-width: 300px;
   min-height: 350px;
 }

@@ -17,14 +17,34 @@ interface ProjectLayoutProps {
   children: ReactNode;
   website?: string;
   repo?: string;
+  preview?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 }
 
-export function ProjectLayout({ children, website, repo }: ProjectLayoutProps) {
+export function ProjectLayout({ children, website, repo, preview }: ProjectLayoutProps) {
   const { t } = useTranslation();
 
   return (
-    <Flex direction="column" gap={16}>
-      <article>{children}</article>
+    <Flex direction="column" gap={16} className={styles.layout}>
+      <article className={styles.description}>
+        {children}
+        {preview && (
+          <Frame variant="well" className={styles.previewFrame}>
+            <img
+              src={preview.src}
+              alt={preview.alt}
+              width={preview.width}
+              height={preview.height}
+              referrerPolicy="no-referrer"
+              className={styles.preview}
+            />
+          </Frame>
+        )}
+      </article>
 
       <Frame variant="well" className={windowStyles.frame}>
         <Flex gap={12} justify="space-between">
