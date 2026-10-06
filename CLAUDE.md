@@ -13,11 +13,27 @@ npm run lint         # Lint with oxlint
 npm run lint:fix     # Lint with auto-fix
 npm run format       # Format with oxfmt
 npm run fix          # Format + lint:fix
-npm run pipeline     # Full deploy: build → git commit → push → deploy to gh-pages
-npm run deploy       # Deploy dist/ to gh-pages branch via git subtree
 ```
 
 There are no tests. TypeScript type checking (`tsc`) is part of the build.
+
+## Deployment
+
+The Pages workflow is `.github/workflows/pages.yml`. Pushes to `main` install
+from `package-lock.json`, run lint and build, and deploy `dist/` as a Pages
+artifact. Generated `dist/` files are not committed. Use `npm run build` and
+`npm run preview` to check a production build locally.
+
+For the first deployment, confirm that the repository's Pages custom domain is
+`www.aktasalper.com` and HTTPS is enabled. Change the Pages source to **GitHub
+Actions**, then push the workflow on `main` (or run it manually from `main`).
+Check the workflow result, the custom domain, and the portfolio's routes before
+considering the cutover complete. Actions publishing uses the domain in Pages
+settings, not the `CNAME` file in the artifact.
+
+To roll back, select **Deploy from a branch** in Pages settings with the
+existing `gh-pages` branch at `/ (root)`. Keep that branch until the Actions
+deployment has been verified.
 
 ## Architecture
 

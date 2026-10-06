@@ -1,1 +1,0 @@
-import{V as e,w as t,j as r}from"./index-B4LbN92w.js";import{P as s}from"./ProjectLayout-H3Qvd8Ux.js";import"./github-CbUM8-xV.js";function p(){const{t:n}=e("content");return t.jsx(s,{website:"https://zinn.sh/",repo:"https://github.com/yethranayeh/zinn",children:t.jsx(r,{children:n("project-teasers.zinn")})})}export{p as Zinn};
