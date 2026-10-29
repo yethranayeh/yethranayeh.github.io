@@ -1,5 +1,6 @@
 import { project, column, task } from "./zinn-core";
 import type { TaskWithKey, TaskPriority } from "./zinn-core";
+import type { ZinnCommand } from "./zinn-cli";
 
 export const playgroundKey = "PLAY";
 export const visitor = { name: "Visitor", email: null, kind: "human" as const };
@@ -24,58 +25,6 @@ export function seedPlayground() {
     },
     visitor,
   );
-}
-
-const help = [
-  "ZINN PLAYGROUND",
-  "A board of your own, saved in this browser when storage is available.",
-  "",
-  "  zinn                              Show your board",
-  "  zinn task list                    List active tasks",
-  '  zinn task create "A new idea"      Create a task in Backlog',
-  '    --column "In Progress"          Choose its column',
-  '    --description "More details"    Add a description',
-  "    --priority high                 low / medium / high / urgent",
-  "  zinn task show PLAY-1              Inspect a task",
-  '  zinn task edit PLAY-1 --title "New title"',
-  '    --description "New details"     Update its description',
-  "    --priority medium               Update its priority",
-  '  zinn task move PLAY-1 "In Progress"',
-  "  zinn task archive PLAY-1           Archive a task",
-  "  zinn task unarchive PLAY-1         Restore an archived task",
-  "  zinn task list --archive all       Include archived tasks",
-  "  zinn task list --column Review     Filter by column",
-  '  zinn search "idea"                Search task text',
-  "  zinn columns                      List columns",
-  "  zinn reset --yes                  Replace your board with samples",
-  "  zinn export [file]                Write a SQLite backup to a virtual file",
-  "  zinn import <file>                Restore a SQLite backup",
-  "",
-  "Use download <file> to save a backup to your computer.",
-  "File > Upload file adds a backup to the shell. Import replaces this board.",
-  "This playground uses Zinn's shared task logic with browser storage.",
-].join("\n");
-
-function parseOptions(args: string[], allowed: string[]) {
-  const positional: string[] = [];
-  const options: Record<string, string> = {};
-  for (let index = 0; index < args.length; index++) {
-    const arg = args[index];
-    if (arg.startsWith("--")) {
-      const name = arg.slice(2);
-      if (!allowed.includes(name)) throw new Error(`Unknown option: ${arg}`);
-      if (name in options) throw new Error(`Provide ${arg} only once.`);
-      const value = args[++index];
-      if (value === undefined || value.startsWith("--"))
-        throw new Error(`Provide a value for ${arg}.`);
-      options[name] = value;
-    } else positional.push(arg);
-  }
-  return { positional, options };
-}
-
-function requireArguments(args: string[], count: number, usage: string) {
-  if (args.length !== count) throw new Error(`Usage: ${usage}`);
 }
 
 function getBoard() {
@@ -104,11 +53,11 @@ function formatTasks(tasks: TaskWithKey[]) {
     .join("\n");
 }
 
-export function executeZinn(args: string[]): { text: string; mutated: boolean } {
-  const [command, ...rest] = args;
-  if (command === "help" || command === "--help") return { text: help, mutated: false };
-  if (!command || command === "board") {
-    requireArguments(rest, 0, "zinn");
+export function executeZinn({ path, positional, options }: ZinnCommand): {
+  text: string;
+  mutated: boolean;
+} {
+  if (path === "board") {
     const tasks = task.getAll({ projectKey: playgroundKey });
     const lines = ["YOUR ZINN BOARD", ""];
     for (const entry of column.getAllByProjectKey(playgroundKey)) {
@@ -121,8 +70,7 @@ export function executeZinn(args: string[]): { text: string; mutated: boolean } 
     lines.push('Try: zinn task create "A new idea"', "Type zinn help for all commands.");
     return { text: lines.join("\n"), mutated: false };
   }
-  if (command === "columns") {
-    requireArguments(rest, 0, "zinn columns");
+  if (path === "columns") {
     return {
       text: column
         .getAllByProjectKey(playgroundKey)
@@ -131,24 +79,16 @@ export function executeZinn(args: string[]): { text: string; mutated: boolean } 
       mutated: false,
     };
   }
-  if (command === "search") {
-    if (!rest.length) throw new Error('Usage: zinn search "words"');
+  if (path === "search") {
     return {
-      text: formatTasks(task.search({ projectKey: playgroundKey, query: rest.join(" ") }).tasks),
+      text: formatTasks(
+        task.search({ projectKey: playgroundKey, query: positional.join(" ") }).tasks,
+      ),
       mutated: false,
     };
   }
-  if (command === "export") return { text: "Usage: zinn export [file]", mutated: false };
-  if (command !== "task") throw new Error("Unknown Zinn command. Type zinn help for examples.");
-  const [action, ...params] = rest;
-  switch (action) {
-    case "list": {
-      const { positional, options } = parseOptions(params, ["column", "archive"]);
-      requireArguments(
-        positional,
-        0,
-        "zinn task list [--column <name>] [--archive active|archived|all]",
-      );
+  switch (path) {
+    case "task list": {
       const archive = options.archive ?? "active";
       if (!["active", "archived", "all"].includes(archive))
         throw new Error("Choose --archive active, archived or all.");
@@ -159,10 +99,7 @@ export function executeZinn(args: string[]): { text: string; mutated: boolean } 
       });
       return { text: formatTasks(entries), mutated: false };
     }
-    case "create": {
-      const { positional, options } = parseOptions(params, ["column", "description", "priority"]);
-      if (!positional.length)
-        throw new Error('Usage: zinn task create "Title" [--column "In Progress"]');
+    case "task create": {
       const entry = task.create(
         {
           project_id: getBoard().id,
@@ -175,18 +112,15 @@ export function executeZinn(args: string[]): { text: string; mutated: boolean } 
       );
       return { text: `Created ${entry.key}: ${entry.title}`, mutated: true };
     }
-    case "show": {
-      requireArguments(params, 1, "zinn task show PLAY-1");
-      const entry = getTask(params[0]);
+    case "task show": {
+      const entry = getTask(positional[0]);
       const columnName = column.getById(entry.column_id)?.name ?? "?";
       return {
         text: `${entry.key}  ${entry.title}\nColumn: ${columnName}\nPriority: ${entry.priority ?? "none"}\nStatus: ${entry.archived_at ? "archived" : "active"}\n\n${entry.description ?? "No description yet."}`,
         mutated: false,
       };
     }
-    case "edit": {
-      const { positional, options } = parseOptions(params, ["title", "description", "priority"]);
-      requireArguments(positional, 1, 'zinn task edit PLAY-1 --title "New title"');
+    case "task edit": {
       const entry = getTask(positional[0]);
       const result = task.edit(
         {
@@ -202,11 +136,10 @@ export function executeZinn(args: string[]): { text: string; mutated: boolean } 
         mutated: result.changed,
       };
     }
-    case "move": {
-      if (params.length < 2) throw new Error('Usage: zinn task move PLAY-1 "In Progress"');
-      const entry = getTask(params[0]);
+    case "task move": {
+      const entry = getTask(positional[0]);
       const moved = task.move(
-        { taskKey: entry.key, targetColumn: params.slice(1).join(" ") },
+        { taskKey: entry.key, targetColumn: positional.slice(1).join(" ") },
         visitor,
       );
       return {
@@ -214,10 +147,10 @@ export function executeZinn(args: string[]): { text: string; mutated: boolean } 
         mutated: true,
       };
     }
-    case "archive":
-    case "unarchive": {
-      requireArguments(params, 1, `zinn task ${action} PLAY-1`);
-      const entry = getTask(params[0]);
+    case "task archive":
+    case "task unarchive": {
+      const action = path === "task archive" ? "archive" : "unarchive";
+      const entry = getTask(positional[0]);
       task[action](entry.key, visitor);
       return {
         text: `${action === "archive" ? "Archived" : "Restored"} ${entry.key}.`,

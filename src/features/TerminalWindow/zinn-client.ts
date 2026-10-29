@@ -1,6 +1,6 @@
 export interface PlaygroundResult {
   text: string;
-  persistence: "saved" | "session";
+  persistence?: "saved" | "session";
   bytes?: Uint8Array;
 }
 

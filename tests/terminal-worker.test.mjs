@@ -172,13 +172,13 @@ test("worker RPC persists, exports, imports, upgrades, and recovers the isolated
   await firstWorker.request(["task", "edit", "PLAY-4", "--title", "A later change"]);
   assert.match((await firstWorker.request(["task", "show", "PLAY-4"])).text, /A later change/);
 
-  const imported = await firstWorker.request(["import"], backup.bytes);
+  const imported = await firstWorker.request(["import", "backup.sqlite"], backup.bytes);
   assert.match(imported.text, /Imported your playground backup/);
   assert.match((await firstWorker.request(["task", "show", "PLAY-4"])).text, /The saved sample/);
 
   const beforeBadImport = await readStoredSnapshot();
   await assert.rejects(
-    firstWorker.request(["import"], new Uint8Array([1, 2, 3, 4])),
+    firstWorker.request(["import", "backup.sqlite"], new Uint8Array([1, 2, 3, 4])),
     /valid Zinn playground SQLite backup/,
   );
   const afterBadImport = await readStoredSnapshot();
@@ -201,6 +201,21 @@ test("worker RPC persists, exports, imports, upgrades, and recovers the isolated
   // A corrupt stored image must still allow an explicit reset recovery in that same worker.
   await replaceStoredSnapshot(new Uint8Array([0, 1, 2, 3]));
   const recoveryWorker = await makeWorker();
+  const corruptSnapshot = await readStoredSnapshot();
+  for (const args of [
+    ["-h"],
+    ["--version"],
+    ["task", "create", "--help"],
+    ["reset", "--yes", "-h"],
+    ["import", "--help"],
+    ["export", "-h"],
+  ]) {
+    const info = await recoveryWorker.request(args);
+    assert.match(info.text, /ZINN PLAYGROUND|Zinn playground/);
+    assert.equal(info.bytes, undefined);
+    assert.equal(info.persistence, undefined);
+  }
+  assert.deepEqual(await readStoredSnapshot(), corruptSnapshot);
   await assert.rejects(
     recoveryWorker.request([]),
     /Import a playground backup or type zinn reset --yes/,
@@ -213,4 +228,86 @@ test("worker RPC persists, exports, imports, upgrades, and recovers the isolated
   assert.doesNotMatch(resetBoard.text, /The saved sample/);
   const resetSnapshot = await readStoredSnapshot();
   assert.equal(new TextDecoder().decode(resetSnapshot.bytes.slice(0, 16)), "SQLite format 3\0");
+});
+
+test("worker help and version work before SQLite or storage initialization", async () => {
+  useFreshIndexedDb();
+  globalThis.__terminalSqliteInitModule = () => {
+    throw new Error("Help and version must not initialize SQLite.");
+  };
+  const worker = await makeWorker();
+  for (const args of [
+    ["help"],
+    ["--help"],
+    ["-h"],
+    ["-v"],
+    ["--version"],
+    ["task", "-h"],
+    ["help", "task", "list"],
+  ]) {
+    const info = await worker.request(args);
+    assert.match(info.text, /ZINN PLAYGROUND|Zinn playground/);
+    assert.equal(info.persistence, undefined);
+  }
+  assert.deepEqual(await indexedDB.databases(), []);
+});
+
+test("worker parses options consistently and help or invalid arguments cannot mutate tasks", async () => {
+  useFreshIndexedDb();
+  const worker = await makeWorker();
+  const original = await worker.request(["task", "list"]);
+  const before = await readStoredSnapshot();
+  for (const args of [
+    ["task", "create", "-h"],
+    ["task", "create", "A title", "--priority=high", "--help"],
+    ["task", "edit", "PLAY-1", "--title=Changed", "--help"],
+    ["task", "archive", "PLAY-1", "-h"],
+    ["reset", "--yes", "--help"],
+  ]) {
+    assert.match((await worker.request(args)).text, /Usage: zinn/);
+  }
+  for (const [args, error] of [
+    [["task", "create", "-x"], /Unknown option: -x/],
+    [["task", "create", "Title", "--unknown=value"], /Unknown option/],
+    [["task", "create", "Title", "--priority"], /Provide a value/],
+    [["task", "create", "Title", "--description", "-h"], /Provide a value/],
+    [["task", "create", "Title", "--priority=high", "--priority", "low"], /only once/],
+    [["task", "edit", "PLAY-1", "extra", "--title=Changed"], /Usage:/],
+    [["task", "show", "PLAY-1", "extra"], /Usage:/],
+    [["columns", "--unknown"], /Unknown option/],
+    [["search", "-x"], /Unknown option/],
+    [["export", "one.sqlite", "two.sqlite"], /Usage:/],
+    [["import"], /Usage:/],
+    [["reset"], /type zinn reset --yes/],
+    [["reset", "--yes=false"], /does not take a value/],
+    [["reset", "--yes", "--yes"], /only once/],
+    [["help", "unknown"], /Unknown Zinn command/],
+  ]) {
+    await assert.rejects(worker.request(args), error);
+  }
+  assert.equal((await worker.request(["task", "list"])).text, original.text);
+  assert.deepEqual(await readStoredSnapshot(), before);
+
+  const created = await worker.request([
+    "task",
+    "create",
+    "An option sample",
+    "--column=Review",
+    "--description=value=with spaces",
+    "--priority=high",
+  ]);
+  assert.match(created.text, /Created PLAY-4/);
+  const shown = await worker.request(["task", "show", "PLAY-4"]);
+  assert.match(shown.text, /Column: Review\nPriority: high/);
+  assert.match(shown.text, /value=with spaces/);
+  assert.match((await worker.request(["task", "list", "--column=Review"])).text, /PLAY-4/);
+
+  const literal = await worker.request(["task", "create", "--description=--help", "--", "-h"]);
+  assert.match(literal.text, /Created PLAY-5: -h/);
+  const literalTask = await worker.request(["task", "show", "PLAY-5"]);
+  assert.match(literalTask.text, /PLAY-5  -h/);
+  assert.match(literalTask.text, /\n\n--help$/);
+  await worker.request(["task", "edit", "PLAY-5", "--title=-v"]);
+  assert.match((await worker.request(["task", "show", "PLAY-5"])).text, /PLAY-5  -v/);
+  assert.doesNotMatch((await worker.request(["search", "--", "-h"])).text, /ZINN PLAYGROUND/);
 });

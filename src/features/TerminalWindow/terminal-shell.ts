@@ -1,5 +1,6 @@
 import type { Bash, BashOptions, BuiltinRequest, CustomBuiltin } from "@everruns/bashkit-wasm";
 import type { ShellContext } from "./shell";
+import { parseZinnArgs } from "./zinn-cli";
 import { VisitorWorkspace, workspacePath } from "../VisitorWorkspace/workspace";
 
 const home = "/home/guest";
@@ -13,7 +14,8 @@ const commandHelp =
     "",
     "INSTALLED COMMANDS",
     "  zinn                  Task board and task commands",
-    "  zinn help             Zinn command reference",
+    "  zinn -h / zinn help   Zinn command reference",
+    "  zinn -v               Bundled Zinn core version",
     "  about / projects      About this portfolio",
     "  open <app|file>       Open a desktop app or a visitor text file",
     "  download <file>       Save a virtual file to your computer",
@@ -164,21 +166,21 @@ export class TerminalShell {
   }
 
   private async zinn({ argv, cwd }: BuiltinRequest) {
-    if (argv[0] === "export") {
-      if (argv.length > 2) throw new Error("Usage: zinn export [file]");
-      const path = workspacePath(argv[1] ?? "zinn-playground.sqlite", cwd);
+    const command = parseZinnArgs(argv);
+    if ("text" in command) return command.text + "\n";
+    if (command.path === "export") {
+      const path = workspacePath(command.positional[0] ?? "zinn-playground.sqlite", cwd);
       const result = await this.requireContext().zinn(["export"]);
       if (!result.bytes) throw new Error("Zinn couldn't export the board.");
       this.workspace.write(path, result.bytes);
       return `Exported ${path}\nUse download ${JSON.stringify(path)} to keep a copy.\n`;
     }
-    if (argv[0] === "import") {
-      if (argv.length !== 2)
-        throw new Error(
-          "Usage: zinn import <file>\nUse File > Upload file to add a backup to this shell.",
-        );
-      const path = workspacePath(argv[1], cwd);
-      const result = await this.requireContext().zinn(["import"], this.workspace.read(path));
+    if (command.path === "import") {
+      const path = workspacePath(command.positional[0], cwd);
+      const result = await this.requireContext().zinn(
+        ["import", "--", path],
+        this.workspace.read(path),
+      );
       return result.text + "\n";
     }
     const result = await this.requireContext().zinn(argv);

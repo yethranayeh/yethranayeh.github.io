@@ -17,6 +17,7 @@ import {
 } from "./zinn-core";
 import { createWasmDriver, openMemoryDatabase } from "./sqlite-driver";
 import { executeZinn, playgroundKey, seedPlayground } from "./zinn-commands";
+import { parseZinnArgs } from "./zinn-cli";
 import { PlaygroundStorage } from "./playground-storage";
 import type { PlaygroundResult } from "./zinn-client";
 
@@ -131,12 +132,9 @@ async function initialize(recovery?: Uint8Array | null) {
 }
 
 async function execute(args: string[], bytes?: Uint8Array): Promise<PlaygroundResult> {
-  const recovery =
-    args[0] === "reset" && args.length === 2 && args[1] === "--yes"
-      ? null
-      : args[0] === "import"
-        ? bytes
-        : undefined;
+  const command = parseZinnArgs(args);
+  if ("text" in command) return { text: command.text };
+  const recovery = command.path === "reset" ? null : command.path === "import" ? bytes : undefined;
   const recovered = await initialize(recovery);
   const persistence = storage ? "saved" : "session";
   if (recovered)
@@ -165,30 +163,27 @@ async function execute(args: string[], bytes?: Uint8Array): Promise<PlaygroundRe
   let result: PlaygroundResult;
   let mutated = false;
   try {
-    if (args[0] === "reset") {
-      if (args.length !== 2 || args[1] !== "--yes")
-        throw new Error(
-          "To replace this board with fresh samples, type zinn reset --yes. Export a backup first to keep your tasks.",
-        );
+    if (command.path === "reset") {
       install();
       mutated = true;
       result = { text: "Your board has been reset to the three sample tasks.", persistence };
-    } else if (args[0] === "import") {
-      if (!bytes) throw new Error("Use Import backup above and select a playground backup.");
+    } else if (command.path === "import") {
+      if (!bytes)
+        throw new Error("Use zinn import <file> after adding a backup with File > Upload file.");
       install(bytes);
       mutated = true;
       result = {
         text: "Imported your playground backup. Type zinn to see the board.",
         persistence,
       };
-    } else if (args[0] === "export") {
+    } else if (command.path === "export") {
       result = {
         text: "Exported zinn-playground.sqlite. Import this backup here to restore the board.",
         persistence,
         bytes: before,
       };
     } else {
-      const response = executeZinn(args);
+      const response = executeZinn(command);
       mutated = response.mutated;
       result = { text: response.text, persistence };
     }

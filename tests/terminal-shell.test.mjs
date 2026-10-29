@@ -132,6 +132,85 @@ test("zinn custom builtin preserves quoted argv and scopes the current command c
   );
 });
 
+test("zinn help and version are local, read-only builtins, including backup and reset help", async () => {
+  const shell = createShell();
+  const ctx = context({
+    zinn: () => {
+      throw new Error("Help and version must not start the Zinn worker.");
+    },
+  });
+  const before = (await shell.execute("ls", ctx.value)).stdout;
+  for (const command of [
+    "zinn help",
+    "zinn help --help",
+    "zinn -h",
+    "zinn --help",
+    "zinn task",
+    "zinn task -h",
+    "zinn task create -h",
+    "zinn help task create",
+    "zinn help task create -h",
+    "zinn export --help",
+    "zinn import -h",
+    "zinn reset --yes --help",
+  ]) {
+    const result = await shell.execute(command, ctx.value);
+    assert.equal(result.exitCode, 0, `${command}: ${result.stderr}`);
+    assert.match(result.stdout, /ZINN PLAYGROUND/);
+    assert.match(result.stdout, /Usage: zinn/);
+    assert.doesNotMatch(result.stdout, /Storage is unavailable/);
+  }
+  const shortVersion = await shell.execute("zinn -v", ctx.value);
+  const longVersion = await shell.execute("zinn --version", ctx.value);
+  const provenance = JSON.parse(
+    fs.readFileSync(path.join(root, "src/vendor/zinn/core/PROVENANCE.json"), "utf8"),
+  );
+  assert.equal(shortVersion.exitCode, 0, shortVersion.stderr);
+  assert.equal(longVersion.exitCode, 0, longVersion.stderr);
+  assert.equal(shortVersion.stdout, longVersion.stdout);
+  assert.equal(
+    shortVersion.stdout,
+    `Zinn playground (Zinn core ${provenance.upstream_core_package_version}, source ${provenance.upstream_commit.slice(0, 7)})\n`,
+  );
+  const piped = await shell.execute("zinn -h | grep 'Usage: zinn'", ctx.value);
+  assert.equal(piped.exitCode, 0, piped.stderr);
+  assert.match(piped.stdout, /Usage: zinn \[command\]/);
+  assert.equal(ctx.zinnCalls.length, 0);
+  assert.equal((await shell.execute("ls", ctx.value)).stdout, before);
+});
+
+test("zinn rejects invalid arguments without calling its worker and preserves explicit literals", async () => {
+  const shell = createShell();
+  const ctx = context();
+  for (const command of [
+    "zinn task create -x",
+    "zinn task create Title --priority",
+    "zinn task create Title --description -h",
+    "zinn search --unknown",
+    "zinn export --unknown",
+    "zinn import --unknown",
+    "zinn reset --yes=false",
+  ]) {
+    const result = await shell.execute(command, ctx.value);
+    assert.notEqual(result.exitCode, 0, command);
+    assert.match(result.stderr, /Unknown option|Provide a value|does not take a value/);
+  }
+  assert.equal(ctx.zinnCalls.length, 0);
+
+  const literal = await shell.execute(
+    'zinn task create --description="value=with spaces" -- -h',
+    ctx.value,
+  );
+  assert.equal(literal.exitCode, 0, literal.stderr);
+  assert.deepEqual(ctx.zinnCalls[0].args, [
+    "task",
+    "create",
+    "--description=value=with spaces",
+    "--",
+    "-h",
+  ]);
+});
+
 test("zinn export/import uses virtual binary files and download receives the saved bytes", async () => {
   const shell = createShell();
   const backup = Uint8Array.from([0, 255, 1, 128, 10]);
@@ -158,8 +237,16 @@ test("zinn export/import uses virtual binary files and download receives the sav
   const imported = await shell.execute('zinn import "my backup.sqlite"', ctx.value);
   assert.equal(imported.exitCode, 0, imported.stderr);
   assert.equal(imported.stdout, "imported 5 bytes\n");
-  assert.deepEqual(ctx.zinnCalls[1].args, ["import"]);
+  assert.deepEqual(ctx.zinnCalls[1].args, ["import", "--", "/home/guest/my backup.sqlite"]);
   assert.deepEqual(ctx.zinnCalls[1].bytes, backup);
+
+  const literalExport = await shell.execute("zinn export -- --help", ctx.value);
+  assert.equal(literalExport.exitCode, 0, literalExport.stderr);
+  assert.deepEqual(shell.workspace.read("/home/guest/--help"), backup);
+  const literalImport = await shell.execute("zinn import -- --help", ctx.value);
+  assert.equal(literalImport.exitCode, 0, literalImport.stderr);
+  assert.deepEqual(ctx.zinnCalls.at(-1).args, ["import", "--", "/home/guest/--help"]);
+  assert.deepEqual(ctx.zinnCalls.at(-1).bytes, backup);
 });
 
 test("upload stores bytes in the virtual home and refuses to overwrite an existing file", async () => {
