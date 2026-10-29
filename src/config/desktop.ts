@@ -70,6 +70,19 @@ export const desktopApps: Array<AppWindow> = [
     minimized: false,
     iconSrc: "/icon/program.ico",
     content: ComputerContent,
+    WindowProps: {
+      slotProps: {
+        window: {
+          style: {
+            width: "min(620px, calc(100vw - 32px))",
+            maxWidth: "unset",
+            height: "min(520px, calc(100svh - 120px))",
+            display: "flex",
+            flexDirection: "column",
+          },
+        },
+      },
+    },
   },
   projectsWindow,
   {

@@ -2,6 +2,7 @@ import type { PlaygroundResult } from "./zinn-client";
 
 export interface ShellContext {
   open: (name: string) => boolean;
+  openFile?: (path: string) => void;
   zinn: (args: string[], bytes?: Uint8Array) => Promise<PlaygroundResult>;
   download: (name: string, bytes: Uint8Array) => void;
   history: readonly string[];

@@ -13,7 +13,7 @@ zinn task move PLAY-4 "In Progress"
 zinn task list | grep PLAY
 ```
 
-BashKit provides Bash syntax, virtual files, variables, functions, pipes, and redirection. A single shell instance preserves its working directory and state between commands. Files and shell state belong to the current page session. This does not provide a native OS shell or arbitrary installed executables.
+BashKit provides Bash syntax, virtual files, variables, functions, pipes, and redirection. A single shell instance preserves its working directory and state between commands. Shell variables and history belong to the current page session. Visitor files persist separately in IndexedDB and are shared with My Computer at `/home/guest`. This does not provide a native OS shell or arbitrary installed executables. `touch` creates files and accepts `-c`, but file timestamps are not supported by the host filesystem adapter.
 
 `help` lists shell and installed commands. Arrow keys recall history, Tab completes common command names, Ctrl+L clears the screen, and Ctrl+C cancels at a command boundary. The visible native input supports paste, IME, and mobile keyboards. File contains **Upload file**, **View transcript**, and **Save transcript**. Edit contains **Copy transcript** and **Clear screen**. There is no permanent transcript panel or app-specific toolbar.
 
@@ -38,7 +38,19 @@ Exports are binary SQLite files in the shell's virtual filesystem. `download` sa
 
 SQLite images persist in IndexedDB. Each command reloads newer stored revisions. Writes compare revisions inside an IndexedDB transaction to avoid overwriting another tab's changes. Failed commands or persistent writes restore the previous image. Older supported local schemas use upstream migrations, and import/reset remain available if saved data cannot be loaded. If storage is unavailable, Zinn reports that its board is session-only.
 
-Browser storage belongs to the origin and browser profile and can be cleared or evicted. Download a backup to keep a copy. Shell files remain in memory until the page reloads. The existing static GitHub Pages deployment requires no server or cross-origin isolation headers. There is no offline service worker. BashKit's 7 MB WASM asset (about 2.6 MB gzip) loads on the first shell command.
+Browser storage belongs to the origin and browser profile and can be cleared or evicted. Download a backup to keep a copy. The existing static GitHub Pages deployment requires no server or cross-origin isolation headers. There is no offline service worker. BashKit's 7 MB WASM asset (about 2.6 MB gzip) loads on the first shell command.
+
+## Shared visitor drive
+
+My Computer opens the visitor drive by default. Double-click a UTF-8 text file, press Enter, or tap on a touch device to open Notepad. `open <file>` in Terminal opens the same editor. Save or Ctrl/Cmd+S writes back to the drive. Clean documents refresh when files change, while stale edits are refused until the visitor reloads the file or downloads their draft. Binary files remain available through `download <file>` and the drive export. The editor supports text up to 1 MB.
+
+`portfolio-visitor-workspace` is a separate IndexedDB database from Zinn's playground. A shared queue commits shell commands, uploads, and editor saves as complete drive snapshots. Revision checks prevent another tab's commit from being overwritten, and BroadcastChannel refreshes idle views across tabs. Persistence failures roll back the file changes. If storage cannot be opened, both interfaces clearly identify the drive as session-only.
+
+Uploads refuse to overwrite an existing name. Files are limited to 5 MB, and the drive is limited to 20 MB and 512 entries. Paths outside `/home/guest` cannot be written. Only visitor entries are persisted and exported. There is no bridge to the owner's filesystem or native Zinn database.
+
+My Computer's **Export files** downloads a standard ZIP containing files and folders, including binary backups. **Reset files** asks for confirmation, removes visitor files, and restores README.txt and local-server-troubleshooting.txt. The next Terminal command starts with fresh shell state at `/home/guest`. It does not reset Zinn's board, login preferences, or portfolio source. The initial troubleshooting note covers macOS port, process, and project inspection and explains that those commands run in the visitor's own native Terminal.
+
+The **Portfolio source** view is separate and read-only. The build embeds text previews from the existing source tree, skips symlinks, and does not fetch arbitrary filesystem paths. Previews and uploads are displayed as plain text and never executed.
 
 ## Verification
 

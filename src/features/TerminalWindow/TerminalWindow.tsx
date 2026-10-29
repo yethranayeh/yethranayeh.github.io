@@ -19,6 +19,7 @@ import { getShell } from "./browser-shell";
 import { alignViewportRows } from "./ghostty-compat";
 import { zinnRequest } from "./zinn-client";
 import { TerminalMenu } from "./TerminalMenu";
+import { downloadFile } from "../VisitorWorkspace/export";
 import styles from "./TerminalWindow.module.scss";
 
 const session = {
@@ -42,15 +43,6 @@ function loadGhostty() {
       throw error;
     });
   return ghosttySourcePromise.then((source) => Ghostty.load(source));
-}
-
-function downloadFile(name: string, bytes: Uint8Array, type = "application/octet-stream") {
-  const url = URL.createObjectURL(new Blob([new Uint8Array(bytes)], { type }));
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = name;
-  link.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 export function TerminalWindow({
@@ -112,6 +104,10 @@ export function TerminalWindow({
         const shell = await getShell();
         const result = await shell.execute(command, {
           history: session.history,
+          openFile: (path) => {
+            const app = desktopApps.find((item) => item.id === "computer")!;
+            addWindow({ ...app, contentProps: { initialPath: path, launchId: Date.now() } });
+          },
           open: (name) => {
             const id = name === "my computer" ? "computer" : name;
             const app = desktopApps.find((item) => item.id === id);
@@ -267,7 +263,7 @@ export function TerminalWindow({
     try {
       if (file.size > 5 * 1024 * 1024) throw new Error("Choose a file smaller than 5 MB.");
       const shell = await getShell();
-      const path = shell.upload(file.name, new Uint8Array(await file.arrayBuffer()));
+      const path = await shell.upload(file.name, new Uint8Array(await file.arrayBuffer()));
       append(`Uploaded ${path}\n`);
     } catch (error) {
       append(`${error instanceof Error ? error.message : "Upload failed."}\n`);

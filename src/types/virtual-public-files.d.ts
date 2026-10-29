@@ -30,6 +30,7 @@ declare module "virtual:public-files" {
     name: string;
     path: string;
     ext: string;
+    text?: string;
   };
 
   export type SrcFolder = {

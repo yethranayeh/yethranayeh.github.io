@@ -1,14 +1,125 @@
 @use "../../styles/variables.module.scss";
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
   height: 100%;
   overflow: hidden;
 }
 
 .toolbar {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  box-sizing: border-box;
   padding: variables.$spacing;
   flex-shrink: 0;
   width: 100%;
+}
+
+.drives,
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px;
+  flex-shrink: 0;
+}
+.address {
+  background: white;
+  border: 2px inset silver;
+  padding: 3px 6px;
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.file {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 2px;
+  color: black;
+  font: inherit;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: default;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  &:focus {
+    outline: 1px dotted black;
+    background: navy;
+    color: white;
+  }
+}
+.empty {
+  padding: 8px;
+  grid-column: 1 / -1;
+}
+.status {
+  padding: 6px;
+  border: 2px inset silver;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.status span {
+  display: block;
+}
+.error {
+  padding: 6px;
+  margin: 0;
+  color: #800000;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.dialog {
+  color: black;
+  background: silver;
+  font: inherit;
+  padding: 3px;
+  border: 2px outset white;
+  box-shadow: 2px 2px black;
+  width: min(640px, calc(100vw - 20px));
+  box-sizing: border-box;
+  max-height: calc(100svh - 60px);
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  header {
+    background: navy;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+  }
+  > p {
+    padding: 8px;
+  }
+}
+.editor[open] {
+  display: flex;
+  flex-direction: column;
+  height: min(540px, calc(100svh - 70px));
+}
+.editor textarea {
+  flex: 1;
+  min-height: 100px;
+  min-width: 0;
+  resize: none;
+  background: white;
+  color: black;
+  padding: 8px;
+  border: 2px inset silver;
+  font: 14px/1.5 monospace;
+  tab-size: 2;
+}
+.discard {
+  padding: 8px;
+  border: 2px outset white;
 }
 
 .urlBar {

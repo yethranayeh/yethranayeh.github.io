@@ -164,12 +164,15 @@ test("zinn export/import uses virtual binary files and download receives the sav
 
 test("upload stores bytes in the virtual home and refuses to overwrite an existing file", async () => {
   const shell = createShell();
-  assert.equal(shell.upload("notes.bin", Uint8Array.from([4, 0, 5])), "/home/guest/notes.bin");
+  assert.equal(
+    await shell.upload("notes.bin", Uint8Array.from([4, 0, 5])),
+    "/home/guest/notes.bin",
+  );
   assert.deepEqual(
     (await shell.execute("cat notes.bin", context().value)).stdout,
     "\u0004\u0000\u0005",
   );
-  assert.throws(() => shell.upload("notes.bin", Uint8Array.from([9])), /already exists/);
+  await assert.rejects(shell.upload("notes.bin", Uint8Array.from([9])), /already exists/);
 });
 
 test("terminalText removes control sequences and normalizes line endings", () => {

@@ -96,6 +96,7 @@ type SrcFile = {
   name: string;
   path: string;
   ext: string;
+  text?: string;
 };
 
 type SrcFolder = {
@@ -135,6 +136,7 @@ function scanSrcDir(
       continue;
     }
 
+    if (entry.isSymbolicLink()) continue;
     const absPath = path.join(dirPath, entry.name);
     const relPath = path.relative(rootDir, absPath).replace(/\\/g, "/");
 
@@ -160,6 +162,11 @@ function scanSrcDir(
         name: entry.name,
         path: entryUrlPath,
         ext,
+        ...(["ts", "tsx", "js", "jsx", "json", "scss", "css", "md", "txt", "html", "svg"].includes(
+          ext,
+        ) && fs.statSync(absPath).size <= 1024 * 1024
+          ? { text: fs.readFileSync(absPath, "utf-8") }
+          : {}),
       };
       folder.children.push(file);
       allFiles.push(file);
