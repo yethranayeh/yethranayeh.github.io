@@ -14,6 +14,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
+  worker: { format: "es" },
   plugins: [
     publicFilesPlugin({
       publicDir: path.resolve(__dirname, "public"),

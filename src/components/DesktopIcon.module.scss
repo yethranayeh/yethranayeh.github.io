@@ -3,4 +3,9 @@
 
 .icon {
   @include mixins.selectable-item;
+
+  &:focus-visible {
+    outline: 1px dotted white;
+    outline-offset: 2px;
+  }
 }

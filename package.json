@@ -8,16 +8,21 @@
     "build": "tsc && vite build",
     "build:dev": "tsc && vite build --mode development",
     "preview": "vite preview",
+    "test:terminal": "node --test tests/terminal-*.test.mjs",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
     "fix": "npm run format && npm run lint:fix"
   },
   "dependencies": {
+    "@everruns/bashkit-wasm": "0.18.2",
     "@floating-ui/react-dom": "^2.1.6",
     "@sarmal/core": "0.38.0",
     "@sarmal/react": "0.8.3",
+    "@sqlite.org/sqlite-wasm": "3.51.2-build8",
     "clsx": "^2.0.0",
+    "fractional-indexing": "4.0.0",
+    "ghostty-web": "0.4.0",
     "i18next": "^23.7.6",
     "jotai": "^2.10.0",
     "pixelarticons": "^1.7.0",
@@ -30,7 +35,9 @@
     "react-router-dom": "^6.4.3",
     "react95": "4",
     "styled-components": "^5.3.6",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "uuid": "14.0.3",
+    "zod": "4.6.4"
   },
   "devDependencies": {
     "@types/node": "^22.13.0",
@@ -39,7 +46,9 @@
     "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^5.0.3",
     "babel-plugin-react-compiler": "1.0.0",
+    "esbuild": "0.27.7",
     "eslint-plugin-react-hooks": "7.1.1",
+    "fake-indexeddb": "6.2.6",
     "gltfjsx": "^6.5.3",
     "oxfmt": "0.51.0",
     "oxlint": "1.66.0",

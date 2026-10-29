@@ -24,16 +24,16 @@ export const addWindowAtom = atom(null, (get, set, newWindow: AppWindow) => {
 
   const windowExists = windows.some((win) => win.id === newWindow.id);
   if (windowExists) {
-    // If the window already exists, instead of adding it again, open if minimized
-
-    if (!windows.find((win) => win.id === newWindow.id)?.minimized) {
-      return;
-    } else {
-      set(
-        windowsAtom,
-        windows.map((win) => (win.id === newWindow.id ? { ...win, minimized: false } : win)),
-      );
-    }
+    // Last in DOM order is in front. Reopening also restores a minimized window.
+    const existing = windows.find((win) => win.id === newWindow.id)!;
+    set(windowsAtom, [
+      ...windows.filter((win) => win.id !== newWindow.id),
+      {
+        ...existing,
+        minimized: false,
+        contentProps: newWindow.contentProps ?? existing.contentProps,
+      },
+    ]);
   } else {
     set(windowsAtom, [...windows, newWindow]);
   }

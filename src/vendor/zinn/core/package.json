@@ -1,0 +1,8 @@
+{
+  "name": "@portfolio-vendor/zinn-core",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#sqlite": "./src/sqlite/browser.ts"
+  }
+}

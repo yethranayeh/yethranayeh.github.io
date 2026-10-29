@@ -1,0 +1,345 @@
+{
+  "upstream_repository": "https://github.com/yethranayeh/zinn",
+  "upstream_commit": "c375ca37516ba08a9ed1cbb918153aaf9fd38b2b",
+  "upstream_tree": "77f3f974183b4a9233b87b60f6834c00eeff62c7",
+  "upstream_core_package_version": "0.32.0-dev",
+  "source_worktree_scope": "packages/core clean relative to upstream_commit at manifest generation",
+  "entries": [
+    {
+      "source_path": "LICENSE",
+      "source_sha256": "4103cc3a734cda6c99740b030d0274c1bfd9c400fc7143ed3e85eceabf7f2433",
+      "vendored_path": "LICENSE",
+      "vendored_sha256": "4103cc3a734cda6c99740b030d0274c1bfd9c400fc7143ed3e85eceabf7f2433",
+      "status": "verbatim"
+    },
+    {
+      "source_path": null,
+      "source_sha256": null,
+      "vendored_path": "package.json",
+      "vendored_sha256": "12bc46e010492e93921c6ec09972d6ac48b4486a7d67e68f6ca4546c00e65b62",
+      "status": "local-package-metadata",
+      "adaptation": "Defines the browser vendor package boundary and maps #sqlite to the browser adapter."
+    },
+    {
+      "source_path": "packages/core/src/constant.ts",
+      "source_sha256": "c35e02f274539df86d2e6d331fe64a796b70aaeffce96d106c2c3659fe0e484c",
+      "vendored_path": "src/constant.ts",
+      "vendored_sha256": "c35e02f274539df86d2e6d331fe64a796b70aaeffce96d106c2c3659fe0e484c",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db.ts",
+      "source_sha256": "27886197542896367ee271c405119b3df4c44fc6962869957521eba5de31b260",
+      "vendored_path": "src/db.ts",
+      "vendored_sha256": "62c2ac842c555829adc85c812cda03624e64d7953a5b519f0b85326d86ccd465",
+      "status": "adapted",
+      "adaptation": "browser-injected-database-singleton-and-transaction-bootstrap"
+    },
+    {
+      "source_path": "packages/core/src/db/activity.ts",
+      "source_sha256": "3fb4f6d2f4c3d40918aeb72ae7a8bcadffb56d9508259a699cc236357a8bad39",
+      "vendored_path": "src/db/activity.ts",
+      "vendored_sha256": "3fb4f6d2f4c3d40918aeb72ae7a8bcadffb56d9508259a699cc236357a8bad39",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db/column.ts",
+      "source_sha256": "af76d56a0df19eb0603a802027f13d3c60957a30a4d63e69ff304cc0f1c30973",
+      "vendored_path": "src/db/column.ts",
+      "vendored_sha256": "af76d56a0df19eb0603a802027f13d3c60957a30a4d63e69ff304cc0f1c30973",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db/comment.ts",
+      "source_sha256": "72a1b238c8f9d2ad7d1b5d6ff8dff7eae01e5e4f708c48313895675c0402812a",
+      "vendored_path": "src/db/comment.ts",
+      "vendored_sha256": "72a1b238c8f9d2ad7d1b5d6ff8dff7eae01e5e4f708c48313895675c0402812a",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db/label.ts",
+      "source_sha256": "6ade395dc1432148f95bc7714df40621b44d588e7847eb224db0d7478e902ae5",
+      "vendored_path": "src/db/label.ts",
+      "vendored_sha256": "6ade395dc1432148f95bc7714df40621b44d588e7847eb224db0d7478e902ae5",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db/project.ts",
+      "source_sha256": "baf0004a4b9969f47656a61377c493d54fe8f518d9fc48a28e65a8adc8504195",
+      "vendored_path": "src/db/project.ts",
+      "vendored_sha256": "baf0004a4b9969f47656a61377c493d54fe8f518d9fc48a28e65a8adc8504195",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db/relation.ts",
+      "source_sha256": "a644564cb16ce984b84d071f211dbb3ae5d074dd2e85a403d2dfb4293505e6fa",
+      "vendored_path": "src/db/relation.ts",
+      "vendored_sha256": "a644564cb16ce984b84d071f211dbb3ae5d074dd2e85a403d2dfb4293505e6fa",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db/search.ts",
+      "source_sha256": "9bb05f3f3a95d3a4f16e8ab294333a07f9da99469a426b41df8651aa7ad12ea4",
+      "vendored_path": "src/db/search.ts",
+      "vendored_sha256": "9bb05f3f3a95d3a4f16e8ab294333a07f9da99469a426b41df8651aa7ad12ea4",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db/task-label.ts",
+      "source_sha256": "17c7343780ec94a96c3a6237411d247f21a0114d46ee8166774855bea878fd25",
+      "vendored_path": "src/db/task-label.ts",
+      "vendored_sha256": "17c7343780ec94a96c3a6237411d247f21a0114d46ee8166774855bea878fd25",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/db/task.ts",
+      "source_sha256": "77c90bcc95d3959920184b6d154f0e624e078bf693b90bc009488e4244ca4d21",
+      "vendored_path": "src/db/task.ts",
+      "vendored_sha256": "77c90bcc95d3959920184b6d154f0e624e078bf693b90bc009488e4244ca4d21",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/errors.ts",
+      "source_sha256": "a14c591b08cad59c2e0b94c211179e0d38a2cdee83248950bb6b3b97648c0281",
+      "vendored_path": "src/errors.ts",
+      "vendored_sha256": "a14c591b08cad59c2e0b94c211179e0d38a2cdee83248950bb6b3b97648c0281",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/hooks.ts",
+      "source_sha256": "af1e706ba6333cc04bb782b9cdfa614dc97a18776a105c1765f01405bf937060",
+      "vendored_path": "src/hooks.ts",
+      "vendored_sha256": "2b911d63efabc24bdabf20c75b42b156326ed8fffa63b44338a9c5013d8192e8",
+      "status": "adapted",
+      "adaptation": "browser-no-shell-hook-adapter"
+    },
+    {
+      "source_path": "packages/core/src/lib.ts",
+      "source_sha256": "90bc14a7ee160b691f44138e7038eaa1b7289f19531eed7f043123d4afbec0f4",
+      "vendored_path": "src/lib.ts",
+      "vendored_sha256": "90bc14a7ee160b691f44138e7038eaa1b7289f19531eed7f043123d4afbec0f4",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/migrations/actor-identity.ts",
+      "source_sha256": "721c2415b87013b29ba3bbbc23a9755289413fd1f0f4fa4864562cd72b6863b0",
+      "vendored_path": "src/migrations/actor-identity.ts",
+      "vendored_sha256": "721c2415b87013b29ba3bbbc23a9755289413fd1f0f4fa4864562cd72b6863b0",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/migrations/baseline.ts",
+      "source_sha256": "938eedc9653573bab7e3607e3365f3e5de03abd88b701c92eed5fa09b2aebce2",
+      "vendored_path": "src/migrations/baseline.ts",
+      "vendored_sha256": "938eedc9653573bab7e3607e3365f3e5de03abd88b701c92eed5fa09b2aebce2",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/migrations/foreign-keys.ts",
+      "source_sha256": "cfe696f5ef9f42b026ae2bce5d7530e1a080d2eb1beb2127f5828163e73739fb",
+      "vendored_path": "src/migrations/foreign-keys.ts",
+      "vendored_sha256": "cfe696f5ef9f42b026ae2bce5d7530e1a080d2eb1beb2127f5828163e73739fb",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/migrations/registry.ts",
+      "source_sha256": "f787b353a81b2cbf4470cbf900f093e9d05d89e6db21599d1c8748b43dd6d1ab",
+      "vendored_path": "src/migrations/registry.ts",
+      "vendored_sha256": "f787b353a81b2cbf4470cbf900f093e9d05d89e6db21599d1c8748b43dd6d1ab",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/migrations/runner.ts",
+      "source_sha256": "a5693943d3d5e20cb51d3d3d8564b8b63be4a3f5f9295c422e8b69db1028674c",
+      "vendored_path": "src/migrations/runner.ts",
+      "vendored_sha256": "a5693943d3d5e20cb51d3d3d8564b8b63be4a3f5f9295c422e8b69db1028674c",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/migrations/task-deadline.ts",
+      "source_sha256": "83a68e3e0998b3702079d84f37b980f76e9ff62ec31244724099256f298a22c9",
+      "vendored_path": "src/migrations/task-deadline.ts",
+      "vendored_sha256": "83a68e3e0998b3702079d84f37b980f76e9ff62ec31244724099256f298a22c9",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/operations/column.ts",
+      "source_sha256": "71ed70edc512bc164ebaf70c389643effdbd71d5666e6b4811e0dc5ee05dc567",
+      "vendored_path": "src/operations/column.ts",
+      "vendored_sha256": "6f5b3186acee3e0339c704908beb4f0ad251e27060e441657d1d527b47024eeb",
+      "status": "adapted",
+      "adaptation": "omits-path-backed-inspect-preflight-only"
+    },
+    {
+      "source_path": "packages/core/src/operations/project.ts",
+      "source_sha256": "533fd3352d11cfdd07bfe064327d9e7291eed43cc8f54c159276ab94cf6b7dbb",
+      "vendored_path": "src/operations/project.ts",
+      "vendored_sha256": "533fd3352d11cfdd07bfe064327d9e7291eed43cc8f54c159276ab94cf6b7dbb",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/operations/relation.ts",
+      "source_sha256": "e9d6aac4229278707033bda7f7143f6ef1b3173abe4c2b8ea83466c58e1f205b",
+      "vendored_path": "src/operations/relation.ts",
+      "vendored_sha256": "e9d6aac4229278707033bda7f7143f6ef1b3173abe4c2b8ea83466c58e1f205b",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/operations/shared.ts",
+      "source_sha256": "c9c161699d7acf452a14fc44c5c4f6f8dd86b212634b06f45eb87cc4c4314660",
+      "vendored_path": "src/operations/shared.ts",
+      "vendored_sha256": "c9c161699d7acf452a14fc44c5c4f6f8dd86b212634b06f45eb87cc4c4314660",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/operations/task.ts",
+      "source_sha256": "09963a8d1067b684dc610fda20579ae24065a06861b1bc46d0cddc59dca1c02c",
+      "vendored_path": "src/operations/task.ts",
+      "vendored_sha256": "09963a8d1067b684dc610fda20579ae24065a06861b1bc46d0cddc59dca1c02c",
+      "status": "verbatim"
+    },
+    {
+      "source_path": null,
+      "source_sha256": null,
+      "vendored_path": "src/platform/buffer.ts",
+      "vendored_sha256": "e1a657ef13d3f21daaa29b4364982b3f916302e49d637017a94b4e3ebf7bdf22",
+      "status": "browser-adapter",
+      "adaptation": "Provides the UTF-8 byte-length helper required by upstream text validation."
+    },
+    {
+      "source_path": "packages/core/src/schemas/activity.ts",
+      "source_sha256": "628faef27bd674a7b6793ddee679636820ba890eeed68e68dadd7b605a9481a1",
+      "vendored_path": "src/schemas/activity.ts",
+      "vendored_sha256": "628faef27bd674a7b6793ddee679636820ba890eeed68e68dadd7b605a9481a1",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/actor.ts",
+      "source_sha256": "e1223388bd9213d53b92fd717c683272392871cd7203cd558b51f3a06a57e950",
+      "vendored_path": "src/schemas/actor.ts",
+      "vendored_sha256": "e1223388bd9213d53b92fd717c683272392871cd7203cd558b51f3a06a57e950",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/column.ts",
+      "source_sha256": "170eaf101b58161f5fd14a629a92c0476e313072ba4475b5d74b6d94b387ecc2",
+      "vendored_path": "src/schemas/column.ts",
+      "vendored_sha256": "170eaf101b58161f5fd14a629a92c0476e313072ba4475b5d74b6d94b387ecc2",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/comment.ts",
+      "source_sha256": "a558bf92eac03392ca43e590fe96abe01727fd77601b4e8135b3fc7d63a8b909",
+      "vendored_path": "src/schemas/comment.ts",
+      "vendored_sha256": "a558bf92eac03392ca43e590fe96abe01727fd77601b4e8135b3fc7d63a8b909",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/description.ts",
+      "source_sha256": "f6a17bafc4fccea6b35255e02a60bf51c3c5c101120cc7aeb73bf10269f9ca85",
+      "vendored_path": "src/schemas/description.ts",
+      "vendored_sha256": "f6a17bafc4fccea6b35255e02a60bf51c3c5c101120cc7aeb73bf10269f9ca85",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/integer.ts",
+      "source_sha256": "4e53977252b64c498c99207eb3123c2ad65e56571502b63386af2ad63a6249f6",
+      "vendored_path": "src/schemas/integer.ts",
+      "vendored_sha256": "4e53977252b64c498c99207eb3123c2ad65e56571502b63386af2ad63a6249f6",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/label.ts",
+      "source_sha256": "f89f5399528d32553b1aa090e7b673720903c78ce37ec7ddded719583aaacb91",
+      "vendored_path": "src/schemas/label.ts",
+      "vendored_sha256": "f89f5399528d32553b1aa090e7b673720903c78ce37ec7ddded719583aaacb91",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/project.ts",
+      "source_sha256": "36f6d50d5865cd6bffeaef3fb54ef40781818ebf25d2434e40618e21bc701b4c",
+      "vendored_path": "src/schemas/project.ts",
+      "vendored_sha256": "36f6d50d5865cd6bffeaef3fb54ef40781818ebf25d2434e40618e21bc701b4c",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/relation.ts",
+      "source_sha256": "d74bc27395fc968dd37566347f4a4406501ea68e007319eedeb14ba4b487d08b",
+      "vendored_path": "src/schemas/relation.ts",
+      "vendored_sha256": "d74bc27395fc968dd37566347f4a4406501ea68e007319eedeb14ba4b487d08b",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/task.ts",
+      "source_sha256": "42e91fc3b576fda88b70e6ab937777a72b3c8c30c48aac37d9dbc500c861a77f",
+      "vendored_path": "src/schemas/task.ts",
+      "vendored_sha256": "42e91fc3b576fda88b70e6ab937777a72b3c8c30c48aac37d9dbc500c861a77f",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/text-edit.ts",
+      "source_sha256": "ff216fa0ade8ad298f6fe83a3c3964b74eda71a324a1e570e168dc89f52540b6",
+      "vendored_path": "src/schemas/text-edit.ts",
+      "vendored_sha256": "ff216fa0ade8ad298f6fe83a3c3964b74eda71a324a1e570e168dc89f52540b6",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/text.ts",
+      "source_sha256": "a3481856204a15d5a48729ebc2ac97021e5701a7c456c8ae4ac98d70fdbab3a5",
+      "vendored_path": "src/schemas/text.ts",
+      "vendored_sha256": "b45e497bf47a3bd38568440c336178ebdde68aea832653d5260d2b1a28687e1f",
+      "status": "adapted",
+      "adaptation": "uses-local-browser-utf8-byte-length-helper"
+    },
+    {
+      "source_path": "packages/core/src/schemas/timestamp.ts",
+      "source_sha256": "b2db0a796396ab52f001807a5e3478ed076be9b5c914ddc29abae6ae22e9ab53",
+      "vendored_path": "src/schemas/timestamp.ts",
+      "vendored_sha256": "b2db0a796396ab52f001807a5e3478ed076be9b5c914ddc29abae6ae22e9ab53",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/schemas/title-text.ts",
+      "source_sha256": "f4131b906c9256bc48043e500643ce606166fdd22e456b19be772956a72e368d",
+      "vendored_path": "src/schemas/title-text.ts",
+      "vendored_sha256": "f4131b906c9256bc48043e500643ce606166fdd22e456b19be772956a72e368d",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/search-entry.ts",
+      "source_sha256": "b2486f467e3e3800046f3207a29256a4e7ac89fb1e61793c3e29990d52b95367",
+      "vendored_path": "src/search-entry.ts",
+      "vendored_sha256": "b2486f467e3e3800046f3207a29256a4e7ac89fb1e61793c3e29990d52b95367",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/search-error.ts",
+      "source_sha256": "31656d81f07faa46ae8a4daf4faeb4c46aee45f949672e2762521cdeb9a855a2",
+      "vendored_path": "src/search-error.ts",
+      "vendored_sha256": "31656d81f07faa46ae8a4daf4faeb4c46aee45f949672e2762521cdeb9a855a2",
+      "status": "verbatim"
+    },
+    {
+      "source_path": null,
+      "source_sha256": null,
+      "vendored_path": "src/sqlite/browser.ts",
+      "vendored_sha256": "ca571c04c916a8bff162106144aa0572c723e4c3b0d2b78e5496a77eb4270628",
+      "status": "browser-adapter",
+      "adaptation": "Registers the worker SQLite driver and opens through upstream openWith."
+    },
+    {
+      "source_path": "packages/core/src/sqlite/database.ts",
+      "source_sha256": "4a3caf73621fb469c11bcadd9e5ed0a0d060f1d280a618e5a724d216659451d7",
+      "vendored_path": "src/sqlite/database.ts",
+      "vendored_sha256": "4a3caf73621fb469c11bcadd9e5ed0a0d060f1d280a618e5a724d216659451d7",
+      "status": "verbatim"
+    },
+    {
+      "source_path": "packages/core/src/types.ts",
+      "source_sha256": "636677944e3e0c93a25da2f8dad8ca01f0b12740c35d086b689061a9b125840d",
+      "vendored_path": "src/types.ts",
+      "vendored_sha256": "636677944e3e0c93a25da2f8dad8ca01f0b12740c35d086b689061a9b125840d",
+      "status": "verbatim"
+    }
+  ]
+}

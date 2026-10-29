@@ -1,11 +1,16 @@
 import { useTranslation } from "react-i18next";
+import { useSetAtom } from "jotai";
+import { Button } from "react95";
 
 import { Text } from "@/components/Styled";
+import { terminalWindow } from "@/config/desktop";
+import { addWindowAtom } from "@/stores/window.atom";
 
 import { ProjectLayout } from "./ProjectLayout";
 
 export function Zinn() {
   const { t } = useTranslation("content");
+  const addWindow = useSetAtom(addWindowAtom);
 
   return (
     <ProjectLayout
@@ -19,6 +24,16 @@ export function Zinn() {
       }}
     >
       <Text>{t("project-teasers.zinn")}</Text>
+      <Button
+        onClick={() =>
+          addWindow({
+            ...terminalWindow,
+            contentProps: { initialCommand: "zinn", launchId: Date.now() },
+          })
+        }
+      >
+        {t("terminal.tryZinn")}
+      </Button>
     </ProjectLayout>
   );
 }

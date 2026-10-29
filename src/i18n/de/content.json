@@ -14,7 +14,8 @@
     "projects": "Klicken Sie auf ein Projekt, um Details anzuzeigen. Verwenden Sie das Globus-Symbol, um die Live-Seite zu besuchen, oder das GitHub-Symbol, um den Quellcode zu durchsuchen.",
     "resume": "Dies ist mein Lebenslauf. Scrollen Sie nach unten, um meine Berufserfahrung, Ausbildung, Fähigkeiten und mehr zu sehen.",
     "vigenereCipher": "Geben Sie eine Nachricht und einen geheimen Schlüssel ein und wählen Sie Verschlüsseln oder Entschlüsseln. Die Vigenère-Chiffre verwendet einen sich wiederholenden Schlüssel, um jeden Buchstaben Ihrer Nachricht zu verschieben.",
-    "videoPlayer": "Verwenden Sie die Wiedergabe-, Pause- und Stopp-Tasten zur Steuerung. Ziehen Sie den Regler, um durch das Video zu navigieren."
+    "videoPlayer": "Verwenden Sie die Wiedergabe-, Pause- und Stopp-Tasten zur Steuerung. Ziehen Sie den Regler, um durch das Video zu navigieren.",
+    "terminal": "Eine Browser-Shell mit virtuellen Dateien. Mit help sehen Sie die Befehle, mit zinn help die Zinn-Befehle. Pfeiltasten navigieren durch den Verlauf. Strg+C bricht ab. Unter Datei finden Sie Upload und Textprotokoll."
   },
   "clippy": {
     "action": {
@@ -132,5 +133,24 @@
   },
   "screensaver": {
     "dismissHint": "Klicken oder beliebige Taste drücken zum Beenden"
+  },
+  "terminal": {
+    "label": "Terminal",
+    "help": "Hilfe",
+    "working": "Wird ausgeführt…",
+    "command": "Terminalbefehl",
+    "hint": "↑↓ Verlauf · Tab ergänzen · Enter ausführen",
+    "transcript": "Textprotokoll",
+    "tryZinn": "Zinn im Terminal ausprobieren",
+    "file": "Datei",
+    "edit": "Bearbeiten",
+    "menu": "Terminalmenü",
+    "uploadFile": "Datei hochladen…",
+    "viewTranscript": "Textprotokoll anzeigen",
+    "saveTranscript": "Textprotokoll speichern…",
+    "copyTranscript": "Textprotokoll kopieren",
+    "clearScreen": "Bildschirm leeren",
+    "close": "Schließen",
+    "commandReference": "Befehlsübersicht"
   }
 }

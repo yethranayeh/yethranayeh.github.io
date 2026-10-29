@@ -26,6 +26,15 @@ export default function DesktopIcon({ title, iconSrc, onOpen }: DesktopIconProps
     <ClickAwayListener onClickAway={onDeselect}>
       <Flex
         direction="column"
+        role="button"
+        tabIndex={0}
+        aria-label={title}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            onOpen();
+          }
+        }}
         onDoubleClick={!isTouchDevice ? onOpen : undefined}
         onClick={isTouchDevice ? onOpen : onSelect}
         align="center"

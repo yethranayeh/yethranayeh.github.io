@@ -13,6 +13,7 @@ import { soundAtom } from "@/stores/soundAtom";
 import { helpWindow, shutdownWindow } from "@/config/windowRegistry";
 import { addWindowAtom } from "@/stores/window.atom";
 import { startMenuIcons } from "@/config/startMenu";
+import { terminalWindow } from "@/config/desktop";
 
 import { ListItem } from "./ListItem/ListItem";
 
@@ -79,6 +80,13 @@ export function StartMenu({ onClose }: { onClose: () => void }) {
   return (
     <ClickAwayListener onClickAway={onClose}>
       <MenuList className={styles.list} onClick={onClose}>
+        <ListItem
+          onClick={() => addWindow(terminalWindow)}
+          iconSrc={terminalWindow.iconSrc}
+          iconSize={24}
+        >
+          {t("window.terminal")}
+        </ListItem>
         <ListItem
           onClick={onClickHelp}
           iconSrc={iconMap.help}

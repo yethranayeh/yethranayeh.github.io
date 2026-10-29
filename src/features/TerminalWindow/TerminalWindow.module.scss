@@ -1,0 +1,206 @@
+@use "../../styles/mixins.scss";
+
+.window {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: min(510px, calc(100svh - 150px));
+  min-height: 0;
+  min-width: 0;
+}
+
+.menuBar {
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.menuGroup {
+  position: relative;
+}
+
+.menuTrigger {
+  font: inherit;
+  font-size: 14px;
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 3px 8px;
+  color: inherit;
+  cursor: default;
+
+  &:hover,
+  &[aria-expanded="true"] {
+    border-color: #fff #777 #777 #fff;
+  }
+  &[aria-expanded="true"] {
+    border-color: #777 #fff #fff #777;
+  }
+  &:focus-visible {
+    outline: 1px dotted #111;
+    outline-offset: -4px;
+  }
+}
+
+.menuPopup {
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+  left: 0;
+  min-width: 210px;
+  padding: 3px;
+  background: #c0c0c0;
+  border: 2px outset #ddd;
+  box-shadow: 2px 2px #333;
+
+  button {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    font: inherit;
+    font-size: 13px;
+    color: #111;
+    background: transparent;
+    border: none;
+    text-align: left;
+    white-space: nowrap;
+    padding: 7px 10px;
+    cursor: default;
+
+    &:focus,
+    &:hover:not(:disabled) {
+      background: #000080;
+      color: #fff;
+      outline: none;
+    }
+    &:disabled {
+      color: #777;
+    }
+    kbd {
+      font: inherit;
+    }
+  }
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  background: #141719;
+  color: #e2e5dc;
+  border: 2px inset #ddd;
+  padding: 8px 10px;
+  font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+}
+
+.output {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  canvas {
+    display: block;
+  }
+}
+
+.command {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 8px;
+  font-size: 16px;
+
+  label {
+    color: #b4d598;
+    white-space: nowrap;
+  }
+  input {
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    min-width: 0;
+    border-radius: 0;
+    padding: 4px 0;
+    &::placeholder {
+      color: #909990;
+    }
+  }
+}
+
+.error {
+  margin: 0;
+  padding: 12px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+.transcriptDialog {
+  box-sizing: border-box;
+  width: min(720px, calc(100vw - 24px));
+  max-height: 80svh;
+  padding: 4px;
+  color: #111;
+  background: #c0c0c0;
+  border: 2px outset #ddd;
+
+  &::backdrop {
+    background: rgb(0 0 0 / 30%);
+  }
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px;
+  }
+  pre {
+    max-height: 60svh;
+    overflow: auto;
+    margin: 4px;
+    padding: 12px;
+    background: #fff;
+    border: 2px inset #ddd;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    user-select: text;
+  }
+}
+
+.fileInput {
+  display: none;
+}
+.announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+@include mixins.media-max-md {
+  .window {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+  }
+  .screen {
+    padding: 6px;
+  }
+  .menuTrigger {
+    min-height: 30px;
+  }
+  .command {
+    font-size: 16px;
+  }
+  .command label {
+    font-size: 13px;
+  }
+}

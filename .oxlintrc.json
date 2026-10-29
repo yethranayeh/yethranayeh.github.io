@@ -18,6 +18,10 @@
   },
   "overrides": [
     {
+      "files": ["src/vendor/zinn/core/src/schemas/title-text.ts"],
+      "rules": { "no-control-regex": "off" }
+    },
+    {
       "files": [
         "src/layout/components/Navbar/LanguageSelect.tsx",
         "src/layout/components/Navbar/MobileOverflowMenu.tsx"

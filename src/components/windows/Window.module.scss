@@ -63,6 +63,8 @@
 @include mixins.media-max-md {
   .window {
     position: fixed !important;
+    // A desktop drag offset must not displace a fullscreen mobile window.
+    transform: none !important;
     top: variables.$navbar-height !important;
     left: 0 !important;
     width: 100vw !important;

@@ -14,7 +14,8 @@
     "projects": "Click any project to view its details. Use the globe icon to visit the live deployment, or the GitHub icon to browse the source code.",
     "resume": "This is my resume. Scroll down to see my work experience, education, skills, and more.",
     "vigenereCipher": "Enter a message and a secret key phrase, then choose to encrypt or decrypt. The Vigenère cipher uses a repeating key to shift each letter of your message.",
-    "videoPlayer": "Use the play, pause, and stop buttons to control playback. Drag the slider to seek through the video."
+    "videoPlayer": "Use the play, pause, and stop buttons to control playback. Drag the slider to seek through the video.",
+    "terminal": "A browser shell with virtual files. Type help for commands, or zinn help for Zinn. Use Up and Down for history and Ctrl+C to cancel. File contains upload and transcript actions."
   },
   "clippy": {
     "action": {
@@ -132,5 +133,24 @@
   },
   "screensaver": {
     "dismissHint": "Click or press any key to exit"
+  },
+  "terminal": {
+    "label": "Terminal",
+    "help": "Help",
+    "working": "Working…",
+    "command": "Terminal command",
+    "hint": "↑↓ history · Tab complete · Enter run",
+    "transcript": "Text transcript",
+    "tryZinn": "Try Zinn in Terminal",
+    "file": "File",
+    "edit": "Edit",
+    "menu": "Terminal menu",
+    "uploadFile": "Upload file…",
+    "viewTranscript": "View transcript",
+    "saveTranscript": "Save transcript…",
+    "copyTranscript": "Copy transcript",
+    "clearScreen": "Clear screen",
+    "close": "Close",
+    "commandReference": "Command reference"
   }
 }

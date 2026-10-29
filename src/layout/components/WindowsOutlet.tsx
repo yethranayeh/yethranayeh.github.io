@@ -18,7 +18,7 @@ export function WindowsOutlet() {
   return (
     <>
       {windows
-        .filter((w) => !w.minimized)
+        .filter((w) => !w.minimized || w.id === "terminal")
         .map((w) => {
           const Content = w.content;
           return (
@@ -29,6 +29,13 @@ export function WindowsOutlet() {
               helpText={t(w.helpTextI18nKey ?? getWindowHelpTextKey(w.id))}
               slotProps={{
                 ...w.WindowProps?.slotProps,
+                window: {
+                  ...w.WindowProps?.slotProps?.window,
+                  style: {
+                    ...w.WindowProps?.slotProps?.window?.style,
+                    ...(w.minimized ? { display: "none" } : {}),
+                  },
+                },
                 minimizeButton: {
                   onClick: () => toggleMinimizeWindow(w.id),
                   ...w.WindowProps?.slotProps?.minimizeButton,
@@ -40,7 +47,10 @@ export function WindowsOutlet() {
               }}
             >
               <Suspense fallback={<Loader />}>
-                <Content {...(w.contentProps ?? {})} />
+                <Content
+                  {...(w.contentProps ?? {})}
+                  {...(w.id === "terminal" ? { isVisible: !w.minimized } : {})}
+                />
               </Suspense>
             </DraggableWindow>
           );
