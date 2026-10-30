@@ -139,7 +139,7 @@
     "help": "Help",
     "working": "Working…",
     "command": "Terminal command",
-    "hint": "↑↓ history · Tab complete · Enter run",
+    "hint": "↑↓ history · Tab complete · Enter run · Esc / Shift+Tab menu",
     "transcript": "Text transcript",
     "tryZinn": "Try Zinn in Terminal",
     "file": "File",

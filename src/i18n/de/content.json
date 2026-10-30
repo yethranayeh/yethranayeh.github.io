@@ -139,7 +139,7 @@
     "help": "Hilfe",
     "working": "Wird ausgeführt…",
     "command": "Terminalbefehl",
-    "hint": "↑↓ Verlauf · Tab ergänzen · Enter ausführen",
+    "hint": "↑↓ Verlauf · Tab ergänzen · Enter ausführen · Esc / Umschalt+Tab Menü",
     "transcript": "Textprotokoll",
     "tryZinn": "Zinn im Terminal ausprobieren",
     "file": "Datei",

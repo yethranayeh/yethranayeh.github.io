@@ -24,7 +24,8 @@ const commandHelp =
     "",
     "File > Upload file copies a file into /home/guest.",
     "File > View transcript or Save transcript opens or saves this session's output.",
-    "Up/Down: history  |  Tab: complete command  |  Ctrl+L: clear  |  Ctrl+C: cancel",
+    "Up/Down: history  |  Tab: complete commands and paths  |  Ctrl+L: clear  |  Ctrl+C: cancel",
+    "Escape: leave editing for the menu  |  Shift+PageUp/PageDown: scrollback",
     "",
     "This shell runs in your browser with its own virtual files.",
     "My Computer shares /home/guest. Use it to edit, export or reset visitor files.",
@@ -228,6 +229,31 @@ export class TerminalShell {
     if (this.context) throw new Error("Wait for the current command to finish.");
     if (bytes.length > 5 * 1024 * 1024) throw new Error("Choose a file smaller than 5 MB.");
     return this.workspace.upload(name, bytes);
+  }
+
+  async completionDirectory(path: string) {
+    if (this.context) return [];
+    // BashKit 0.18.2 has no cwd getter. Its public read-only commit API captures
+    // cwd without running pwd, user functions, substitutions or completion scripts.
+    // Objects have a compression byte, then raw DEFLATE containing a type byte and JSON.
+    const snapshot = this.bash.commit({ excludeFilesystem: true, excludeFunctions: true });
+    const readObject = async (id: string) => {
+      const bytes = snapshot.objects[id];
+      if (!bytes || bytes[0] !== 1) throw new Error("Shell completion state is unavailable.");
+      const stream = new Blob([bytes.slice(1)])
+        .stream()
+        .pipeThrough(new DecompressionStream("deflate-raw"));
+      const decoded = new Uint8Array(await new Response(stream).arrayBuffer());
+      return JSON.parse(new TextDecoder().decode(decoded.slice(1)));
+    };
+    const commit = await readObject(snapshot.id);
+    const state = await readObject(commit.shell);
+    const cwd = this.resetGeneration === this.workspace.resetGeneration ? state.cwd : home;
+    if (typeof cwd !== "string") return [];
+    return this.workspace.readDir(workspacePath(path, cwd)).map((entry) => ({
+      name: entry.name,
+      directory: entry.type === "dir",
+    }));
   }
 
   cancel() {

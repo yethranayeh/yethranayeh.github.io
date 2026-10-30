@@ -139,7 +139,7 @@
     "help": "Yardım",
     "working": "Çalışıyor…",
     "command": "Terminal komutu",
-    "hint": "↑↓ geçmiş · Tab tamamla · Enter çalıştır",
+    "hint": "↑↓ geçmiş · Tab tamamla · Enter çalıştır · Esc / Shift+Tab menü",
     "transcript": "Metin dökümü",
     "tryZinn": "Zinn’i Terminal’de deneyin",
     "file": "Dosya",

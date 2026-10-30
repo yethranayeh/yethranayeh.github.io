@@ -18,7 +18,11 @@ zinn task list | grep PLAY
 
 BashKit provides Bash syntax, virtual files, variables, functions, pipes, and redirection. A single shell instance preserves its working directory and state between commands. Shell variables and history belong to the current page session. Visitor files persist separately in IndexedDB and are shared with My Computer at `/home/guest`. This does not provide a native OS shell or arbitrary installed executables. `touch` creates files and accepts `-c`, but file timestamps are not supported by the host filesystem adapter.
 
-`help` lists shell and installed commands. Arrow keys recall history, Tab completes common command names, Ctrl+L clears the screen, and Ctrl+C cancels at a command boundary. The visible native input supports paste, IME, and mobile keyboards. File contains **Upload file**, **View transcript**, and **Save transcript**. Edit contains **Copy transcript** and **Clear screen**. There is no permanent transcript panel or app-specific toolbar.
+`help` lists shell and installed commands. Up and Down recall history and restore the current draft and caret. Left, Right, Home, End, Backspace and Delete edit the draft. Tab completes common command names and literal virtual paths at the caret, including quoted names. Directories keep a trailing slash for further completion. Ambiguous matches extend a shared prefix or list the choices. No match keeps the draft and focus, with an accessible announcement. Variable expansion and command substitution are not evaluated for completion.
+
+Ctrl+L clears the screen and keeps the draft. Ctrl+C cancels the draft or requests cancellation at a running command boundary. Shift+PageUp and Shift+PageDown inspect scrollback, and editing returns to the live prompt. Escape or Shift+Tab moves focus to the File menu, where normal Tab navigation resumes. The keyboard hint remains visible below the screen.
+
+Ghostty's native textarea supports paste, composition and mobile input while its canvas owns the visible editing cursor. Pasted newlines remain in the draft until Enter submits it. File contains **Upload file**, **View transcript**, and **Save transcript**. Edit contains **Copy transcript** and **Clear screen**. There is no permanent transcript panel or command bar.
 
 Zinn accepts `-h` / `--help` on commands and `help [command]` for command-specific usage. `-v` / `--version` identifies the bundled Zinn core version and source revision. Help and version work without loading the board or its database. Options accept both `--priority high` and `--priority=high`. Unknown options, duplicate options, and missing values report errors. Use `--` before literal arguments starting with a dash, such as `zinn task create -- -h`, or an equals sign for an option value, such as `--description=--help`.
 
@@ -27,6 +31,10 @@ Zinn accepts `-h` / `--help` on commands and `help [command]` for command-specif
 `ghostty-web` provides Ghostty's VT parser compiled to WASM and its canvas renderer. Geometry changes rebuild the display and replay the bounded text transcript. Each display uses a fresh WASM instance to avoid a verified resize/dispose state-reuse bug in ghostty-web 0.4. The downloaded WASM bytes are cached.
 
 `ghostty-compat.ts` normalizes the public renderer's viewport offset to whole rows. The pinned renderer otherwise compares fractional offsets while indexing with rounded offsets, which skips or repeats text at certain scroll positions. Smooth scroll animation is disabled to avoid a separate stale-target animation bug when new output arrives.
+
+`line-editor.ts` connects Ghostty input events to completed shell commands. `prompt-display.ts` redraws the live prompt after output and uses Ghostty's VT cursor positions for wrapped and Unicode input. Redraw controls stay separate from the sanitized plain-text transcript. A full paint after cursor visibility changes clears stale cursor pixels left by ghostty-web 0.4 when its position is unchanged and blinking is disabled. Resize replays the transcript and draft into a fresh instance while preserving the caret, scrollback offset and focus owner.
+
+Path completion reads virtual directory entries without executing commands. BashKit 0.18.2 has no public cwd getter, so `completionDirectory` reads cwd from its public `commit` snapshot with files and functions excluded. The pinned snapshot encoding is a compression byte followed by raw DEFLATE containing a type byte and JSON. Regression checks verify that completion leaves the shell snapshot unchanged and never calls either execution API. A dependency upgrade must recheck this encoding.
 
 ## Zinn and files
 
@@ -66,3 +74,5 @@ npm run build
 ```
 
 Tests cover actual BashKit session and filesystem behavior, pipes and failures, Zinn help/version without database initialization, option parsing and mutation safety, the Zinn binary backup bridge, Ghostty instance isolation and fractional-row rendering, SQLite transactions and FTS, worker import/export and recovery, and IndexedDB revision conflicts. Browser checks exercise the menu, transcript dialog, shell commands, scrolling, minimize/reopen, and viewport changes.
+
+Editor regression checks cover history and caret restoration, grapheme edits, quoted and repeated completion, multiline paste, control keys, composition events, wrapped prompts and drafts longer than the viewport. Browser viewport checks and synthetic input events supplement these tests. Physical mobile keyboards and native IME candidate interfaces require device testing.

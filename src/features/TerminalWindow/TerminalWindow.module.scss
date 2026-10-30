@@ -97,6 +97,7 @@
 }
 
 .output {
+  position: relative;
   flex: 1;
   min-height: 0;
   min-width: 0;
@@ -104,6 +105,11 @@
   canvas {
     display: block;
   }
+}
+
+.hint {
+  padding: 3px 6px;
+  font-size: 12px;
 }
 
 .command {

@@ -268,3 +268,40 @@ test("terminalText removes control sequences and normalizes line endings", () =>
     "hello]0;bad titleclipboard\r\nnext\r\nlast",
   );
 });
+
+test("completion reads BashKit's cwd snapshot and virtual entries without executing any commands", async () => {
+  const shell = createShell();
+  const ctx = context().value;
+  await shell.execute(
+    "mkdir -p notes/nested && cd notes && touch demo.txt && pwd() { touch forbidden; }; false",
+    ctx,
+  );
+  const snapshotBefore = shell.bash.commit({ excludeFilesystem: true, excludeFunctions: true }).id;
+  const execute = shell.bash.execute;
+  const executeSync = shell.bash.executeSync;
+  shell.bash.execute = shell.bash.executeSync = () => {
+    throw new Error("Completion must not execute commands");
+  };
+  try {
+    assert.deepEqual(await shell.completionDirectory("."), [
+      { name: "nested", directory: true },
+      { name: "demo.txt", directory: false },
+    ]);
+    assert.deepEqual(
+      await shell.completionDirectory("../notes/"),
+      await shell.completionDirectory("/home/guest/notes"),
+    );
+    assert.equal(
+      (await shell.completionDirectory("~/")).some((entry) => entry.name === "README.txt"),
+      true,
+    );
+    assert.equal(shell.workspace.exists("/home/guest/notes/forbidden"), false);
+  } finally {
+    shell.bash.execute = execute;
+    shell.bash.executeSync = executeSync;
+  }
+  assert.equal(
+    shell.bash.commit({ excludeFilesystem: true, excludeFunctions: true }).id,
+    snapshotBefore,
+  );
+});
