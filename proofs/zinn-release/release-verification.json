@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-02T05:52:23.130Z",
+  "registry": "https://registry.npmjs.org",
+  "latest": {
+    "cli": "0.43.0",
+    "core": "0.32.0"
+  },
+  "selected": {
+    "cli": "0.43.0",
+    "core": "0.32.0",
+    "matchingDependency": true
+  },
+  "integrityVerified": [
+    "SHA-512 SRI",
+    "SHA-1 registry shasum",
+    "SHA-256 local artifact digest"
+  ],
+  "provenanceLimit": "Registry package/repository declarations only. No gitHead or attestations were supplied. Registry signatures were not independently verified.",
+  "artifacts": [
+    {
+      "name": "@zinn-dev/cli",
+      "version": "0.43.0",
+      "tarball": "https://registry.npmjs.org/@zinn-dev/cli/-/cli-0.43.0.tgz",
+      "integrity": "sha512-JGp577cR8YOfrBg9oV7Uhb1UWxE8rMxfE5KVJ9uk+yKJOogentMZfX2N2Lh4QqknI5trcIA5Lh0aw4k6b5g8lg==",
+      "shasum": "3722da34f92e604612e7402c8a6aa0284706c0d0",
+      "sha256": "d48fce664eb2f8df4371d5e96e240bc794dfcf28a0b2ac4a9ed77104c0192c62",
+      "bytes": 96178,
+      "repository": {
+        "url": "git+https://github.com/yethranayeh/zinn.git",
+        "type": "git",
+        "directory": "packages/cli"
+      },
+      "gitHead": null,
+      "attestations": null
+    },
+    {
+      "name": "@zinn-dev/core",
+      "version": "0.32.0",
+      "tarball": "https://registry.npmjs.org/@zinn-dev/core/-/core-0.32.0.tgz",
+      "integrity": "sha512-OlnI73a/RI2nVRXI/Rm5V4xReekaSLSr7qmm9VcrePs7v7YWbSJR/xM+MpzB3ct/r2E3tEGVZNKlB22qgUT/1A==",
+      "shasum": "e21afea1034fe73ada1d65b2e06c9e336410dfea",
+      "sha256": "f3c7bd8d489b394164c860e59832a3dfceb0adf93aea5ef4e7d6c7ec373f270b",
+      "bytes": 100592,
+      "repository": {
+        "url": "git+https://github.com/yethranayeh/zinn.git",
+        "type": "git",
+        "directory": "packages/core"
+      },
+      "gitHead": null,
+      "attestations": null
+    }
+  ]
+}

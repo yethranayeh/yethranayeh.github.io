@@ -1,0 +1,25 @@
+--- a/index.js
++++ b/index.js
+@@ -1,7 +1,8 @@
+ #!/usr/bin/env node
+ import packageJson from "./package.json" with { type: "json" };
+ import { versionSpellings } from "./src/input.js";
+-const args = process.argv.slice(2);
++import { assertCapability } from "../../adapters/host.js";
++export async function invokeReleased(args) {
+ const isVersionRequest = args.length === 1 && versionSpellings.includes(args[0]);
+ if (isVersionRequest) {
+     console.info(packageJson.version);
+@@ -13,6 +14,7 @@
+         const { createRouter } = await import("./src/routes/router.js");
+         const { parsedRoutes } = await import("./src/routes/routes.js");
+         const router = createRouter(parsedRoutes, async (command) => {
++            assertCapability(command);
+             if (command.effects.storage === "none") {
+                 return;
+             }
+@@ -32,3 +34,4 @@
+         renderFailure(error);
+     }
+ }
++}
