@@ -15,6 +15,7 @@
     "fix": "npm run format && npm run lint:fix",
     "zinn:prepare": "node tools/zinn-release/prepare.mjs",
     "test:zinn-release": "node tools/zinn-release/check.mjs",
+    "test:zinn-shell-bridge": "node tools/zinn-release/check-shell-bridge.mjs",
     "zinn:proof": "npm run test:zinn-release && vite --config tools/zinn-release/vite.config.mjs",
     "build:zinn-proof": "npm run test:zinn-release && vite build --config tools/zinn-release/vite.config.mjs",
     "zinn:release-audit": "node tools/zinn-release/audit.mjs",
