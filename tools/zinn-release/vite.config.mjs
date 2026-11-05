@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { defineConfig } from "vite";
 import { fileURLToPath } from "node:url";
 export default defineConfig({
+  base: "./",
   root: fileURLToPath(new URL("../../proofs/zinn-release", import.meta.url)),
   server: {
     host: "127.0.0.1",
@@ -24,5 +25,19 @@ export default defineConfig({
       },
     },
   ],
-  build: { outDir: "../../dist/zinn-proof", emptyOutDir: true },
+  build: {
+    outDir: "../../dist/zinn-proof",
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        index: fileURLToPath(new URL("../../proofs/zinn-release/index.html", import.meta.url)),
+        commands: fileURLToPath(
+          new URL("../../proofs/zinn-release/shell-commands.html", import.meta.url),
+        ),
+        terminalEvents: fileURLToPath(
+          new URL("../../proofs/zinn-release/terminal-events.html", import.meta.url),
+        ),
+      },
+    },
+  },
 });

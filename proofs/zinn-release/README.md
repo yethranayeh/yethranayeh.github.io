@@ -25,6 +25,8 @@ npm run zinn:proof
 
 `npm run build:zinn-proof` builds a standalone proof under ignored `dist/zinn-proof/`, including the native reference. This is independent of `npm run build` for the portfolio. `npx vite preview --config tools/zinn-release/vite.config.mjs --host 127.0.0.1 --port 5191` previews that proof build.
 
+The proof commands also run the pinned BashKit 0.20.3 commands adapter checks. Open `shell-commands.html` to run the shared stream/status and plain-default suite in a dedicated browser worker. [The adapter report](../zinn-shell-bridge/COMMANDS-0.20.3.md) records reproduction, explicit color/width policy and browser evidence. Automatic TTY selection remains deferred to PORT-18. The production Terminal and released-Zinn cutover remain PORT-13 work.
+
 ## Adaptation map
 
 | Boundary | Retained upstream behavior | Browser replacement |

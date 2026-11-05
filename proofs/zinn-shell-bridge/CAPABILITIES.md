@@ -4,7 +4,7 @@ Overall verdict: **unsupported** for the required InvocationResult contract on i
 
 ## Reproduce
 
-Run from the repository root with the lockfile dependencies installed:
+Historical reproduction: use commit d030c8f and that commit's package-lock.json in a separate checkout, then install with npm ci and run the commands below. The current checkout uses BashKit 0.20.3 and test:zinn-shell-bridge now runs check-shell-commands.mjs. This version-pinned 0.18.2 runner intentionally rejects 0.20.3. The recorded measurements below remain unchanged:
 
 ```sh
 npm run test:zinn-shell-bridge

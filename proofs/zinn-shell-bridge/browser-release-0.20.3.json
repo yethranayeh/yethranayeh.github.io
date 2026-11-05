@@ -1,0 +1,1908 @@
+{
+  "passed": 196,
+  "snapshotReload": true,
+  "differences": [
+    {
+      "argv": [
+        "whoami",
+        "--json"
+      ],
+      "native": {
+        "actor_name": "Visitor",
+        "actor_email": null,
+        "actor_kind": "human",
+        "actor_source": "git-config",
+        "actor_session_id": null,
+        "actor_thread_id": null,
+        "actor_agent": null,
+        "actor_model": null,
+        "actor_effort": null
+      },
+      "browser": {
+        "actor_name": "Visitor",
+        "actor_email": null,
+        "actor_kind": "human",
+        "actor_source": "os-user",
+        "actor_session_id": null,
+        "actor_thread_id": null,
+        "actor_agent": null,
+        "actor_model": null,
+        "actor_effort": null
+      },
+      "reason": "virtual visitor identity instead of native Git identity"
+    }
+  ],
+  "identity": {
+    "cli": "0.43.0",
+    "core": "0.32.0",
+    "adaptation": "portfolio-zinn-browser.1",
+    "storageNamespace": "portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1"
+  },
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "results": [
+    {
+      "argv": [],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "-h"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "--version"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "-v"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "--help",
+        "--description-file",
+        "/visitor/never-read.txt"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "--help",
+        "ignored",
+        "--description-file",
+        "/visitor/never-read.txt"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "new",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "order",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "move",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "order",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "archive",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "unarchive",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "relation",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "relation",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "relation",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "label",
+        "add",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "label",
+        "remove",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "activity",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "activity",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "backup",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "restore",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "migrate",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "reindex",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "info",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "whoami",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "capabilities",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "unknown"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "unknown",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "unknown",
+        "PLAY-1"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "unknown",
+        "PLAY-1",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "positional title"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "positional title",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title",
+        "A",
+        "--title",
+        "B"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title",
+        "A",
+        "--title",
+        "B",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title",
+        "-literal"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title",
+        "-literal",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--wat"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--wat",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=A",
+        "--priority=wrong"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=A",
+        "--priority=wrong",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=A",
+        "--description-file=/visitor/never-read.txt",
+        "--priority=wrong"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=A",
+        "--description-file=/visitor/never-read.txt",
+        "--priority=wrong",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--all=true"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--all=true",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--limit=zero"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--limit=zero",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "move",
+        "PLAY-1"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "move",
+        "PLAY-1",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1",
+        "extra"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1",
+        "extra",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1",
+        "--json",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "PLAY-1",
+        "--column=Done"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "PLAY-1",
+        "--column=Done",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "-literal"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "-literal",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "x",
+        "PLAY",
+        "--all-projects"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "x",
+        "PLAY",
+        "--all-projects",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "create",
+        "PLAY",
+        "--name=Browser proof"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "project",
+        "list"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "project",
+        "view",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=Quoted 'browser' task",
+        "--description=First line\nSecond line",
+        "--priority=high",
+        "--due=1893456000000"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "show",
+        "PLAY-1"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "PLAY-1",
+        "--title=Edited browser task",
+        "--description=- literal text"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "move",
+        "PLAY-1",
+        "In Progress"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "Edited browser",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "PLAY-1"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=-literal --help",
+        "--description-file=/visitor/note.txt",
+        "--json"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--json"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1",
+        "--json"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "PLAY-1",
+        "--description=append text",
+        "--append",
+        "--json"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "PLAY-1",
+        "--priority=none",
+        "--json"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "move",
+        "PLAY-1",
+        "Done",
+        "--json"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--column=Done",
+        "--json"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "--json",
+        "--",
+        "-literal",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "--",
+        "--json",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--limit=1"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--limit=1",
+        "--json"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=not saved",
+        "--column=Missing",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-999",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "PLAY-1",
+        "--title=Edited browser task"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "no matching task",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "-h"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "--version"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "-v"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "--help",
+        "--description-file",
+        "/visitor/never-read.txt"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "--help",
+        "ignored",
+        "--description-file",
+        "/visitor/never-read.txt"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "new",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "order",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "project",
+        "column",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "move",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "order",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "archive",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "unarchive",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "relation",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "relation",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "relation",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "comment",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "label",
+        "add",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "label",
+        "remove",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "create",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "edit",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "label",
+        "delete",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "activity",
+        "list",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "activity",
+        "view",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "backup",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "restore",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "migrate",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "reindex",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "info",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "whoami",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "capabilities",
+        "--help"
+      ],
+      "status": 0,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "unknown"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "unknown",
+        "PLAY-1"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "positional title"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title",
+        "A",
+        "--title",
+        "B"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title",
+        "-literal"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--wat"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=A",
+        "--priority=wrong"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "create",
+        "PLAY",
+        "--title=A",
+        "--description-file=/visitor/never-read.txt",
+        "--priority=wrong"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--all=true"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY",
+        "--limit=zero"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "move",
+        "PLAY-1"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1",
+        "extra"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1",
+        "--json",
+        "--json"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "edit",
+        "PLAY-1",
+        "--column=Done"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "-literal"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "x",
+        "PLAY",
+        "--all-projects"
+      ],
+      "status": 1,
+      "readonly": true
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "search",
+        "Edited",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "list",
+        "PLAY"
+      ],
+      "status": 0,
+      "readonly": false
+    },
+    {
+      "argv": [
+        "task",
+        "view",
+        "PLAY-1"
+      ],
+      "status": 0,
+      "readonly": false
+    }
+  ]
+}

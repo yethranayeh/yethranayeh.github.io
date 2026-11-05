@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <title>Production Terminal composition probe</title>
+  <style>
+    body {
+      margin: 12px;
+      font: 15px system-ui;
+    }
+    iframe {
+      width: 100%;
+      height: 620px;
+      border: 1px solid #888;
+    }
+  </style>
+  <p>
+    Use the production preview at /zinn-proof/terminal-events.html. Open Terminal below with an
+    empty draft, then run the synthetic event probe.
+  </p>
+  <button id="run" disabled>Run synthetic composition probe</button>
+  <pre id="result" role="status">Ready. Native IME and physical mobile are separate checks.</pre>
+  <iframe id="portfolio" src="/" title="Production portfolio"></iframe>
+  <script type="module" src="./terminal-events.js"></script>
+</html>

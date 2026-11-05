@@ -15,10 +15,13 @@ function run(cmd, args) {
 try {
   for (const file of ["package.json", "package-lock.json", ".npmrc"])
     await copyFile(path.join(root, file), path.join(clean, file));
-  for (const folder of ["tools/zinn-release", "proofs/zinn-release"]) {
+  for (const folder of ["tools/zinn-release", "proofs/zinn-release", "proofs/zinn-shell-bridge"]) {
     await cp(path.join(root, folder), path.join(clean, folder), {
       recursive: true,
-      filter: (source) => !/(?:^|\/)(generated|artifacts|results)(?:\/|$)/.test(source),
+      filter: (source) =>
+        !/(?:^|\/)(generated|artifacts|results)(?:\/|$)|(?:commands-)?results\.json$|commands-reference\.json$/.test(
+          source,
+        ),
     });
   }
   await mkdir(path.join(clean, "src/features/TerminalWindow"), { recursive: true });
@@ -28,6 +31,7 @@ try {
   );
   console.log(run("npm", ["ci", "--ignore-scripts", "--no-audit", "--no-fund"]));
   console.log(run(process.execPath, ["tools/zinn-release/check.mjs"]));
+  console.log(run(process.execPath, ["tools/zinn-release/check-shell-commands.mjs"]));
   const source = path.join(clean, "node_modules/@zinn-dev/cli/index.js");
   await writeFile(source, `${await readFile(source, "utf8")}\n// drift\n`);
   const drift = spawnSync(process.execPath, ["tools/zinn-release/prepare.mjs"], {
@@ -37,7 +41,7 @@ try {
   assert.equal(drift.status, 1);
   assert.match(drift.stderr, /Upstream source drift: cli\/index.js/);
   console.log(
-    "PASS: clean npm ci, released native/WASM conformance, and rejection of modified upstream source.",
+    "PASS: clean npm ci, released native/WASM and commands conformance, and rejection of modified upstream source.",
   );
 } finally {
   await rm(clean, { recursive: true, force: true });
