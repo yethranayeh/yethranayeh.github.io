@@ -99,7 +99,7 @@ async function makeWorker() {
 
 async function readStoredSnapshot() {
   const database = await new Promise((resolve, reject) => {
-    const request = indexedDB.open("portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1", 1);
+    const request = indexedDB.open("portfolio-zinn-cli-0.44.0-core-0.33.0-browser.1", 1);
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error);
   });
@@ -117,7 +117,7 @@ async function readStoredSnapshot() {
 
 async function replaceStoredSnapshot(bytes) {
   const database = await new Promise((resolve, reject) => {
-    const request = indexedDB.open("portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1", 1);
+    const request = indexedDB.open("portfolio-zinn-cli-0.44.0-core-0.33.0-browser.1", 1);
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error);
   });
@@ -162,7 +162,7 @@ test("released worker help/version and extension help never initialize SQLite or
     assert.ok(result.stdout.length);
     assert.equal(result.persistence, undefined);
   }
-  assert.equal((await ok(worker, ["--version"])).stdout, "0.43.0\n");
+  assert.equal((await ok(worker, ["--version"])).stdout, "0.44.0\n");
   assert.deepEqual(await indexedDB.databases(), []);
 });
 
@@ -172,6 +172,18 @@ test("released operations, aliases, archive, reload, reset, and binary export/im
   const tasks = JSON.parse((await ok(worker, list)).stdout);
   assert.match(JSON.stringify(tasks), /Explore the desktop/);
   assert.equal(tasks.length, 3);
+  const firstPage = await ok(worker, ["task", "list", "PLAY", "--limit=1", "--json"]);
+  const cursor = firstPage.stderr.match(/--starting-after (zt1\.[A-Za-z0-9_-]+)/)[1];
+  const nextPage = await ok(worker, [
+    "task",
+    "list",
+    "PLAY",
+    "--limit=1",
+    "--starting-after",
+    cursor,
+    "--json",
+  ]);
+  assert.notEqual(JSON.parse(firstPage.stdout)[0].id, JSON.parse(nextPage.stdout)[0].id);
   await ok(worker, ["task", "new", "PLAY", "--title=A durable sample", "--priority=high"]);
   await ok(worker, ["task", "edit", "PLAY-4", "--title=The saved sample"]);
   await ok(worker, ["task", "move", "PLAY-4", "Review"]);
@@ -190,7 +202,7 @@ test("released operations, aliases, archive, reload, reset, and binary export/im
   assert.equal(JSON.parse((await ok(worker, list)).stdout).length, 3);
   await ok(worker, ["import", "backup.sqlite"], backup.bytes);
   assert.match((await ok(worker, ["task", "view", "PLAY-4"])).stdout, /The saved sample/);
-  assert.equal((await ok(worker, list)).identity.core, "0.32.0");
+  assert.equal((await ok(worker, list)).identity.core, "0.33.0");
 });
 
 async function changedImage(bytes, sql) {
@@ -216,10 +228,14 @@ test("incompatible formats, owner images, schemas, corrupt bytes and board shape
       backup,
       "UPDATE portfolio_playground SET value='portfolio-zinn-playground-v1'",
     ),
+    await changedImage(
+      backup,
+      "UPDATE portfolio_playground SET value='portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1'",
+    ),
     await changedImage(backup, "UPDATE portfolio_playground SET value='future-format'"),
     await changedImage(backup, "DROP TABLE portfolio_playground"),
-    await changedImage(backup, "PRAGMA user_version=2"),
-    await changedImage(backup, "PRAGMA user_version=4"),
+    await changedImage(backup, "PRAGMA user_version=3"),
+    await changedImage(backup, "PRAGMA user_version=5"),
     await changedImage(backup, "UPDATE project SET key='OWNER'"),
     await changedImage(backup, "UPDATE project_column SET name='Unknown' WHERE name='Review'"),
     await changedImage(backup, "PRAGMA foreign_keys=OFF; UPDATE task SET project_id='missing'"),
@@ -232,7 +248,7 @@ test("incompatible formats, owner images, schemas, corrupt bytes and board shape
   await replaceStoredSnapshot(new Uint8Array([0, 1, 2, 3]));
   const recovery = await makeWorker();
   assert.equal((await recovery.request(list)).status, 1);
-  assert.equal((await ok(recovery, ["--version"])).stdout, "0.43.0\n");
+  assert.equal((await ok(recovery, ["--version"])).stdout, "0.44.0\n");
   await ok(recovery, ["import", "backup.sqlite"], backup);
   assert.equal(JSON.parse((await ok(recovery, list)).stdout).length, 3);
   await replaceStoredSnapshot(new Uint8Array([0, 1]));
@@ -275,32 +291,39 @@ test("failed persistence rolls the active image back, and same-generation concur
   assert.equal(JSON.parse((await ok(second, list)).stdout).length, 4);
 });
 
-test("old namespace is left intact and creates a fresh generation with a separate notice", async () => {
+test("legacy and 0.43.0 namespaces stay intact while the new generation reports a separate notice", async () => {
   useFreshIndexedDb();
-  const request = indexedDB.open("portfolio-zinn-playground", 1);
-  const old = await new Promise((resolve) => {
-    request.onupgradeneeded = () => request.result.createObjectStore("snapshots");
-    request.onsuccess = () => resolve(request.result);
-  });
-  await new Promise((resolve) => {
-    const tx = old.transaction("snapshots", "readwrite");
-    tx.objectStore("snapshots").put({ revision: 7, bytes: new Uint8Array([9]) }, "board");
-    tx.oncomplete = resolve;
-  });
+  const oldBoards = [];
+  for (const name of [
+    "portfolio-zinn-playground",
+    "portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1",
+  ]) {
+    const request = indexedDB.open(name, 1);
+    const old = await new Promise((resolve) => {
+      request.onupgradeneeded = () => request.result.createObjectStore("snapshots");
+      request.onsuccess = () => resolve(request.result);
+    });
+    await new Promise((resolve) => {
+      const tx = old.transaction("snapshots", "readwrite");
+      tx.objectStore("snapshots").put({ revision: 7, bytes: new Uint8Array([9]) }, "board");
+      tx.oncomplete = resolve;
+    });
+    oldBoards.push(old);
+  }
   const worker = await makeWorker();
   const result = await ok(worker, list);
   assert.match(result.notices.join(" "), /demo was updated/);
   assert.doesNotMatch(result.stdout + result.stderr, /demo was updated/);
   assert.equal(JSON.parse(result.stdout).length, 3);
-  const tx = old.transaction("snapshots");
-  assert.equal(
-    await new Promise((resolve) => {
-      const r = tx.objectStore("snapshots").get("board");
-      r.onsuccess = () => resolve(r.result.revision);
-    }),
-    7,
-  );
-  old.close();
+  for (const old of oldBoards) {
+    const tx = old.transaction("snapshots");
+    const saved = await new Promise((resolve) => {
+      const request = tx.objectStore("snapshots").get("board");
+      request.onsuccess = () => resolve(request.result);
+    });
+    assert.deepEqual(saved, { revision: 7, bytes: new Uint8Array([9]) });
+    old.close();
+  }
 });
 
 test("unavailable IndexedDB gives a usable session board and exact separate output", async () => {

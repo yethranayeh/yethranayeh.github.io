@@ -1,28 +1,28 @@
 {
   "adaptation": "portfolio-zinn-browser.1",
-  "checkedAt": "2026-11-02",
+  "checkedAt": "2026-11-09",
   "repository": "https://github.com/yethranayeh/zinn",
   "source": "Public npm tarballs, not a sibling checkout. No gitHead is supplied by these registry records.",
-  "cli": "0.43.0",
-  "core": "0.32.0",
-  "schema": 3,
-  "storageNamespace": "portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1",
+  "cli": "0.44.0",
+  "core": "0.33.0",
+  "schema": 4,
+  "storageNamespace": "portfolio-zinn-cli-0.44.0-core-0.33.0-browser.1",
   "artifacts": [
     {
       "name": "@zinn-dev/cli",
-      "version": "0.43.0",
-      "tarball": "https://registry.npmjs.org/@zinn-dev/cli/-/cli-0.43.0.tgz",
-      "integrity": "sha512-JGp577cR8YOfrBg9oV7Uhb1UWxE8rMxfE5KVJ9uk+yKJOogentMZfX2N2Lh4QqknI5trcIA5Lh0aw4k6b5g8lg==",
-      "shasum": "3722da34f92e604612e7402c8a6aa0284706c0d0",
-      "sha256": "d48fce664eb2f8df4371d5e96e240bc794dfcf28a0b2ac4a9ed77104c0192c62"
+      "version": "0.44.0",
+      "tarball": "https://registry.npmjs.org/@zinn-dev/cli/-/cli-0.44.0.tgz",
+      "integrity": "sha512-dUxF1gS3EVUTdJqNsrNiaCQvLiQlO/9dGvOjuGzy9rleK6vBBeABH0yWIsPeMz7ggKs/OW/BPkKHl2PSZMGRZA==",
+      "shasum": "fae9d2c7c53e4a47963aaa3b89e7de9b0508c0ae",
+      "sha256": "288b281a83f783599f7b6238a3210726e2ddece90825f5b926f721913337540e"
     },
     {
       "name": "@zinn-dev/core",
-      "version": "0.32.0",
-      "tarball": "https://registry.npmjs.org/@zinn-dev/core/-/core-0.32.0.tgz",
-      "integrity": "sha512-OlnI73a/RI2nVRXI/Rm5V4xReekaSLSr7qmm9VcrePs7v7YWbSJR/xM+MpzB3ct/r2E3tEGVZNKlB22qgUT/1A==",
-      "shasum": "e21afea1034fe73ada1d65b2e06c9e336410dfea",
-      "sha256": "f3c7bd8d489b394164c860e59832a3dfceb0adf93aea5ef4e7d6c7ec373f270b"
+      "version": "0.33.0",
+      "tarball": "https://registry.npmjs.org/@zinn-dev/core/-/core-0.33.0.tgz",
+      "integrity": "sha512-lYYllkRV/TaRIzcrLUElRW5oRA9zwLmP5fq6PqMeKNtMDuVBQ/WMp6uRKdJ+umq7e7RcPxV+hL21sc4GW6nQdA==",
+      "shasum": "50fc6d37921a6a9050b06ad4c278b9052fcd68bc",
+      "sha256": "4c16bf578e469167a292e552e22d4e25a466f8fef65bceef028cc0b7adf6567a"
     }
   ]
 }

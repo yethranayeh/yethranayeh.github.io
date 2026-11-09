@@ -1,5 +1,7 @@
 # BashKit 0.20.3 commands adapter
 
+**Current refresh, 2026-11-09:** CLI 0.44.0 / core 0.33.0, schema 4, passed **236 commands checks** in Node and Chromium 157, including **176 native comparisons** and **54 explicit color/width cases**. The runtime verifies 137 upstream files. [Current browser JSON](./browser-commands-0.20.3.json) records this run. [Production integration evidence](../zinn-release/INTEGRATION.md) records the completed Terminal cutover and release refresh. The original adoption report below describes the 0.43.0 baseline; its packaged release and composition JSON remain historical. The current browser-commands JSON supersedes its original 229-check result.
+
 Verified on 2026-11-05 with Node v26.13.0, SQLite WASM 3.51.2-build8 and Chromium 156. **Exact stream/status transport and the explicit plain-default policy pass. Automatic destination/TTY detection remains unavailable, deferred to PORT-18 and non-gating for this policy.** Production released-Zinn integration remains PORT-13.
 
 ## Artifact and API
@@ -111,7 +113,7 @@ npm run preview -- --host 127.0.0.1 --port 4187 --strictPort
 ```
 
 - At `http://127.0.0.1:5190/shell-commands.html`, **Run commands conformance** passed 229 checks in a real module worker.
-- After the proof build, the same button at `http://127.0.0.1:4187/zinn-proof/shell-commands.html` passed all 229 again. [Exact browser JSON](./browser-commands-0.20.3.json) records the packaged run.
+- After the proof build, the same button at `http://127.0.0.1:4187/zinn-proof/shell-commands.html` passed all 229 again. The packaged run originally recorded 229 checks. The browser-commands JSON now records the current refresh above.
 - The existing `http://127.0.0.1:4187/zinn-proof/index.html?check` also passed all 196 native/browser comparisons, read-only guards and SQLite snapshot reload after the proof asset-path changes. [Result JSON](./browser-release-0.20.3.json).
 - At `http://127.0.0.1:4187/`, production Terminal showed the initial prompt and single Ghostty caret. Editing `echo ac` with Left then `b` produced `echo abc`, which printed `abc`. Up recalled it. Tab completed `pro` to `projects `.
 - From Terminal, `mkdir -p port17 && cd port17 && printf 'shared browser evidence\n' > evidence.txt` created a visitor file. Tab completed `cat evi` to `cat evidence.txt ` from the nested cwd, validating the unchanged commit-snapshot decoding boundary in the browser.

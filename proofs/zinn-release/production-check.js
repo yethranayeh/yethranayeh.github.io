@@ -7,8 +7,38 @@ document.getElementById("wide").onclick = () => {
   document.getElementById("portfolio").style.width = "100%";
 };
 document.getElementById("storage").onclick = async () => {
+  const databases = await indexedDB.databases();
+  const snapshots = [];
+  for (const { name } of databases) {
+    if (!name.startsWith("portfolio-zinn-")) {
+      continue;
+    }
+    const database = await new Promise((resolve, reject) => {
+      const request = indexedDB.open(name);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    try {
+      const saved = await new Promise((resolve, reject) => {
+        const request = database
+          .transaction("snapshots", "readonly")
+          .objectStore("snapshots")
+          .get("board");
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
+      });
+      const digest = saved && new Uint8Array(await crypto.subtle.digest("SHA-256", saved.bytes));
+      snapshots.push({
+        name,
+        revision: saved?.revision,
+        sha256: digest && [...digest].map((byte) => byte.toString(16).padStart(2, "0")).join(""),
+      });
+    } finally {
+      database.close();
+    }
+  }
   result.textContent = JSON.stringify(
-    { databases: await indexedDB.databases(), userAgent: navigator.userAgent },
+    { databases, snapshots, userAgent: navigator.userAgent },
     null,
     2,
   );

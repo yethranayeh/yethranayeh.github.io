@@ -171,8 +171,8 @@ try {
     browser.invoke(["--version"], { stdout: (text) => sink.push(text) }),
     browser.invoke(["task", "create", "--help"]),
   ]);
-  assert.deepEqual(sink, ["0.43.0\n"]);
-  assert.equal(queued[0].stdout, "0.43.0\n");
+  assert.deepEqual(sink, ["0.44.0\n"]);
+  assert.equal(queued[0].stdout, "0.44.0\n");
   assert.match(queued[1].stdout, /^Usage: zinn task create/);
   assert.equal(hash(browser.snapshot()), hash(bytes));
   const noChanges = hash(bytes);

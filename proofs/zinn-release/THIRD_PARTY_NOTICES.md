@@ -2,7 +2,7 @@
 
 The generated browser bundle retains the following package licenses. Package versions and artifact integrity are pinned in package-lock.json. SQLite WASM is loaded separately from the existing locked dependency and retains its own notices.
 
-## @zinn-dev/cli 0.43.0
+## @zinn-dev/cli 0.44.0
 
 MIT License
 
@@ -15,7 +15,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-## @zinn-dev/core 0.32.0
+## @zinn-dev/core 0.33.0
 
 MIT License
 
@@ -460,7 +460,7 @@ express Statement of Purpose.
     this CC0 or use of the Work.
 
 
-## zod 4.6.4
+## zod 4.6.7
 
 MIT License
 

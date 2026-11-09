@@ -1,5 +1,5 @@
 {
-  "passed": 196,
+  "passed": 206,
   "snapshotReload": true,
   "differences": [
     {
@@ -16,7 +16,8 @@
         "actor_thread_id": null,
         "actor_agent": null,
         "actor_model": null,
-        "actor_effort": null
+        "actor_effort": null,
+        "actor_client": "zinn-cli/0.44.0"
       },
       "browser": {
         "actor_name": "Visitor",
@@ -27,20 +28,21 @@
         "actor_thread_id": null,
         "actor_agent": null,
         "actor_model": null,
-        "actor_effort": null
+        "actor_effort": null,
+        "actor_client": "zinn-cli/0.44.0"
       },
       "reason": "virtual visitor identity instead of native Git identity"
     }
   ],
   "identity": {
-    "cli": "0.43.0",
-    "core": "0.32.0",
+    "cli": "0.44.0",
+    "core": "0.33.0",
     "adaptation": "portfolio-zinn-browser.1",
-    "storageNamespace": "portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1"
+    "storageNamespace": "portfolio-zinn-cli-0.44.0-core-0.33.0-browser.1"
   },
-  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
-  "readonlyChecks": 161,
-  "comparisons": 196,
-  "checkedAt": "2026-11-02",
-  "mode": "standalone-production-proof-build"
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+  "readonlyChecks": 169,
+  "comparisons": 206,
+  "checkedAt": "2026-11-09",
+  "mode": "isolated-vite-proof"
 }

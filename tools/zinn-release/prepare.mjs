@@ -44,7 +44,7 @@ export async function prepare() {
   }
   execFileSync(
     "patch",
-    ["--batch", "-p1", "-F0", "-i", path.join(proof, "patches/cli-0.43.0.patch")],
+    ["--batch", "-p1", "-F0", "-i", path.join(proof, "patches/cli-0.44.0.patch")],
     {
       cwd: path.join(proof, "generated/cli"),
       stdio: "pipe",
@@ -57,6 +57,7 @@ export async function prepare() {
     "node:child_process": "child-process.js",
     "node:readline/promises": "readline.js",
     "node:crypto": "crypto.js",
+    "node:buffer": "buffer.js",
     "#sqlite": "sqlite.js",
   };
   const bundle = await build({
@@ -69,16 +70,24 @@ export async function prepare() {
     target: "es2022",
     define: { global: "globalThis" },
     inject: [path.join(proof, "adapters/host.js")],
-    alias: { "node:path": "path-browserify", "node:buffer": "buffer" },
+    alias: { "node:path": "path-browserify" },
     plugins: [
       {
         name: "released-zinn-platform",
         setup(esbuild) {
+          // Native run records require host files and must not inspect the board during a deferred probe.
+          esbuild.onResolve(
+            { filter: /(?:^|\/)(?:failure-log|telemetry)\.js$/ },
+            ({ importer }) => {
+              if (importer.startsWith(path.join(proof, "generated/cli/"))) {
+                return { path: path.join(proof, "adapters/run-records.js") };
+              }
+            },
+          );
           esbuild.onResolve(
             { filter: /^(?:node:|#sqlite$|@zinn-dev\/core$)/ },
             ({ path: specifier }) => {
               if (specifier === "node:path") return { path: require.resolve("path-browserify") };
-              if (specifier === "node:buffer") return { path: require.resolve("buffer/") };
               if (specifier === "@zinn-dev/core")
                 return { path: path.join(proof, "generated/core/index.js") };
               const adapter = builtins[specifier];
@@ -100,7 +109,10 @@ export async function prepare() {
         file,
         upstreamSha256,
         generatedSha256: sha(generated),
-        adaptation: part === "cli" && file === "index.js" ? "cli-0.43.0.patch" : "verbatim",
+        adaptation:
+          part === "cli" && ["index.js", "src/lib.js"].includes(file)
+            ? "cli-0.44.0.patch"
+            : "verbatim",
       });
     }
   }

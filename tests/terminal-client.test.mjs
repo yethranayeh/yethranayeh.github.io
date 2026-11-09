@@ -38,14 +38,14 @@ test("worker errors and timeouts reject pending RPC, terminate, then create a fr
   assert.equal(workers[0].terminated, true);
   const retry = zinnRequest(["--version"]);
   workers[1].onmessage({
-    data: { id: workers[1].message.id, result: { stdout: "0.43.0\n", stderr: "", status: 0 } },
+    data: { id: workers[1].message.id, result: { stdout: "0.44.0\n", stderr: "", status: 0 } },
   });
-  assert.equal((await retry).stdout, "0.43.0\n");
+  assert.equal((await retry).stdout, "0.44.0\n");
   await assert.rejects(zinnRequest(["task", "list", "PLAY"]), /too long/);
   assert.equal(workers[1].terminated, true);
   const afterTimeout = zinnRequest(["--version"]);
   workers[2].onmessage({
-    data: { id: workers[2].message.id, result: { stdout: "0.43.0\n", stderr: "", status: 0 } },
+    data: { id: workers[2].message.id, result: { stdout: "0.44.0\n", stderr: "", status: 0 } },
   });
   assert.equal((await afterTimeout).status, 0);
 });

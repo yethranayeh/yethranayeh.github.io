@@ -1,16 +1,16 @@
 {
-  "passed": 229,
-  "nativeComparisons": 169,
+  "passed": 236,
+  "nativeComparisons": 176,
   "identity": {
-    "cli": "0.43.0",
-    "core": "0.32.0",
+    "cli": "0.44.0",
+    "core": "0.33.0",
     "adaptation": "portfolio-zinn-browser.1",
-    "storageNamespace": "portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1"
+    "storageNamespace": "portfolio-zinn-cli-0.44.0-core-0.33.0-browser.1"
   },
   "metrics": {
     "exists": true,
-    "opens": 116,
-    "fileReads": 117,
+    "opens": 118,
+    "fileReads": 119,
     "directoryWrites": 1,
     "bytes": 229376
   },
@@ -301,6 +301,13 @@
     "released-166",
     "released-167",
     "released-168",
+    "released-169",
+    "released-170",
+    "released-171",
+    "released-172",
+    "released-173",
+    "released-174",
+    "released-175",
     "zinn-help-pipe",
     "zinn-version-file",
     "zinn-invalid-stderr",
@@ -333,5 +340,5 @@
     "color-combined-120-forced",
     "overlapping-runtime-isolation"
   ],
-  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
 }

@@ -44,7 +44,7 @@ export { core, wasm };`,
         build.onResolve({ filter: /^#sqlite$/ }, () => ({ path: "sqlite", namespace: "test" }));
         build.onLoad({ filter: /.*/, namespace: "test" }, () => ({
           contents:
-            'export const openDatabase = () => { throw new Error("Native SQLite is not used in this test"); };',
+            'export const openResolvedDatabase = () => { throw new Error("Native SQLite is not used in this test"); }; export const openDatabase = openResolvedDatabase;',
         }));
       },
     },
@@ -65,8 +65,8 @@ test("released Zinn core runs real task rules on the SQLite WASM adapter", async
     adapter.setDatabase(database);
     adapter.initializeFreshDatabase(database);
 
-    assert.equal(adapter.getDatabaseSchemaVersion(database), 3);
-    assert.equal(adapter.getLatestSchemaVersion(), 3);
+    assert.equal(adapter.getDatabaseSchemaVersion(database), 4);
+    assert.equal(adapter.getLatestSchemaVersion(), 4);
 
     const board = adapter.project.create({ key: "PLAY", name: "Playground" }, actor);
     const columns = adapter.column.getAllByProjectKey(board.key);

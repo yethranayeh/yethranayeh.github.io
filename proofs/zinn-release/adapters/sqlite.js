@@ -1,4 +1,4 @@
-import { openWith } from "../generated/core/src/sqlite/database.js";
+import { openResolvedWith } from "../generated/core/src/sqlite/database.js";
 import {
   createWasmDriver,
   openMemoryDatabase,
@@ -7,7 +7,9 @@ import { boardPath } from "./fs.js";
 import { state, unsupported } from "./host.js";
 
 // Uses the released Database/Statement/transaction wrapper above the existing WASM driver.
-export function openDatabase(path, options = {}) {
+export const openDatabase = () => unsupported("unresolved SQLite paths");
+
+export function openResolvedDatabase(path, options = {}) {
   if (path !== boardPath) unsupported(`SQLite path ${path}`);
   if (!state.exists && (options.create === false || options.readonly)) {
     throw Object.assign(new Error(`Cannot open ${path}`), { code: "ENOENT" });
@@ -26,5 +28,5 @@ export function openDatabase(path, options = {}) {
     };
     return connection;
   };
-  return openWith(driver, path, options);
+  return openResolvedWith(driver, path, options);
 }

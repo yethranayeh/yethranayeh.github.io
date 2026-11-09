@@ -31,6 +31,8 @@ export const invalidCases = [
   ],
   ["task", "list", "PLAY", "--all=true"],
   ["task", "list", "PLAY", "--limit=zero"],
+  ["task", "list", "PLAY", "--starting-after=not-a-cursor"],
+  ["task", "list", "PLAY", "--starting-after=zt2.abc"],
   ["task", "move", "PLAY-1"],
   ["task", "view", "PLAY-1", "extra"],
   ["task", "view", "PLAY-1", "--json", "--json"],
@@ -87,12 +89,22 @@ export const files = { "/visitor/note.txt": "Virtual file content\n" };
 
 /** Only nondeterministic identities, creation/update times, timezone display and sandbox paths differ. */
 export function normalize(text, { store = "/board", note = "/visitor/note.txt" } = {}) {
-  return text
-    .replaceAll(store, "<STORE>")
-    .replaceAll(note, "<NOTE>")
-    .replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, "<UUID>")
-    .replace(/"(created_at|updated_at)": \d+/g, '"$1": <TIME>')
-    .replace(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}(?::\d{2})? (?:[+-]\d{2}:\d{2}|Z)/g, "<LOCAL_TIME>");
+  return (
+    text
+      .replaceAll(store, "<STORE>")
+      .replaceAll(note, "<NOTE>")
+      // Keep every cursor field except its nondeterministic task UUID visible to the comparison.
+      .replace(/zt1\.([A-Za-z0-9_-]+)/g, (token, payload) => {
+        const bytes = Uint8Array.from(
+          atob(payload.replaceAll("-", "+").replaceAll("_", "/")),
+          (char) => char.charCodeAt(0),
+        );
+        return `zt1.${new TextDecoder().decode(bytes)}`;
+      })
+      .replace(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi, "<UUID>")
+      .replace(/"(created_at|updated_at)": \d+/g, '"$1": <TIME>')
+      .replace(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}(?::\d{2})? (?:[+-]\d{2}:\d{2}|Z)/g, "<LOCAL_TIME>")
+  );
 }
 
 export function comparable(result, paths) {

@@ -17,7 +17,7 @@ const commandHelp =
     "INSTALLED COMMANDS",
     "  zinn                  Task board and task commands",
     "  zinn --help           Released Zinn command reference",
-    "  zinn -v               Released CLI version (0.43.0)",
+    "  zinn -v               Released CLI version (0.44.0)",
     "  zinn task list PLAY   Explore your sample board",
     "  zinn reset --yes      Reset the sample board (browser extension)",
     "  zinn export [file]    Export a backup (browser extension)",

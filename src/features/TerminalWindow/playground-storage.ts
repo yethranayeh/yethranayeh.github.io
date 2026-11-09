@@ -67,6 +67,10 @@ export class PlaygroundStorage {
 export async function hasOldPlayground() {
   return (
     typeof indexedDB.databases === "function" &&
-    (await indexedDB.databases()).some(({ name }) => name === "portfolio-zinn-playground")
+    (await indexedDB.databases()).some(
+      ({ name }) =>
+        name !== storageNamespace &&
+        (name === "portfolio-zinn-playground" || name?.startsWith("portfolio-zinn-cli-")),
+    )
   );
 }

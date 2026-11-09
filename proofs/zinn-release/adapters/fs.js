@@ -26,6 +26,12 @@ export function statSync(path) {
     size: key === boardPath ? (state.bytes?.length ?? 0) : (state.files.get(key)?.length ?? 0),
   };
 }
+export function lstatSync(path, options = {}) {
+  if (options.throwIfNoEntry === false && !existsSync(path)) {
+    return undefined;
+  }
+  return statSync(path);
+}
 export function mkdirSync(path) {
   let key = absolute(path);
   while (!state.directories.has(key)) {
@@ -65,6 +71,7 @@ export const promises = {
   },
 };
 export const statfsSync = () => unsupported("host free-space inspection");
+export const readdirSync = () => unsupported("host directory listing");
 export const closeSync = () => unsupported("host file descriptors");
 export const fsyncSync = closeSync;
 export const openSync = closeSync;

@@ -1,6 +1,6 @@
 # Portfolio Terminal
 
-Open Terminal from the desktop or Start menu. It runs BashKit **0.20.3** with shared visitor files under `/home/guest`. Zinn invokes the released **CLI 0.43.0 / core 0.32.0**, schema 3, with adaptation `portfolio-zinn-browser.1`. The CLI's definitions, aliases, parser call sites, help, presentation and domain operations come from the pinned npm artifacts.
+Open Terminal from the desktop or Start menu. It runs BashKit **0.20.3** with shared visitor files under `/home/guest`. Zinn invokes the released **CLI 0.44.0 / core 0.33.0**, schema 4, with adaptation `portfolio-zinn-browser.1`. The CLI's definitions, aliases, parser call sites, help, presentation and domain operations come from the pinned npm artifacts.
 
 ```sh
 zinn --help
@@ -15,7 +15,7 @@ zinn task archive PLAY-4
 zinn task unarchive PLAY-4
 ```
 
-`zinn` shows released root help. `zinn --version` prints exactly `0.43.0`. Browser/core identity is recorded separately in integration metadata and `dist/zinn/baseline.json`. No project argument is inserted. Old `board`, `columns` and top-level `search` forms are retired. Use the released `--help` forms for command usage.
+`zinn` shows released root help. `zinn --version` prints exactly `0.44.0`. Browser/core identity is recorded separately in integration metadata and `dist/zinn/baseline.json`. No project argument is inserted. Old `board`, `columns` and top-level `search` forms are retired. Use the released `--help` forms for command usage.
 
 Execution supports project create/list/view, task create/list/view/edit/move/search/archive/unarchive, and whoami, including released aliases such as task new and task show. Complete released help remains available for every command. Other execution, native backup/restore, OS editors, interactive prompts, host executables, hooks and streaming stdin are unavailable.
 
@@ -32,7 +32,7 @@ download backup.sqlite
 
 Reset, export and import are browser extensions. Each accepts `-h`/`--help` without opening a board or reading a filename. Reset requires `--yes`. Export defaults to `zinn-playground.sqlite`. Import accepts binary SQLite images up to 5 MiB, exclusively from this playground generation. It checks the format marker, schema, SQLite integrity, foreign keys, and the required PLAY board with its five named columns before replacement. Native owner databases and old/future playground formats are refused. A failed import preserves the active board.
 
-The storage namespace and `portfolio_playground` format value are `portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1`. The format value is independent of SQLite schema 3. A new generation starts fresh and leaves the old namespace untouched. When an old board exists, a separate status explains the reset. The new board has project PLAY, name Your playground, columns Backlog, TODO, In Progress, Review, Done, and three Visitor-created tasks: Explore the desktop (Done), Try moving a task (In Progress), Make something of your own (Backlog).
+The storage namespace and `portfolio_playground` format value are `portfolio-zinn-cli-0.44.0-core-0.33.0-browser.1`. The format value is independent of SQLite schema 4. This generation starts fresh and leaves both the old custom playground and the CLI 0.43.0/core 0.32.0 generation untouched. Backups from those generations are refused rather than migrated. When an old board exists, a separate status explains the reset. The new board has project PLAY, name Your playground, columns Backlog, TODO, In Progress, Review, Done, and three Visitor-created tasks: Explore the desktop (Done), Try moving a task (In Progress), Make something of your own (Backlog).
 
 One worker serializes commands, snapshot replacement and IndexedDB writes. Persistent success is returned after commit. Revision checks refuse stale-tab writes and failed saves restore the previous image. A subsequent command refreshes from the committed winner. Storage failure allows a clearly identified session-only board when IndexedDB cannot open. Corrupt stored images keep help/version and confirmed reset/import available. Help/version do not initialize SQLite or Zinn IndexedDB. Reset affects only the Zinn board. Visitor files, uploads and portfolio preferences have independent stores.
 
@@ -62,4 +62,6 @@ npm run build
 npm run preview -- --host 127.0.0.1 --port 5192 --strictPort
 ```
 
-See `proofs/zinn-release/INTEGRATION.md` for current evidence and physical-cleanup status. Obsolete custom CLI/core files are unreachable from production and remain pending the repository's batch-removal approval protocol.
+See `proofs/zinn-release/INTEGRATION.md` for verification evidence. The obsolete custom CLI/core files were removed with the initial integration.
+
+Native disk failure logs and local telemetry are unavailable in the browser. Their optional callbacks are inert and never inspect the board or visitor files. Task-list pagination uses the released `zt1` cursor format, including base64url encoding.
