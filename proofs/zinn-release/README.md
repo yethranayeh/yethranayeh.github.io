@@ -1,6 +1,6 @@
 # Released Zinn browser boundary
 
-This is the reusable browser proof for PORT-10 and PORT-14. The portfolio terminal still uses its existing runtime. No production route, visitor drive, terminal editor or board storage has been switched.
+This is the reusable browser proof for PORT-10 and PORT-14. The production portfolio Terminal now reuses this runtime through the BashKit commands adapter. See [integration evidence](./INTEGRATION.md) and the [Terminal guide](../../src/features/TerminalWindow/README.md) for its storage and lifecycle contract.
 
 ## Pinned baseline
 
@@ -25,7 +25,7 @@ npm run zinn:proof
 
 `npm run build:zinn-proof` builds a standalone proof under ignored `dist/zinn-proof/`, including the native reference. This is independent of `npm run build` for the portfolio. `npx vite preview --config tools/zinn-release/vite.config.mjs --host 127.0.0.1 --port 5191` previews that proof build.
 
-The proof commands also run the pinned BashKit 0.20.3 commands adapter checks. Open `shell-commands.html` to run the shared stream/status and plain-default suite in a dedicated browser worker. [The adapter report](../zinn-shell-bridge/COMMANDS-0.20.3.md) records reproduction, explicit color/width policy and browser evidence. Automatic TTY selection remains deferred to PORT-18. The production Terminal and released-Zinn cutover remain PORT-13 work.
+The proof commands also run the pinned BashKit 0.20.3 commands adapter checks. Open `shell-commands.html` to run the shared stream/status and plain-default suite in a dedicated browser worker. [The adapter report](../zinn-shell-bridge/COMMANDS-0.20.3.md) records reproduction, explicit color/width policy and browser evidence. Automatic TTY selection remains deferred to PORT-18. The production Terminal uses the same commands adapter. Its integration checks are recorded separately.
 
 ## Adaptation map
 
@@ -45,7 +45,7 @@ The proof commands also run the pinned BashKit 0.20.3 commands adapter checks. O
 
 ## Verified scope and limits
 
-Execution is deliberately limited to project create/list/view, task create/list/view/edit/move/search and whoami. Released aliases for those handlers work, including task new and task show. The existing production playground's top-level search convenience is not introduced here. Canonical search is `zinn task search <query> [<project-key>]`.
+Execution is deliberately limited to project create/list/view, task create/list/view/edit/move/search/archive/unarchive and whoami. Released aliases for those handlers work, including task new and task show. The existing production playground's top-level search convenience is not introduced here. Canonical search is `zinn task search <query> [<project-key>]`.
 
 The checked-in fixtures and native comparison exercise actual released code against disposable native storage. They cover all released command help, root and namespace help, both version flags, help precedence, aliases, missing/unknown/repeated arguments, JSON failures, equals values beginning with a dash, quoted values, literal words after `--`, multiline descriptions, virtual description files, deadlines, edit append semantics, no-op diagnostics, pagination output, missing columns/tasks, search and snapshot restoration. ANSI and table output are compared with native stdout configured to the same widths of 40, 80 and 120 columns. The browser compares against native results, not a second hand-written help reference.
 
@@ -62,13 +62,11 @@ Observed differences and limitations:
 
 The proof is memory-only and resets on reload. The reserved integration namespace is `portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1`. A different CLI/core/adaptation tuple starts a fresh board. Never change a schema marker to make old bytes appear compatible, migrate owner databases, or fall back to the old namespace after a failed import.
 
-PORT-13 can reuse this runtime and worker, with the following concrete integration work:
+The production worker uses this namespace and format marker. It seeds through released commands, commits complete images with revision checks, validates imports before replacement, and leaves old generations intact. Integration notices never enter stdout/stderr. See [the production contract](../../src/features/TerminalWindow/README.md).
 
-1. Replace the production worker's custom CLI dispatch with `invoke(argv, context)`. Pass BashKit's already parsed argv and preserve the completed Ghostty input, prompt, cursor, scrolling and completion behavior.
-2. Connect snapshot load/save to a separately versioned IndexedDB store. Preserve revision/conflict checks and commit snapshots before reporting persistence success. Add lifecycle checks for empty, matching and incompatible storage. Keep visitor-drive and portfolio-preference stores separate.
-3. On a format transition, leave the old namespace untouched and show: “The Zinn demo was updated, so its sample board has been reset. Your visitor files and preferences are kept.” Seed a new board through released operations. Do not read the old schema-3 snapshot as a compatible release merely because its schema number matches.
-4. Decide and test the production capability set, virtual file/stdin bridge, cancellation, worker disposal, size limits and trusted ANSI output. Keep a usable plain transcript. Refresh completion from the released command metadata without changing the terminal editor.
-5. Re-run this native/browser conformance suite plus test:terminal, lint and the production build before switching the runtime. Verify export/reset behavior and separate visitor-drive persistence in the integrated UI.
+`invoke(argv, {deferStorage:true})` uses the released router and capability gate to identify a storage command without opening a board. The worker discards that internal deferred result, loads/seeds its board, and invokes the identical argv. Root/command help, version and commands without storage return directly. This keeps storage initialization outside the runtime invocation and avoids a second CLI parser. `replaceSnapshot(bytes | undefined)` queues replacement between completed invocations, resets released caches and retains the SQLite engine.
+
+Per-call `projection` and `cwd` replace the read-only filesystem view. Production accepts literal `/home/guest` paths. `/visitor` remains available for isolated proof fixtures only. Binary/oversized projection failures are returned as separate notices when read. The original proof's 196-comparison browser evidence remains historical. Current native and production-browser evidence is in INTEGRATION.md.
 
 ## Deliberate release refresh
 

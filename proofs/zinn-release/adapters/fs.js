@@ -2,11 +2,16 @@ import { state, unsupported } from "./host.js";
 import { resolve, dirname } from "path-browserify";
 
 export const boardPath = "/board/data/zinn.sqlite";
-const absolute = (path) => resolve("/visitor", path);
+const absolute = (path) => resolve(state.cwd, path);
 const missing = (path) => Object.assign(new Error(`ENOENT: ${path}`), { code: "ENOENT" });
 export function existsSync(path) {
   const key = absolute(path);
-  return state.directories.has(key) || state.files.has(key) || (key === boardPath && state.exists);
+  return (
+    state.directories.has(key) ||
+    state.files.has(key) ||
+    state.fileErrors.has(key) ||
+    (key === boardPath && state.exists)
+  );
 }
 export function realpathSync(path) {
   if (!existsSync(path)) throw missing(path);
@@ -31,7 +36,13 @@ export function mkdirSync(path) {
 }
 export function readFileSync(path, encoding) {
   state.fileReads++;
-  const bytes = state.files.get(absolute(path));
+  const key = absolute(path);
+  if (state.fileErrors.has(key)) {
+    const reason = `${key}: ${state.fileErrors.get(key)}`;
+    state.notices.push(reason);
+    throw new Error(reason);
+  }
+  const bytes = state.files.get(key);
   if (!bytes) throw missing(path);
   return encoding ? new TextDecoder().decode(bytes) : bytes.slice();
 }

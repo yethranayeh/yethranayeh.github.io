@@ -7,7 +7,7 @@ import wasmUrl from "ghostty-web/ghostty-vt.wasm?url";
 
 import { desktopApps } from "@/config/desktop";
 import { addWindowAtom, removeWindowAtom } from "@/stores/window.atom";
-import { prompt, terminalText, welcome } from "./shell";
+import { prompt, plainTerminalText, styledTerminalText, welcome } from "./shell";
 import { inputText, LineEditor } from "./line-editor";
 import { completeLine } from "./completion";
 import { PromptDisplay } from "./prompt-display";
@@ -20,6 +20,7 @@ import styles from "./TerminalWindow.module.scss";
 
 const session = {
   transcript: welcome,
+  display: welcome,
   history: [] as string[],
   lastLaunchId: undefined as number | undefined,
 };
@@ -86,6 +87,7 @@ export function TerminalWindow({
   const [input, setInput] = useState("");
   const [transcript, setTranscript] = useState(session.transcript);
   const [announcement, setAnnouncement] = useState("");
+  const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
   const [rendererFailed, setRendererFailed] = useState(false);
   const [rendererVersion, setRendererVersion] = useState(0);
@@ -96,7 +98,7 @@ export function TerminalWindow({
   }, []);
 
   const redraw = useCallback(() => {
-    displayRef.current?.render(session.transcript, editor.text, editor.cursor, !busyRef.current);
+    displayRef.current?.render(session.display, editor.text, editor.cursor, !busyRef.current);
     const textarea = terminalRef.current?.textarea;
     if (textarea && !composingRef.current) {
       mirrorInput(textarea, editor);
@@ -108,8 +110,11 @@ export function TerminalWindow({
   const append = useCallback(
     (text: string) => {
       if (!text) return;
-      const safe = terminalText(text).replace(/\r\n/g, "\n");
+      const safe = plainTerminalText(text).replace(/\r\n/g, "\n");
       session.transcript = (session.transcript + safe).slice(-80_000);
+      session.display = (session.display + styledTerminalText(text).replace(/\r\n/g, "\n")).slice(
+        -100_000,
+      );
       setTranscript(session.transcript);
       redraw();
       setAnnouncement(safe.slice(-4000));
@@ -119,6 +124,7 @@ export function TerminalWindow({
 
   const clear = useCallback(() => {
     session.transcript = "";
+    session.display = "";
     setTranscript("");
     setAnnouncement("");
     // Repaint even an already empty screen, without replacing the input owner.
@@ -140,6 +146,7 @@ export function TerminalWindow({
         const shell = await getShell();
         const result = await shell.execute(command, {
           history: session.history,
+          columns: () => terminalRef.current?.cols ?? 80,
           openFile: (path) => {
             const app = desktopApps.find((item) => item.id === "computer")!;
             addWindow({ ...app, contentProps: { initialPath: path, launchId: Date.now() } });
@@ -154,6 +161,7 @@ export function TerminalWindow({
           zinn: zinnRequest,
           download: downloadFile,
         });
+        setNotice(result.notices.join(" "));
         if (result.clear) clear();
         append(result.stdout);
         append(result.stderr);
@@ -311,7 +319,7 @@ export function TerminalWindow({
           if (busyRef.current) return;
           const preedit = inputText((event as CompositionEvent).data);
           displayRef.current?.render(
-            session.transcript,
+            session.display,
             editor.text.slice(0, compositionRange.start) +
               preedit +
               editor.text.slice(compositionRange.end),
@@ -541,6 +549,9 @@ export function TerminalWindow({
         </header>
         <pre tabIndex={0}>{transcript}</pre>
       </dialog>
+      <div role="status" aria-live="polite">
+        {notice}
+      </div>
       <span id="terminal-instructions" className={styles.hint}>
         {t("terminal.hint")}
       </span>

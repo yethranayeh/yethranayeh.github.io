@@ -1,6 +1,17 @@
+export interface InvocationContext {
+  tty?: boolean;
+  columns?: number;
+  color?: boolean;
+  cwd?: string;
+  projection?: { path: string; directory?: boolean; text?: string; error?: string }[];
+}
 export interface PlaygroundResult {
-  text: string;
+  stdout: string;
+  stderr: string;
+  status: number;
+  notices?: string[];
   persistence?: "saved" | "session";
+  identity?: { cli: string; core: string; adaptation: string; storageNamespace: string };
   bytes?: Uint8Array;
 }
 
@@ -24,7 +35,11 @@ function stopWorker(error: Error) {
   worker = undefined;
 }
 
-export function zinnRequest(args: string[], bytes?: Uint8Array): Promise<PlaygroundResult> {
+export function zinnRequest(
+  args: string[],
+  bytes?: Uint8Array,
+  context?: InvocationContext,
+): Promise<PlaygroundResult> {
   if (!worker) {
     worker = new Worker(new URL("./zinn.worker.ts", import.meta.url), { type: "module" });
     worker.onmessage = (
@@ -37,16 +52,18 @@ export function zinnRequest(args: string[], bytes?: Uint8Array): Promise<Playgro
       if (event.data.error) request.reject(new Error(event.data.error));
       else if (event.data.result) request.resolve(event.data.result);
     };
+    worker.onmessageerror = () =>
+      stopWorker(new Error("Zinn returned an unreadable response. Please retry."));
     worker.onerror = () =>
-      stopWorker(new Error("Zinn couldn't start. Please retry or reload the page."));
+      stopWorker(new Error("Zinn worker stopped. Inspect the board before retrying a mutation."));
   }
   const id = ++requestId;
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(
-      () => stopWorker(new Error("Zinn took too long to respond. Please retry.")),
+      () => stopWorker(new Error("Zinn took too long to respond. Inspect the board before retrying a mutation.")),
       30_000,
     );
     pending.set(id, { resolve, reject, timeout });
-    worker!.postMessage({ id, args, bytes });
+    worker!.postMessage({ id, args, bytes, context });
   });
 }

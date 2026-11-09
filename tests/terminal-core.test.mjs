@@ -1,31 +1,27 @@
 import assert from "node:assert/strict";
 import path from "node:path";
-import fs from "node:fs";
 import { fileURLToPath } from "node:url";
+import { readFile } from "node:fs/promises";
 import { build } from "esbuild";
 import sqlite3InitModule from "@sqlite.org/sqlite-wasm";
 import { test } from "node:test";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-const resolveSrcAlias = {
-  name: "portfolio-src-alias",
-  setup(esbuild) {
-    esbuild.onResolve({ filter: /^@\// }, ({ path: specifier }) => {
-      const sourcePath = path.resolve(root, "src", specifier.slice(2));
-      return { path: fs.existsSync(sourcePath) ? sourcePath : sourcePath.replace(/\.js$/, ".ts") };
-    });
-    esbuild.onResolve({ filter: /\.js$/ }, ({ path: specifier, resolveDir }) => {
-      const resolved = path.resolve(resolveDir, specifier);
-      const sourcePath = resolved.replace(/\.js$/, ".ts");
-      if (!fs.existsSync(resolved) && fs.existsSync(sourcePath)) return { path: sourcePath };
-    });
-  },
-};
-
 const bundle = await build({
   stdin: {
-    contents: `import * as core from "./src/features/TerminalWindow/zinn-core/index.ts";
+    contents: `import * as operations from "@zinn-dev/core";
+import { setDatabase, writeTransaction, resetDatabaseForTests } from "./node_modules/@zinn-dev/core/src/db.js";
+import { openWith } from "./node_modules/@zinn-dev/core/src/sqlite/database.js";
+import { createSchema, readSchemaVersion } from "./node_modules/@zinn-dev/core/src/migrations/runner.js";
+import { latestVersion, MIGRATIONS } from "./node_modules/@zinn-dev/core/src/migrations/registry.js";
+const core = {
+  ...operations, setDatabase, writeTransaction, resetDatabaseForTests,
+  createDatabase: driver => openWith(driver, ":memory:"),
+  initializeFreshDatabase: db => { createSchema(db, MIGRATIONS); db.exec("PRAGMA foreign_keys=ON"); },
+  getDatabaseSchemaVersion: readSchemaVersion,
+  getLatestSchemaVersion: () => latestVersion(MIGRATIONS),
+};
 import * as wasm from "./src/features/TerminalWindow/sqlite-driver.ts";
 export { core, wasm };`,
     resolveDir: root,
@@ -35,7 +31,24 @@ export { core, wasm };`,
   platform: "node",
   format: "esm",
   write: false,
-  plugins: [resolveSrcAlias],
+  plugins: [
+    {
+      name: "no-native-sqlite",
+      setup(build) {
+        // A test-only cache hook installs the WASM connection without opening any native store.
+        build.onLoad({ filter: /@zinn-dev\/core\/src\/db\.js$/ }, async ({ path }) => ({
+          contents:
+            (await readFile(path, "utf8")) +
+            "\nexport const setDatabase = value => { db = value; };",
+        }));
+        build.onResolve({ filter: /^#sqlite$/ }, () => ({ path: "sqlite", namespace: "test" }));
+        build.onLoad({ filter: /.*/, namespace: "test" }, () => ({
+          contents:
+            'export const openDatabase = () => { throw new Error("Native SQLite is not used in this test"); };',
+        }));
+      },
+    },
+  ],
 });
 const adapterUrl = `data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].contents).toString("base64")}`;
 const { core, wasm } = await import(adapterUrl);
@@ -43,7 +56,7 @@ const adapter = { ...core, ...wasm };
 
 const actor = { name: "Test User", email: null, kind: "human" };
 
-test("vendored Zinn core runs real task rules on the SQLite WASM adapter", async () => {
+test("released Zinn core runs real task rules on the SQLite WASM adapter", async () => {
   const sqlite = await sqlite3InitModule();
   let raw = adapter.openMemoryDatabase(sqlite);
   let database = adapter.createDatabase(adapter.createWasmDriver(sqlite, raw));

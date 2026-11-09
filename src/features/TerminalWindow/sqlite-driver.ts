@@ -1,5 +1,5 @@
 import type { Database as WasmDatabase, Sqlite3Static, SqlValue } from "@sqlite.org/sqlite-wasm";
-import type { SqliteDriver, DriverArgs } from "./zinn-core";
+import type { SqliteDriver, DriverArgs } from "@zinn-dev/core/src/sqlite/database.js";
 
 export function createWasmDriver(sqlite: Sqlite3Static, connection: WasmDatabase): SqliteDriver {
   return {

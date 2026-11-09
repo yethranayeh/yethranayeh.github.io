@@ -10,8 +10,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const bundle = await build({
   stdin: {
     contents: `import { TerminalShell } from "./src/features/TerminalWindow/terminal-shell.ts";
-import { terminalText } from "./src/features/TerminalWindow/shell.ts";
-export { TerminalShell, terminalText };`,
+import { terminalText, plainTerminalText, styledTerminalText } from "./src/features/TerminalWindow/shell.ts";
+export { TerminalShell, terminalText, plainTerminalText, styledTerminalText };`,
     resolveDir: root,
     sourcefile: "terminal-shell-loader.ts",
   },
@@ -21,7 +21,9 @@ export { TerminalShell, terminalText };`,
   write: false,
 });
 const moduleUrl = `data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].contents).toString("base64")}`;
-const { TerminalShell, terminalText } = await import(moduleUrl);
+const { TerminalShell, terminalText, plainTerminalText, styledTerminalText } = await import(
+  moduleUrl
+);
 
 const wasmPath = path.join(root, "node_modules/@everruns/bashkit-wasm/bashkit_wasm_bg.wasm");
 await initBashkit(fs.readFileSync(wasmPath));
@@ -40,11 +42,13 @@ function context(overrides = {}) {
         opened.push(name);
         return true;
       },
-      async zinn(args, bytes) {
+      async zinn(args, bytes, presentation) {
         zinnCalls.push({ args: [...args], bytes: bytes && new Uint8Array(bytes) });
         return (
-          zinnOverride?.(args, bytes) ?? {
-            text: `zinn:${args.join(" ") || "board"}`,
+          zinnOverride?.(args, bytes, presentation) ?? {
+            stdout: `zinn:${args.join(" ")}\n`,
+            stderr: "",
+            status: 0,
             persistence: "saved",
           }
         );
@@ -110,145 +114,6 @@ test("TerminalShell returns shell status for unknown commands and failed conditi
   assert.equal(conditional.stdout, "");
 });
 
-test("zinn custom builtin preserves quoted argv and scopes the current command context", async () => {
-  const shell = createShell();
-  const first = context();
-  const firstResult = await shell.execute('zinn task create "A quoted title"', first.value);
-  assert.equal(firstResult.stdout, "zinn:task create A quoted title\n");
-  assert.deepEqual(
-    first.zinnCalls.map((call) => call.args),
-    [["task", "create", "A quoted title"]],
-  );
-
-  const second = context({
-    zinn: async (args) => ({ text: `second:${args.join("/")}`, persistence: "saved" }),
-  });
-  const secondResult = await shell.execute("zinn task list", second.value);
-  assert.equal(secondResult.stdout, "second:task/list\n");
-  assert.equal(first.zinnCalls.length, 1);
-  assert.deepEqual(
-    second.zinnCalls.map((call) => call.args),
-    [["task", "list"]],
-  );
-});
-
-test("zinn help and version are local, read-only builtins, including backup and reset help", async () => {
-  const shell = createShell();
-  const ctx = context({
-    zinn: () => {
-      throw new Error("Help and version must not start the Zinn worker.");
-    },
-  });
-  const before = (await shell.execute("ls", ctx.value)).stdout;
-  for (const command of [
-    "zinn help",
-    "zinn help --help",
-    "zinn -h",
-    "zinn --help",
-    "zinn task",
-    "zinn task -h",
-    "zinn task create -h",
-    "zinn help task create",
-    "zinn help task create -h",
-    "zinn export --help",
-    "zinn import -h",
-    "zinn reset --yes --help",
-  ]) {
-    const result = await shell.execute(command, ctx.value);
-    assert.equal(result.exitCode, 0, `${command}: ${result.stderr}`);
-    assert.match(result.stdout, /ZINN PLAYGROUND/);
-    assert.match(result.stdout, /Usage: zinn/);
-    assert.doesNotMatch(result.stdout, /Storage is unavailable/);
-  }
-  const shortVersion = await shell.execute("zinn -v", ctx.value);
-  const longVersion = await shell.execute("zinn --version", ctx.value);
-  const provenance = JSON.parse(
-    fs.readFileSync(path.join(root, "src/vendor/zinn/core/PROVENANCE.json"), "utf8"),
-  );
-  assert.equal(shortVersion.exitCode, 0, shortVersion.stderr);
-  assert.equal(longVersion.exitCode, 0, longVersion.stderr);
-  assert.equal(shortVersion.stdout, longVersion.stdout);
-  assert.equal(
-    shortVersion.stdout,
-    `Zinn playground (Zinn core ${provenance.upstream_core_package_version}, source ${provenance.upstream_commit.slice(0, 7)})\n`,
-  );
-  const piped = await shell.execute("zinn -h | grep 'Usage: zinn'", ctx.value);
-  assert.equal(piped.exitCode, 0, piped.stderr);
-  assert.match(piped.stdout, /Usage: zinn \[command\]/);
-  assert.equal(ctx.zinnCalls.length, 0);
-  assert.equal((await shell.execute("ls", ctx.value)).stdout, before);
-});
-
-test("zinn rejects invalid arguments without calling its worker and preserves explicit literals", async () => {
-  const shell = createShell();
-  const ctx = context();
-  for (const command of [
-    "zinn task create -x",
-    "zinn task create Title --priority",
-    "zinn task create Title --description -h",
-    "zinn search --unknown",
-    "zinn export --unknown",
-    "zinn import --unknown",
-    "zinn reset --yes=false",
-  ]) {
-    const result = await shell.execute(command, ctx.value);
-    assert.notEqual(result.exitCode, 0, command);
-    assert.match(result.stderr, /Unknown option|Provide a value|does not take a value/);
-  }
-  assert.equal(ctx.zinnCalls.length, 0);
-
-  const literal = await shell.execute(
-    'zinn task create --description="value=with spaces" -- -h',
-    ctx.value,
-  );
-  assert.equal(literal.exitCode, 0, literal.stderr);
-  assert.deepEqual(ctx.zinnCalls[0].args, [
-    "task",
-    "create",
-    "--description=value=with spaces",
-    "--",
-    "-h",
-  ]);
-});
-
-test("zinn export/import uses virtual binary files and download receives the saved bytes", async () => {
-  const shell = createShell();
-  const backup = Uint8Array.from([0, 255, 1, 128, 10]);
-  const ctx = context({
-    zinn: async (args, bytes) => {
-      if (args[0] === "export")
-        return { text: "export complete", persistence: "saved", bytes: backup };
-      if (args[0] === "import")
-        return { text: `imported ${bytes.length} bytes`, persistence: "saved" };
-      return { text: "ok", persistence: "saved" };
-    },
-  });
-
-  const exported = await shell.execute('zinn export "my backup.sqlite"', ctx.value);
-  assert.equal(exported.exitCode, 0, exported.stderr);
-  assert.match(exported.stdout, /Exported \/home\/guest\/my backup\.sqlite/);
-  assert.deepEqual(ctx.zinnCalls[0].args, ["export"]);
-
-  const downloaded = await shell.execute('download "my backup.sqlite"', ctx.value);
-  assert.equal(downloaded.exitCode, 0, downloaded.stderr);
-  assert.equal(ctx.downloads[0].name, "my backup.sqlite");
-  assert.deepEqual(ctx.downloads[0].bytes, backup);
-
-  const imported = await shell.execute('zinn import "my backup.sqlite"', ctx.value);
-  assert.equal(imported.exitCode, 0, imported.stderr);
-  assert.equal(imported.stdout, "imported 5 bytes\n");
-  assert.deepEqual(ctx.zinnCalls[1].args, ["import", "--", "/home/guest/my backup.sqlite"]);
-  assert.deepEqual(ctx.zinnCalls[1].bytes, backup);
-
-  const literalExport = await shell.execute("zinn export -- --help", ctx.value);
-  assert.equal(literalExport.exitCode, 0, literalExport.stderr);
-  assert.deepEqual(shell.workspace.read("/home/guest/--help"), backup);
-  const literalImport = await shell.execute("zinn import -- --help", ctx.value);
-  assert.equal(literalImport.exitCode, 0, literalImport.stderr);
-  assert.deepEqual(ctx.zinnCalls.at(-1).args, ["import", "--", "/home/guest/--help"]);
-  assert.deepEqual(ctx.zinnCalls.at(-1).bytes, backup);
-});
-
 test("upload stores bytes in the virtual home and refuses to overwrite an existing file", async () => {
   const shell = createShell();
   assert.equal(
@@ -304,4 +169,109 @@ test("completion reads BashKit's cwd snapshot and virtual entries without execut
     shell.bash.commit({ excludeFilesystem: true, excludeFunctions: true }).id,
     snapshotBefore,
   );
+});
+
+test("commands adapter preserves exact separate streams, status, argv, projection and live width", async () => {
+  const shell = createShell();
+  const calls = [];
+  const ctx = context({
+    columns: 43,
+    zinn: async (argv, bytes, presentation) => {
+      calls.push({ argv, bytes, presentation });
+      return { stdout: "héllo\n", stderr: "diagnostic\n", status: 7, notices: ["Separate notice"] };
+    },
+  }).value;
+  const result = await shell.execute(
+    'mkdir -p notes && cd notes && printf "live file" > note.txt; zinn task create PLAY --title="A quoted title" > out.txt 2> err.txt; echo $?; cat out.txt; cat err.txt',
+    ctx,
+  );
+  assert.equal(result.stdout, "7\nhéllo\ndiagnostic\n");
+  assert.equal(result.stderr, "");
+  assert.ok(result.notices.includes("Separate notice"));
+  assert.deepEqual(calls[0].argv, ["task", "create", "PLAY", "--title=A quoted title"]);
+  assert.equal(calls[0].presentation.cwd, "/home/guest/notes");
+  assert.equal(calls[0].presentation.columns, 43);
+  assert.equal(calls[0].presentation.color, false);
+  assert.equal(
+    calls[0].presentation.projection.find((e) => e.path === "/home/guest/notes/note.txt").text,
+    "live file",
+  );
+  ctx.columns = 101;
+  await shell.execute("FORCE_COLOR=1 NO_COLOR=1 zinn --version | cat", ctx);
+  assert.equal(calls[1].presentation.columns, 101);
+  assert.equal(calls[1].presentation.color, true);
+  let columns = 50;
+  ctx.columns = () => columns++;
+  await shell.execute("zinn --version; zinn --version", ctx);
+  assert.deepEqual(
+    calls.slice(2).map((call) => call.presentation.columns),
+    [50, 51],
+  );
+});
+
+test("browser extensions keep binary backups and literal filenames in the visitor drive", async () => {
+  const shell = createShell();
+  const backup = new Uint8Array([1, 0, 255]);
+  let received;
+  const ctx = context({
+    zinn: async (argv, bytes) => {
+      received = bytes;
+      return {
+        stdout: "done\n",
+        stderr: "",
+        status: 0,
+        bytes: argv[0] === "export" ? backup : undefined,
+      };
+    },
+  }).value;
+  await shell.execute('zinn export "my backup.sqlite"', ctx);
+  assert.deepEqual(shell.workspace.read("/home/guest/my backup.sqlite"), backup);
+  await shell.execute('zinn import "my backup.sqlite"', ctx);
+  assert.deepEqual(received, backup);
+  await shell.execute("zinn export -- --help", ctx);
+  assert.deepEqual(shell.workspace.read("/home/guest/--help"), backup);
+  const downloads = context();
+  await shell.execute('download "my backup.sqlite"', downloads.value);
+  assert.deepEqual(downloads.downloads[0].bytes, backup);
+});
+
+test("Ctrl+C cannot release an in-flight Zinn callback before it completes", async () => {
+  const shell = createShell();
+  let release, started;
+  const waiting = new Promise((resolve) => {
+    started = resolve;
+  });
+  const ctx = context({
+    zinn: async () => {
+      started();
+      await new Promise((resolve) => {
+        release = resolve;
+      });
+      return { stdout: "Committed\n", stderr: "", status: 0 };
+    },
+  }).value;
+  let finished = false;
+  const running = shell
+    .execute("zinn task create PLAY --title=committed; touch must-not-run", ctx)
+    .then((r) => {
+      finished = true;
+      return r;
+    });
+  await waiting;
+  shell.cancel();
+  await new Promise((resolve) => setImmediate(resolve));
+  assert.equal(finished, false);
+  await assert.rejects(shell.execute("echo retry", ctx), /Wait for the current command/);
+  release();
+  const result = await running;
+  assert.equal(shell.workspace.exists("/home/guest/must-not-run"), false);
+  assert.doesNotMatch(result.stderr, /rolled back/i);
+  assert.equal((await shell.execute("echo retry", ctx)).stdout, "retry\n");
+});
+
+test("only released SGR styling reaches the display and the accessible transcript is plain", () => {
+  const colored = "\x1b[32mgreen\x1b[39m\n";
+  assert.equal(styledTerminalText(colored), colored.replace("\n", "\r\n"));
+  assert.equal(plainTerminalText(colored), "green\r\n");
+  assert.equal(styledTerminalText("\x1b]52;clipboard\x07\x1b[2J"), "]52;clipboard[2J");
 });

@@ -1,6 +1,11 @@
 // Local platform boundary. Never installs globals on the page.
 export const state = {
   sqlite: null,
+  cwd: "/visitor",
+  fileErrors: new Map(),
+  notices: [],
+  deferStorage: false,
+  needsStorage: false,
   bytes: undefined,
   exists: false,
   opens: 0,
@@ -28,7 +33,7 @@ export const process = {
   execPath: "browser",
   platform: "browser",
   versions: {},
-  cwd: () => "/visitor",
+  cwd: () => state.cwd,
   stdin: {
     isTTY: false,
     on: () => unsupported("streaming stdin"),
@@ -79,16 +84,25 @@ export function assertCapability(command) {
       "task edit",
       "task move",
       "task search",
+      "task archive",
+      "task unarchive",
       "whoami",
     ].includes(command.command)
   )
-    unsupported(`execution of zinn ${command.command} in this proof`);
+    unsupported(`execution of zinn ${command.command} in this browser`);
+  if (state.deferStorage && command.effects.storage !== "none") {
+    state.needsStorage = true;
+    throw new Error("Board initialization required");
+  }
 }
 
 export function beginInvocation(argv, context = {}) {
+  state.notices = [];
   state.stdout = "";
   state.stderr = "";
   state.status = 0;
+  state.deferStorage = context.deferStorage === true;
+  state.needsStorage = false;
   state.out = context.stdout ?? (() => {});
   state.err = context.stderr ?? (() => {});
   process.argv = ["browser", "zinn", ...argv];

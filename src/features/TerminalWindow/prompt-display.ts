@@ -1,5 +1,5 @@
 import type { Terminal } from "ghostty-web";
-import { prompt, terminalText } from "./shell";
+import { prompt, terminalText, styledTerminalText } from "./shell";
 
 // All VT controls in this module are owned by the editor. User text is always sanitized.
 export class PromptDisplay {
@@ -16,7 +16,7 @@ export class PromptDisplay {
   }
 
   private replay(transcript: string) {
-    this.terminal.write("\x1b[3J\x1b[2J\x1b[H" + terminalText(transcript));
+    this.terminal.write("\x1b[3J\x1b[2J\x1b[H" + styledTerminalText(transcript));
     this.origin = undefined;
   }
 
@@ -36,7 +36,7 @@ export class PromptDisplay {
         this.origin = undefined;
       }
       const added = transcript.slice(this.transcript.length);
-      if (added) terminal.write(terminalText(added));
+      if (added) terminal.write(styledTerminalText(added));
     }
     this.transcript = transcript;
     this.editing = editing;

@@ -1,7 +1,9 @@
 import type { Bash, BashOptions, BuiltinRequest, CustomBuiltin } from "@everruns/bashkit-wasm";
 import type { ShellContext } from "./shell";
-import { parseZinnArgs } from "./zinn-cli";
-import { VisitorWorkspace, workspacePath } from "../VisitorWorkspace/workspace";
+import { parseExtension } from "./zinn-extensions";
+import { zinnCommand } from "../../../proofs/zinn-shell-bridge/commands-adapter.js";
+import type { InvocationContext } from "./zinn-client";
+import { VisitorWorkspace, workspacePath, textContent } from "../VisitorWorkspace/workspace";
 
 const home = "/home/guest";
 
@@ -14,8 +16,12 @@ const commandHelp =
     "",
     "INSTALLED COMMANDS",
     "  zinn                  Task board and task commands",
-    "  zinn -h / zinn help   Zinn command reference",
-    "  zinn -v               Bundled Zinn core version",
+    "  zinn --help           Released Zinn command reference",
+    "  zinn -v               Released CLI version (0.43.0)",
+    "  zinn task list PLAY   Explore your sample board",
+    "  zinn reset --yes      Reset the sample board (browser extension)",
+    "  zinn export [file]    Export a backup (browser extension)",
+    "  zinn import <file>    Import a backup (browser extension)",
     "  about / projects      About this portfolio",
     "  open <app|file>       Open a desktop app or a visitor text file",
     "  download <file>       Save a virtual file to your computer",
@@ -36,6 +42,10 @@ export class TerminalShell {
   private context: ShellContext | undefined;
   private clearRequested = false;
   private exitRequested = false;
+  private notices: string[] = [];
+  private cancelled = false;
+  private completed: string[] = [];
+  private invocations = new Set<Promise<unknown>>();
   private resetGeneration: number;
 
   constructor(
@@ -80,7 +90,6 @@ export class TerminalShell {
           );
         return "";
       },
-      zinn: (request) => this.zinn(request),
       download: ({ argv, cwd }) => {
         if (argv.length !== 1) throw new Error("Usage: download <file>");
         const path = workspacePath(argv[0], cwd);
@@ -115,6 +124,23 @@ export class TerminalShell {
       timeoutMs: 5000,
       maxMemory: 32 * 1024 * 1024,
       customBuiltins,
+      commands: {
+        zinn: (ctx) =>
+          zinnCommand(
+            (args: string[], presentation: InvocationContext) => {
+              const invocation = this.zinn(args, presentation);
+              this.invocations.add(invocation);
+              void invocation.finally(() => this.invocations.delete(invocation)).catch(() => {});
+              return invocation;
+            },
+            {
+              columns: () => {
+                const columns = this.requireContext().columns;
+                return typeof columns === "function" ? columns() : (columns ?? 80);
+              },
+            },
+          )(ctx),
+      },
       fs: workspace,
     });
   }
@@ -166,38 +192,59 @@ export class TerminalShell {
     return output;
   }
 
-  private async zinn({ argv, cwd }: BuiltinRequest) {
-    const command = parseZinnArgs(argv);
-    if ("text" in command) return command.text + "\n";
-    if (command.path === "export") {
-      const path = workspacePath(command.positional[0] ?? "zinn-playground.sqlite", cwd);
-      const result = await this.requireContext().zinn(["export"]);
-      if (!result.bytes) throw new Error("Zinn couldn't export the board.");
-      this.workspace.write(path, result.bytes);
-      return `Exported ${path}\nUse download ${JSON.stringify(path)} to keep a copy.\n`;
-    }
-    if (command.path === "import") {
-      const path = workspacePath(command.positional[0], cwd);
-      const result = await this.requireContext().zinn(
-        ["import", "--", path],
-        this.workspace.read(path),
+  private async zinn(argv: string[], context: InvocationContext) {
+    try {
+      const extension = parseExtension(argv);
+      let bytes: Uint8Array | undefined;
+      const path =
+        extension && !extension.help && extension.file
+          ? workspacePath(extension.file, context.cwd)
+          : undefined;
+      if (extension?.name === "import" && !extension.help) bytes = this.workspace.read(path!);
+      const projection = [
+        { path: "/home", directory: true },
+        { path: home, directory: true },
+        ...this.workspace.files().map((entry) => {
+          const path = `${home}/${entry.path.replace(/\/$/, "")}`;
+          if (entry.path.endsWith("/")) return { path, directory: true };
+          try {
+            return { path, text: textContent(entry.bytes) };
+          } catch (error) {
+            return { path, error: error instanceof Error ? error.message : "Unreadable text file" };
+          }
+        }),
+      ];
+      const result = await this.requireContext().zinn(argv, bytes, { ...context, projection });
+      this.notices.push(...(result.notices ?? []));
+      this.completed.push(
+        `Zinn finished with status ${result.status}${result.persistence ? ` (${result.persistence === "saved" ? "saved in this browser" : "session-only"})` : ""}.`,
       );
-      return result.text + "\n";
+      if (extension?.name === "export" && !extension.help && result.status === 0) {
+        if (!result.bytes) throw new Error("Zinn couldn't export the board.");
+        const target = path ?? workspacePath("zinn-playground.sqlite", context.cwd);
+        this.workspace.write(target, result.bytes);
+        return {
+          ...result,
+          stdout: `Exported ${target}\nUse download ${JSON.stringify(target)} to keep a copy.\n`,
+        };
+      }
+      return result;
+    } catch (error) {
+      return {
+        stdout: "",
+        stderr: `${error instanceof Error ? error.message : "Zinn failed"}\n`,
+        status: 1,
+      };
     }
-    const result = await this.requireContext().zinn(argv);
-    return (
-      result.text +
-      "\n" +
-      (result.persistence === "session"
-        ? "Storage is unavailable. Export and download a backup to keep this board.\n"
-        : "")
-    );
   }
 
   async execute(command: string, context: ShellContext) {
     if (this.context) throw new Error("Wait for the current command to finish.");
     if (command.length > 8000) throw new Error("Keep commands under 8,000 characters.");
     this.context = context;
+    this.notices = [];
+    this.cancelled = false;
+    this.completed = [];
     this.clearRequested = false;
     this.exitRequested = false;
     this.bash.clearCancel();
@@ -207,15 +254,38 @@ export class TerminalShell {
           this.bash.reset();
           this.resetGeneration = this.workspace.resetGeneration;
         }
-        return this.bash.execute(command);
+        return (async () => {
+          try {
+            return await this.bash.execute(command);
+          } catch (error) {
+            if (
+              !this.cancelled ||
+              !(error instanceof Error) ||
+              error.message !== "execution cancelled"
+            )
+              throw error;
+            await Promise.allSettled([...this.invocations]);
+            this.notices.push(
+              "Shell cancelled. Already-started Zinn commands finished before returning to the prompt.",
+              ...this.completed,
+            );
+            return { stdout: "", stderr: "", exitCode: 130 };
+          } finally {
+            await Promise.allSettled([...this.invocations]);
+          }
+        })();
       });
       return {
         stdout: result.stdout,
-        stderr:
-          result.stderr +
-          (this.workspace.persistence === "session"
-            ? "\nVisitor files are session-only. Export files in My Computer before leaving.\n"
-            : ""),
+        stderr: result.stderr,
+        notices: [
+          ...new Set([
+            ...this.notices,
+            ...(this.workspace.persistence === "session"
+              ? ["Visitor files are session-only. Export files in My Computer before leaving."]
+              : []),
+          ]),
+        ],
         exitCode: result.exitCode,
         clear: this.clearRequested,
         exit: this.exitRequested,
@@ -233,7 +303,7 @@ export class TerminalShell {
 
   async completionDirectory(path: string) {
     if (this.context) return [];
-    // BashKit 0.18.2 has no cwd getter. Its public read-only commit API captures
+    // BashKit 0.20.3 has no cwd getter. Its public read-only commit API captures
     // cwd without running pwd, user functions, substitutions or completion scripts.
     // Objects have a compression byte, then raw DEFLATE containing a type byte and JSON.
     const snapshot = this.bash.commit({ excludeFilesystem: true, excludeFunctions: true });
@@ -257,6 +327,7 @@ export class TerminalShell {
   }
 
   cancel() {
+    this.cancelled = true;
     this.bash.cancel();
   }
 }

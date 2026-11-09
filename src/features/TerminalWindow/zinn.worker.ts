@@ -1,212 +1,228 @@
-import sqlite3InitModule, {
-  type Database as WasmDatabase,
-  type Sqlite3Static,
-} from "@sqlite.org/sqlite-wasm";
+import sqlite3InitModule, { type Sqlite3Static } from "@sqlite.org/sqlite-wasm";
 import sqliteWasmUrl from "@sqlite.org/sqlite-wasm/sqlite3.wasm?url";
-import {
-  createDatabase,
-  setDatabase,
-  initializeFreshDatabase,
-  getDatabaseSchemaVersion,
-  getLatestSchemaVersion,
-  upgradeDatabase,
-  resetDatabaseForTests,
-  project,
-  task,
-  column,
-} from "./zinn-core";
-import { createWasmDriver, openMemoryDatabase } from "./sqlite-driver";
-import { executeZinn, playgroundKey, seedPlayground } from "./zinn-commands";
-import { parseZinnArgs } from "./zinn-cli";
-import { PlaygroundStorage } from "./playground-storage";
-import type { PlaygroundResult } from "./zinn-client";
+import * as runtime from "../../../proofs/zinn-release/generated/browser-cli.js";
+import baseline from "../../../proofs/zinn-release/baseline.json";
+import { openMemoryDatabase } from "./sqlite-driver";
+import { PlaygroundStorage, hasOldPlayground, storageNamespace } from "./playground-storage";
+import { parseExtension } from "./zinn-extensions";
+import type { PlaygroundResult, InvocationContext } from "./zinn-client";
 
 let sqlite: Sqlite3Static;
-let raw: WasmDatabase | undefined;
+let engine: Promise<void> | undefined;
 let storage: PlaygroundStorage | undefined;
+let opened = false;
+let loaded = false;
 let revision = 0;
-let initialized = false;
-let sqlitePromise: Promise<Sqlite3Static> | undefined;
+let notice = "";
 
-const marker = "portfolio-zinn-playground-v1";
-
-function snapshot() {
-  return sqlite.capi.sqlite3_js_db_export(raw!.pointer!);
-}
-
-function install(bytes?: Uint8Array, allowUpgrade = false) {
-  const candidate = openMemoryDatabase(sqlite, bytes);
-  const wrapper = createDatabase(createWasmDriver(sqlite, candidate));
-  let upgraded = false;
-  try {
-    if (bytes) {
-      if (
-        wrapper
-          .query<{ value: string }>("SELECT value FROM portfolio_playground WHERE key = 'format'")
-          .get()?.value !== marker
-      ) {
-        throw new Error("Choose a backup exported by this Zinn playground.");
-      }
-      const version = getDatabaseSchemaVersion(wrapper);
-      if (allowUpgrade && version >= 1 && version < getLatestSchemaVersion()) {
-        upgradeDatabase(wrapper);
-        upgraded = true;
-      } else if (version !== getLatestSchemaVersion()) {
-        throw new Error(
-          "This backup uses a different Zinn schema. Choose a backup exported by this playground.",
-        );
-      }
-      const integrity = wrapper.query<{ integrity_check: string }>("PRAGMA integrity_check").all();
-      if (
-        integrity.length !== 1 ||
-        integrity[0].integrity_check !== "ok" ||
-        wrapper.query("PRAGMA foreign_key_check").all().length
-      ) {
-        throw new Error("This backup is damaged. Your current board has been kept.");
-      }
-      if (!wrapper.query("SELECT id FROM project WHERE key = 'PLAY'").get()) {
-        throw new Error("This backup doesn't contain a playground board.");
-      }
-    } else {
-      initializeFreshDatabase(wrapper);
-      wrapper.exec("CREATE TABLE portfolio_playground (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
-      wrapper
-        .query("INSERT INTO portfolio_playground (key, value) VALUES ('format', ?)")
-        .run(marker);
-    }
-  } catch (error) {
-    wrapper.close();
-    throw error;
-  }
-  resetDatabaseForTests();
-  raw = candidate;
-  setDatabase(wrapper);
-  if (!bytes) seedPlayground();
-  // Validate the operation graph before allowing an imported image to replace the saved board.
-  if (!project.getByKey(playgroundKey) || column.getAllByProjectKey(playgroundKey).length !== 5) {
-    throw new Error("This backup doesn't contain the playground's five columns.");
-  }
-  task.getAll({ projectKey: playgroundKey, archive: "all" });
-  return upgraded;
-}
-
-async function initialize(recovery?: Uint8Array | null) {
-  if (initialized) return false;
-  // The package's declarations omit the Emscripten options its initializer forwards.
-  const initializeSqlite = sqlite3InitModule as (options: {
-    locateFile: () => string;
-    print: () => void;
-    printErr: () => void;
-  }) => Promise<Sqlite3Static>;
-  sqlitePromise ??= initializeSqlite({
-    locateFile: () => sqliteWasmUrl,
-    print: () => {},
-    printErr: () => {},
-  }).catch((error) => {
-    sqlitePromise = undefined;
+async function initializeEngine() {
+  engine ??= (async () => {
+    const init = sqlite3InitModule as (options: object) => Promise<Sqlite3Static>;
+    sqlite = await init({ locateFile: () => sqliteWasmUrl, print: () => {}, printErr: () => {} });
+    runtime.initialize(sqlite);
+  })().catch((error) => {
+    engine = undefined;
     throw error;
   });
-  sqlite = await sqlitePromise;
-  storage = await PlaygroundStorage.open().catch(() => undefined);
-  const saved = await storage?.read();
-  revision = saved?.revision ?? 0;
-  let upgraded = false;
-  let recovered = false;
-  try {
-    upgraded = install(saved?.bytes, true);
-  } catch (error) {
-    // Recovery commands must remain available when a stored image cannot be loaded.
-    if (recovery === undefined) {
-      const reason = error instanceof Error ? error.message : "The saved board couldn't be loaded.";
-      throw new Error(
-        `${reason} Import a playground backup or type zinn reset --yes to start again.`,
-      );
-    }
-    install(recovery ?? undefined);
-    recovered = true;
-  }
-  if (storage && (!saved || upgraded || recovered))
-    revision = await storage.save(snapshot(), revision);
-  initialized = true;
-  return recovered;
+  await engine;
 }
 
-async function execute(args: string[], bytes?: Uint8Array): Promise<PlaygroundResult> {
-  const command = parseZinnArgs(args);
-  if ("text" in command) return { text: command.text };
-  const recovery = command.path === "reset" ? null : command.path === "import" ? bytes : undefined;
-  const recovered = await initialize(recovery);
-  const persistence = storage ? "saved" : "session";
-  if (recovered)
-    return {
-      text:
-        recovery === null
-          ? "Your board has been reset to the three sample tasks."
-          : "Imported your playground backup. Type zinn to see the board.",
-      persistence,
-    };
-  if (storage) {
-    const saved = await storage.read();
-    if ((saved?.revision ?? 0) !== revision) {
+function validate(bytes: Uint8Array) {
+  const db = openMemoryDatabase(sqlite, bytes);
+  try {
+    const scalar = (sql: string) => db.selectValue(sql);
+    if (scalar("SELECT value FROM portfolio_playground WHERE key = 'format'") !== storageNamespace)
+      throw new Error("Unsupported playground format. Choose a backup exported by this release.");
+    if (scalar("PRAGMA user_version") !== baseline.schema)
+      throw new Error("Unsupported Zinn schema. Choose a backup exported by this release.");
+    const integrity = db.selectArrays("PRAGMA integrity_check");
+    if (
+      integrity.length !== 1 ||
+      integrity[0][0] !== "ok" ||
+      db.selectArrays("PRAGMA foreign_key_check").length
+    )
+      throw new Error("The playground backup is damaged.");
+    const columns = db.selectArrays(
+      "SELECT c.name FROM project_column c JOIN project p ON p.id = c.project_id WHERE p.key = 'PLAY' ORDER BY c.column_order",
+    );
+    if (
+      JSON.stringify(columns.flat()) !==
+      JSON.stringify(["Backlog", "TODO", "In Progress", "Review", "Done"])
+    )
+      throw new Error("This backup is missing the required PLAY board and five columns.");
+    db.selectArrays("SELECT id, title, column_id FROM task LIMIT 1");
+  } catch (error) {
+    throw new Error(
+      `Invalid playground backup: ${error instanceof Error ? error.message : "unreadable image"}. Your current board has been kept.`,
+    );
+  } finally {
+    db.close();
+  }
+}
+
+async function seed() {
+  await runtime.replaceSnapshot(undefined);
+  for (const args of [
+    ["project", "create", "PLAY", "--name", "Your playground"],
+    ["task", "create", "PLAY", "--title", "Explore the desktop", "--column", "Done"],
+    ["task", "create", "PLAY", "--title", "Try moving a task", "--column", "In Progress"],
+    ["task", "create", "PLAY", "--title", "Make something of your own", "--column", "Backlog"],
+  ]) {
+    const result = await runtime.invoke(args);
+    if (result.status) throw new Error(result.stderr);
+  }
+  const db = openMemoryDatabase(sqlite, runtime.snapshot());
+  let marked: Uint8Array;
+  try {
+    db.exec("CREATE TABLE portfolio_playground (key TEXT PRIMARY KEY, value TEXT NOT NULL)");
+    db.exec({
+      sql: "INSERT INTO portfolio_playground VALUES ('format', ?)",
+      bind: [storageNamespace],
+    });
+    marked = new Uint8Array(sqlite.capi.sqlite3_js_db_export(db.pointer!));
+  } finally {
+    db.close();
+  }
+  await runtime.replaceSnapshot(marked);
+}
+
+async function load(recovery = false) {
+  await initializeEngine();
+  if (!opened) {
+    storage = await PlaygroundStorage.open().catch(() => undefined);
+    opened = true;
+  }
+  const saved = await storage?.read();
+  const nextRevision = saved?.revision ?? 0;
+  if (loaded && nextRevision === revision) return;
+  loaded = false;
+  revision = nextRevision;
+  if (recovery) {
+    loaded = false;
+    if (saved) {
       try {
-        const upgraded = install(saved?.bytes, true);
-        revision = saved?.revision ?? 0;
-        if (!saved || upgraded) revision = await storage.save(snapshot(), revision);
-      } catch (error) {
-        initialized = false;
-        if (recovery !== undefined) return execute(args, bytes);
-        throw error;
+        validate(saved.bytes);
+        await runtime.replaceSnapshot(saved.bytes);
+        loaded = true;
+      } catch {
+        /* Confirmed recovery remains available for damaged stored bytes. */
       }
     }
+    return;
   }
-  const before = snapshot();
-  let result: PlaygroundResult;
-  let mutated = false;
-  try {
-    if (command.path === "reset") {
-      install();
-      mutated = true;
-      result = { text: "Your board has been reset to the three sample tasks.", persistence };
-    } else if (command.path === "import") {
-      if (!bytes)
-        throw new Error("Use zinn import <file> after adding a backup with File > Upload file.");
-      install(bytes);
-      mutated = true;
-      result = {
-        text: "Imported your playground backup. Type zinn to see the board.",
-        persistence,
-      };
-    } else if (command.path === "export") {
-      result = {
-        text: "Exported zinn-playground.sqlite. Import this backup here to restore the board.",
-        persistence,
-        bytes: before,
-      };
-    } else {
-      const response = executeZinn(command);
-      mutated = response.mutated;
-      result = { text: response.text, persistence };
+  if (saved) {
+    validate(saved.bytes);
+    await runtime.replaceSnapshot(saved.bytes);
+  } else {
+    const before = runtime.snapshot();
+    try {
+      await seed();
+      if (storage) revision = await storage.save(runtime.snapshot()!, revision);
+      if (storage && (await hasOldPlayground().catch(() => false)))
+        notice =
+          "The Zinn demo was updated, so its sample board has been reset. Your visitor files and preferences are kept.";
+    } catch (error) {
+      await runtime.replaceSnapshot(before);
+      throw error;
     }
-    if (mutated && storage) revision = await storage.save(snapshot(), revision);
-    return result;
+  }
+  loaded = true;
+}
+
+const same = (a?: Uint8Array, b?: Uint8Array) =>
+  a?.length === b?.length && (!a || a.every((v, i) => v === b![i]));
+function metadata() {
+  return {
+    persistence: storage ? ("saved" as const) : ("session" as const),
+    identity: runtime.identity,
+    notices: [
+      notice,
+      ...(!storage
+        ? [
+            "Zinn storage is unavailable. This board is session-only. Export and download a backup before leaving.",
+          ]
+        : []),
+    ].filter(Boolean),
+  };
+}
+
+async function execute(
+  args: string[],
+  bytes?: Uint8Array,
+  context: InvocationContext = {},
+): Promise<PlaygroundResult> {
+  const extension = parseExtension(args);
+  if (extension?.help) return { stdout: extension.help, stderr: "", status: 0 };
+  if (!extension) {
+    // Route with the real released definitions first. The capability boundary defers
+    // storage handlers, so help/version remain independent of even damaged storage.
+    const probe = await runtime.invoke(args, { ...context, deferStorage: true });
+    if (!probe.needsStorage) return probe;
+  }
+  const recovery = extension?.name === "reset" || extension?.name === "import";
+  await load(recovery);
+  const before = runtime.snapshot();
+  const wasLoaded = loaded;
+  try {
+    let result: PlaygroundResult;
+    if (extension?.name === "reset") {
+      await seed();
+      result = {
+        stdout: "Your board has been reset to the three sample tasks.\n",
+        stderr: "",
+        status: 0,
+      };
+    } else if (extension?.name === "import") {
+      if (!bytes) throw new Error("Choose a playground backup in the visitor filesystem.");
+      validate(bytes);
+      await runtime.replaceSnapshot(bytes);
+      result = { stdout: "Imported your playground backup.\n", stderr: "", status: 0 };
+    } else if (extension?.name === "export") {
+      result = { stdout: "", stderr: "", status: 0, bytes: before };
+    } else result = await runtime.invoke(args, context);
+    const after = runtime.snapshot();
+    if (after && after.length > 5 * 1024 * 1024)
+      throw new Error("The playground reached its 5 MB limit. The last change was rolled back.");
+    if (!same(before, after) && storage) revision = await storage.save(after!, revision);
+    loaded = true;
+    const details = metadata();
+    const response = {
+      ...result,
+      ...details,
+      notices: [...(result.notices ?? []), ...details.notices],
+    };
+    notice = "";
+    return response;
   } catch (error) {
-    // An invalid import, command failure, or failed persistent write must retain the previous image.
-    install(before);
+    await runtime.replaceSnapshot(before);
+    loaded = wasLoaded;
     throw error;
   }
 }
 
-// Serialize RPC, including storage writes: two commands must never share a live transaction.
+// RPC owns the complete invocation and commit, including after Bash cancellation.
 let queue = Promise.resolve();
-self.onmessage = (event: MessageEvent<{ id: number; args: string[]; bytes?: Uint8Array }>) => {
-  const { id, args, bytes } = event.data;
+self.onmessage = (
+  event: MessageEvent<{
+    id: number;
+    args: string[];
+    bytes?: Uint8Array;
+    context?: InvocationContext;
+  }>,
+) => {
+  const { id, args, bytes, context } = event.data;
   queue = queue.then(async () => {
     try {
-      const result = await execute(args, bytes);
-      self.postMessage({ id, result });
+      self.postMessage({ id, result: await execute(args, bytes, context) });
     } catch (error) {
-      const text = error instanceof Error ? error.message : "The Zinn command failed.";
-      self.postMessage({ id, error: text });
+      self.postMessage({
+        id,
+        result: {
+          stdout: "",
+          stderr: `${error instanceof Error ? error.message : "Zinn failed"}\n`,
+          status: 1,
+        },
+      });
     }
   });
 };

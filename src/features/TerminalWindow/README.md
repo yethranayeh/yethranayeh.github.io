@@ -1,78 +1,65 @@
-# Terminal
+# Portfolio Terminal
 
-Open Terminal from the desktop or Start menu. It starts as a general browser shell. Zinn is available through the `zinn` command, and **Try Zinn in Terminal** in the project window launches that command.
+Open Terminal from the desktop or Start menu. It runs BashKit **0.20.3** with shared visitor files under `/home/guest`. Zinn invokes the released **CLI 0.43.0 / core 0.32.0**, schema 3, with adaptation `portfolio-zinn-browser.1`. The CLI's definitions, aliases, parser call sites, help, presentation and domain operations come from the pinned npm artifacts.
 
 ```sh
-pwd
-mkdir notes
-cd notes
-printf 'one\ntwo\n' > demo.txt
-cat demo.txt | grep two
-zinn -h
-zinn -v
+zinn --help
+zinn --version
 zinn task create --help
-zinn task create "Build something nice" --priority high
-zinn task move PLAY-4 "In Progress"
-zinn task list | grep PLAY
+zinn task create PLAY --title "My first task" --priority high
+zinn task list PLAY | grep PLAY
+zinn task view PLAY-1 --json > task.json
+zinn task move PLAY-1 Review
+zinn task search "first task" PLAY
+zinn task archive PLAY-4
+zinn task unarchive PLAY-4
 ```
 
-BashKit provides Bash syntax, virtual files, variables, functions, pipes, and redirection. A single shell instance preserves its working directory and state between commands. Shell variables and history belong to the current page session. Visitor files persist separately in IndexedDB and are shared with My Computer at `/home/guest`. This does not provide a native OS shell or arbitrary installed executables. `touch` creates files and accepts `-c`, but file timestamps are not supported by the host filesystem adapter.
+`zinn` shows released root help. `zinn --version` prints exactly `0.43.0`. Browser/core identity is recorded separately in integration metadata and `dist/zinn/baseline.json`. No project argument is inserted. Old `board`, `columns` and top-level `search` forms are retired. Use the released `--help` forms for command usage.
 
-`help` lists shell and installed commands. Up and Down recall history and restore the current draft and caret. Left, Right, Home, End, Backspace and Delete edit the draft. Tab completes common command names and literal virtual paths at the caret, including quoted names. Directories keep a trailing slash for further completion. Ambiguous matches extend a shared prefix or list the choices. No match keeps the draft and focus, with an accessible announcement. Variable expansion and command substitution are not evaluated for completion.
+Execution supports project create/list/view, task create/list/view/edit/move/search/archive/unarchive, and whoami, including released aliases such as task new and task show. Complete released help remains available for every command. Other execution, native backup/restore, OS editors, interactive prompts, host executables, hooks and streaming stdin are unavailable.
 
-Ctrl+L clears the screen and keeps the draft. Ctrl+C cancels the draft or requests cancellation at a running command boundary. Shift+PageUp and Shift+PageDown inspect scrollback, and editing returns to the live prompt. Escape or Shift+Tab moves focus to the File menu, where normal Tab navigation resumes. The keyboard hint remains visible below the screen.
-
-Ghostty's native textarea supports paste, composition and mobile input while its canvas owns the visible editing cursor. Pasted newlines remain in the draft until Enter submits it. File contains **Upload file**, **View transcript**, and **Save transcript**. Edit contains **Copy transcript** and **Clear screen**. There is no permanent transcript panel or command bar.
-
-Zinn accepts `-h` / `--help` on commands and `help [command]` for command-specific usage. `-v` / `--version` identifies the bundled Zinn core version and source revision. Help and version work without loading the board or its database. Options accept both `--priority high` and `--priority=high`. Unknown options, duplicate options, and missing values report errors. Use `--` before literal arguments starting with a dash, such as `zinn task create -- -h`, or an equals sign for an option value, such as `--description=--help`.
-
-## Rendering
-
-`ghostty-web` provides Ghostty's VT parser compiled to WASM and its canvas renderer. Geometry changes rebuild the display and replay the bounded text transcript. Each display uses a fresh WASM instance to avoid a verified resize/dispose state-reuse bug in ghostty-web 0.4. The downloaded WASM bytes are cached.
-
-`ghostty-compat.ts` normalizes the public renderer's viewport offset to whole rows. The pinned renderer otherwise compares fractional offsets while indexing with rounded offsets, which skips or repeats text at certain scroll positions. Smooth scroll animation is disabled to avoid a separate stale-target animation bug when new output arrives.
-
-`line-editor.ts` connects Ghostty input events to completed shell commands. `prompt-display.ts` redraws the live prompt after output and uses Ghostty's VT cursor positions for wrapped and Unicode input. Redraw controls stay separate from the sanitized plain-text transcript. A full paint after cursor visibility changes clears stale cursor pixels left by ghostty-web 0.4 when its position is unchanged and blinking is disabled. Resize replays the transcript and draft into a fresh instance while preserving the caret, scrollback offset and focus owner.
-
-Path completion reads virtual directory entries without executing commands. BashKit 0.18.2 has no public cwd getter, so `completionDirectory` reads cwd from its public `commit` snapshot with files and functions excluded. The pinned snapshot encoding is a compression byte followed by raw DEFLATE containing a type byte and JSON. Regression checks verify that completion leaves the shell snapshot unchanged and never calls either execution API. A dependency upgrade must recheck this encoding.
-
-## Zinn and files
-
-Zinn board commands call shared Zinn operations against SQLite WASM in a dedicated worker. They preserve core validation, transactions, activity records, and FTS5 search. The pinned source, MIT license, platform adaptations, and file hashes are recorded in `src/vendor/zinn/core/`. The visitor's `PLAY` project starts with five columns and three sample tasks. There is no connection to a personal Zinn store or owner database.
+## Browser extensions and storage
 
 ```sh
 zinn export backup.sqlite
-download backup.sqlite
-# File > Upload file copies an existing backup into /home/guest.
+# File > Upload file can add a previously downloaded backup
 zinn import /home/guest/backup.sqlite
+zinn reset --yes
+# Download a visitor file to keep it outside this browser
+download backup.sqlite
 ```
 
-Exports are binary SQLite files in the shell's virtual filesystem. `download` saves a virtual file to the visitor's computer. Upload refuses to overwrite an existing file. Import checks the playground marker, schema version, integrity, foreign keys, and board shape before replacing the board. Backups are limited to 5 MB and must come from this playground. They are not a general native Zinn import format. `zinn reset --yes` restores the sample board.
+Reset, export and import are browser extensions. Each accepts `-h`/`--help` without opening a board or reading a filename. Reset requires `--yes`. Export defaults to `zinn-playground.sqlite`. Import accepts binary SQLite images up to 5 MiB, exclusively from this playground generation. It checks the format marker, schema, SQLite integrity, foreign keys, and the required PLAY board with its five named columns before replacement. Native owner databases and old/future playground formats are refused. A failed import preserves the active board.
 
-SQLite images persist in IndexedDB. Each command reloads newer stored revisions. Writes compare revisions inside an IndexedDB transaction to avoid overwriting another tab's changes. Failed commands or persistent writes restore the previous image. Older supported local schemas use upstream migrations, and import/reset remain available if saved data cannot be loaded. If storage is unavailable, Zinn reports that its board is session-only.
+The storage namespace and `portfolio_playground` format value are `portfolio-zinn-cli-0.43.0-core-0.32.0-browser.1`. The format value is independent of SQLite schema 3. A new generation starts fresh and leaves the old namespace untouched. When an old board exists, a separate status explains the reset. The new board has project PLAY, name Your playground, columns Backlog, TODO, In Progress, Review, Done, and three Visitor-created tasks: Explore the desktop (Done), Try moving a task (In Progress), Make something of your own (Backlog).
 
-Browser storage belongs to the origin and browser profile and can be cleared or evicted. Download a backup to keep a copy. The existing static GitHub Pages deployment requires no server or cross-origin isolation headers. There is no offline service worker. BashKit's 7 MB WASM asset (about 2.6 MB gzip) loads on the first shell command.
+One worker serializes commands, snapshot replacement and IndexedDB writes. Persistent success is returned after commit. Revision checks refuse stale-tab writes and failed saves restore the previous image. A subsequent command refreshes from the committed winner. Storage failure allows a clearly identified session-only board when IndexedDB cannot open. Corrupt stored images keep help/version and confirmed reset/import available. Help/version do not initialize SQLite or Zinn IndexedDB. Reset affects only the Zinn board. Visitor files, uploads and portfolio preferences have independent stores.
 
-## Shared visitor drive
+Each Zinn callback gets a fresh read-only file projection, including directory entries and files written earlier in that BashKit script. Paths are literal `/home/guest` paths, resolved from the callback's actual cwd. There is no `/visitor` alias in production. Valid UTF-8 text up to 1 MiB is readable through native file flags, including `--description-file`. Binary and oversized reads fail, with detailed integration notices outside shell streams. `/board` remains private to the worker.
 
-My Computer opens the visitor drive by default. Double-click a UTF-8 text file, press Enter, or tap on a touch device to open Notepad. `open <file>` in Terminal opens the same editor. Save or Ctrl/Cmd+S writes back to the drive. Clean documents refresh when files change, while stale edits are refused until the visitor reloads the file or downloads their draft. Binary files remain available through `download <file>` and the drive export. The editor supports text up to 1 MB.
+## Streams, display and lifecycle
 
-`portfolio-visitor-workspace` is a separate IndexedDB database from Zinn's playground. A shared queue commits shell commands, uploads, and editor saves as complete drive snapshots. Revision checks prevent another tab's commit from being overwritten, and BroadcastChannel refreshes idle views across tabs. Persistence failures roll back the file changes. If storage cannot be opened, both interfaces clearly identify the drive as session-only.
+Ordinary Zinn execution uses the verified `BashOptions.commands` adapter. It awaits independent UTF-8 stdout/stderr writes and returns the actual released status. Pipes, separate/combined redirection and conditionals receive those streams. Integration notices use an accessible status outside the command streams, so redirected JSON and errors remain valid.
 
-Uploads refuse to overwrite an existing name. Files are limited to 5 MB, and the drive is limited to 20 MB and 512 entries. Paths outside `/home/guest` cannot be written. Only visitor entries are persisted and exported. There is no bridge to the owner's filesystem or native Zinn database.
+Output defaults to plain for direct, piped and redirected calls. Explicit FORCE_COLOR wins over NO_COLOR according to the pinned release policy. Live terminal columns select layout using `tty:true`, with color set independently. This is explicit geometry, not destination detection. Automatic TTY color selection remains deferred to PORT-18. Only the pinned renderer's bold, dim, gray and green SGR codes reach Ghostty. The accessible, saved and copied transcript stays plain. Other untrusted controls keep their existing filtering.
 
-My Computer's **Export files** downloads a standard ZIP containing files and folders, including binary backups. **Reset files** asks for confirmation, removes visitor files, and restores README.txt and local-server-troubleshooting.txt. The next Terminal command starts with fresh shell state at `/home/guest`. It does not reset Zinn's board, login preferences, or portfolio source. The initial troubleshooting note covers macOS port, process, and project inspection and explains that those commands run in the visitor's own native Terminal.
+Ctrl+C stops subsequent shell commands. An already-started Zinn invocation remains serialized through its completion and persistence result. The prompt waits for it, and cancellation status states the completed result without claiming rollback. Worker errors, unreadable RPC messages and a 30-second timeout reject pending requests and terminate that worker. Retry creates a new worker and reloads the last committed image. A timeout may occur after commit, so inspect the board before repeating a mutation.
 
-The **Portfolio source** view is separate and read-only. The build embeds text previews from the existing source tree, skips symlinks, and does not fetch arbitrary filesystem paths. Previews and uploads are displayed as plain text and never executed.
+The existing editor remains in place: output-following prompt, one Ghostty caret, command/path Tab completion, history draft and caret restoration, mid-line editing, composition, bounded multiline paste, Ctrl+L, scrolling, resize, minimize/reopen, Escape/Shift+Tab focus exit, and File > View/Save transcript. Completion suggests shell commands and literal paths, not a second Zinn schema. My Computer shares the drive and edits the same files. Upload refuses overwrites.
 
-## Verification
+## Build and verification
+
+`npm ci && npm run build` prepares the pinned runtime, checks source hashes and applies the bootstrap patch without fuzz. It needs no sibling checkout or previous proof build. `dist/zinn/` includes baseline identity, generated provenance and MIT/polyfill notices. The CI Pages workflow already runs this production build.
 
 ```sh
+npm run test:zinn-shell-bridge
+npm run test:zinn-release
 npm run test:terminal
+npm run test:zinn-clean
 npm run lint
 npm run build
+npm run preview -- --host 127.0.0.1 --port 5192 --strictPort
 ```
 
-Tests cover actual BashKit session and filesystem behavior, pipes and failures, Zinn help/version without database initialization, option parsing and mutation safety, the Zinn binary backup bridge, Ghostty instance isolation and fractional-row rendering, SQLite transactions and FTS, worker import/export and recovery, and IndexedDB revision conflicts. Browser checks exercise the menu, transcript dialog, shell commands, scrolling, minimize/reopen, and viewport changes.
-
-Editor regression checks cover history and caret restoration, grapheme edits, quoted and repeated completion, multiline paste, control keys, composition events, wrapped prompts and drafts longer than the viewport. Browser viewport checks and synthetic input events supplement these tests. Physical mobile keyboards and native IME candidate interfaces require device testing.
+See `proofs/zinn-release/INTEGRATION.md` for current evidence and physical-cleanup status. Obsolete custom CLI/core files are unreachable from production and remain pending the repository's batch-removal approval protocol.

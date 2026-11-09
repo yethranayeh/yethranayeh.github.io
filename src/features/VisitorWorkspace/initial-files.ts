@@ -4,7 +4,7 @@ export const initialFiles = {
 Terminal and My Computer share these virtual files at /home/guest.
 Create files with shell commands, or use Terminal's File > Upload file.
 Double-click a text file in My Computer to edit it, or run open <file>.
-Zinn is installed as the zinn command. Type zinn help to begin.
+Zinn is installed as the zinn command. Type zinn --help to begin. Try zinn task list PLAY to see the sample board.
 
 Files are saved in this browser profile. Browser data can be cleared or
 evicted, so use Export files in My Computer to keep a ZIP copy.

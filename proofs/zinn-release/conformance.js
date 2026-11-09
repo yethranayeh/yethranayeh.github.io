@@ -80,6 +80,8 @@ export const operationCases = [
   ["task", "view", "PLAY-999", "--json"],
   ["task", "edit", "PLAY-1", "--title=Edited browser task"],
   ["task", "search", "no matching task", "PLAY"],
+  ["task", "archive", "PLAY-2", "--json"],
+  ["task", "unarchive", "PLAY-2", "--json"],
 ];
 export const files = { "/visitor/note.txt": "Virtual file content\n" };
 

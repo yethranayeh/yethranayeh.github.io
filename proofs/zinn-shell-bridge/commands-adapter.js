@@ -13,7 +13,10 @@ export function commandContext(env = {}, columns = 80) {
 export function zinnCommand(invoke, { columns = 80 } = {}) {
   const encoder = new TextEncoder();
   return async (ctx) => {
-    const result = await invoke(ctx.argv, commandContext(ctx.env, columns));
+    const result = await invoke(ctx.argv, {
+      ...commandContext(ctx.env, typeof columns === "function" ? columns() : columns),
+      cwd: ctx.cwd,
+    });
     await ctx.stdout.write(encoder.encode(result.stdout));
     await ctx.stderr.write(encoder.encode(result.stderr));
     return result.status;

@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-11-09T16:52:47.116Z",
+  "node": "v26.13.0",
+  "assets": [
+    {
+      "file": "dist/assets/TerminalWindow--ow_pJC7.js",
+      "bytes": 694349,
+      "gzipBytes": 202364,
+      "sha256": "fd60f42dce8fd85bc38e3b69585b50f030cd377198c5265222b25be8b20251e2"
+    },
+    {
+      "file": "dist/assets/bashkit_wasm_bg-o9TKROkJ.wasm",
+      "bytes": 7790288,
+      "gzipBytes": 3052113,
+      "sha256": "a07727cfe0d1a2d1d549f9c5f821595bed9274abf82cb741db878306c920ddd8"
+    },
+    {
+      "file": "dist/assets/ghostty-vt-DOMeXDrv.wasm",
+      "bytes": 423045,
+      "gzipBytes": 124376,
+      "sha256": "d6f0326f1874ad2ce9f289e3a4a0c5f3507d4cb38d8747e4b287def470a0c60a"
+    },
+    {
+      "file": "dist/assets/sqlite3-DGXXSD5r.wasm",
+      "bytes": 859730,
+      "gzipBytes": 397951,
+      "sha256": "2d8049756d9d3765f3afac6eb4766457152fb5f417d2febe2836ee3c2223b3e2"
+    },
+    {
+      "file": "dist/assets/zinn.worker-C3CnG1ZI.js",
+      "bytes": 926767,
+      "gzipBytes": 255465,
+      "sha256": "075a38324f6a2363ab809a964bb950bc7dbc0e8e9ac8521f036f6e2d0e6b3b19"
+    }
+  ],
+  "notices": [
+    {
+      "file": "dist/zinn/baseline.json",
+      "bytes": 1212
+    },
+    {
+      "file": "dist/zinn/provenance.json",
+      "bytes": 51369
+    },
+    {
+      "file": "dist/zinn/THIRD_PARTY_NOTICES.md",
+      "bytes": 27941
+    }
+  ],
+  "legacyRuntimeInClosure": false
+}

@@ -1,3 +1,7 @@
+import baseline from "../../../proofs/zinn-release/baseline.json";
+
+export const storageNamespace = baseline.storageNamespace;
+
 export interface Snapshot {
   revision: number;
   bytes: Uint8Array;
@@ -9,7 +13,7 @@ export class PlaygroundStorage {
 
   static open(): Promise<PlaygroundStorage> {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open("portfolio-zinn-playground", 1);
+      const request = indexedDB.open(storageNamespace, 1);
       request.onupgradeneeded = () => request.result.createObjectStore("snapshots");
       request.onsuccess = () => {
         request.result.onversionchange = () => request.result.close();
@@ -41,7 +45,11 @@ export class PlaygroundStorage {
           conflict = true;
           tx.abort();
         } else {
-          store.put({ revision: expectedRevision + 1, bytes }, "board");
+          try {
+            store.put({ revision: expectedRevision + 1, bytes }, "board");
+          } catch {
+            tx.abort();
+          }
         }
       };
       tx.oncomplete = () => resolve(expectedRevision + 1);
@@ -53,4 +61,12 @@ export class PlaygroundStorage {
         );
     });
   }
+}
+
+// Inspect names only. Never open or reinterpret the old board image.
+export async function hasOldPlayground() {
+  return (
+    typeof indexedDB.databases === "function" &&
+    (await indexedDB.databases()).some(({ name }) => name === "portfolio-zinn-playground")
+  );
 }
