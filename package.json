@@ -19,7 +19,8 @@
     "zinn:proof": "npm run test:zinn-shell-bridge && npm run test:zinn-release && vite --config tools/zinn-release/vite.config.mjs",
     "build:zinn-proof": "npm run test:zinn-shell-bridge && npm run test:zinn-release && vite build --config tools/zinn-release/vite.config.mjs",
     "zinn:release-audit": "node tools/zinn-release/audit.mjs",
-    "test:zinn-clean": "node tools/zinn-release/verify-clean.mjs"
+    "test:zinn-clean": "node tools/zinn-release/verify-clean.mjs",
+    "experiences:sync": "node tools/sync-experiences.mjs"
   },
   "dependencies": {
     "@everruns/bashkit-wasm": "0.20.3",

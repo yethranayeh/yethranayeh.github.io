@@ -9,6 +9,7 @@ export const windowHelp: Record<string, { i18nKey: string }> = {
   apps: { i18nKey: "content:windowHelp.apps" },
   media: { i18nKey: "content:windowHelp.media" },
   terminal: { i18nKey: "content:windowHelp.terminal" },
+  experiences: { i18nKey: "content:windowHelp.experiences" },
   VigenereCipher: { i18nKey: "content:windowHelp.vigenereCipher" },
 };
 

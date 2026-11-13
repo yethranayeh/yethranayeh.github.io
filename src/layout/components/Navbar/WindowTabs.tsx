@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { useTranslation } from "react-i18next";
 
-import { toggleMinimizeWindowAtom, windowsAtom } from "@/stores/window.atom";
+import { toggleMinimizeWindowAtom, windowsAtom, windowTitlesAtom } from "@/stores/window.atom";
 
 import { Flex } from "@/components/Styled";
 import { TaskbarButton } from "./TaskbarButton";
@@ -11,6 +11,7 @@ import styles from "./WindowTabs.module.scss";
 export function WindowTabs() {
   const { t } = useTranslation();
   const [windows] = useAtom(windowsAtom);
+  const [titles] = useAtom(windowTitlesAtom);
   const [_, toggleMinimize] = useAtom(toggleMinimizeWindowAtom);
 
   return (
@@ -21,7 +22,7 @@ export function WindowTabs() {
           onClick={() => toggleMinimize(w.id)}
           isActive={!w.minimized}
           iconSrc={!w.minimized ? (w.openWindowIconSrc ?? w.iconSrc) : w.iconSrc}
-          text={t(w.titleI18nKey)}
+          text={titles[w.id] ?? t(w.titleI18nKey)}
         />
       ))}
     </Flex>

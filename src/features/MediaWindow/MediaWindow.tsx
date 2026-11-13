@@ -7,6 +7,8 @@ import { tree } from "virtual:public-files";
 
 import { addWindowAtom } from "@/stores/window.atom";
 import { Flex } from "@/components/Styled";
+import { experiences, experienceHref } from "@/features/ExperiencesWindow/experiences";
+import { experiencesWindow } from "@/config/desktop";
 import { MediaItem } from "./MediaItem";
 import { WindowURL } from "@/components/windows/WindowURL";
 import windowStyles from "@/components/windows/Window.module.scss";
@@ -69,6 +71,9 @@ export function MediaWindow() {
   const [, addWindow] = useAtom(addWindowAtom);
   const [currentPath, setCurrentPath] = useState("/");
   const currentFolder = findFolder(tree, currentPath);
+  // public/experiences holds the raw HTML; the browser owns them, so this
+  // folder shows one shortcut per entry instead of the files on disk.
+  const isExperiencesFolder = currentFolder.path === "/experiences";
 
   const navigateUp = () => {
     const parts = currentPath.split("/").filter(Boolean);
@@ -86,53 +91,68 @@ export function MediaWindow() {
       </Flex>
       <ScrollView className={styles.scroll}>
         <div className={styles.grid}>
-          {currentFolder.children.filter(isVisible).map((entry) => (
-            <MediaItem
-              key={entry.path}
-              name={entry.name}
-              iconSrc={getIconSrc(entry)}
-              onDoubleClick={() => {
-                if (entry.kind === "folder") {
-                  setCurrentPath(entry.path);
-                  return;
-                }
+          {isExperiencesFolder
+            ? experiences.map((item) => (
+                <MediaItem
+                  key={item.slug}
+                  name={`${item.title}.url`}
+                  iconSrc="/icon/internet_document.ico"
+                  onDoubleClick={() => {
+                    addWindow({
+                      ...experiencesWindow,
+                      contentProps: { initialUrl: experienceHref(item.slug) },
+                    });
+                  }}
+                />
+              ))
+            : currentFolder.children.filter(isVisible).map((entry) => (
+                <MediaItem
+                  key={entry.path}
+                  name={entry.name}
+                  iconSrc={getIconSrc(entry)}
+                  onDoubleClick={() => {
+                    if (entry.kind === "folder") {
+                      setCurrentPath(entry.path);
+                      return;
+                    }
 
-                const isSpiderGif = entry.name === "spider.gif";
+                    const isSpiderGif = entry.name === "spider.gif";
 
-                addWindow({
-                  id: `media:${entry.path}`,
-                  titleI18nKey:
-                    entry.mediaType === "image"
-                      ? "menu:window.imageViewer"
-                      : "menu:window.videoPlayer",
-                  helpTextI18nKey:
-                    entry.mediaType === "image"
-                      ? "content:windowHelp.imageViewer"
-                      : "content:windowHelp.videoPlayer",
-                  minimized: false,
-                  iconSrc: "/icon/media-player.svg",
-                  content: entry.mediaType === "image" ? ImageViewerContent : VideoPlayerContent,
-                  contentProps: {
-                    src: entry.path,
-                    ...(isSpiderGif && { lunge: true, fullscreen: true }),
-                  },
-                  ...(isSpiderGif && {
-                    WindowProps: {
-                      slotProps: {
-                        window: {
-                          className: `${windowStyles.window} ${windowStyles.fullscreen}`,
-                        },
-                        draggable: {
-                          disabled: true,
-                          defaultPosition: { x: 0, y: 0 },
-                        },
+                    addWindow({
+                      id: `media:${entry.path}`,
+                      titleI18nKey:
+                        entry.mediaType === "image"
+                          ? "menu:window.imageViewer"
+                          : "menu:window.videoPlayer",
+                      helpTextI18nKey:
+                        entry.mediaType === "image"
+                          ? "content:windowHelp.imageViewer"
+                          : "content:windowHelp.videoPlayer",
+                      minimized: false,
+                      iconSrc: "/icon/media-player.svg",
+                      content:
+                        entry.mediaType === "image" ? ImageViewerContent : VideoPlayerContent,
+                      contentProps: {
+                        src: entry.path,
+                        ...(isSpiderGif && { lunge: true, fullscreen: true }),
                       },
-                    },
-                  }),
-                });
-              }}
-            />
-          ))}
+                      ...(isSpiderGif && {
+                        WindowProps: {
+                          slotProps: {
+                            window: {
+                              className: `${windowStyles.window} ${windowStyles.fullscreen}`,
+                            },
+                            draggable: {
+                              disabled: true,
+                              defaultPosition: { x: 0, y: 0 },
+                            },
+                          },
+                        },
+                      }),
+                    });
+                  }}
+                />
+              ))}
         </div>
       </ScrollView>
     </Flex>

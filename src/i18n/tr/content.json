@@ -7,6 +7,7 @@
   "windowHelp": {
     "dismiss": "Anladım",
     "apps": "Bu işletim sisteminde başlatabileceğiniz uygulamalar. Bir uygulamayı açmak için çift tıklayın veya Enter'a basın.",
+    "experiences": "İnteraktif deneylerim için küçük bir tarayıcı. Ana sayfadaki veya Bağlantılar çubuğundaki bir bağlantıya tıklayın, kalıcı bir dizin için Görünüm → Kenar Çubuğu'nu kullanın; açtıklarınız arasında gezinmek için Geri/İleri.",
     "generic": "Bu pencereyi simge durumuna küçültmek veya kapatmak için başlık çubuğundaki düğmeleri kullanın.",
     "media": "Medya dosyalarını görüntüleyin ve oynatın. Bir videoyu Video Oynatıcıda açmak için çift tıklayın; bir resmi Resim Görüntüleyicide açmak için çift tıklayın.",
     "imageViewer": "Resimleri tam pencerede görüntüleyin. Küçültmek veya kapatmak için başlık çubuğu düğmelerini kullanın.",
@@ -186,5 +187,60 @@
     "discardClose": "Değişiklikleri sil ve kapat",
     "discardReload": "Değişiklikleri sil ve yeniden yükle",
     "discardOpen": "Değişiklikleri sil ve aç"
+  },
+  "explorer": {
+    "brand": "Internet Explorer",
+    "location": "Adres",
+    "links": "Bağlantılar",
+    "homePage": "Ana Sayfa",
+    "moreLinks": "Diğer bağlantılar ({{count}})",
+    "credit": "{{name}} sonrası",
+    "menu": {
+      "file": "Dosya",
+      "view": "Görünüm",
+      "go": "Git",
+      "bookmarks": "Yer İmleri"
+    },
+    "menuItem": {
+      "openSource": "Kaynağı Yeni Sekmede Aç",
+      "close": "Kapat",
+      "sidebar": "Kenar Çubuğu",
+      "reload": "Yenile",
+      "back": "Geri",
+      "forward": "İleri",
+      "home": "Ana Sayfa",
+      "addBookmark": "Yer İmi Ekle..."
+    },
+    "tool": {
+      "back": "Geri",
+      "forward": "İleri",
+      "home": "Ana Sayfa",
+      "reload": "Yenile",
+      "open": "Aç",
+      "print": "Yazdır"
+    },
+    "status": {
+      "done": "Belge: Tamam",
+      "doneTime": "Belge: Tamam ({{secs}} sn)",
+      "transferring": "{{host}} adresinden veri aktarılıyor...",
+      "notFound": "Sunucu veya DNS hatası.",
+      "insecure": "Güvenli olmayan bağlantı"
+    },
+    "home": {
+      "title": "Alper'in Ana Sayfası",
+      "tagline": "Etkileşimli çalışmalar, küçük makineler ve hareket eden şeyler.",
+      "updated": "Son güncelleme: 11 Kasım 2026",
+      "new": "YENİ!",
+      "experiments": "Deneyler",
+      "intro": "Bir tekniği anlamak için yaptığım, sonra açması keyifli olduğu için tuttuğum birkaç şey. Her biri kendi sayfasında çalışır.",
+      "about": "Hakkında",
+      "aboutBody": "Bunlar ürün değil, eskiz. Kurcalamak için var: sürükleyin, yazın, imleci gezin. Hiçbir şey kaydedilmez, hiçbir şey bitmiş değildir.",
+      "visitor": "Ziyaretçi numaranız",
+      "bestViewed": "En iyi 800 × 600'de görüntülenir."
+    },
+    "blurbs": {
+      "omp-poster-sun": "Yıldız alanı yayının önünde dithered radyal bir parıltı; hareket düğmesi ve hız ayarı ile.",
+      "globe-spinners": "Enlem, eğim ve renk varyantlarına sahip dört SVG küre."
+    }
   }
 }

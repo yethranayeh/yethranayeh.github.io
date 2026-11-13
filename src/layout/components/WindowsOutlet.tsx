@@ -2,7 +2,12 @@ import { useAtom } from "jotai";
 import { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 
-import { removeWindowAtom, toggleMinimizeWindowAtom, windowsAtom } from "@/stores/window.atom";
+import {
+  removeWindowAtom,
+  toggleMinimizeWindowAtom,
+  windowsAtom,
+  windowTitlesAtom,
+} from "@/stores/window.atom";
 
 import { DraggableWindow } from "@/components/windows/DraggableWindow";
 import { Loader } from "@/components/Loader";
@@ -12,6 +17,7 @@ export function WindowsOutlet() {
   "use memo";
   const { t } = useTranslation();
   const [windows] = useAtom(windowsAtom);
+  const [titles] = useAtom(windowTitlesAtom);
   const [_, closeWindow] = useAtom(removeWindowAtom);
   const [__, toggleMinimizeWindow] = useAtom(toggleMinimizeWindowAtom);
 
@@ -25,7 +31,7 @@ export function WindowsOutlet() {
             <DraggableWindow
               key={w.id}
               {...w.WindowProps}
-              title={t(w.titleI18nKey)}
+              title={titles[w.id] ?? t(w.titleI18nKey)}
               helpText={t(w.helpTextI18nKey ?? getWindowHelpTextKey(w.id))}
               slotProps={{
                 ...w.WindowProps?.slotProps,
@@ -49,6 +55,7 @@ export function WindowsOutlet() {
               <Suspense fallback={<Loader />}>
                 <Content
                   {...(w.contentProps ?? {})}
+                  windowId={w.id}
                   {...(w.id === "terminal" ? { isVisible: !w.minimized } : {})}
                 />
               </Suspense>

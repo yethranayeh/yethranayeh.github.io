@@ -10,6 +10,7 @@ import { Flex } from "@/components/Styled";
 export default function DesktopOutlet() {
   const { t } = useTranslation();
   const [_, addWindow] = useAtom(addWindowAtom);
+
   return (
     <Flex direction="column" align="center" gap={24} sx={{ maxWidth: "max-content", padding: 12 }}>
       {desktopApps.map((app) => (

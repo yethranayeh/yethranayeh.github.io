@@ -28,6 +28,11 @@ const TerminalContent = lazy(() =>
     default: module.TerminalWindow,
   })),
 );
+const ExperiencesContent = lazy(() =>
+  import("@/features/ExperiencesWindow/ExperiencesWindow").then((module) => ({
+    default: module.ExperiencesWindow,
+  })),
+);
 
 export const terminalWindow: AppWindow = {
   id: "terminal",
@@ -61,6 +66,32 @@ export const projectsWindow: AppWindow = {
   minimized: false,
   iconSrc: "/icon/desktop.ico",
   content: ProjectsContent,
+};
+
+export const experiencesWindow: AppWindow = {
+  id: "experiences",
+  titleI18nKey: "menu:window.experiences",
+  minimized: false,
+  iconSrc: "/icon/internet_explorer.ico",
+  content: ExperiencesContent,
+  WindowProps: {
+    slotProps: {
+      window: {
+        style: {
+          width: "min(1000px, calc(100vw - 44px))",
+          height: "min(720px, calc(100svh - 120px))",
+          maxWidth: "unset",
+          maxHeight: "unset",
+          minWidth: 520,
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+          resize: "both",
+        },
+      },
+      draggable: { defaultPosition: { x: 112, y: 78 } },
+    },
+  },
 };
 
 export const desktopApps: Array<AppWindow> = [
@@ -112,4 +143,5 @@ export const desktopApps: Array<AppWindow> = [
     content: MediaContent,
   },
   terminalWindow,
+  experiencesWindow,
 ];

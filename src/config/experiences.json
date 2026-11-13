@@ -1,0 +1,27 @@
+{
+  "$comment": "Curated experiments. `slug` must match a folder in cool-components/components/. Display copy (titles' blurbs, credits) lives in src/i18n/*/content.json under `explorer.blurbs`. Run `npm run experiences:sync` after editing; add --prune to remove copied folders that are no longer listed.",
+  "source": "../cool-components/components",
+  "homeUrl": "http://www.aktasalper.com/~alper/experiences/",
+  "baseUrl": "http://www.aktasalper.com/~alper/experiences/",
+  "items": [
+    {
+      "slug": "omp-poster-sun",
+      "title": "OMP Poster Sun",
+      "credit": null,
+      "tags": ["canvas", "poster"],
+      "patches": [
+        {
+          "file": "script.js",
+          "find": "setMode(\"static\");",
+          "replace": "// [experiences] open in motion, slower than the piece's own default\nrate = 0.25;\nspeed.value = \"0.25\";\nspeedValue.textContent = \"0.25x\";\nsetMode(reduced.matches ? \"static\" : \"live\");"
+        }
+      ]
+    },
+    {
+      "slug": "globe-spinners",
+      "title": "Globe Spinners",
+      "credit": null,
+      "tags": ["svg", "generative"]
+    }
+  ]
+}

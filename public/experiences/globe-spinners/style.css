@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--hue: 223;
+	--gray-50: hsl(var(--hue) 10% 95%);
+	--gray-950: hsl(var(--hue) 10% 5%);
+	--transition-duration: 0.3s;
+	color-scheme: light dark;
+	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+}
+
+body {
+	display: grid;
+	place-items: center;
+	height: 100vh;
+	overflow: hidden;
+	background: var(--gray-50);
+	color: var(--gray-950);
+	font: 1em/1.5 sans-serif;
+	transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+main {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5em;
+	padding: 1.5em;
+}
+
+.globe {
+	display: block;
+	width: 8em;
+	height: auto;
+}
+
+.globe__line {
+	transition: stroke var(--transition-duration);
+}
+
+.globe__line--back {
+	opacity: 0.4;
+}
+
+.globe__fill {
+	transition: fill var(--transition-duration);
+}
+
+.reference {
+	position: fixed;
+	right: 12px;
+	bottom: 12px;
+	z-index: 1;
+	color: #fff;
+	font: 500 10px/1.2 "Helvetica Neue", Arial, sans-serif;
+	letter-spacing: 0.08em;
+	text-decoration: none;
+	text-transform: uppercase;
+	mix-blend-mode: difference;
+	opacity: 0.45;
+	transition: opacity 0.15s ease;
+}
+
+.reference:hover,
+.reference:focus-visible {
+	opacity: 1;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+	body {
+		background: var(--gray-950);
+		color: var(--gray-50);
+	}
+}

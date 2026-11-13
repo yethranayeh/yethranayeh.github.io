@@ -79,6 +79,38 @@ Three languages: English (`en`), German (`de`), Turkish (`tr`). Three namespaces
 
 `@/` maps to `src/` (configured in `vite.config.ts` and `tsconfig.json`).
 
+### Icons
+
+The Windows-era icon set lives outside this repo, in a sibling checkout:
+`../win95-winxp_icons/icons/` — 1,189 `.ico` plus a few `.icl`/`.ani`. The
+filename prefix says which OS it came from (`w95_`, `w98_`, `w2k_`, `wxp_`), so
+pick the one matching the era you're faking.
+
+Each `.ico` carries its own 16/32/48 px frames — copy the original file instead
+of converting it to PNG. Icons in use live in `public/icon/` under a short
+descriptive name and are referenced as `/icon/<name>.ico`.
+
+Useful picks: `w2k_internet_explorer.ico` (the browser app),
+`w2k_internet_document.ico` (a saved page / hyperlink), `w98_web_file.ico` (a
+web page, globe instead of the "e"), `w2k_favorites.ico` (bookmarks folder),
+`w2k_dial_up.ico` (connection dialog).
+
+### Generated assets
+
+`public/experiences/` is generated from the sibling `../cool-components`
+checkout by `tools/sync-experiences.mjs`:
+
+```bash
+npm run experiences:sync            # copy the manifest's entries
+npm run experiences:sync -- --check # verify only, non-zero on drift
+npm run experiences:sync -- --prune # also delete copied folders no longer listed
+```
+
+The manifest is `src/config/experiences.json`; display copy lives in
+`src/i18n/{lang}/content.json` under `explorer.blurbs`. The generated folders
+are committed — CI only checks out this repo, so the sibling checkout is a
+local authoring convenience, never a build dependency.
+
 ### Linting & Formatting
 
 This project uses the [OXC](https://oxc.rs) toolchain:
@@ -112,11 +144,13 @@ The `react-hooks-js` JS plugin loads `eslint-plugin-react-hooks` v7 to provide R
 The project uses [React Compiler](https://react.dev/learn/react-compiler) in **annotation mode** (`compilationMode: "annotation"`). Only components with a `"use memo"` directive are compiled.
 
 **Setup:**
+
 - `babel-plugin-react-compiler` (Babel plugin) configured in `vite.config.ts`
 - `react-compiler-runtime` (runtime shim required for React 18)
 - Target: `"18"` (matches the React version in use)
 
 **Currently compiled components** (annotation mode test set):
+
 - `src/components/DesktopIcon.tsx`
 - `src/layout/components/WindowsOutlet.tsx`
 - `src/features/AppsWindow/App.tsx`
@@ -124,5 +158,6 @@ The project uses [React Compiler](https://react.dev/learn/react-compiler) in **a
 To compile additional components, add `"use memo"` at the top of the function body. To skip a component in infer mode, use `"use no memo"`.
 
 **Phases:**
+
 - Phase 2 (current): Annotation mode — opt-in compilation for testing
 - Phase 3 (future): Switch to infer mode (`compilationMode: "infer"`) for full compilation, with `"use no memo"` escape hatches

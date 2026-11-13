@@ -19,6 +19,12 @@ export type AppWindow = {
 
 export const windowsAtom = atom<Array<AppWindow>>([projectsWindow]);
 
+/**
+ * Per-window title overrides, keyed by window id. Some windows (the browser)
+ * put the current document in the title bar, and the taskbar entry follows it.
+ */
+export const windowTitlesAtom = atom<Record<string, string>>({});
+
 export const addWindowAtom = atom(null, (get, set, newWindow: AppWindow) => {
   const windows = get(windowsAtom);
 
