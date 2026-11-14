@@ -1,6 +1,6 @@
 import type { PublicFolder, PublicEntry } from "virtual:public-files";
 
-import { lazy, useState } from "react";
+import { useState } from "react";
 import { useAtom } from "jotai";
 import { Button, ScrollView } from "react95";
 import { tree } from "virtual:public-files";
@@ -9,23 +9,12 @@ import { addWindowAtom } from "@/stores/window.atom";
 import { Flex } from "@/components/Styled";
 import { experiences, experienceHref } from "@/features/ExperiencesWindow/experiences";
 import { experiencesWindow } from "@/config/desktop";
+import { ImageViewerContent, VideoPlayerContent } from "@/config/windowContent";
 import { MediaItem } from "./MediaItem";
 import { WindowURL } from "@/components/windows/WindowURL";
 import windowStyles from "@/components/windows/Window.module.scss";
 
 import styles from "./MediaWindow.module.scss";
-
-const VideoPlayerContent = lazy(() =>
-  import("@/features/VideoPlayer/VideoPlayer").then((module) => ({
-    default: module.VideoPlayer,
-  })),
-);
-
-const ImageViewerContent = lazy(() =>
-  import("@/features/ImageViewer/ImageViewer").then((module) => ({
-    default: module.ImageViewer,
-  })),
-);
 
 // Every shortcut activation gets a new key, so the browser can tell a repeat
 // click apart from a prop left over from the previous one.

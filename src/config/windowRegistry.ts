@@ -1,16 +1,7 @@
 import type { AppWindow } from "@/stores/window.atom";
 
-import { lazy } from "react";
-
 import { desktopApps } from "./desktop";
-
-const HelpDialogContent = lazy(
-  () => import("@/layout/components/Navbar/StartMenu/HelpDialogContent"),
-);
-
-const ShutdownDialogContent = lazy(
-  () => import("@/layout/components/Navbar/StartMenu/ShutdownDialogContent"),
-);
+import { HelpDialogContent, ShutdownDialogContent, VigenereCipherContent } from "./windowContent";
 
 export const helpWindow: AppWindow = {
   id: "help",
@@ -43,11 +34,7 @@ const Apps = {
     name: "vigenère cipher",
     titleI18nKey: "vigenere-cipher.title",
     iconSrc: "/icon/program.ico",
-    Element: lazy(() =>
-      import("@/features/AppsWindow/VigenereCipher/VigenereCipher").then((module) => ({
-        default: module.VigenereCipher,
-      })),
-    ),
+    Element: VigenereCipherContent,
   },
 } as const;
 

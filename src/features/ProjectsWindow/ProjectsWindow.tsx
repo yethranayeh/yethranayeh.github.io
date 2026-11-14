@@ -1,25 +1,15 @@
-import { lazy } from "react";
 import { atom, useAtom } from "jotai";
 
 import { AppTabs } from "@/components/AppTabs";
+import {
+  PlayerTypeContent,
+  preloadWindowContent,
+  SarmalContent,
+  ShadesOfSpaceContent,
+  ZinnContent,
+} from "@/config/windowContent";
 
 import styles from "./ProjectsWindow.module.scss";
-
-const preload = {
-  Zinn: () => import("@/features/ProjectsWindow/Projects/Zinn"),
-  PlayerType: () => import("@/features/ProjectsWindow/Projects/PlayerType"),
-  Sarmal: () => import("@/features/ProjectsWindow/Projects/Sarmal"),
-  "Shades of Space": () => import("@/features/ProjectsWindow/Projects/DailySpacePalette"),
-} as const;
-
-const Project = {
-  Zinn: lazy(() => preload.Zinn().then((m) => ({ default: m.Zinn }))),
-  PlayerType: lazy(() => preload.PlayerType().then((m) => ({ default: m.PlayerType }))),
-  Sarmal: lazy(() => preload.Sarmal().then((m) => ({ default: m.Sarmal }))),
-  ShadesOfSpace: lazy(() =>
-    preload["Shades of Space"]().then((m) => ({ default: m.DailySpacePalette })),
-  ),
-} as const;
 
 const activeProjectAtom = atom("Zinn");
 
@@ -33,17 +23,20 @@ export function ProjectsWindow() {
       tabListClassName={styles.tabList}
       tabBodyProps={{ as: "article", className: styles.tabBody }}
     >
-      <AppTabs.Tab title="Zinn" onTabHover={() => preload.Zinn()}>
-        <Project.Zinn />
+      <AppTabs.Tab title="Zinn" onTabHover={() => preloadWindowContent("projectZinn")}>
+        <ZinnContent />
       </AppTabs.Tab>
-      <AppTabs.Tab title="PlayerType" onTabHover={() => preload.PlayerType()}>
-        <Project.PlayerType />
+      <AppTabs.Tab title="PlayerType" onTabHover={() => preloadWindowContent("projectPlayerType")}>
+        <PlayerTypeContent />
       </AppTabs.Tab>
-      <AppTabs.Tab title="Sarmal" onTabHover={() => preload.Sarmal()}>
-        <Project.Sarmal />
+      <AppTabs.Tab title="Sarmal" onTabHover={() => preloadWindowContent("projectSarmal")}>
+        <SarmalContent />
       </AppTabs.Tab>
-      <AppTabs.Tab title="Shades of Space" onTabHover={() => preload["Shades of Space"]()}>
-        <Project.ShadesOfSpace />
+      <AppTabs.Tab
+        title="Shades of Space"
+        onTabHover={() => preloadWindowContent("projectShadesOfSpace")}
+      >
+        <ShadesOfSpaceContent />
       </AppTabs.Tab>
     </AppTabs>
   );

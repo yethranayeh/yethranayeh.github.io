@@ -1,38 +1,14 @@
 import type { AppWindow } from "@/stores/window.atom";
 
-import { lazy } from "react";
-
-const ResumeContent = lazy(() =>
-  import("@/features/ResumeWindow").then((module) => ({ default: module.ResumeWindow })),
-);
-const ProjectsContent = lazy(() =>
-  import("@/features/ProjectsWindow/ProjectsWindow").then((module) => ({
-    default: module.ProjectsWindow,
-  })),
-);
-const AppsContent = lazy(() =>
-  import("@/features/AppsWindow/AppsWindow").then((module) => ({ default: module.AppsWindow })),
-);
-const MediaContent = lazy(() =>
-  import("@/features/MediaWindow/MediaWindow").then((module) => ({
-    default: module.MediaWindow,
-  })),
-);
-const ComputerContent = lazy(() =>
-  import("@/features/ComputerWindow/ComputerWindow").then((module) => ({
-    default: module.ComputerWindow,
-  })),
-);
-const TerminalContent = lazy(() =>
-  import("@/features/TerminalWindow/TerminalWindow").then((module) => ({
-    default: module.TerminalWindow,
-  })),
-);
-const ExperiencesContent = lazy(() =>
-  import("@/features/ExperiencesWindow/ExperiencesWindow").then((module) => ({
-    default: module.ExperiencesWindow,
-  })),
-);
+import {
+  AppsContent,
+  ComputerContent,
+  ExperiencesContent,
+  MediaContent,
+  ProjectsContent,
+  ResumeContent,
+  TerminalContent,
+} from "@/config/windowContent";
 
 export const terminalWindow: AppWindow = {
   id: "terminal",
