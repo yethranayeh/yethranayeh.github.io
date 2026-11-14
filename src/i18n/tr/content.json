@@ -7,7 +7,7 @@
   "windowHelp": {
     "dismiss": "Anladım",
     "apps": "Bu işletim sisteminde başlatabileceğiniz uygulamalar. Bir uygulamayı açmak için çift tıklayın veya Enter'a basın.",
-    "experiences": "İnteraktif deneylerim için küçük bir tarayıcı. Ana sayfadaki veya Bağlantılar çubuğundaki bir bağlantıya tıklayın, kalıcı bir dizin için Görünüm → Kenar Çubuğu'nu kullanın; açtıklarınız arasında gezinmek için Geri/İleri.",
+    "experiences": "Etkileşimli deneyimlerim için küçük bir tarayıcı. Ana sayfadaki veya Bağlantılar çubuğundaki bir bağlantıya tıklayın, kalıcı bir dizin için Görünüm → Kenar Çubuğu’nu kullanın; açtıklarınız arasında gezinmek için Geri/İleri.",
     "generic": "Bu pencereyi simge durumuna küçültmek veya kapatmak için başlık çubuğundaki düğmeleri kullanın.",
     "media": "Medya dosyalarını görüntüleyin ve oynatın. Bir videoyu Video Oynatıcıda açmak için çift tıklayın; bir resmi Resim Görüntüleyicide açmak için çift tıklayın.",
     "imageViewer": "Resimleri tam pencerede görüntüleyin. Küçültmek veya kapatmak için başlık çubuğu düğmelerini kullanın.",
@@ -231,7 +231,7 @@
       "tagline": "Etkileşimli çalışmalar, küçük makineler ve hareket eden şeyler.",
       "updated": "Son güncelleme: 11 Kasım 2026",
       "new": "YENİ!",
-      "experiments": "Deneyler",
+      "experiences": "Deneyimler",
       "intro": "Bir tekniği anlamak için yaptığım, sonra açması keyifli olduğu için tuttuğum birkaç şey. Her biri kendi sayfasında çalışır.",
       "about": "Hakkında",
       "aboutBody": "Bunlar ürün değil, eskiz. Kurcalamak için var: sürükleyin, yazın, imleci gezin. Hiçbir şey kaydedilmez, hiçbir şey bitmiş değildir.",

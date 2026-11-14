@@ -7,7 +7,7 @@
   "windowHelp": {
     "dismiss": "Got it",
     "apps": "Available applications you can launch inside this operating system. Double-click or press Enter to open an app.",
-    "experiences": "A small browser for my interactive experiments. Click a link on the home page or in the Links bar, use View → Sidebar for a permanent index, and Back/Forward to move through what you have opened.",
+    "experiences": "A small browser for my interactive experiences. Click a link on the home page or in the Links bar, use View → Sidebar for a permanent index, and Back/Forward to move through what you have opened.",
     "generic": "Use the buttons in the title bar to minimize or close this window.",
     "media": "Browse and play media files. Double-click a video to open it in the Video Player, or double-click an image to open it in the Image Viewer.",
     "imageViewer": "View images in full window. Use the title bar buttons to minimize or close.",
@@ -231,7 +231,7 @@
       "tagline": "Interactive studies, small machines, and things that move.",
       "updated": "Last updated: 11 November 2026",
       "new": "NEW!",
-      "experiments": "Experiments",
+      "experiences": "Experiences",
       "intro": "Some things I built to understand a technique, then kept because they were fun to open. Each one runs on its own page.",
       "about": "About",
       "aboutBody": "These are sketches, not products. They are best poked at: drag things, type into them, move the pointer around. Nothing here is saved and nothing here is finished.",

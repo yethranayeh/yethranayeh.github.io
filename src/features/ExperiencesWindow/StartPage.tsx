@@ -44,7 +44,7 @@ export function StartPage({ onOpen }: StartPageProps) {
           </p>
         )}
 
-        <h2>{t("explorer.home.experiments")}</h2>
+        <h2>{t("explorer.home.experiences")}</h2>
         <p className={styles.small}>{t("explorer.home.intro")}</p>
 
         <ul>

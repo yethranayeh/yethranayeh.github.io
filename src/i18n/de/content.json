@@ -7,7 +7,7 @@
   "windowHelp": {
     "dismiss": "Verstanden",
     "apps": "Verfügbare Anwendungen, die Sie in diesem Betriebssystem starten können. Doppelklicken oder Enter drücken, um eine App zu öffnen.",
-    "experiences": "Ein kleiner Browser für meine interaktiven Experimente. Klicken Sie auf einen Link auf der Startseite oder in der Links-Leiste, nutzen Sie Ansicht → Seitenleiste als festes Verzeichnis und Zurück/Vorwärts, um durch das Geöffnete zu navigieren.",
+    "experiences": "Ein kleiner Browser für meine interaktiven Erlebnisse. Klicken Sie auf einen Link auf der Startseite oder in der Links-Leiste, nutzen Sie Ansicht → Seitenleiste als festes Verzeichnis und Zurück/Vorwärts, um durch das Geöffnete zu navigieren.",
     "generic": "Verwenden Sie die Schaltflächen in der Titelleiste, um dieses Fenster zu minimieren oder zu schließen.",
     "media": "Durchsuchen und spielen Sie Mediendateien ab. Doppelklicken Sie auf ein Video, um es im Video-Player zu öffnen, oder auf ein Bild, um es in der Bildanzeige zu öffnen.",
     "imageViewer": "Bilder im Vollbild anzeigen. Verwenden Sie die Titelleistenschaltflächen zum Minimieren oder Schließen.",
@@ -231,7 +231,7 @@
       "tagline": "Interaktive Studien, kleine Maschinen und Dinge, die sich bewegen.",
       "updated": "Zuletzt aktualisiert: 11. November 2026",
       "new": "NEU!",
-      "experiments": "Experimente",
+      "experiences": "Erlebnisse",
       "intro": "Ein paar Dinge, die ich gebaut habe, um eine Technik zu verstehen – und behalten habe, weil sie Spaß machen. Jedes läuft auf einer eigenen Seite.",
       "about": "Über",
       "aboutBody": "Das sind Skizzen, keine Produkte. Am besten stöbert man darin herum: Dinge ziehen, hineintippen, den Zeiger bewegen. Nichts wird gespeichert, nichts ist fertig.",
