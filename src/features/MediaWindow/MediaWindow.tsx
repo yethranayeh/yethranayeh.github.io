@@ -27,6 +27,10 @@ const ImageViewerContent = lazy(() =>
   })),
 );
 
+// Every shortcut activation gets a new key, so the browser can tell a repeat
+// click apart from a prop left over from the previous one.
+let shortcutRequest = 0;
+
 function findFolder(root: PublicFolder, targetPath: string): PublicFolder {
   if (!targetPath || targetPath === "/") {
     return root;
@@ -100,7 +104,10 @@ export function MediaWindow() {
                   onDoubleClick={() => {
                     addWindow({
                       ...experiencesWindow,
-                      contentProps: { initialUrl: experienceHref(item.slug) },
+                      contentProps: {
+                        initialUrl: experienceHref(item.slug),
+                        requestKey: (shortcutRequest += 1),
+                      },
                     });
                   }}
                 />

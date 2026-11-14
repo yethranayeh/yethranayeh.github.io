@@ -8,7 +8,7 @@ import { removeWindowAtom } from "@/stores/window.atom";
 import { ExperienceFrame } from "./ExperienceFrame";
 import { LinksBar } from "./LinksBar";
 import { NavigatorChrome } from "./NavigatorChrome";
-import { homePage, pageKey, pageTitle, resolveUrl } from "./pages";
+import { homePage, pageTitle, resolveUrl } from "./pages";
 import { Sidebar } from "./Sidebar";
 import { useNavigator } from "./useNavigator";
 
@@ -18,13 +18,15 @@ interface ExperiencesWindowProps {
   windowId?: string;
   /** Opened from a shortcut: the address to start on. */
   initialUrl?: string;
+  /** New on every shortcut activation, including a repeat of the same one. */
+  requestKey?: number;
 }
 
 /**
  * The browser window's content. The frame, title bar, taskbar entry and
  * close/minimize controls come from the window manager (`WindowsOutlet`).
  */
-export function ExperiencesWindow({ windowId, initialUrl }: ExperiencesWindowProps) {
+export function ExperiencesWindow({ windowId, initialUrl, requestKey }: ExperiencesWindowProps) {
   const { t } = useTranslation("content");
   const requested = initialUrl ? resolveUrl(initialUrl) : null;
   const nav = useNavigator(requested ?? homePage);
@@ -32,15 +34,15 @@ export function ExperiencesWindow({ windowId, initialUrl }: ExperiencesWindowPro
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const closeWindow = useSetAtom(removeWindowAtom);
 
-  // A shortcut can be opened while the window already exists — follow it then too.
-  const handled = useRef(requested ? pageKey(requested) : "");
+  // A shortcut can fire while the window is already open. The key is new on
+  // every activation, so clicking the same shortcut again reloads it instead
+  // of being swallowed as "already handled".
+  const handledRequest = useRef(requestKey);
   useEffect(() => {
-    if (!requested) return;
-    const key = pageKey(requested);
-    if (key === handled.current) return;
-    handled.current = key;
-    if (pageKey(nav.page) !== key) nav.navigate(requested);
-  });
+    if (!requested || requestKey === undefined || requestKey === handledRequest.current) return;
+    handledRequest.current = requestKey;
+    nav.navigate(requested);
+  }, [nav, requestKey, requested]);
 
   const title = nav.page.kind === "home" ? t("explorer.home.title") : pageTitle(nav.page);
   useWindowTitle(windowId, `${title} - ${t("explorer.brand")}`);
