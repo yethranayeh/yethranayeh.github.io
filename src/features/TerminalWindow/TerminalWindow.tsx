@@ -11,7 +11,8 @@ import { prompt, plainTerminalText, styledTerminalText, welcome } from "./shell"
 import { inputText, LineEditor } from "./line-editor";
 import { completeLine } from "./completion";
 import { PromptDisplay } from "./prompt-display";
-import { getShell } from "./browser-shell";
+import { getShell, isShellReady, watchShellProgress } from "./browser-shell";
+import { prepareZinn } from "./zinn-client";
 import { alignViewportRows } from "./ghostty-compat";
 import { zinnRequest } from "./zinn-client";
 import { TerminalMenu } from "./TerminalMenu";
@@ -24,7 +25,15 @@ const session = {
   history: [] as string[],
   lastLaunchId: undefined as number | undefined,
 };
+
+function prefersSavingData() {
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  return Boolean(connection?.saveData);
+}
 let ghosttySourcePromise: Promise<string> | undefined;
+// Survives window close/reopen so the loading status does not flash again once
+// the engine has been fetched in this session.
+let engineLoadedOnce = false;
 function loadGhostty() {
   // Reusing an instance after resize/dispose carries old VT cells into a new terminal.
   // Cache the download while giving each display its own WASM instance.
@@ -79,6 +88,7 @@ export function TerminalWindow({
   const dialogRef = useRef<HTMLDialogElement>(null);
   const terminalRef = useRef<Terminal>();
   const busyRef = useRef(false);
+  const downloadRef = useRef<AbortController>();
   const [editor] = useState(() => new LineEditor(session.history));
   const displayRef = useRef<PromptDisplay>();
   const composingRef = useRef(false);
@@ -90,6 +100,7 @@ export function TerminalWindow({
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
   const [rendererFailed, setRendererFailed] = useState(false);
+  const [engineReady, setEngineReady] = useState(engineLoadedOnce);
   const [rendererVersion, setRendererVersion] = useState(0);
   const [transcriptOpen, setTranscriptOpen] = useState(false);
 
@@ -134,6 +145,17 @@ export function TerminalWindow({
     displayRef.current?.focus(focusedRef.current);
   }, [redraw]);
 
+  const loadShell = useCallback(async () => {
+    const controller = new AbortController();
+    downloadRef.current = controller;
+    try {
+      return await getShell(controller.signal);
+    } finally {
+      downloadRef.current = undefined;
+      setNotice("");
+    }
+  }, [setNotice]);
+
   const run = useCallback(
     async (command: string) => {
       if (busyRef.current) return;
@@ -143,7 +165,42 @@ export function TerminalWindow({
       append(`${prompt}${command}\n`);
       try {
         if (!command.trim()) return;
-        const shell = await getShell();
+
+        if (command.trim() === "load-shell") {
+          if (isShellReady()) {
+            append("The shell is already loaded.\n");
+            return;
+          }
+          append("Downloading the shell. Ctrl+C cancels.\n");
+          await loadShell();
+          append("The shell is ready.\n");
+          return;
+        }
+
+        // A metered connection must not pay for the shell without being asked.
+        if (!isShellReady() && prefersSavingData()) {
+          append("The shell needs a download of about 3 MB. Run load-shell to start it.\n");
+          return;
+        }
+
+        const shell = await loadShell();
+
+        // Boot Zinn before the command reaches BashKit. The first-token check is
+        // deliberately simple: it covers how the command is actually typed, and a
+        // miss only falls back to the old behaviour rather than breaking anything.
+        if (command.trim().split(/\s+/)[0] === "zinn") {
+          setNotice("Preparing the Zinn runtime…");
+          try {
+            await prepareZinn();
+          } catch (startError) {
+            setNotice("");
+            append(
+              `${startError instanceof Error ? startError.message : "Zinn failed to start."}\n`,
+            );
+            return;
+          }
+          setNotice("");
+        }
         const result = await shell.execute(command, {
           history: session.history,
           columns: () => terminalRef.current?.cols ?? 80,
@@ -167,7 +224,11 @@ export function TerminalWindow({
         append(result.stderr);
         if (result.exit) closeWindow("terminal");
       } catch (error) {
-        append(`${error instanceof Error ? error.message : "The command failed."}\n`);
+        if (error instanceof DOMException && error.name === "AbortError") {
+          append("The shell download was cancelled.\n");
+        } else {
+          append(`${error instanceof Error ? error.message : "The command failed."}\n`);
+        }
       } finally {
         busyRef.current = false;
         setBusy(false);
@@ -176,13 +237,17 @@ export function TerminalWindow({
         if (focusedRef.current) focusEditor();
       }
     },
-    [addWindow, append, clear, closeWindow, editor, redraw, focusEditor],
+    [addWindow, append, clear, closeWindow, editor, loadShell, redraw, focusEditor],
   );
 
   const receive = useCallback(
     (data: string) => {
       if (busyRef.current) {
-        if (data === "\x03") void getShell().then((shell) => shell.cancel());
+        if (data === "\x03") {
+          // Before the shell exists there is nothing to cancel but the download.
+          if (isShellReady()) void getShell().then((shell) => shell.cancel());
+          else downloadRef.current?.abort();
+        }
         return;
       }
       const action = editor.receive(data);
@@ -215,6 +280,19 @@ export function TerminalWindow({
     },
     [append, clear, editor, redraw, run],
   );
+
+  useEffect(() => {
+    let lastReport = 0;
+    return watchShellProgress((bytes) => {
+      const now = performance.now();
+      // Throttled: one render per chunk would repaint far faster than it reads.
+      if (now - lastReport < 120) return;
+      lastReport = now;
+      setNotice(
+        `Loading the shell… ${(bytes / 1_000_000).toFixed(1)} MB received. Ctrl+C cancels.`,
+      );
+    });
+  }, []);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -372,9 +450,21 @@ export function TerminalWindow({
           focusedRef.current = false;
           displayRef.current?.focus(false);
         });
+        // Ctrl+C has to reach a download in progress. Until the shell exists
+        // there is no process to interrupt, so the only thing to cancel is the
+        // fetch, and the browser would otherwise treat the chord as copy.
+        listen("keydown", (event) => {
+          const key = event as KeyboardEvent;
+          if (key.key !== "c" || !(key.ctrlKey || key.metaKey) || !busyRef.current) return;
+          if (isShellReady() || !downloadRef.current) return;
+          key.preventDefault();
+          receive("\x03");
+        });
         redraw();
         terminal.scrollLines(-viewportRef.current);
         setRendererFailed(false);
+        setEngineReady(true);
+        engineLoadedOnce = true;
         if (restoreFocus) textarea.focus({ preventScroll: true });
         else previousFocus?.focus({ preventScroll: true });
       } catch {
@@ -500,6 +590,11 @@ export function TerminalWindow({
         }}
       />
       <div className={styles.screen}>
+        {!engineReady && !rendererFailed && (
+          <p className={styles.engineStatus} aria-hidden="true">
+            Loading the terminal engine…
+          </p>
+        )}
         <div
           className={styles.output}
           ref={hostRef}

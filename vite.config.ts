@@ -41,6 +41,10 @@ export default defineConfig({
     svgr({ include: "**/*.svg?react" }),
   ],
   optimizeDeps: {
+    // The Zinn worker imports sqlite lazily, so without this Vite discovers it
+    // mid-session and forces a full page reload, which can land in the middle
+    // of a terminal download.
+    include: ["@sqlite.org/sqlite-wasm"],
     esbuildOptions: {
       // Node.js global to browser globalThis
       define: {

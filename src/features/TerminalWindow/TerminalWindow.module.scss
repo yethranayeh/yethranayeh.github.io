@@ -92,6 +92,9 @@
   background: #141719;
   color: #e2e5dc;
   border: 2px inset #ddd;
+  // The engine status is overlaid so appearing and disappearing cannot resize
+  // the canvas host, which would rebuild the terminal through the resize path.
+  position: relative;
   padding: 8px 10px;
   font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
 }
@@ -105,6 +108,14 @@
   canvas {
     display: block;
   }
+}
+
+.engineStatus {
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  margin: 0;
+  pointer-events: none;
 }
 
 .hint {

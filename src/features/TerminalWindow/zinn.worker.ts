@@ -208,10 +208,23 @@ self.onmessage = (
     args: string[];
     bytes?: Uint8Array;
     context?: InvocationContext;
+    prepare?: boolean;
   }>,
 ) => {
   const { id, args, bytes, context } = event.data;
   queue = queue.then(async () => {
+    if (event.data.prepare) {
+      try {
+        await load(false);
+        self.postMessage({ id, ready: true });
+      } catch (error) {
+        self.postMessage({
+          id,
+          error: error instanceof Error ? error.message : "Zinn failed to start.",
+        });
+      }
+      return;
+    }
     try {
       self.postMessage({ id, result: await execute(args, bytes, context) });
     } catch (error) {

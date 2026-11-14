@@ -14,7 +14,13 @@ export function createWasmDriver(sqlite: Sqlite3Static, connection: WasmDatabase
                 first !== null && typeof first === "object" && !ArrayBuffer.isView(first)
                   ? first
                   : args;
-              statement.bind(bindings as SqlValue[] | Record<string, SqlValue>);
+              // Zinn passes an explicit empty array for "no parameters". Binding
+              // it makes sqlite-wasm throw "no bindable parameters", so only bind
+              // when there is actually something to bind.
+              const hasBindings = Array.isArray(bindings)
+                ? bindings.length > 0
+                : Object.keys(bindings as Record<string, SqlValue>).length > 0;
+              if (hasBindings) statement.bind(bindings as SqlValue[] | Record<string, SqlValue>);
             }
             const rows: unknown[] = [];
             while (statement.step()) {
