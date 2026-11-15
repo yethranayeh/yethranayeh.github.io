@@ -121,3 +121,14 @@ export const desktopApps: Array<AppWindow> = [
   terminalWindow,
   experiencesWindow,
 ];
+
+/**
+ * Deliberately not part of `desktopApps`: this one is not a window. It sits
+ * alone in the corner of the desktop, looks like a text file, and starts the
+ * easter egg directly.
+ */
+export const malwareIcon = {
+  id: "loveletter",
+  titleI18nKey: "menu:window.loveLetter",
+  iconSrc: "/icon/love_letter.ico",
+};

@@ -52,6 +52,7 @@ export const DraggableWindow = ({ title, helpText, slotProps, children }: Dragga
       <Window
         ref={windowRef}
         data-testid={`window-${title}`}
+        data-desktop-window=""
         className={styles.window}
         {...slotProps?.window}
         style={windowStyle}

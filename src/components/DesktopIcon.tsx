@@ -15,10 +15,19 @@ export interface DesktopIconProps {
   title: string;
   iconSrc: string;
   onOpen: () => void;
+  /** Label box size, for file names longer than a normal icon caption. */
+  boxWidth?: number;
+  boxHeight?: number;
 }
 
 // TODO: add Draggable with "grid" prop allow dragging icons on desktop grid
-export default function DesktopIcon({ title, iconSrc, onOpen }: DesktopIconProps) {
+export default function DesktopIcon({
+  title,
+  iconSrc,
+  onOpen,
+  boxWidth = 75,
+  boxHeight = 75,
+}: DesktopIconProps) {
   "use memo";
   const { isSelected, onSelect, onDeselect } = useSelectableItem();
 
@@ -39,7 +48,7 @@ export default function DesktopIcon({ title, iconSrc, onOpen }: DesktopIconProps
         onClick={isTouchDevice ? onOpen : onSelect}
         align="center"
         gap={4}
-        style={{ height: 75, width: 75 }}
+        style={{ height: boxHeight, width: boxWidth }}
         className={clsx("no-select", styles.icon, isSelected && styles.selected)}
       >
         <ImgIcon strictSizing src={iconSrc} size={48} alt={title} />

@@ -1,0 +1,9 @@
+// A stray file in the top-right of the desktop, away from the app column and
+// clear of the taskbar. Dimmed so it reads as abandoned rather than offered.
+.stray {
+  position: fixed;
+  top: 68px;
+  right: 14px;
+  z-index: 1;
+  opacity: 0.9;
+}

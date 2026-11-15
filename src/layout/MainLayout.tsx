@@ -16,6 +16,8 @@ import { Clippy } from "./components/Clippy";
 import { WindowsOutlet } from "./components/WindowsOutlet";
 import DesktopOutlet from "./components/DesktopOutlet";
 import { Loader } from "@/components/Loader";
+import { MalwareBoundary } from "@/features/Malware/MalwareBoundary";
+import { MalwareHost } from "@/features/Malware/MalwareHost";
 
 import { AuthContext } from "@/context/AuthContext";
 import { isLoggedOutKey } from "@/config/storage";
@@ -129,19 +131,23 @@ export default function MainLayout() {
   return (
     <div className={[styles.container, styles.fadeIn].join(" ")}>
       <AuthContext.Provider value={authContextValue}>
-        <Navbar />
+        <MalwareBoundary>
+          <Navbar />
+
+          <main className={styles.main}>
+            <DesktopOutlet />
+
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
+
+            <WindowsOutlet />
+            <Clippy />
+          </main>
+        </MalwareBoundary>
       </AuthContext.Provider>
 
-      <main className={styles.main}>
-        <DesktopOutlet />
-
-        <Suspense fallback={<Loader />}>
-          <Outlet />
-        </Suspense>
-
-        <WindowsOutlet />
-        <Clippy />
-      </main>
+      <MalwareHost />
 
       {!isDevMode && isScreensaverActive && (
         <Suspense fallback={null}>

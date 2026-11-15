@@ -1,8 +1,7 @@
 import type { AppWindow } from "@/stores/window.atom";
 
-import { desktopApps } from "./desktop";
+import { desktopApps, malwareIcon } from "./desktop";
 import { HelpDialogContent, ShutdownDialogContent, VigenereCipherContent } from "./windowContent";
-
 export const helpWindow: AppWindow = {
   id: "help",
   titleI18nKey: "menu:nav.help",
@@ -61,4 +60,4 @@ export function getWindowById(id: string) {
   return allWindows.find((w) => w.id === id);
 }
 
-export { desktopApps };
+export { desktopApps, malwareIcon };
